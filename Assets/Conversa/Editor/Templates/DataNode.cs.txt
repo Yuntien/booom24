@@ -1,0 +1,45 @@
+using System;
+using Conversa.Runtime;
+using Conversa.Runtime.Interfaces;
+using UnityEngine;
+
+[Serializable]
+[Port("Out", "out", typeof(float), Flow.Out, Capacity.Many)]
+public class #NODENAME#Node : BaseNode, IValueNode
+{
+    [SerializeField] private float inA;
+    [SerializeField] private float inB;
+    
+    [Slot("A", "in-a", Flow.In, Capacity.One)]
+    public float InA
+    {
+        get => inA;
+        set => inA = value;
+    }
+    
+    [Slot("B", "in-b", Flow.In, Capacity.One)]
+    public float InB
+    {
+        get => inB;
+        set => inB = value;
+    }
+
+    public T GetValue<T>(string portGuid, Conversation conversation)
+    {
+        if (portGuid != "out") return default;
+
+        var value1 = conversation.IsConnected(Guid, "in-a")
+            ? conversation.GetConnectedValueTo<float>(this, "in-a")
+            : inA;
+
+        var value2 = conversation.IsConnected(Guid, "in-b")
+            ? conversation.GetConnectedValueTo<float>(this, "in-b")
+            : inB;
+
+        // TEMPLATE: calculate the output value as you prefer. You dont even need
+        // to use any input port, if you do not need it.
+        var output = value1 + value2;
+
+        return Converter.ConvertValue<float, T>(output);
+    }
+}

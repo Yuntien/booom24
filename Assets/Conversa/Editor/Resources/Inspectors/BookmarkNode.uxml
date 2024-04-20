@@ -1,0 +1,6 @@
+<UXML xmlns="UnityEngine.UIElements">
+    <Label text="Bookmark" class="h1 mb-s" />
+
+    <Label text="Name" class="indent mb-xs bold" />
+    <TextField name="name"/>
+</UXML>

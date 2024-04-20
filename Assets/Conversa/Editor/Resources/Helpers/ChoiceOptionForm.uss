@@ -1,0 +1,20 @@
+ChoiceOptionForm {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-bottom: 6px;
+}
+
+ChoiceOptionForm Button {
+    -unity-font-style: bold;
+}
+
+ChoiceOptionForm TextField {
+    width: 110px;
+    flex-grow: 1;
+}
+
+
+ChoiceOptionForm Port Label {
+    display: none;
+}

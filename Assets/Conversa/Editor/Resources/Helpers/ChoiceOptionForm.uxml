@@ -1,0 +1,6 @@
+<UXML xmlns="UnityEngine.UIElements">
+    <Style src="./ChoiceOptionForm.uss" />
+
+    <TextField name="textField" text="" />
+    <Button text="x" class="transparent-button" />
+</UXML>

@@ -1,0 +1,11 @@
+using Conversa.Editor;
+using Conversa.Runtime;
+
+public class #NODENAME#NodeMenuModifier
+{
+    [NodeMenuModifier]
+    private static void ModifyMenu(NodeMenuTree tree, Conversation conversation)
+    {
+        tree.AddNode<#NODENAME#NodeView>("#NODENAME#", 1);
+    }
+}

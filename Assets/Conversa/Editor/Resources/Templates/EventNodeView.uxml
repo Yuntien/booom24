@@ -1,0 +1,5 @@
+<UXML xmlns="UnityEngine.UIElements" >
+    <VisualElement class="p-5">
+        <Toggle label="Stops flow" value="false" class="m-0" />
+    </VisualElement>
+</UXML>

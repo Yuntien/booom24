@@ -1,0 +1,19 @@
+using Conversa.Editor;
+using Conversa.Runtime;
+
+public class #NODENAME#NodeView : BaseNodeView<#NODENAME#Node>
+{
+    protected override string Title => "#NODENAME#";
+
+    // Constructors
+
+    public #NODENAME#NodeView(Conversation conversation) : base(new #NODENAME#Node(), conversation) { }
+
+    public #NODENAME#NodeView(#NODENAME#Node data, Conversation conversation) : base(data, conversation) { }
+
+    protected override void SetBody()    
+    {
+        // TEMPLATE: Write your view body here
+    }
+
+}
