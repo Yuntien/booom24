@@ -13,6 +13,8 @@ public class Module : MonoBehaviour
     public int anomalyThreshold = 10;
     public bool isAnomalous = false;
     public bool isChecking = false;
+    public delegate void ModuleAnomalyHandler(Module module);
+    public event ModuleAnomalyHandler OnModuleAnomaly;
     public void CalculateFinalAnomalyValue()
     {   
         int inAnomalySum = inPorts.Sum(p => p.anomalyValue);
@@ -35,6 +37,13 @@ public class Module : MonoBehaviour
     }
     public void HighlightConnections()
     {
+        bool inAnomaly = inPorts.Any(p => p.anomalyValue != 0);
+        bool outAnomaly = outPorts.Any(p => p.anomalyValue != 0);
+
+        if (!inAnomaly && outAnomaly)
+        {
+            OnModuleAnomaly?.Invoke(this);
+        }
         foreach (var port in outPorts)
         {
             if (port.Connection!=null)
