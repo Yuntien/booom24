@@ -25,8 +25,10 @@ private void Awake() {
 
     public void Highlight()
     {
+        lineRenderer.startColor = Color.white;
+        lineRenderer.endColor = Color.white;
         
-        if (startPort.anomalyValue > 0 || endPort.anomalyValue > 0)
+        /*if (startPort.anomalyValue > 0 || endPort.anomalyValue > 0)
         {
             lineRenderer.startColor = Color.red;
             lineRenderer.endColor = Color.red;
@@ -35,8 +37,8 @@ private void Awake() {
         {
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
-        }
-        Debug.Log(lineRenderer.startColor);
+        }*/
+        //Debug.Log(lineRenderer.startColor);
     } 
     public void TurnOff()
     {

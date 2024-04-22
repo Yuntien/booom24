@@ -28,7 +28,7 @@ public class Module : MonoBehaviour
         }
         else
         {
-            TurnOffConnections();
+            //TurnOffConnections();
             
         }
         
@@ -40,7 +40,7 @@ public class Module : MonoBehaviour
             if (port.Connection!=null)
             {
                 port.Connection.Highlight();
-                //Debug.Log(port.Connection.name);
+                Debug.Log(port.Connection.name);
                 
             }
         }
@@ -50,7 +50,7 @@ public class Module : MonoBehaviour
             {
                 
                 port.Connection.Highlight();
-                //Debug.Log(port.Connection.name);
+                Debug.Log(port.Connection.name);
                 
             }
         }
@@ -76,6 +76,6 @@ public class Module : MonoBehaviour
     }
 
     private void Update() {
-        CheckModule();
+        //CheckModule();
     }
 }
