@@ -1,0 +1,21 @@
+.conversa-settings {
+    padding: 10px;
+}
+
+.conversa-settings .bold {
+    -unity-font-style: bold;
+}
+
+.conversa-settings Label.h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    -unity-font-style: bold;
+}
+
+.conversa-settings Toggle {
+    margin: 0;
+}
+
+.conversa-settings HelpBox {
+    margin-top: 10px;
+}

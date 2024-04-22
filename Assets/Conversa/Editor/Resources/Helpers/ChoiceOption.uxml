@@ -1,0 +1,5 @@
+<UXML xmlns="UnityEngine.UIElements">
+    <Style src="./ChoiceOption.uss" />
+
+    <Label name="name"/>
+</UXML>

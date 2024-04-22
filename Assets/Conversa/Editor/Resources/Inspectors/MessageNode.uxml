@@ -1,0 +1,7 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:conversa="Conversa.Editor">
+    <Style src="./MessageNode.uss" />
+
+    <ui:Label text="Message" class="h1 mb-s" />
+    <conversa:ActorField />
+    <ui:TextField label="Message" name="body" multiline="true" class="text-wrap" />
+</UXML>

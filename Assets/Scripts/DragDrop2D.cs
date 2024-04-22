@@ -5,26 +5,31 @@ using DG.Tweening;
 
 public class DragDrop2D : MonoBehaviour
 {
-    // Start is called before the first frame update
     Vector3 offset;
     public Transform startPos;
     Collider2D collider2d;
     public string destinationTag = "DropArea";
-
-    public LayerMask mask;
+    Module module;
 
     void Awake()
     {
         collider2d = GetComponent<Collider2D>();
     }
+
     void Start()
     {
-        transform.position=startPos.position;
+        transform.position = startPos.position;
     }
 
     void OnMouseDown()
     {
         offset = transform.position - MouseWorldPosition();
+
+        // Disconnect the power line when starting to drag
+        if (module)
+        {
+            module.TurnOffConnections();
+        }
     }
 
     void OnMouseDrag()
@@ -43,11 +48,21 @@ public class DragDrop2D : MonoBehaviour
             if (hitInfo.transform.tag == destinationTag)
             {
                 transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
+                module = hitInfo.transform.parent.GetComponent<Module>();
+                if (module != null)
+                {
+                    // Connect the power line when dropped on a drop area
+                    module.HighlightConnections();
+                }
+            }
+            else
+            {
+                transform.DOMove(startPos.position, 0.15f);
             }
         }
         else
         {
-            transform.DOMove(startPos.position,0.15f);
+            transform.DOMove(startPos.position, 0.15f);
         }
         collider2d.enabled = true;
     }

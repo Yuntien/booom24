@@ -1,0 +1,9 @@
+ChoiceOption {
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+ChoiceOption Label {
+    flex-grow: 1;
+}

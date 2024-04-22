@@ -1,0 +1,11 @@
+<UXML xmlns="UnityEngine.UIElements">
+    <Style src="./ChoiceNode.uss" />
+
+    <VisualElement name="choice-node">
+        <Label text="Actor" name="actor"/>
+
+        <Label text="Message" name="message"/>
+        
+        <VisualElement class="option-list" />
+    </VisualElement>
+</UXML>

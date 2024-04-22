@@ -1,0 +1,1220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e373d802544f3b90f235c7efebe5e1, type: 3}
+  m_Name: Demo conversation
+  m_EditorClassIdentifier: 
+  startNode:
+    <Guid>k__BackingField: 104bffdb-87fe-4e34-aa45-6aa35def8a09
+    <NodeRect>k__BackingField:
+      serializedVersion: 2
+      x: 62
+      y: 58
+      width: 86
+      height: 40
+    name: Start
+  nodes:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  - id: 6
+  - id: 7
+  - id: 8
+  - id: 9
+  - id: 10
+  - id: 11
+  - id: 12
+  - id: 13
+  - id: 14
+  - id: 15
+  - id: 16
+  - id: 17
+  - id: 18
+  - id: 19
+  - id: 20
+  - id: 21
+  - id: 22
+  - id: 23
+  - id: 24
+  - id: 25
+  - id: 26
+  - id: 27
+  - id: 28
+  - id: 29
+  - id: 30
+  - id: 31
+  - id: 32
+  - id: 33
+  - id: 34
+  - id: 35
+  - id: 36
+  - id: 37
+  - id: 38
+  - id: 39
+  - id: 40
+  - id: 41
+  - id: 42
+  - id: 43
+  - id: 44
+  - id: 45
+  edges:
+  - id: 46
+  - id: 47
+  - id: 48
+  - id: 49
+  - id: 50
+  - id: 51
+  - id: 52
+  - id: 53
+  - id: 54
+  - id: 55
+  - id: 56
+  - id: 57
+  - id: 58
+  - id: 59
+  - id: 60
+  - id: 61
+  - id: 62
+  - id: 63
+  - id: 64
+  - id: 65
+  - id: 66
+  - id: 67
+  - id: 68
+  - id: 69
+  - id: 70
+  - id: 71
+  - id: 72
+  - id: 73
+  - id: 74
+  - id: 75
+  - id: 76
+  - id: 77
+  - id: 78
+  - id: 79
+  - id: 80
+  - id: 81
+  - id: 82
+  - id: 83
+  - id: 84
+  - id: 85
+  - id: 86
+  properties:
+  - id: 87
+  - id: 88
+  - id: 89
+  - id: 90
+  stickyNotes:
+  - id: 91
+  - id: 92
+  - id: 93
+  - id: 94
+  - id: 95
+  groups:
+  - id: 96
+  - id: 97
+  - id: 98
+  - id: 99
+  - id: 100
+  references:
+    version: 1
+    00000000:
+      type: {class: ChoiceNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 583
+          y: 196
+          width: 208
+          height: 247
+        actor: Change me
+        actorProfile: {fileID: 11400000, guid: dd19305b833b61005be20efd5b4fd4e8, type: 2}
+        useActorProfile: 1
+        message: What should I do...?
+        options:
+        - guid: port 1
+          label: Buy food
+        - guid: port 2
+          label: Search pockets
+        - guid: 6b7890a4-88d3-4afc-ae24-4e7fc6446c86
+          label: Check wallet
+        - guid: 86aad307-6052-4477-84ed-069542679688
+          label: Bye
+    00000001:
+      type: {class: ConditionalNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: b475655d-183f-49fd-9d35-0efacc0258ab
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 536
+          y: 1392
+          width: 153
+          height: 101
+    00000002:
+      type: {class: ConditionalNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: da8ab0be-175d-4d8c-afc2-837a4432f985
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 231
+          y: 653
+          width: 153
+          height: 101
+    00000003:
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: d2f0606b-d547-4e49-a04d-25d1bba9c7f0
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 719
+          y: 1329
+          width: 208
+          height: 135
+        actor: Merchant
+        actorProfile: {fileID: 11400000, guid: f761c9f3fe08a65fba2cd8c0db1efdf8, type: 2}
+        useActorProfile: 1
+        message: Thank you for your purchase!
+    00000004:
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 2e901c65-71e3-45a4-85ca-f1741a7f7303
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 516
+          y: 609
+          width: 208
+          height: 150
+        actor: Player
+        actorProfile: {fileID: 11400000, guid: dd19305b833b61005be20efd5b4fd4e8, type: 2}
+        useActorProfile: 1
+        message: I do not think I need to search anymore...
+    00000005:
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 565f2ac5-dd17-4e58-aacb-abccdbdb6eec
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 412
+          y: 777
+          width: 208
+          height: 135
+        actor: Player
+        actorProfile: {fileID: 11400000, guid: dd19305b833b61005be20efd5b4fd4e8, type: 2}
+        useActorProfile: 1
+        message: Oh! I found some coins!
+    00000006:
+      type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 446
+          y: 173
+          width: 99
+          height: 40
+        name: Choice
+    00000007:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 547eea26-c12a-4010-bbbf-b9f6c26926d0
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 823
+          y: 677
+          width: 99
+          height: 41
+        bookmarkName: Choice
+        bookmarkGuid: 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+    00000008:
+      type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: fd7bc840-6101-4969-b232-4a98faa3bd7c
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1324
+          y: 1330
+          width: 155
+          height: 77
+        stopsFlow: 0
+        eventGuid: b52908e1-925c-4bb6-9f14-055094bde721
+        eventName: Food bought
+    00000009:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 25fbeb70-5c14-403e-9632-4ee6c4b68012
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 207
+          y: 1431
+          width: 142
+          height: 40
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+        propertyName: Current money
+    0000000A:
+      type: {class: AdvancedMessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 2e2882a5-b1d4-453e-a05e-1b8c433ae7a3
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1448
+          y: 87
+          width: 228
+          height: 216
+        actor: Foo
+        actorProfile: {fileID: 11400000, guid: f761c9f3fe08a65fba2cd8c0db1efdf8, type: 2}
+        message: 
+    0000000B:
+      type: {class: ParseNode, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 3cd44982-864d-4a6a-b63d-9528e4404e63
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1271
+          y: 262
+          width: 156
+          height: 210
+        value: I have ${0}
+    0000000C:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 3c7b8cf2-ba61-4117-9f00-e88b349ca066
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1090
+          y: 283
+          width: 142
+          height: 40
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+        propertyName: Current money
+    0000000D:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: a66bd110-8a45-48eb-b794-9335c46790f6
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1700
+          y: 87
+          width: 99
+          height: 41
+        bookmarkName: Choice
+        bookmarkGuid: 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+    0000000E:
+      type: {class: SetPropertyNode, ns: unity_conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: e065dddd-ba15-446f-88b8-4aa14fc34fc3
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 652
+          y: 777
+          width: 144
+          height: 142
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+    0000000F:
+      type: {class: AddNode, ns: Conversa.Runtime.Nodes.MathOperators, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 02fec46c-e90e-4797-acd5-ebf1c072eade
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 520
+          y: 942
+          width: 100
+          height: 101
+        inA: 0
+        inB: 40
+    00000010:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 40406362-7203-4fd6-b60d-494a2b0c2d76
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 335
+          y: 935
+          width: 142
+          height: 40
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+        propertyName: Current money
+    00000011:
+      type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 4097521e-7032-4d5e-83e2-94d345fa9f63
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1287
+          y: 67
+          width: 130
+          height: 40
+        name: Check wallet
+    00000012:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 4739fe48-5695-4094-9396-73afda500dea
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 819
+          y: 326
+          width: 130
+          height: 41
+        bookmarkName: Check wallet
+        bookmarkGuid: 4097521e-7032-4d5e-83e2-94d345fa9f63
+    00000013:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 019dab66-7aa9-4a4d-be08-7208d8d5cc5c
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 231
+          y: 1493
+          width: 118
+          height: 40
+        propertyGuid: 1b6a827f-d1e1-406b-a19b-464928bbef08
+        propertyName: Food price
+    00000014:
+      type: {class: AdvancedMessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 49e9036f-2ed8-472c-baa0-a51bb2a1bb35
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1772
+          y: 733
+          width: 245
+          height: 216
+        actor: Merchant
+        actorProfile: {fileID: 11400000, guid: f761c9f3fe08a65fba2cd8c0db1efdf8, type: 2}
+        message: 
+    00000015:
+      type: {class: ParseNode, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 5feb5546-9637-4930-8986-33a436957b50
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1448
+          y: 856
+          width: 270
+          height: 240
+        value: Sorry, but the food costs ${0}, and you only have ${1}. You are still
+          missing ${2}
+    00000016:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 01621bc3-d8b5-43e4-8a23-21d0b937394f
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1108
+          y: 836
+          width: 118
+          height: 40
+        propertyGuid: 1b6a827f-d1e1-406b-a19b-464928bbef08
+        propertyName: Food price
+    00000017:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 562ef776-0ea8-47a9-975b-ec60c8410626
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1084
+          y: 906
+          width: 142
+          height: 40
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+        propertyName: Current money
+    00000018:
+      type: {class: SubtractNode, ns: Conversa.Runtime.Nodes.MathOperators, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 060a4b2a-2581-43ef-beef-0695109a20bf
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1296
+          y: 949
+          width: 100
+          height: 101
+        inA: 0
+        inB: 0
+    00000019:
+      type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 0c8bdf9b-5e3b-4cd0-9a8f-595245440881
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1599
+          y: 670
+          width: 138
+          height: 40
+        name: Failed attempt
+    0000001A:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: c82ec134-b338-4243-b978-9179bcd0a371
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2082
+          y: 786
+          width: 99
+          height: 41
+        bookmarkName: Choice
+        bookmarkGuid: 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+    0000001B:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 88344760-4b94-4ce6-9b5b-d2b4e4b5a8be
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 719
+          y: 1481
+          width: 138
+          height: 41
+        bookmarkName: Failed attempt
+        bookmarkGuid: 0c8bdf9b-5e3b-4cd0-9a8f-595245440881
+    0000001C:
+      type: {class: SetPropertyNode, ns: unity_conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: a9f281d0-caee-4684-94f3-ceb6d6c1d930
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 984
+          y: 1329
+          width: 144
+          height: 142
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+    0000001D:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: f4252c1e-b79d-47e0-8c41-f79e0b233eb3
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 700
+          y: 1537
+          width: 142
+          height: 40
+        propertyGuid: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+        propertyName: Current money
+    0000001E:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 51c80ce9-285b-4a87-bd0d-64da24736d21
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 719
+          y: 1587
+          width: 118
+          height: 40
+        propertyGuid: 1b6a827f-d1e1-406b-a19b-464928bbef08
+        propertyName: Food price
+    0000001F:
+      type: {class: SubtractNode, ns: Conversa.Runtime.Nodes.MathOperators, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 9d873612-a86b-4251-8960-b27b1d29c084
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 857
+          y: 1522
+          width: 100
+          height: 101
+        inA: 0
+        inB: 0
+    00000020:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 7de155a0-f2d2-4454-b9ad-b73d201ffbba
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1515
+          y: 1366
+          width: 99
+          height: 41
+        bookmarkName: Choice
+        bookmarkGuid: 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+    00000021:
+      type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 4356dec5-358a-4422-a2c3-eb993cc6aa52
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 410
+          y: 1325
+          width: 101
+          height: 40
+        name: Try buy
+    00000022:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 98bce9c9-4e31-4c48-b969-991e3e0c7f75
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 819
+          y: 226
+          width: 101
+          height: 41
+        bookmarkName: Try buy
+        bookmarkGuid: 4356dec5-358a-4422-a2c3-eb993cc6aa52
+    00000023:
+      type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: d44d4ba3-3461-4c5e-a5c9-6d991d327d50
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 52
+          y: 659
+          width: 144
+          height: 40
+        name: Search pockets
+    00000024:
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 7787cdd6-a75f-42d1-a94c-845934cd29d9
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 819
+          y: 278
+          width: 144
+          height: 41
+        bookmarkName: Search pockets
+        bookmarkGuid: d44d4ba3-3461-4c5e-a5c9-6d991d327d50
+    00000025:
+      type: {class: PropertyNode, ns: Conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 30a8a7de-e9d7-40bb-95c0-97047c9e2b06
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 56
+          y: 714
+          width: 151
+          height: 40
+        propertyGuid: 81979b2d-6a6a-4da3-b01b-87090768a2ed
+        propertyName: Is food bought
+    00000026:
+      type: {class: SetPropertyNode, ns: unity_conversa.Runtime.Nodes.PropertyNodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 49d4e2bd-2f37-44d8-ba7f-c5b077e67906
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1151
+          y: 1330
+          width: 144
+          height: 142
+        propertyGuid: 81979b2d-6a6a-4da3-b01b-87090768a2ed
+    00000027:
+      type: {class: AbsoluteBoolNode, ns: Conversa.Runtime.Nodes.LogicalOperators, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 68a66402-007d-4b10-98ea-78b4cb467ca8
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1056
+          y: 1501
+          width: 72
+          height: 106
+        value: 1
+    00000028:
+      type: {class: CompareNode, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 279ad898-1a93-40a6-80f2-dfe7474b965e
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 368
+          y: 1415
+          width: 143
+          height: 122
+        operation: 1
+    00000029:
+      type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        guid: 28c30642-7ba5-4571-8599-405446169a06
+        position: {x: 205, y: 64}
+        blocks:
+        - c2405a10-52e7-4bf5-a92f-dca192db5f77
+        - aa67a416-974b-450a-9103-015882f638d1
+        - b63b0dfe-1ac4-4659-97b5-f35177479cf9
+        - 8e200cfb-f223-41be-a459-d94042403cf4
+    0000002A:
+      type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: aa67a416-974b-450a-9103-015882f638d1
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: -151.99988
+          y: 321.5
+          width: NaN
+          height: NaN
+        message: I would like to buy some food
+    0000002B:
+      type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: c2405a10-52e7-4bf5-a92f-dca192db5f77
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 216
+          y: 69
+          width: 170
+          height: 71
+        actor: {fileID: 11400000, guid: dd19305b833b61005be20efd5b4fd4e8, type: 2}
+    0000002C:
+      type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 8e200cfb-f223-41be-a459-d94042403cf4
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: -182
+          y: 452
+          width: NaN
+          height: NaN
+        message: Please, come in
+    0000002D:
+      type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: b63b0dfe-1ac4-4659-97b5-f35177479cf9
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 195
+          y: 330
+          width: 88
+          height: 70
+        actor: {fileID: 11400000, guid: f761c9f3fe08a65fba2cd8c0db1efdf8, type: 2}
+    0000002E:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+          port: next
+        input:
+          node: cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+          port: previous
+    0000002F:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+          port: port 1
+        input:
+          node: 98bce9c9-4e31-4c48-b969-991e3e0c7f75
+          port: previous
+    00000030:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+          port: port 2
+        input:
+          node: 7787cdd6-a75f-42d1-a94c-845934cd29d9
+          port: previous
+    00000031:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+          port: 6b7890a4-88d3-4afc-ae24-4e7fc6446c86
+        input:
+          node: 4739fe48-5695-4094-9396-73afda500dea
+          port: previous
+    00000032:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: d44d4ba3-3461-4c5e-a5c9-6d991d327d50
+          port: next
+        input:
+          node: da8ab0be-175d-4d8c-afc2-837a4432f985
+          port: previous
+    00000033:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 30a8a7de-e9d7-40bb-95c0-97047c9e2b06
+          port: next
+        input:
+          node: da8ab0be-175d-4d8c-afc2-837a4432f985
+          port: condition
+    00000034:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: da8ab0be-175d-4d8c-afc2-837a4432f985
+          port: true
+        input:
+          node: 2e901c65-71e3-45a4-85ca-f1741a7f7303
+          port: previous
+    00000035:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: da8ab0be-175d-4d8c-afc2-837a4432f985
+          port: false
+        input:
+          node: 565f2ac5-dd17-4e58-aacb-abccdbdb6eec
+          port: previous
+    00000036:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 565f2ac5-dd17-4e58-aacb-abccdbdb6eec
+          port: next
+        input:
+          node: e065dddd-ba15-446f-88b8-4aa14fc34fc3
+          port: previous
+    00000037:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 02fec46c-e90e-4797-acd5-ebf1c072eade
+          port: out
+        input:
+          node: e065dddd-ba15-446f-88b8-4aa14fc34fc3
+          port: new-float-value
+    00000038:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 40406362-7203-4fd6-b60d-494a2b0c2d76
+          port: next
+        input:
+          node: 02fec46c-e90e-4797-acd5-ebf1c072eade
+          port: in-a
+    00000039:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: e065dddd-ba15-446f-88b8-4aa14fc34fc3
+          port: next
+        input:
+          node: 547eea26-c12a-4010-bbbf-b9f6c26926d0
+          port: previous
+    0000003A:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 2e901c65-71e3-45a4-85ca-f1741a7f7303
+          port: next
+        input:
+          node: 547eea26-c12a-4010-bbbf-b9f6c26926d0
+          port: previous
+    0000003B:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 25fbeb70-5c14-403e-9632-4ee6c4b68012
+          port: next
+        input:
+          node: 279ad898-1a93-40a6-80f2-dfe7474b965e
+          port: in-a
+    0000003C:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 019dab66-7aa9-4a4d-be08-7208d8d5cc5c
+          port: next
+        input:
+          node: 279ad898-1a93-40a6-80f2-dfe7474b965e
+          port: in-b
+    0000003D:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 279ad898-1a93-40a6-80f2-dfe7474b965e
+          port: out
+        input:
+          node: b475655d-183f-49fd-9d35-0efacc0258ab
+          port: condition
+    0000003E:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: b475655d-183f-49fd-9d35-0efacc0258ab
+          port: false
+        input:
+          node: 88344760-4b94-4ce6-9b5b-d2b4e4b5a8be
+          port: previous
+    0000003F:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: b475655d-183f-49fd-9d35-0efacc0258ab
+          port: true
+        input:
+          node: d2f0606b-d547-4e49-a04d-25d1bba9c7f0
+          port: previous
+    00000040:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: f4252c1e-b79d-47e0-8c41-f79e0b233eb3
+          port: next
+        input:
+          node: 9d873612-a86b-4251-8960-b27b1d29c084
+          port: in-a
+    00000041:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 51c80ce9-285b-4a87-bd0d-64da24736d21
+          port: next
+        input:
+          node: 9d873612-a86b-4251-8960-b27b1d29c084
+          port: in-b
+    00000042:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 9d873612-a86b-4251-8960-b27b1d29c084
+          port: out
+        input:
+          node: a9f281d0-caee-4684-94f3-ceb6d6c1d930
+          port: new-float-value
+    00000043:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: d2f0606b-d547-4e49-a04d-25d1bba9c7f0
+          port: next
+        input:
+          node: a9f281d0-caee-4684-94f3-ceb6d6c1d930
+          port: previous
+    00000044:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 68a66402-007d-4b10-98ea-78b4cb467ca8
+          port: out
+        input:
+          node: 49d4e2bd-2f37-44d8-ba7f-c5b077e67906
+          port: new-bool-value
+    00000045:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: a9f281d0-caee-4684-94f3-ceb6d6c1d930
+          port: next
+        input:
+          node: 49d4e2bd-2f37-44d8-ba7f-c5b077e67906
+          port: previous
+    00000046:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 49d4e2bd-2f37-44d8-ba7f-c5b077e67906
+          port: next
+        input:
+          node: fd7bc840-6101-4969-b232-4a98faa3bd7c
+          port: previous
+    00000047:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: fd7bc840-6101-4969-b232-4a98faa3bd7c
+          port: next
+        input:
+          node: 7de155a0-f2d2-4454-b9ad-b73d201ffbba
+          port: previous
+    00000048:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 01621bc3-d8b5-43e4-8a23-21d0b937394f
+          port: next
+        input:
+          node: 060a4b2a-2581-43ef-beef-0695109a20bf
+          port: in-a
+    00000049:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 562ef776-0ea8-47a9-975b-ec60c8410626
+          port: next
+        input:
+          node: 060a4b2a-2581-43ef-beef-0695109a20bf
+          port: in-b
+    0000004A:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 5feb5546-9637-4930-8986-33a436957b50
+          port: out
+        input:
+          node: 49e9036f-2ed8-472c-baa0-a51bb2a1bb35
+          port: message
+    0000004B:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 49e9036f-2ed8-472c-baa0-a51bb2a1bb35
+          port: next
+        input:
+          node: c82ec134-b338-4243-b978-9179bcd0a371
+          port: previous
+    0000004C:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 0c8bdf9b-5e3b-4cd0-9a8f-595245440881
+          port: next
+        input:
+          node: 49e9036f-2ed8-472c-baa0-a51bb2a1bb35
+          port: previous
+    0000004D:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 3cd44982-864d-4a6a-b63d-9528e4404e63
+          port: out
+        input:
+          node: 2e2882a5-b1d4-453e-a05e-1b8c433ae7a3
+          port: message
+    0000004E:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4097521e-7032-4d5e-83e2-94d345fa9f63
+          port: next
+        input:
+          node: 2e2882a5-b1d4-453e-a05e-1b8c433ae7a3
+          port: previous
+    0000004F:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 2e2882a5-b1d4-453e-a05e-1b8c433ae7a3
+          port: next
+        input:
+          node: a66bd110-8a45-48eb-b794-9335c46790f6
+          port: previous
+    00000050:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 3c7b8cf2-ba61-4117-9f00-e88b349ca066
+          port: next
+        input:
+          node: 3cd44982-864d-4a6a-b63d-9528e4404e63
+          port: parameter 1
+    00000051:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 060a4b2a-2581-43ef-beef-0695109a20bf
+          port: out
+        input:
+          node: 5feb5546-9637-4930-8986-33a436957b50
+          port: parameter 3
+    00000052:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 01621bc3-d8b5-43e4-8a23-21d0b937394f
+          port: next
+        input:
+          node: 5feb5546-9637-4930-8986-33a436957b50
+          port: parameter 1
+    00000053:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 562ef776-0ea8-47a9-975b-ec60c8410626
+          port: next
+        input:
+          node: 5feb5546-9637-4930-8986-33a436957b50
+          port: parameter 2
+    00000054:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4356dec5-358a-4422-a2c3-eb993cc6aa52
+          port: next
+        input:
+          node: b475655d-183f-49fd-9d35-0efacc0258ab
+          port: previous
+    00000055:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 104bffdb-87fe-4e34-aa45-6aa35def8a09
+          port: next
+        input:
+          node: 28c30642-7ba5-4571-8599-405446169a06
+          port: previous
+    00000056:
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 28c30642-7ba5-4571-8599-405446169a06
+          port: next
+        input:
+          node: cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+          port: previous
+    00000057:
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: b52908e1-925c-4bb6-9f14-055094bde721
+        name: Food bought
+    00000058:
+      type: {class: BooleanProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 81979b2d-6a6a-4da3-b01b-87090768a2ed
+        name: Has bought food
+        value: 0
+        initialValue: 0
+    00000059:
+      type: {class: FloatProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: a03c8be0-0b0d-4cbd-b271-60445c1edc8f
+        name: Current money
+        value: 0
+        initialValue: 20
+    0000005A:
+      type: {class: FloatProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 1b6a827f-d1e1-406b-a19b-464928bbef08
+        name: Food price
+        value: 0
+        initialValue: 100
+    0000005B:
+      type: {class: StickyNoteData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: fbc19e7a-aff2-479a-885e-d5ca14f0630e
+        rect:
+          serializedVersion: 2
+          x: 1696
+          y: 189
+          width: 95
+          height: 100
+        title: 
+        contents: Check how much you have
+    0000005C:
+      type: {class: StickyNoteData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: 211f5f8b-172a-46ca-ad01-6917d3abdb04
+        rect:
+          serializedVersion: 2
+          x: 1896
+          y: 986
+          width: 112
+          height: 100
+        title: 
+        contents: Check if you have enough money
+    0000005D:
+      type: {class: StickyNoteData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: ead1954b-242c-48d5-ae89-beca39d9cbb4
+        rect:
+          serializedVersion: 2
+          x: 214
+          y: 1292
+          width: 173
+          height: 100
+        title: 
+        contents: Try to buy some food
+    0000005E:
+      type: {class: StickyNoteData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: 78076c78-d75f-428f-ac70-76b163fd0953
+        rect:
+          serializedVersion: 2
+          x: 197
+          y: 808
+          width: 133
+          height: 100
+        title: 
+        contents: It might let you find some coins
+    0000005F:
+      type: {class: StickyNoteData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: 400b3e64-eaa4-4424-b09c-1f810c699380
+        rect:
+          serializedVersion: 2
+          x: 1406
+          y: 1459
+          width: 100
+          height: 100
+        title: 
+        contents: We can use this event to update the inventory, for example
+    00000060:
+      type: {class: GroupData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: fd274d37-35fe-40c5-bb1f-3ffe64d421e9
+        title: Check wallet
+        position: {x: 1115.666, y: 8.250493}
+        elements:
+        - fbc19e7a-aff2-479a-885e-d5ca14f0630e
+        - 2e2882a5-b1d4-453e-a05e-1b8c433ae7a3
+        - 3cd44982-864d-4a6a-b63d-9528e4404e63
+        - 3c7b8cf2-ba61-4117-9f00-e88b349ca066
+        - a66bd110-8a45-48eb-b794-9335c46790f6
+        - 4097521e-7032-4d5e-83e2-94d345fa9f63
+    00000061:
+      type: {class: GroupData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: c0d4d613-59bd-4153-be31-1aae67bdce40
+        title: Failed to buy
+        position: {x: 1059, y: 611.00006}
+        elements:
+        - 211f5f8b-172a-46ca-ad01-6917d3abdb04
+        - 49e9036f-2ed8-472c-baa0-a51bb2a1bb35
+        - 5feb5546-9637-4930-8986-33a436957b50
+        - 01621bc3-d8b5-43e4-8a23-21d0b937394f
+        - 562ef776-0ea8-47a9-975b-ec60c8410626
+        - 060a4b2a-2581-43ef-beef-0695109a20bf
+        - 0c8bdf9b-5e3b-4cd0-9a8f-595245440881
+        - c82ec134-b338-4243-b978-9179bcd0a371
+    00000062:
+      type: {class: GroupData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: c254dc2f-ca88-4679-ad31-61817bb80a95
+        title: Try to buy
+        position: {x: 176.00002, y: 1233.0001}
+        elements:
+        - ead1954b-242c-48d5-ae89-beca39d9cbb4
+        - 400b3e64-eaa4-4424-b09c-1f810c699380
+        - b475655d-183f-49fd-9d35-0efacc0258ab
+        - d2f0606b-d547-4e49-a04d-25d1bba9c7f0
+        - fd7bc840-6101-4969-b232-4a98faa3bd7c
+        - 25fbeb70-5c14-403e-9632-4ee6c4b68012
+        - 019dab66-7aa9-4a4d-be08-7208d8d5cc5c
+        - 88344760-4b94-4ce6-9b5b-d2b4e4b5a8be
+        - a9f281d0-caee-4684-94f3-ceb6d6c1d930
+        - f4252c1e-b79d-47e0-8c41-f79e0b233eb3
+        - 51c80ce9-285b-4a87-bd0d-64da24736d21
+        - 9d873612-a86b-4251-8960-b27b1d29c084
+        - 7de155a0-f2d2-4454-b9ad-b73d201ffbba
+        - 4356dec5-358a-4422-a2c3-eb993cc6aa52
+        - 49d4e2bd-2f37-44d8-ba7f-c5b077e67906
+        - 68a66402-007d-4b10-98ea-78b4cb467ca8
+        - 279ad898-1a93-40a6-80f2-dfe7474b965e
+    00000063:
+      type: {class: GroupData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: f9a89084-9b8d-494f-bf53-cd7a3ad7db80
+        title: Search pockets
+        position: {x: 26.999998, y: 550}
+        elements:
+        - 78076c78-d75f-428f-ac70-76b163fd0953
+        - da8ab0be-175d-4d8c-afc2-837a4432f985
+        - 2e901c65-71e3-45a4-85ca-f1741a7f7303
+        - 565f2ac5-dd17-4e58-aacb-abccdbdb6eec
+        - 547eea26-c12a-4010-bbbf-b9f6c26926d0
+        - e065dddd-ba15-446f-88b8-4aa14fc34fc3
+        - 02fec46c-e90e-4797-acd5-ebf1c072eade
+        - 40406362-7203-4fd6-b60d-494a2b0c2d76
+        - d44d4ba3-3461-4c5e-a5c9-6d991d327d50
+        - 30a8a7de-e9d7-40bb-95c0-97047c9e2b06
+    00000064:
+      type: {class: GroupData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        id: 8097fc13-4a74-41f9-b7bc-a9ae4ce5b691
+        title: Start
+        position: {x: 36.85916, y: -0.7588501}
+        elements:
+        - 104bffdb-87fe-4e34-aa45-6aa35def8a09
+        - cfc9f460-5b9f-4105-a6b6-3702cf8db80a
+        - 0bd5b57b-b5cc-45c1-93e4-851a76593d5e
+        - 4739fe48-5695-4094-9396-73afda500dea
+        - 98bce9c9-4e31-4c48-b969-991e3e0c7f75
+        - 7787cdd6-a75f-42d1-a94c-845934cd29d9
+        - 28c30642-7ba5-4571-8599-405446169a06

@@ -1,0 +1,276 @@
+/* Bootstrap */
+
+Label.h1 {
+    font-size: 22px;
+    -unity-font-style: bold;
+    color: white;
+}
+
+TextField, FloatField, Toggle {
+    width: 100%;
+    margin: 0 0 5px 0;
+    
+}
+
+TextInput#unity-text-input,
+FloatInput#unity-text-input{
+    border-width: 0;
+    padding: 3px 8px;
+}
+
+.transparent-button {
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    height: auto;
+}
+.transparent-button:hover { background-color: #626262; }
+.transparent-button:active { background-color: #6a6a6a;}
+
+/* Helpers */
+
+.flex-direction-row { flex-direction: row;}
+.justify-space-between { justify-content: space-between; }
+.bold { -unity-font-style: bold}
+.font-size-xl { font-size: 36px; }
+.font-size-l { font-size: 20px; }
+.m-0 { margin: 0px; }
+.mt-s { margin-top: 10px; }
+.mt-m { margin-top: 20px; }
+.mb-s { margin-bottom: 10px; }
+.mb-xs { margin-bottom: 4px; }
+.mb-m { margin-bottom: 20px; }
+.p-10 { padding: 10px; }
+.p-5 { padding: 5px; }
+.text-wrap { white-space: initial}
+.hidden { display: none }
+Label.indent { padding-left: 8px;}
+
+
+
+/* Graph toolbar */
+
+GraphToolbar {
+    padding: 10px;
+    height: auto;
+    background-color: #1a1a1a;
+    border-width: 0;
+}
+
+GraphToolbar ToolbarButton,
+GraphToolbar ToolbarToggle {
+    height: auto;
+    padding: 10px;
+    border-width: 0;
+    margin-right: 10px;
+    background-color: #383838;
+    color: #c4c4c4;
+}
+
+GraphToolbar ToolbarButton:hover,
+GraphToolbar ToolbarToggle:hover {
+    background-color: #424242;
+}
+
+GraphToolbar ToolbarButton:active,
+GraphToolbar ToolbarToggle:checked {
+    background-color: #6a6a6a;
+}
+
+/* Inspector */
+
+Inspector {
+    background-color: #333333;
+    border-right-width: 1px;
+    border-color: #111;
+    width: 350px;
+}
+
+Inspector > * {
+    margin-bottom: 10px;
+}
+
+Inspector > ScrollView {
+    height: 100%;
+    margin: 0;
+    
+}
+
+Inspector > ScrollView #unity-content-container{
+    padding: 20px 14px;
+}
+
+AddPropertyButton Button{
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+AddPropertyButton Button:hover { background-color: #626262; }
+AddPropertyButton Button:active { background-color: #6a6a6a;}
+
+PropertyEntry {
+    background-color: #444;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+PropertyEntry .line {
+    height: 22px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+PropertyEntry PropertyTypeName {
+    display: flex;
+}
+
+PropertyEntry PropertyActions {
+    display: none;
+}
+
+PropertyEntry .header:hover PropertyTypeName {
+    display: none;
+}
+
+PropertyEntry .header:hover PropertyActions {
+    display: flex;
+}
+
+PropertyActions {
+    flex-direction: row;
+}
+
+/* Other */
+
+
+#content {
+    flex-direction: row-reverse;
+    flex-grow: 1;
+}
+
+#content GridBackground {
+    --grid-background-color: rgb(34, 34, 34);
+    --line-color: rgb(29, 29, 29);
+    --thick-line-color: rgb(23, 23, 23);
+    --spacing: 20;
+}
+
+BookmarkNodeView #title {
+    display: none;
+}
+
+BookmarkNodeView #bookmark-node {
+    display: none;
+}
+
+BookmarkNodeView #contents Image {
+    width: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+BookmarkNodeView #contents TextField.read-only TextInput {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+}
+
+BookmarkNodeView #contents {
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    background-color: rgb(106, 27, 154);
+    border-width: 0;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+BookmarkNodeView .port > Label#type {
+    color: white;
+}
+
+BookmarkNodeView #divider.horizontal {
+    border-bottom-width: 0;
+}
+
+BookmarkNodeView #contents > #top > #output {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+BookmarkJumpNodeView #title {
+    display: none;
+}
+
+BookmarkJumpNodeView #bookmark-node {
+    display: none;
+}
+
+BookmarkJumpNodeView #contents {
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    background-color: rgb(136, 14, 79);
+    color: white;
+    border-width: 0;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+BookmarkJumpNodeView #contents Image {
+    width: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+BookmarkJumpNodeView #contents > #top > #input {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+PropertyNodeView #title {
+    display: none;
+}
+
+PropertyNodeView #contents Image {
+    width: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+PropertyNodeView #contents {
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    background-color: #444444;
+    border-width: 0;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+PropertyNodeView #contents Label#type {
+    color: white;
+}
+
+PropertyNodeView #divider.horizontal {
+    border-bottom-width: 0;
+}
+
+PropertyNodeView #contents > #top > #output {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.graphElement.node TextInput{
+    max-width: 200px;
+    white-space: normal;
+}
+
+.unity-text-element.heading {
+    -unity-font: resource('PatuaOne-Regular');
+    -unity-font-style: normal;
+    color: rgb(66, 165, 245);
+    font-size: 22px;
+    margin-bottom: 10px;
+    border-top-width: 3px;
+    border-top-color: rgb(66, 165, 245);
+}
+
+.graphElement.node.expanded .body-container {
+    background-color: rgb(66, 66, 66);
+}

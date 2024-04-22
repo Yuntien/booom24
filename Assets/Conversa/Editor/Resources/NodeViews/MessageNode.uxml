@@ -1,0 +1,8 @@
+<UXML xmlns="UnityEngine.UIElements">
+    <Style src="./MessageNode.uss" />
+
+    <VisualElement name="main">
+        <Label text="Actor" name="actor" />
+        <Label text="Message" name="message" class="text-wrap" />
+    </VisualElement>
+</UXML>

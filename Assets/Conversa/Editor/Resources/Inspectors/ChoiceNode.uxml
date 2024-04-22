@@ -1,0 +1,14 @@
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:conversa="Conversa.Editor">
+    <Style src="./ChoiceNode.uss" />
+    
+    <ui:Label text="Choice" class="h1 mb-s" />
+    
+    <conversa:ActorField />
+    <ui:TextField label="Message" name="message"/>
+
+    <ui:Label text="Choices" class="mb-xs bold" />
+
+    <ui:VisualElement class="option-list" />
+
+    <ui:Button text="+ Add new option" class="add-option" />
+</UXML>

@@ -1,0 +1,13 @@
+<UXML xmlns="UnityEngine.UIElements" >
+    <Style src="../USS/Settings.uss" />
+    <VisualElement class="conversa-settings">
+        <Label text="Conversa settings" class="h1" />
+        
+        <Label text="Defaults" class="bold" />
+
+        <Toggle name="actor-profiles" label="Use actor profiles" value="false" />
+        <Toggle name="stop-events" label="Stop events" value="false" />
+        
+        <HelpBox text="More settings will be added to this window soon. Stay tuned!" message-type="Info" />
+    </VisualElement>
+</UXML>

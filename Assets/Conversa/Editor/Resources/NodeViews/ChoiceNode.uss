@@ -1,0 +1,19 @@
+#choice-node {
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(66, 66, 66);
+}
+
+ChoiceNodeView Label#actor {
+    font-size: 14px;
+    margin-bottom: 4px;
+    -unity-font-style: bold;
+    color: #fff;
+}
+
+ChoiceNodeView .option-list {
+    margin-top: 10px;
+    border-top-width: 1px;
+    padding-top: 6px;
+    border-top-color: #fff;
+}
