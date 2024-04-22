@@ -11,7 +11,8 @@ public class DragDrop2D : MonoBehaviour
     Collider2D collider2d;
     public string destinationTag = "DropArea";
 
-    public LayerMask mask;
+    Module module;
+
 
     void Awake()
     {
@@ -43,11 +44,21 @@ public class DragDrop2D : MonoBehaviour
             if (hitInfo.transform.tag == destinationTag)
             {
                 transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
+                module=hitInfo.transform.parent.GetComponent<Module>();
+                if(module!=null)
+                {
+                    module.isChecking=true;
+
+                }
             }
         }
         else
         {
             transform.DOMove(startPos.position,0.15f);
+            if(module)
+            {
+                module.isChecking=false;
+            }
         }
         collider2d.enabled = true;
     }

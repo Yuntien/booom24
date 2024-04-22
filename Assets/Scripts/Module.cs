@@ -37,17 +37,20 @@ public class Module : MonoBehaviour
     {
         foreach (var port in outPorts)
         {
-            if (Connection.portConnections.TryGetValue(port, out Connection connection))
+            if (port.Connection!=null)
             {
-                connection.Highlight();
+                port.Connection.Highlight();
+                //Debug.Log(port.Connection.name);
                 
             }
         }
         foreach (var port in inPorts)
         {
-            if (Connection.portConnections.TryGetValue(port, out Connection connection))
+            if (port.Connection!=null)
             {
-                connection.Highlight();
+                
+                port.Connection.Highlight();
+                //Debug.Log(port.Connection.name);
                 
             }
         }
@@ -56,17 +59,17 @@ public class Module : MonoBehaviour
     {
         foreach (var port in outPorts)
         {
-            if (Connection.portConnections.TryGetValue(port, out Connection connection))
+            if (port.Connection!=null)
             {
-                connection.TurnOff();
+                port.Connection.TurnOff();
                 
             }
         }
         foreach (var port in inPorts)
         {
-            if (Connection.portConnections.TryGetValue(port, out Connection connection))
+            if (port.Connection!=null)
             {
-                connection.TurnOff();
+                port.Connection.TurnOff();
                 
             }
         }

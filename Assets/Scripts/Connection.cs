@@ -9,19 +9,23 @@ public class Connection : MonoBehaviour
     public Port endPort;
 
     public LineRenderer lineRenderer;
-    public static Dictionary<Port, Connection> portConnections = new Dictionary<Port, Connection>();
+    //public static Dictionary<Port, Connection> portConnections = new Dictionary<Port, Connection>();
 
 private void Awake() {
         
-        portConnections[startPort] = this;
-        portConnections[endPort] = this;
-        Debug.Log(startPort);
+        //portConnections[startPort] = this;
+        //portConnections[endPort] = this;
+        
+        startPort.Connection=this;
+        endPort.Connection=this;
+        Debug.Log(startPort.name+""+startPort.Connection.name+""+endPort.name+""+endPort.Connection.name);
         lineRenderer=GetComponent<LineRenderer>();
     
 }
 
     public void Highlight()
     {
+        
         if (startPort.anomalyValue > 0 || endPort.anomalyValue > 0)
         {
             lineRenderer.startColor = Color.red;
@@ -32,6 +36,7 @@ private void Awake() {
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
+        Debug.Log(lineRenderer.startColor);
     } 
     public void TurnOff()
     {
