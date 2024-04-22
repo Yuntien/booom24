@@ -43,10 +43,26 @@ public class Module : MonoBehaviour
                 
             }
         }
+        foreach (var port in inPorts)
+        {
+            if (Connection.portConnections.TryGetValue(port, out Connection connection))
+            {
+                connection.Highlight();
+                
+            }
+        }
     }
     public void TurnOffConnections()
     {
         foreach (var port in outPorts)
+        {
+            if (Connection.portConnections.TryGetValue(port, out Connection connection))
+            {
+                connection.TurnOff();
+                
+            }
+        }
+        foreach (var port in inPorts)
         {
             if (Connection.portConnections.TryGetValue(port, out Connection connection))
             {

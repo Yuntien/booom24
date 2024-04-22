@@ -16,6 +16,7 @@ private void Awake() {
         portConnections[startPort] = this;
         portConnections[endPort] = this;
         Debug.Log(startPort);
+        lineRenderer=GetComponent<LineRenderer>();
     
 }
 

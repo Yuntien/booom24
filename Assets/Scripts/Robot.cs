@@ -15,16 +15,13 @@ public class Robot : MonoBehaviour
     {
         foreach (var connection in Connections)
         {
+
             connection.lineRenderer.startColor=Color.black;
             connection.lineRenderer.endColor=Color.black;
-
             connection.lineRenderer.SetPosition(0, connection.startPort.transform.position);
             connection.lineRenderer.SetPosition(1, connection.endPort.transform.position);
         }
     }
 
-    public void DrawConnection(Transform start,Transform end)
-    {
 
-    }
 }
