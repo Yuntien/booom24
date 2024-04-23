@@ -7,6 +7,7 @@ public class Connection : MonoBehaviour
     // Start is called before the first frame update
     public Port startPort;
     public Port endPort;
+    public int anomalyValue;
 
     public LineRenderer lineRenderer;
     //public static Dictionary<Port, Connection> portConnections = new Dictionary<Port, Connection>();
@@ -18,8 +19,9 @@ private void Awake() {
         
         startPort.Connection=this;
         endPort.Connection=this;
-        Debug.Log(startPort.name+""+startPort.Connection.name+""+endPort.name+""+endPort.Connection.name);
         lineRenderer=GetComponent<LineRenderer>();
+        startPort.anomalyValue=anomalyValue;
+        endPort.anomalyValue=anomalyValue;
     
 }
 
