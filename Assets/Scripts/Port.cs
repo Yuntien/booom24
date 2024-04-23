@@ -8,7 +8,10 @@ public class Port : MonoBehaviour
 
     public PortType portType;
     //public Port connectedPort;
+  
     public Connection Connection { get; set; }
+
+    [HideInInspector]
     public int anomalyValue = 0;
 
 }

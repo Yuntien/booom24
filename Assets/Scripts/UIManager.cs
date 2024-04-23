@@ -28,17 +28,17 @@ public class UIManager : MonoBehaviour
         if (!screen.activeSelf)
             screen.SetActive(true);
 
-        anomalyModuleText.text = $"Problem Module: {moduleName}\nAnomaly Value: {anomalyValue}";
-        taskText.text = $"Found Anomaly Sources: {0} / {anomalyValue}\n";
+        anomalyModuleText.text = $"问题模块: {moduleName}\n异常值: {anomalyValue}";
+        taskText.text = $"找到异常源: {0} / {anomalyValue}\n";
     }
 
     public void UpdateTaskText(string[] foundAnomalySources, int totalAnomalyValue)
     {
-        taskText.text = $"Found Anomaly Sources: {foundAnomalySources.Length} / {totalAnomalyValue}\n";
+        taskText.text = $"找到异常源: {foundAnomalySources.Length} / {totalAnomalyValue}\n";
 
         foreach (string source in foundAnomalySources)
         {
-            taskText.text += $"Anomaly Source: {source} Found\n";
+            taskText.text += $"异常源: {source}已找到\n";
         }
 
         if (foundAnomalySources.Length == totalAnomalyValue)

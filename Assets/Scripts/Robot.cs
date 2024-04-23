@@ -31,6 +31,17 @@ public class Robot : MonoBehaviour
         Modules = new List<Module>();
         Connections = new List<Connection>();
     }
+    public void Init()
+    {
+        Transform connections = transform.Find("Connections");
+
+    // Get the Port components on the child objects and their descendants
+    if (connections != null)
+    {
+        Connections = new List<Connection>(connections.GetComponentsInChildren<Connection>());
+    }
+
+    }
 
     private void Start()
     {
@@ -61,13 +72,11 @@ public class Robot : MonoBehaviour
     
     public void DrawAllConnections()
     {
+        Init();
         foreach (var connection in Connections)
         {
 
-            connection.lineRenderer.startColor=Color.black;
-            connection.lineRenderer.endColor=Color.black;
-            connection.lineRenderer.SetPosition(0, connection.startPort.transform.position);
-            connection.lineRenderer.SetPosition(1, connection.endPort.transform.position);
+            connection.Init();
         }
     }
 
