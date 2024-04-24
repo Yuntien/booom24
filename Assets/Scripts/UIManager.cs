@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -45,5 +46,11 @@ public class UIManager : MonoBehaviour
         {
             checkCompleteUI.SetActive(true);
         }
+    }
+
+    public void ContinueTalk()
+    {
+        TransitionManager.Instance.Transition("0423Test", "FirstScene");
+        ConversationController.Instance.ContinueConversation();
     }
 }

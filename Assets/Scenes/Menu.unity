@@ -640,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startScene: FirstScene
+  firstTalk: {fileID: 11400000, guid: 1bb74cb7ae7f67748b1e3a5cf336c922, type: 2}
 --- !u!1 &735833885
 GameObject:
   m_ObjectHideFlags: 0

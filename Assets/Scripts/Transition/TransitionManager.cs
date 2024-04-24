@@ -55,5 +55,6 @@ public class TransitionManager : Singleton<TransitionManager>
         }
 
         fadeCanvasGroup.blocksRaycasts = false;
+        isFade = false;
     }
 }

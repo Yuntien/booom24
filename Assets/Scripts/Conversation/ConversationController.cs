@@ -10,6 +10,10 @@ public class ConversationController : Singleton<ConversationController>
 {
     private ConversationRunner runner;
 
+    private Action tempAction;
+
+    public Conversation conversation1;
+
     /// <summary>
     /// 开启对话
     /// </summary>
@@ -21,6 +25,14 @@ public class ConversationController : Singleton<ConversationController>
 
         // 开启对话
         runner.Begin();
+    }
+
+    /// <summary>
+    /// 继续对话
+    /// </summary>
+    public void ContinueConversation()
+    {
+        tempAction.Invoke();
     }
 
     private void HandleConversationEvent(IConversationEvent evt)
@@ -42,13 +54,24 @@ public class ConversationController : Singleton<ConversationController>
                 Debug.Log("actChoiceEvent");
                 break;
             case UserEvent userEvent:
-                Debug.Log("userChoiceEvent");
+                HandleUserEvent(userEvent);
                 break;
             case EndEvent endEvent:
                 HandleEnd();
                 break;
             default:
                 break;
+        }
+    }
+
+    private void HandleUserEvent(UserEvent userEvent)
+    {
+        if (userEvent.Name == "开始维修")
+        {
+            DialogUIController.Instance.Hide();
+            tempAction = userEvent.Advance;
+            Debug.Log(userEvent.Name);
+            TransitionManager.Instance.Transition("FirstScene", "0423Test");
         }
     }
 

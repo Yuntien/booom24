@@ -158,10 +158,10 @@ RectTransform:
   - {fileID: 854241468}
   m_Father: {fileID: 994841402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1377, y: -209}
-  m_SizeDelta: {x: 135.2134, y: 48}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -182, y: 65}
+  m_SizeDelta: {x: 135.21338, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93761075
 MonoBehaviour:
@@ -279,8 +279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 777, y: -138.52}
-  m_SizeDelta: {x: 1239.4789, y: 82.1374}
+  m_AnchoredPosition: {x: 868.29004, y: -138.52}
+  m_SizeDelta: {x: 1422.0587, y: 82.1374}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804119202
 MonoBehaviour:
@@ -436,9 +436,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 777, y: 138.5203}
-  m_SizeDelta: {x: 1554, y: 277.0406}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 277.0406}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &994841403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,12 +604,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -625,7 +625,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1402725318}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -636,7 +636,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1334930838
 RectTransform:
@@ -862,10 +862,10 @@ RectTransform:
   - {fileID: 994841402}
   m_Father: {fileID: 1334930838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -298.47974}
-  m_SizeDelta: {x: 1554, y: 277.0406}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 138.5203}
+  m_SizeDelta: {x: 1920, y: 277.0406}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757487645
 MonoBehaviour:
@@ -879,6 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e1c1c3e14f9da448b40dbe95efbcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversation1: {fileID: 0}
 --- !u!114 &1757487646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,7 +965,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1402725318}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -975,7 +976,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1875503793
 RectTransform:

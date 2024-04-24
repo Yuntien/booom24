@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Conversa.Runtime;
 
 public class Menu : MonoBehaviour
 {
     public string startScene;
+
+    [SerializeField]
+    private Conversation firstTalk;
 
     public void QuitGame()
     {
@@ -22,6 +26,12 @@ public class Menu : MonoBehaviour
     {
         // TODO ¿ªÆôÐÂÓÎÏ·
         TransitionManager.Instance.Transition("Menu", startScene);
+        StartTalk();
+    }
+
+    private void StartTalk()
+    {
+        ConversationController.Instance.StartConversation(firstTalk);
     }
 
     public void GoBackToMenu()
