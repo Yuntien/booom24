@@ -9,7 +9,7 @@ public class DragDrop2D : MonoBehaviour
     public Transform startPos;
     Collider2D collider2d;
     public string destinationTag = "DropArea";
-    Module module;
+    CheckPort checkport;
 
     void Awake()
     {
@@ -26,9 +26,9 @@ public class DragDrop2D : MonoBehaviour
         offset = transform.position - MouseWorldPosition();
 
         // Disconnect the power line when starting to drag
-        if (module)
+        if (checkport)
         {
-            module.TurnOffConnections();
+            checkport.Disconnect();
         }
     }
 
@@ -45,7 +45,25 @@ public class DragDrop2D : MonoBehaviour
         RaycastHit2D hitInfo;
         if (hitInfo = Physics2D.Raycast(rayOrigin, rayDirection))
         {
-            if (hitInfo.transform.tag == destinationTag)
+
+            if (hitInfo.transform != null)
+            {
+                checkport = hitInfo.transform.GetComponent<CheckPort>();
+            }
+
+            if (checkport != null && checkport.isCheckable)
+            {
+                // Connect the power line when dropped on a checkable drop area
+                transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
+                checkport.Connect();
+            }
+            else
+            {
+                // Move the power line back to the start position if the module is not checkable
+                transform.DOMove(startPos.position, 0.15f);
+            }
+
+            /*if (hitInfo.transform.tag == destinationTag)
             {
                 transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
                 module = hitInfo.transform.parent.GetComponent<Module>();
@@ -58,7 +76,7 @@ public class DragDrop2D : MonoBehaviour
             else
             {
                 transform.DOMove(startPos.position, 0.15f);
-            }
+            }*/
         }
         else
         {
