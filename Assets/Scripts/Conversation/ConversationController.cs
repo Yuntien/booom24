@@ -12,8 +12,6 @@ public class ConversationController : Singleton<ConversationController>
 
     private Action tempAction;
 
-    public Conversation conversation1;
-
     /// <summary>
     /// ¿ªÆô¶Ô»°
     /// </summary>
@@ -71,7 +69,7 @@ public class ConversationController : Singleton<ConversationController>
             DialogUIController.Instance.Hide();
             tempAction = userEvent.Advance;
             Debug.Log(userEvent.Name);
-            TransitionManager.Instance.Transition("FirstScene", "0423Test");
+            GameManager.Instance.Fix();
         }
     }
 

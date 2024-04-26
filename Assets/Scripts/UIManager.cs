@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
 
     public void ContinueTalk()
     {
-        TransitionManager.Instance.Transition("0423Test", "FirstScene");
-        ConversationController.Instance.ContinueConversation();
+        GameManager.Instance.ContinueTalk();
     }
 }
