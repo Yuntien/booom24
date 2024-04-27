@@ -23,4 +23,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   conversation: {fileID: 11400000, guid: 1bb74cb7ae7f67748b1e3a5cf336c922, type: 2}
-  nextScene: {fileID: 0}
+  nextScene: {fileID: 11400000}
