@@ -53,6 +53,8 @@ public class MazeGenerator : MonoBehaviour {
     private float cellSize;
 
     private GameObject mazeParent;
+    [HideInInspector]
+    public static event Action<Cell> OnPlayerReachTarget;
     #endregion
 
     private void Start()
@@ -82,7 +84,12 @@ public class MazeGenerator : MonoBehaviour {
         player.transform.position = targetCell.cellObject.transform.position;
         playerGridPos = targetCell.gridPos;
 
+
         // Update game state here...
+        if (targetCell.cScript.isTarget)
+        {
+            OnPlayerReachTarget?.Invoke(targetCell);
+        }
     }
     ShowAvailableMoves();
 }
