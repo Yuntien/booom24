@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,10 +23,5 @@ public class CellScript : MonoBehaviour {
     {
         isTarget = true;
         ChangeColor(Color.red);
-    }
-    public void MarkAsAvailableMove(bool available)
-    {
-        // Enable or disable the sprite based on the available parameter
-        moveSprite.enabled = available;
     }
 }

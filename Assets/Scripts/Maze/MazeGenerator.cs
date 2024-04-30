@@ -47,6 +47,7 @@ public class MazeGenerator : MonoBehaviour {
 
     private Cell currentCell;
     private Cell checkCell;
+    private Vector2 playerGridPos;  
 
     public Vector2[] neighbourPositions = new Vector2[] { new Vector2(-1, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(0, -1) };
     private float cellSize;
@@ -58,8 +59,113 @@ public class MazeGenerator : MonoBehaviour {
     {
         GenerateMaze(mazeRows, mazeColumns);
     }
+    void Update() {
+    if (Input.GetMouseButtonDown(0)) {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        MovePlayerTo(mousePos);
+    }
+}
+
+    void MovePlayerTo(Vector2 position) {
+    Cell targetCell = null;
+
+    // Check if the clicked position is within a cell the player can move to
+    foreach (Cell cell in GetAvailableMoves()) {
+        if (cell.cellObject.GetComponent<Collider2D>().bounds.Contains(position)) {
+            targetCell = cell;
+            break;
+        }
+    }
+
+    // If a valid cell was clicked, move the player and update the game state
+    if (targetCell != null) {
+        player.transform.position = targetCell.cellObject.transform.position;
+        playerGridPos = targetCell.gridPos;
+
+        // Update game state here...
+    }
+    ShowAvailableMoves();
+}
+public Cell GetCellAt(Vector2 position)
+{
+    if (allCells.ContainsKey(position))
+    {
+        return allCells[position];
+    }
+
+    return null;
+}
 public MazeGenerator.Cell GetStartingCell() {
     return currentCell;
+}
+public bool HasWallBetween(Cell cell1, Cell cell2)
+{
+    // If neighbour is left of current.
+    if (cell2.gridPos.x < cell1.gridPos.x)
+    {
+        return cell2.cScript.wallR.activeSelf || cell1.cScript.wallL.activeSelf;
+    }
+    // Else if neighbour is right of current.
+    else if (cell2.gridPos.x > cell1.gridPos.x)
+    {
+        return cell2.cScript.wallL.activeSelf || cell1.cScript.wallR.activeSelf;
+    }
+    // Else if neighbour is above current.
+    else if (cell2.gridPos.y > cell1.gridPos.y)
+    {
+        return cell2.cScript.wallD.activeSelf || cell1.cScript.wallU.activeSelf;
+    }
+    // Else if neighbour is below current.
+    else if (cell2.gridPos.y < cell1.gridPos.y)
+    {
+        return cell2.cScript.wallU.activeSelf || cell1.cScript.wallD.activeSelf;
+    }
+
+    return false;
+}
+public List<Cell> GetAvailableMoves()
+{
+    List<Cell> availableMoves = new List<Cell>();
+
+    foreach (Vector2 direction in neighbourPositions)
+    {
+        Vector2 neighbourPos = playerGridPos + direction;
+        if (allCells.ContainsKey(neighbourPos))
+        {
+            //bool hasCell = allCells.ContainsKey(neighbourPos);
+            //Debug.Log("Has cell: " + hasCell);
+            Cell neighbourCell = allCells[neighbourPos];
+            bool hasWall = HasWallBetween(GetCellAt(playerGridPos), neighbourCell);
+            Debug.Log("Has wall: " + hasWall);
+
+            if (!HasWallBetween(GetCellAt(playerGridPos), neighbourCell))
+            {
+                availableMoves.Add(neighbourCell);
+            }
+        }
+    }
+    Debug.Log("Available moves: " + availableMoves.Count);
+
+    return availableMoves;
+    
+}
+
+public void ShowAvailableMoves()
+{
+    List<Cell> availableMoves = GetAvailableMoves();
+
+    foreach (Cell cell in allCells.Values)
+    {
+        if (availableMoves.Contains(cell))
+        {
+            cell.cScript.moveSprite.enabled = true;
+        }
+        else
+        {
+            cell.cScript.moveSprite.enabled = false;
+        }
+    }
+    Debug.Log("ShowAvailableMoves called");
 }
 private void SpawnPlayer()
 {
@@ -68,6 +174,9 @@ private void SpawnPlayer()
 
     // Instantiate the player at the starting cell's position
     player = Instantiate(playerPrefab, startCell.cellObject.transform.position, Quaternion.identity);
+
+    playerGridPos = startCell.gridPos;
+   
 }
 public Cell GetCell(Vector2 position) {
         // Get the cell at the given position
@@ -109,6 +218,7 @@ public Cell GetCell(Vector2 position) {
         CreateCentre();
         SpawnPlayer();
         StartCoroutine(RunAlgorithm());
+        ShowAvailableMoves();
     }
 
 public IEnumerator RunAlgorithm()
@@ -261,6 +371,7 @@ public IEnumerator RunAlgorithm()
 
         // Store reference to position in grid.
         newCell.gridPos = keyPos;
+        newCell.gridPosition = pos;
         // Set and instantiate cell GameObject.
         newCell.cellObject = Instantiate(cellPrefab, pos, cellPrefab.transform.rotation);
         // Child new cell to parent.
@@ -308,6 +419,7 @@ public IEnumerator RunAlgorithm()
     public class Cell
     {
         public Vector2 gridPos;
+        public Vector2 gridPosition; 
         public GameObject cellObject;
         public CellScript cScript;
     }

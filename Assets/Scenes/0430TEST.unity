@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce8879d98cc8ba47a1d650f61a1de35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeRows: 10
-  mazeColumns: 10
+  mazeRows: 8
+  mazeColumns: 8
   cellPrefab: {fileID: 7006034551328200592, guid: b74b8f84adbd7d7498e69b68860a2b93, type: 3}
   playerPrefab: {fileID: 4290481711745387992, guid: 4ba56a85f850301499dd3178f0ca8905, type: 3}
   disableCellSprite: 0
