@@ -66,8 +66,6 @@ public class Robot : MonoBehaviour
         // Add the found anomaly source to our list
         foundAnomalySources.Add(module.Name);
         UIManager.instance.UpdateTaskText(foundAnomalySources.ToArray(), TotalAnomalyValue);
-
-    
     }
     
     public void DrawAllConnections()

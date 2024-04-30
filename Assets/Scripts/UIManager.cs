@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI anomalyModuleText; // The UI Text element to display anomaly module info
     public TextMeshProUGUI taskText; // The UI Text element to display task info
     public GameObject checkCompleteUI; // The UI for "check complete"
+    public GameObject removeWindow;
 
     private void Awake()
     {
@@ -44,12 +45,19 @@ public class UIManager : MonoBehaviour
 
         if (foundAnomalySources.Length == totalAnomalyValue)
         {
-            checkCompleteUI.SetActive(true);
+            //checkCompleteUI.SetActive(true);
+
         }
+    }
+
+    public void ShowRemoveWindow()
+    {
+        removeWindow.SetActive(true);
     }
 
     public void ContinueTalk()
     {
+        removeWindow.SetActive(false);
         GameManager.Instance.ContinueTalk();
     }
 }

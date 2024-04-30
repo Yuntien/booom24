@@ -32,6 +32,7 @@ public class CheckPort : MonoBehaviour
         if (module != null && isCheckable)
         {
             module.HighlightConnections();
+            ConversationController.Instance.ContinueChoice(module.cn);
         }
     }
 

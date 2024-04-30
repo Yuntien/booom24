@@ -12,6 +12,11 @@ public class ConversationController : Singleton<ConversationController>
 
     private Action tempAction;
 
+    private Dictionary<string, Option> optionMap = new Dictionary<string, Option>();
+
+    [Header("场景遮盖广播")]
+    [SerializeField] private FadeEventSO sceneFadeEventSO;
+
     /// <summary>
     /// 开启对话
     /// </summary>
@@ -33,23 +38,37 @@ public class ConversationController : Singleton<ConversationController>
         tempAction.Invoke();
     }
 
+    /// <summary>
+    /// 继续选项
+    /// </summary>
+    /// <param name="choiceName">选项名称</param>
+    public void ContinueChoice(string choiceName)
+    {
+        if (optionMap.ContainsKey(choiceName))
+        {
+            var choice = optionMap[choiceName];
+            choice.Advance.Invoke();
+        }
+    }
+
     private void HandleConversationEvent(IConversationEvent evt)
     {
         Debug.Log(evt.ToString());
         switch (evt)
         {
             case MessageEvent messageEvent:
-                Debug.Log("MessageEvent");
+                HandleMessageEvent(messageEvent);
                 break;
             case ChoiceEvent choiceEvent:
-                Debug.Log("ChoiceEvent");
+                // 这个事件专门供接线使用
+                HandleChoiceEvent(choiceEvent);
                 break;
             case ActorMessageEvent actorMessageEvent:
                 // LinearDialogaue节点混合了actor和Message
                 HandleActorMessageEvent(actorMessageEvent);
                 break;
             case ActorChoiceEvent actorChoiceEvent:
-                Debug.Log("actChoiceEvent");
+                HandleActorChoiceEvent(actorChoiceEvent);
                 break;
             case UserEvent userEvent:
                 HandleUserEvent(userEvent);
@@ -62,6 +81,23 @@ public class ConversationController : Singleton<ConversationController>
         }
     }
 
+    private void HandleMessageEvent(MessageEvent evt)
+    {
+        var actorName = evt.Actor == null ? "" : evt.Actor;
+        DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance);
+    }
+
+    private void HandleChoiceEvent(ChoiceEvent evt)
+    {
+        DialogUIController.Instance.Hide();
+        optionMap.Clear();
+        // 进入接线事件就把选项暂存起来
+        evt.Options.ForEach(option =>
+        {
+            optionMap.Add(option.Message, option);
+        });
+    }
+
     private void HandleUserEvent(UserEvent userEvent)
     {
         if (userEvent.Name == "开始维修")
@@ -70,6 +106,24 @@ public class ConversationController : Singleton<ConversationController>
             tempAction = userEvent.Advance;
             Debug.Log(userEvent.Name);
             GameManager.Instance.Fix();
+        } 
+        else if (userEvent.Name == "进入场景")
+        {
+            sceneFadeEventSO.FadeOut(0.5f);
+        }
+        else if (userEvent.Name == "进行拆除")
+        {
+            DialogUIController.Instance.Hide();
+            // TODO 打开进行拆除面板
+            UIManager.instance.ShowRemoveWindow();
+            tempAction = userEvent.Advance;
+        }
+        else if(userEvent.Name == "维修完成")
+        {
+            DialogUIController.Instance.Hide();
+            // 维修完成
+            tempAction = userEvent.Advance;
+            GameManager.Instance.ContinueTalk();
         }
     }
 
@@ -77,6 +131,12 @@ public class ConversationController : Singleton<ConversationController>
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
         DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance);
+    }
+
+    private void HandleActorChoiceEvent(ActorChoiceEvent evt)
+    {
+        var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
+        DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options);
     }
 
     private void HandleEnd()

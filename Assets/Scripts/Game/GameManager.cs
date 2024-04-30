@@ -21,19 +21,21 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        loadEventSO?.RaiseEvent(menuScene, true, LoadState.Menu);
+        loadEventSO?.RaiseEvent(menuScene, false, LoadState.Menu);
     }
 
     private void OnEnable()
     {
         afterSceneLoadEventSO.OnStartTalkEventRaised += OnStartTalkLoaded;
         afterSceneLoadEventSO.OnContinueTalkEventRaised += OnContinueTalkLoaded;
+        afterSceneLoadEventSO.OnFixEventRaised += OnFixLoaded;
     }
 
     private void OnDisable()
     {
         afterSceneLoadEventSO.OnStartTalkEventRaised -= OnStartTalkLoaded;
         afterSceneLoadEventSO.OnContinueTalkEventRaised -= OnContinueTalkLoaded;
+        afterSceneLoadEventSO.OnFixEventRaised -= OnFixLoaded;
     }
 
     public void StartNewGame()
@@ -85,5 +87,11 @@ public class GameManager : Singleton<GameManager>
     {
         // 转到维修场景
         loadEventSO?.RaiseEvent(currentTalkSceneSO.fixSceneReference, true, LoadState.Fix);
+    }
+
+    private void OnFixLoaded()
+    {
+        // 场景加载完成，对话继续
+        ConversationController.Instance.ContinueConversation();
     }
 }

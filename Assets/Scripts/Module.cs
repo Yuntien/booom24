@@ -12,6 +12,7 @@ public class Module : MonoBehaviour
     public List<Port> outPorts = new List<Port>();
 
     public string Name;
+    public string cn;
 
     
     //public int initialAnomalyValue = 0;
@@ -74,7 +75,7 @@ public class Module : MonoBehaviour
     }
     public void HighlightConnections()
     {
-        CalculateFinalAnomalyValue();
+        //CalculateFinalAnomalyValue();
 
         
         /*foreach (var port in outPorts)

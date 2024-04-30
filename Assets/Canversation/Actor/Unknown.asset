@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded540f255f849f59fad09af2bffbe67, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: fc473f58794d4943abddce76e326c1c5, type: 3}
+  m_Name: Unknown
   m_EditorClassIdentifier: 
-  displayName: Player
-  avatar: {fileID: 21300000, guid: deedba4f4f0475c7d82010bf07277243, type: 3}
+  displayName: "\uFF1F\uFF1F\uFF1F"
