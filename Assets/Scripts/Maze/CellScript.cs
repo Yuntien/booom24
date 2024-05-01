@@ -13,6 +13,8 @@ public class CellScript : MonoBehaviour {
 
     public bool isTarget = false;
 
+    //public Submodule submodule;
+
 
 
     public void ChangeColor(Color color)

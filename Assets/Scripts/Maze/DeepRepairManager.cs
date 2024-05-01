@@ -5,8 +5,9 @@ using UnityEngine;
 public class DeepRepairManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private List<string> logs = new List<string> { "愤怒", "伤心", "害羞" };
+    public List<string> logs = new List<string> { "愤怒", "伤心", "害羞" };
     private int currentLogIndex = 0;
+    
 void OnEnable()
 {
     MazeGenerator.OnPlayerReachTarget += HandlePlayerReachTarget;
@@ -18,27 +19,34 @@ void OnDisable()
 }
 void HandlePlayerReachTarget(MazeGenerator.Cell targetCell)
 {
-    // Log the message
-    LogNextMessage();
-
-    // Get the TextMeshPro component from the child gameobject
-    var textMesh = targetCell.cellObject.GetComponentInChildren<TMPro.TextMeshPro>();
-
-    textMesh.enabled=true;
-
-    if (textMesh != null)
+    
+    // Check if the target cell has a submodule
+    if (targetCell.submodule != null)
     {
-        // Set the text to the current log message
-        textMesh.text = logs[currentLogIndex - 1];
-    }
-}
-public void LogNextMessage()
-    {
-        if (currentLogIndex < logs.Count)
+       
+        // Get the TextMeshPro component from the submodule
+        var textMesh = targetCell.submodule.screenText;
+
+        // If textMesh is not null and not already enabled
+        if (!targetCell.submodule.isDefined)
         {
-            Debug.Log(logs[currentLogIndex]);
+            textMesh.text = logs[currentLogIndex];
+            targetCell.submodule.isDefined=true;
             currentLogIndex++;
+            if (currentLogIndex == logs.Count)
+            {
+                targetCell.submodule.SetRemovable(true);
+                FinishDeepReapir();
+            }
         }
     }
+}
+
+
+public void FinishDeepReapir()
+    { 
+            Debug.Log("Find target");
+    }
+    
 
 }

@@ -31,12 +31,13 @@ public class MazeGenerator : MonoBehaviour {
     [Tooltip("If you want to disable the main sprite so the cell has no background, set to TRUE. This will create a maze with only walls.")]
     public bool disableCellSprite;
     public Color cellColor;
+    public GameObject targetSubmodulePrefab;
 
     [Header("Player object variables:")]
     [Tooltip("Player prefab object.")]
     [SerializeField]
     private int centreSize = 2;
-
+    [HideInInspector]
     public Dictionary<Vector2, Cell> allCells = new Dictionary<Vector2, Cell>();
 
     private List<Cell> unvisited = new List<Cell>();
@@ -48,7 +49,7 @@ public class MazeGenerator : MonoBehaviour {
     private Cell currentCell;
     private Cell checkCell;
     private Vector2 playerGridPos;  
-
+    [HideInInspector]
     public Vector2[] neighbourPositions = new Vector2[] { new Vector2(-1, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(0, -1) };
     private float cellSize;
 
@@ -61,14 +62,15 @@ public class MazeGenerator : MonoBehaviour {
     {
         GenerateMaze(mazeRows, mazeColumns);
     }
-    void Update() {
-    if (Input.GetMouseButtonDown(0)) {
+void Update() {
+    if (Input.GetMouseButton(0)) {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MovePlayerTo(mousePos);
     }
 }
 
-    void MovePlayerTo(Vector2 position) {
+
+void MovePlayerTo(Vector2 position, bool forceMove = false) {
     Cell targetCell = null;
 
     // Check if the clicked position is within a cell the player can move to
@@ -84,15 +86,17 @@ public class MazeGenerator : MonoBehaviour {
         player.transform.position = targetCell.cellObject.transform.position;
         playerGridPos = targetCell.gridPos;
 
-
         // Update game state here...
         if (targetCell.cScript.isTarget)
         {
             OnPlayerReachTarget?.Invoke(targetCell);
         }
+    } else if (forceMove) {
+        // If forceMove is true, move the player to the clicked position
+        player.transform.position = position;
     }
-    ShowAvailableMoves();
 }
+
 public Cell GetCellAt(Vector2 position)
 {
     if (allCells.ContainsKey(position))
@@ -143,7 +147,7 @@ public List<Cell> GetAvailableMoves()
             //Debug.Log("Has cell: " + hasCell);
             Cell neighbourCell = allCells[neighbourPos];
             bool hasWall = HasWallBetween(GetCellAt(playerGridPos), neighbourCell);
-            Debug.Log("Has wall: " + hasWall);
+            //Debug.Log("Has wall: " + hasWall);
 
             if (!HasWallBetween(GetCellAt(playerGridPos), neighbourCell))
             {
@@ -151,13 +155,13 @@ public List<Cell> GetAvailableMoves()
             }
         }
     }
-    Debug.Log("Available moves: " + availableMoves.Count);
+    //Debug.Log("Available moves: " + availableMoves.Count);
 
     return availableMoves;
     
 }
 
-public void ShowAvailableMoves()
+/*public void ShowAvailableMoves()
 {
     List<Cell> availableMoves = GetAvailableMoves();
 
@@ -173,7 +177,7 @@ public void ShowAvailableMoves()
         }
     }
     Debug.Log("ShowAvailableMoves called");
-}
+}*/
 private void SpawnPlayer()
 {
     // Get the starting cell
@@ -225,14 +229,12 @@ public Cell GetCell(Vector2 position) {
         CreateCentre();
         SpawnPlayer();
         StartCoroutine(RunAlgorithm());
-        ShowAvailableMoves();
+        //ShowAvailableMoves();
     }
 
 public IEnumerator RunAlgorithm()
 {
-    int totalSteps = mazeColumns * mazeRows;
-    int targetSteps = totalSteps / 3;
-    int currentSteps = 0;
+    List<Cell> path = new List<Cell>();
     int targetCount = 0;
 
     // Get start cell, make it visited (i.e. remove from unvisited list).
@@ -264,17 +266,8 @@ public IEnumerator RunAlgorithm()
             }
             unvisited.Remove(currentCell);
 
-            // Increase the counter
-            currentSteps++;
-
-            // If the counter reaches the target steps, mark the current cell as a target
-            if (currentSteps >= targetSteps && targetCount < 3)
-            {
-                currentCell.cScript.isTarget = true;
-                currentCell.cScript.ChangeColor(Color.red); // Set your target color here
-                targetCount++;
-                currentSteps = 0;
-            }
+            // Add the current cell to the path
+            path.Add(currentCell);
         }
         else if (stack.Count > 0)
         {
@@ -287,7 +280,7 @@ public IEnumerator RunAlgorithm()
             if (!currentCell.cScript.isTarget)
             {
                 currentCell.cScript.ChangeColor(Color.black); // Set your backtrack color here
-                yield return new WaitForSeconds(0.02f); // Wait for 0.02 second
+                yield return new WaitForSeconds(0.006f); // Wait for 0.02 second
                 if (!currentCell.cScript.isTarget)
                 {
                     currentCell.cScript.ChangeColor(cellColor);
@@ -296,7 +289,31 @@ public IEnumerator RunAlgorithm()
         }
         yield return new WaitForSeconds(0.002f); // Wait for 0.002 second before the next step
     }
-    
+
+    // After the maze is generated, set the targets
+   int totalSteps = path.Count;
+    int targetSteps = (int)Math.Ceiling(totalSteps / 3.0);  // Use Math.Ceiling to round up
+
+ for (int i = 1; i <= 3; i++)
+    {
+        int targetIndex = i * targetSteps - 1;
+        if (targetIndex >= 0 && targetIndex < path.Count) // Make sure the index is within the list's range
+        {
+            Cell targetCell = path[targetIndex];
+            targetCell.cScript.isTarget = true;
+            // targetCell.cScript.ChangeColor(Color.red); // Set your target color here
+            targetCount++;
+
+            // Instantiate a new submodule from the prefab
+            GameObject submoduleObj = Instantiate(targetSubmodulePrefab, targetCell.cellObject.transform);
+
+            // Get the Submodule component
+            Submodule submodule = submoduleObj.GetComponent<Submodule>();
+
+            // Assign the submodule to the cell
+            targetCell.submodule = submodule;
+        }
+    }
 }
 
     public List<Cell> GetUnvisitedNeighbours(Cell curCell)
@@ -429,5 +446,9 @@ public IEnumerator RunAlgorithm()
         public Vector2 gridPosition; 
         public GameObject cellObject;
         public CellScript cScript;
+
+        public Submodule submodule;
+
+        
     }
 }
