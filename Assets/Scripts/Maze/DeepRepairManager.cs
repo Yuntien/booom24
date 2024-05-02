@@ -2,28 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DeepRepairManager : MonoBehaviour
 {
+    public static DeepRepairManager Instance { get; private set; }
     // Start is called before the first frame update
-    public List<string> logs = new List<string> { "愤怒", "伤心", "害羞" };
+    [HideInInspector]
+    public List<string> submoduleNames;
+    private IDeepRepairRule currentRule;
     private int currentLogIndex = 0;
     public int GetCurrentLogIndex()
-{
-    return currentLogIndex;
-    
-}
-public List<string> submoduleNames = new List<string>();
-public int submoduleCount = 0;
+    {
+        return currentLogIndex;
+    }
+    [HideInInspector]
+    public int submoduleCount = 0;
 
-
-    private MazeGenerator maze;
+[HideInInspector]
+    public MazeGenerator maze;
     private GameObject player;
-    public GameObject playerPrefab;
-     private IDeepRepairRule currentRule;
+    [HideInInspector]
+    public UnityEvent OnAllSubmodulesFound;
+    private bool isFinished=false;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-
-    
+        // ... your code here ...
+    }
 void OnEnable()
 {
     MazeGenerator.OnPlayerReachTarget += HandlePlayerReachTarget;
@@ -35,15 +50,31 @@ void OnDisable()
 }
 
 private void Start() {
-    startReapir(new Rule1(),logs);
+
 }
 public void startReapir(IDeepRepairRule rule,List<string> names)
 {
+    isFinished=false;
     SetRule(rule);
     submoduleNames=names;
     submoduleCount=names.Count;
     maze=GetComponent<MazeGenerator>();
     maze.GenerateMaze(10,10);  
+}
+public void EndDeepRepair()
+{
+    if(isFinished)
+    {
+        if(maze!=null)
+         maze.DeleteMaze();
+
+    }
+    else
+    {
+        Debug.Log("未完成维修，不能退出");
+
+    }
+    
 }
 public void IncrementLogIndex()
 {
@@ -53,20 +84,27 @@ public void SetRule(IDeepRepairRule rule)
 {
     currentRule = rule;
 }void HandlePlayerReachTarget(MazeGenerator.Cell targetCell)
-{
-    
+{  
    currentRule.HandlePlayerReachTarget(targetCell, this);
     if (currentRule.CheckIfRepairFinished(this))
     {
-        FinishDeepReapir();
+        FinishDeepReapirCheck();
     }
 }
-
-public void FinishDeepReapir()
+public void FinishDeepReapirCheck()
     { 
             Debug.Log("Find target");
-            //maze.DeleteMaze();
-
-    }   
-
+            OnAllSubmodulesFound?.Invoke();
+            maze.disablePlayer();
+            DisassemblyManager.Instance.StartRepairMode();
+    }  
+ 
+public void RemoveSubmodule(Submodule submodule)
+{
+    submodule.gameObject.SetActive(false); 
+    maze.SetSubmodulesRemoveable(false);
+    isFinished=true;
 }
+}
+
+

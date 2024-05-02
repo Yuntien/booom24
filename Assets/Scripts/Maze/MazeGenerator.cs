@@ -56,6 +56,12 @@ public class MazeGenerator : MonoBehaviour {
     private GameObject mazeParent;
     [HideInInspector]
     public static event Action<Cell> OnPlayerReachTarget;
+    public delegate void SubmoduleClickedHandler(Submodule clickedSubmodule);
+
+    // Define the event
+    public event SubmoduleClickedHandler OnSubmoduleClicked;
+    [HideInInspector]
+    public List<Submodule> allSubmodules = new List<Submodule>();
     #endregion
 
     private void Start()
@@ -63,13 +69,38 @@ public class MazeGenerator : MonoBehaviour {
         //GenerateMaze(mazeRows, mazeColumns);
     }
 void Update() {
+
     if (Input.GetMouseButton(0)&&player!=null) {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MovePlayerTo(mousePos);
     }
+    if (Input.GetMouseButtonDown(0))
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        foreach (Submodule submodule in allSubmodules)
+        {
+            if (submodule.GetComponent<Collider2D>().bounds.Contains(mousePos))
+            {
+                Debug.Log(submodule.name);
+                // Trigger the event
+                OnSubmoduleClicked?.Invoke(submodule);
+                break;
+            }
+        }
+    }
 }
+public void SetSubmodulesRemoveable(bool isRemovable)
+{
+    foreach (Submodule submodule in allSubmodules)
+        {
+            submodule.SetRemovable(isRemovable);
+        }
 
-
+}
+public void disablePlayer()
+{
+    player.SetActive(false);
+}
 void MovePlayerTo(Vector2 position, bool forceMove = false) {
     Cell targetCell = null;
     foreach (Cell cell in GetAvailableMoves()) {
@@ -230,11 +261,14 @@ public IEnumerator RunAlgorithm()
         }
         yield return new WaitForSeconds(0.002f); 
     }
+    SpawnSubModule(path,targetCount);
+}
 
-   int totalSteps = path.Count;
+void SpawnSubModule(List<Cell> path,int targetCount)
+{
+       int totalSteps = path.Count;
     int targetSteps = (int)Math.Ceiling(totalSteps / 3.0); 
-
- for (int i = 1; i <= 3; i++)
+    for (int i = 1; i <= 3; i++)
     {
         int targetIndex = i * targetSteps - 1;
         if (targetIndex >= 0 && targetIndex < path.Count) // Make sure the index is within the list's range
@@ -249,8 +283,10 @@ public IEnumerator RunAlgorithm()
 
             // Assign the submodule to the cell
             targetCell.submodule = submodule;
+            allSubmodules.Add(submodule);
         }
     }
+
 }
 
     public List<Cell> GetUnvisitedNeighbours(Cell curCell)
@@ -351,6 +387,7 @@ public IEnumerator RunAlgorithm()
 
     public void DeleteMaze()
     {
+        allSubmodules.Clear();
         if (mazeParent != null) Destroy(mazeParent);
         Destroy(player);
     }

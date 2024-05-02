@@ -36,10 +36,12 @@ public class Submodule : MonoBehaviour
     public void SetScreenText(string text)
     {
         screenText.text = text;
+        
     }
 
     public void SetRemovable(bool removable)
     {
+        this.name=screenText.text;
         isRemovable = removable;
         if (isRemovable)
         {
