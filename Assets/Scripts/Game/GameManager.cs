@@ -34,10 +34,11 @@ public class GameManager : Singleton<GameManager>
     public void StartNewGame()
     {
         // °´Å¥µ­³ö
-        Menu.Instance.TextFadeOut();
-
-        currentTalkSceneSO = firstTalkSO;
-        StartTalk();
+        Menu.Instance.TextFadeOut().onComplete += () =>
+        {
+            currentTalkSceneSO = firstTalkSO;
+            StartTalk();
+        };
     }
 
     /// <summary>

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Conversa.Runtime;
 using DG.Tweening;
 
 public class Menu : Singleton<Menu>
@@ -29,15 +28,17 @@ public class Menu : Singleton<Menu>
         GameManager.Instance.StartNewGame();
     }
 
-    public void TextFadeOut()
+    /// <summary>
+    /// 文字淡出效果
+    /// </summary>
+    /// <returns>Dotween回调</returns>
+    public Tweener TextFadeOut()
     {
-        Debug.Log("Text Fade");
-        menuText.DOFade(0, 2).OnComplete(() =>
+        Tweener fadeCallBack = menuText.DOFade(0, 2);
+        fadeCallBack.OnComplete(() =>
         {
             menuText.gameObject.SetActive(false);
         });
-        menuBackGround.DOBlendableColor(Color.clear, 2f).OnComplete(() => {
-            menuBackGround.gameObject.SetActive(false);
-        });
+        return fadeCallBack;
     }
 }
