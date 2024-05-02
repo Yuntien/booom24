@@ -7,9 +7,22 @@ using DG.Tweening;
 public class Menu : Singleton<Menu>
 {
     [Header("菜单背景")]
-    [SerializeField] private Image menuBackGround;
+    [SerializeField] private Image menuBackground;
     [Header("菜单文字")]
     [SerializeField] private CanvasGroup menuText;
+
+    [Header("场景切换事件")]
+    [SerializeField] private FadeEventSO sceneFadeEventSO;
+
+    private void OnEnable()
+    {
+        sceneFadeEventSO.OnEventRaised += OnFadeEvent;
+    }
+
+    private void OnDisable()
+    {
+        sceneFadeEventSO.OnEventRaised -= OnFadeEvent;
+    }
 
     public void QuitGame()
     {
@@ -40,5 +53,10 @@ public class Menu : Singleton<Menu>
             menuText.gameObject.SetActive(false);
         });
         return fadeCallBack;
+    }
+
+    private void OnFadeEvent(Color target, float duration, bool fadeIn)
+    {
+        menuBackground.DOBlendableColor(target, duration);
     }
 }

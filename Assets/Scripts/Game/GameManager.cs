@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -16,6 +15,12 @@ public class GameManager : Singleton<GameManager>
 
     // 接受监听
     [SerializeField] private LoadStateEventSO afterSceneLoadEventSO;
+
+    private void Start()
+    {
+        // 加载对话场景
+        loadEventSO?.RaiseEvent(firstTalkSO.sceneReference, false, LoadState.Menu);
+    }
 
     private void OnEnable()
     {
@@ -47,7 +52,8 @@ public class GameManager : Singleton<GameManager>
     public void StartTalk()
     {
         // 加载对话场景
-        loadEventSO?.RaiseEvent(currentTalkSceneSO.sceneReference, true, LoadState.StartTalk);
+        // loadEventSO?.RaiseEvent(currentTalkSceneSO.sceneReference, true, LoadState.StartTalk);
+        ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
     }
 
     /// <summary>

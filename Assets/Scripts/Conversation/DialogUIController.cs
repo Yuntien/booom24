@@ -40,9 +40,9 @@ public class DialogUIController : Singleton<DialogUIController>
         actorNameText.text = actorName;
         messageText.text = "";
         textIsPlaying = true;
-        textTweener = messageText.DOText(message, message.Length * textSpeed).OnComplete(() =>
+        textTweener = messageText.DOText(message, message.Length * textSpeed).SetEase(Ease.Linear).OnComplete(() =>
         {
-            textIsPlaying = false;
+            Invoke("TextPlayingEnd", 0.5f);
             nextMessageButton.gameObject.SetActive(true);
             // 存储下一步的动作
             nextStep = onContinue;
@@ -97,15 +97,20 @@ public class DialogUIController : Singleton<DialogUIController>
         {
             if (textIsPlaying)
             {
-                Debug.Log("Complate");
                 textTweener?.Complete();
             }
             else if (nextStep != null)
             {
-                Debug.Log("Next Step");
                 nextStep?.Invoke();
                 nextStep = null;
             }
         }
     }
+
+    #region 解除点击阻塞
+    private void TextPlayingEnd()
+    {
+        textIsPlaying = false;
+    }
+    #endregion
 }

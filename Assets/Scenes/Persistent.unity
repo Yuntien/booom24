@@ -184,7 +184,7 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
+  m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!114 &27598660
@@ -954,8 +954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b94b849c8cef3489f7f2c2f46616f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuBackGround: {fileID: 1974539601}
+  menuBackground: {fileID: 1974539601}
   menuText: {fileID: 93178123}
+  sceneFadeEventSO: {fileID: 11400000, guid: 1691735b16b4e3648a20e2c8d3f6e4a6, type: 2}
 --- !u!1 &735833885
 GameObject:
   m_ObjectHideFlags: 0
