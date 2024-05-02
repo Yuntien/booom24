@@ -5,24 +5,17 @@ using UnityEngine.AddressableAssets;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("菜单")]
-    [SerializeField] private AssetReference menuScene;
-
     [Header("第一个对话场景")]
     [SerializeField] private TalkSceneSO firstTalkSO;
     
     private TalkSceneSO currentTalkSceneSO;
 
+    [Header("事件挂载")]
     // 发起广播
     [SerializeField] private SceneLoadEventSO loadEventSO;
 
     // 接受监听
     [SerializeField] private LoadStateEventSO afterSceneLoadEventSO;
-
-    void Start()
-    {
-        loadEventSO?.RaiseEvent(menuScene, false, LoadState.Menu);
-    }
 
     private void OnEnable()
     {
@@ -40,6 +33,9 @@ public class GameManager : Singleton<GameManager>
 
     public void StartNewGame()
     {
+        // 按钮淡出
+        Menu.Instance.TextFadeOut();
+
         currentTalkSceneSO = firstTalkSO;
         StartTalk();
     }

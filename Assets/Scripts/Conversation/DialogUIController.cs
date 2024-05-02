@@ -1,4 +1,5 @@
 using Conversa.Runtime.Events;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ public class DialogUIController : Singleton<DialogUIController>
     [SerializeField] private GameObject choiceBox;
     [Header("按钮预制体")]
     [SerializeField] private GameObject choiceOptionButtonPrefab;
+    [Header("文字显示速度")]
+    [SerializeField] private float textSpeed = 0.05f;
+
+    private bool textIsPlaying;
+    private Tweener textTweener;
+    private Action nextStep;
 
     /// <summary>
     /// 显示信息
@@ -26,17 +33,20 @@ public class DialogUIController : Singleton<DialogUIController>
     {
         // 显示对话面板
         messageWindow.SetActive(true);
-        nextMessageButton.gameObject.SetActive(true);
+        nextMessageButton.gameObject.SetActive(false);
         choiceBox.SetActive(false);
 
         // 更新文本
         actorNameText.text = actorName;
-        messageText.text = message;
-
-        // 下一步按钮监听
-        nextMessageButton.enabled = true;
-        nextMessageButton.onClick.RemoveAllListeners();
-        nextMessageButton.onClick.AddListener(() => onContinue());
+        messageText.text = "";
+        textIsPlaying = true;
+        textTweener = messageText.DOText(message, message.Length * textSpeed).OnComplete(() =>
+        {
+            textIsPlaying = false;
+            nextMessageButton.gameObject.SetActive(true);
+            // 存储下一步的动作
+            nextStep = onContinue;
+        });
     }
 
     /// <summary>
@@ -78,5 +88,24 @@ public class DialogUIController : Singleton<DialogUIController>
     public void Hide()
     {
         messageWindow.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // 点击事件
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (textIsPlaying)
+            {
+                Debug.Log("Complate");
+                textTweener?.Complete();
+            }
+            else if (nextStep != null)
+            {
+                Debug.Log("Next Step");
+                nextStep?.Invoke();
+                nextStep = null;
+            }
+        }
     }
 }

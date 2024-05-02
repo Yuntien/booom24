@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Conversa.Runtime;
+using DG.Tweening;
 
-public class Menu : MonoBehaviour
+public class Menu : Singleton<Menu>
 {
-    public string startScene;
-
-    [SerializeField]
-    private Conversation firstTalk;
+    [Header("菜单背景")]
+    [SerializeField] private Image menuBackGround;
+    [Header("菜单文字")]
+    [SerializeField] private CanvasGroup menuText;
 
     public void QuitGame()
     {
@@ -25,5 +27,17 @@ public class Menu : MonoBehaviour
     {
         // TODO 开启新游戏
         GameManager.Instance.StartNewGame();
+    }
+
+    public void TextFadeOut()
+    {
+        Debug.Log("Text Fade");
+        menuText.DOFade(0, 2).OnComplete(() =>
+        {
+            menuText.gameObject.SetActive(false);
+        });
+        menuBackGround.DOBlendableColor(Color.clear, 2f).OnComplete(() => {
+            menuBackGround.gameObject.SetActive(false);
+        });
     }
 }
