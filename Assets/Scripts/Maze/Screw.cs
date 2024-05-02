@@ -5,21 +5,37 @@ using UnityEngine.Events;
 public class Screw : MonoBehaviour
 {
     public float unscrewTime = 2f;  // The time it takes to unscrew the screw
-    private float unscrewProgress = 0f;  // The current progress of unscrewing
+   [HideInInspector]
+    public float unscrewProgress = 0f;  // The current progress of unscrewing
     private bool isUnscrewing = false;  // Whether the screw is currently being unscrewed
     public UnityEvent OnScrewRemoved;
 
+    private bool isRemoved = false; 
+    public void Initialize()
+    {
+        isRemoved=false;
+        unscrewProgress = 0f;
+        isUnscrewing=false;
+    }
     void Update()
     {
-        if (isUnscrewing)
+        if (isUnscrewing && !isRemoved)
         {
             unscrewProgress += Time.deltaTime;
             if (unscrewProgress >= unscrewTime)
             {
-                 OnScrewRemoved?.Invoke(); 
-                Destroy(gameObject);
+                RemoveScrew();
+                //isRemoved = true;  // Set the flag to true
+                
             }
         }
+    }
+     private void RemoveScrew()
+    {
+        OnScrewRemoved?.Invoke();
+        OnScrewRemoved.RemoveAllListeners();  // Remove all listeners
+        DOTween.Kill(transform);
+        Destroy(gameObject);
     }
 
     void OnMouseDown()

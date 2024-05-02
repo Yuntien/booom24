@@ -15,8 +15,7 @@ public class Panel : MonoBehaviour
         screws.RemoveAll(screw => screw == null);
         if (screws.Count == 0)
         {
-            Debug.Log("卸除完成");
-           // Destroy(gameObject);
+
         }
     }
 }

@@ -8,10 +8,14 @@ public class DisassemblyManager : MonoBehaviour
 {
     public static DisassemblyManager Instance { get; private set; }
     public GameObject screwdriverPrefab;
+    public GameObject screwPrefab;
+    public List<GameObject> screwPositions = new List<GameObject>();
+
+    private GameObject screwdriver;
     public GameObject subModuleVisual;
     public GameObject moduleVisual;
     public UnityEvent OnDisassemblyEnd;  // Add this line
-    private Screw[] screws;
+    private List<Screw> screws = new List<Screw>();
 
     private Submodule currentSubmodule; 
 
@@ -31,11 +35,19 @@ public class DisassemblyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void RemoveAllListeners()
+{
+    foreach (Screw screw in screws)
+    {
+        screw.OnScrewRemoved.RemoveAllListeners();
+    }
+}
     private void Start() {
-        Initialize();
+        //Initialize();
     }
     private void Initialize()
     {
+        screws.Clear();
         currentSubmodule = null; 
         isInRepairMode = false;
         // Set visual related GameObjects to false
@@ -43,10 +55,10 @@ public class DisassemblyManager : MonoBehaviour
         moduleVisual.SetActive(false);
 
         // Find all screws and enable them
-        screws = GetComponentsInChildren<Screw>(true); // passing true to include inactive children
-        foreach (Screw screw in screws)
+        foreach (GameObject screwPosition in screwPositions)
         {
-            screw.gameObject.SetActive(true);
+            Screw s=Instantiate(screwPrefab, screwPosition.transform.position, Quaternion.identity, screwPosition.transform).GetComponent<Screw>();
+            screws.Add(s);
         }
 
         screwsRemovedCount = 0;
@@ -56,7 +68,7 @@ public class DisassemblyManager : MonoBehaviour
         Initialize();
         isInRepairMode = true;
         // Instantiate the screwdriverPrefab
-        Instantiate(screwdriverPrefab);
+        screwdriver=Instantiate(screwdriverPrefab);
 
         DeepRepairManager.Instance.maze.OnSubmoduleClicked += HandleSubmoduleClicked;
     }
@@ -77,11 +89,11 @@ public class DisassemblyManager : MonoBehaviour
                 }
     }
     public void StartDisassemblyMode(string moduleName)
-    {
+    {   
+            RemoveAllListeners();
             subModuleVisual.SetActive(true);
             //moduleVisual.SetActive(false);
             subModuleVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
-            screws = subModuleVisual.GetComponentsInChildren<Screw>();
         
          foreach (Screw screw in screws)
         {
@@ -90,20 +102,24 @@ public class DisassemblyManager : MonoBehaviour
     }
      private void HandleScrewRemoved()
     {
-        screwsRemovedCount++;
+     
+    screwsRemovedCount++;
+    Debug.Log("remove screw");
 
-        // If all screws have been removed
-        if (screwsRemovedCount >= screws.Length)
+    // If all screws have been removed
+    if (screwsRemovedCount >= screws.Count)
+    {
+        // Disable the visual GameObjects
+        subModuleVisual.SetActive(false);
+        Destroy(screwdriver);
+        //moduleVisual.SetActive(false);
+        if (currentSubmodule != null)
         {
-            // Disable the visual GameObjects
-            subModuleVisual.SetActive(false);
-            //moduleVisual.SetActive(false);
-            if (currentSubmodule != null)
-            {
-                DeepRepairManager.Instance.RemoveSubmodule(currentSubmodule);
-                currentSubmodule = null; 
-            }
-            OnDisassemblyEnd?.Invoke();
+            DeepRepairManager.Instance.RemoveSubmodule(currentSubmodule);
+            currentSubmodule = null; 
         }
+        isInRepairMode=false;
+        OnDisassemblyEnd?.Invoke();
+    }
     }
 }

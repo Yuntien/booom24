@@ -54,6 +54,7 @@ private void Start() {
 }
 public void startReapir(IDeepRepairRule rule,List<string> names)
 {
+    currentLogIndex=0;
     isFinished=false;
     SetRule(rule);
     submoduleNames=names;
