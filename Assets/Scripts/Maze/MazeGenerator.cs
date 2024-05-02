@@ -60,10 +60,10 @@ public class MazeGenerator : MonoBehaviour {
 
     private void Start()
     {
-        GenerateMaze(mazeRows, mazeColumns);
+        //GenerateMaze(mazeRows, mazeColumns);
     }
 void Update() {
-    if (Input.GetMouseButton(0)) {
+    if (Input.GetMouseButton(0)&&player!=null) {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MovePlayerTo(mousePos);
     }
@@ -72,8 +72,6 @@ void Update() {
 
 void MovePlayerTo(Vector2 position, bool forceMove = false) {
     Cell targetCell = null;
-
-    // Check if the clicked position is within a cell the player can move to
     foreach (Cell cell in GetAvailableMoves()) {
         if (cell.cellObject.GetComponent<Collider2D>().bounds.Contains(position)) {
             targetCell = cell;
@@ -81,18 +79,14 @@ void MovePlayerTo(Vector2 position, bool forceMove = false) {
         }
     }
 
-    // If a valid cell was clicked, move the player and update the game state
     if (targetCell != null) {
         player.transform.position = targetCell.cellObject.transform.position;
         playerGridPos = targetCell.gridPos;
-
-        // Update game state here...
         if (targetCell.cScript.isTarget)
         {
             OnPlayerReachTarget?.Invoke(targetCell);
         }
     } else if (forceMove) {
-        // If forceMove is true, move the player to the clicked position
         player.transform.position = position;
     }
 }
@@ -111,22 +105,18 @@ public MazeGenerator.Cell GetStartingCell() {
 }
 public bool HasWallBetween(Cell cell1, Cell cell2)
 {
-    // If neighbour is left of current.
     if (cell2.gridPos.x < cell1.gridPos.x)
     {
         return cell2.cScript.wallR.activeSelf || cell1.cScript.wallL.activeSelf;
     }
-    // Else if neighbour is right of current.
     else if (cell2.gridPos.x > cell1.gridPos.x)
     {
         return cell2.cScript.wallL.activeSelf || cell1.cScript.wallR.activeSelf;
     }
-    // Else if neighbour is above current.
     else if (cell2.gridPos.y > cell1.gridPos.y)
     {
         return cell2.cScript.wallD.activeSelf || cell1.cScript.wallU.activeSelf;
     }
-    // Else if neighbour is below current.
     else if (cell2.gridPos.y < cell1.gridPos.y)
     {
         return cell2.cScript.wallU.activeSelf || cell1.cScript.wallD.activeSelf;
@@ -143,11 +133,8 @@ public List<Cell> GetAvailableMoves()
         Vector2 neighbourPos = playerGridPos + direction;
         if (allCells.ContainsKey(neighbourPos))
         {
-            //bool hasCell = allCells.ContainsKey(neighbourPos);
-            //Debug.Log("Has cell: " + hasCell);
             Cell neighbourCell = allCells[neighbourPos];
             bool hasWall = HasWallBetween(GetCellAt(playerGridPos), neighbourCell);
-            //Debug.Log("Has wall: " + hasWall);
 
             if (!HasWallBetween(GetCellAt(playerGridPos), neighbourCell))
             {
@@ -155,59 +142,31 @@ public List<Cell> GetAvailableMoves()
             }
         }
     }
-    //Debug.Log("Available moves: " + availableMoves.Count);
 
     return availableMoves;
     
 }
-
-/*public void ShowAvailableMoves()
-{
-    List<Cell> availableMoves = GetAvailableMoves();
-
-    foreach (Cell cell in allCells.Values)
-    {
-        if (availableMoves.Contains(cell))
-        {
-            cell.cScript.moveSprite.enabled = true;
-        }
-        else
-        {
-            cell.cScript.moveSprite.enabled = false;
-        }
-    }
-    Debug.Log("ShowAvailableMoves called");
-}*/
 private void SpawnPlayer()
 {
-    // Get the starting cell
     Cell startCell = GetStartingCell();
-
-    // Instantiate the player at the starting cell's position
     player = Instantiate(playerPrefab, startCell.cellObject.transform.position, Quaternion.identity);
 
     playerGridPos = startCell.gridPos;
    
 }
 public Cell GetCell(Vector2 position) {
-        // Get the cell at the given position
         return allCells[position];
     }
-    private void GenerateMaze(int rows, int columns)
+    public void GenerateMaze(int rows, int columns)
     {
         if (mazeParent != null) DeleteMaze();
 
         mazeRows = rows;
         mazeColumns = columns;
         CreateLayout();
-    }
-
-    // Creates the grid of cells.
-    public void CreateLayout()
+    }    public void CreateLayout()
     {
         InitValues();
-
-        // Set starting point, set spawn point to start.
         Vector2 startPos = new Vector2(-(cellSize * (mazeColumns / 2)) + (cellSize / 2), -(cellSize * (mazeRows / 2)) + (cellSize / 2));
         Vector2 spawnPos = startPos;
 
@@ -217,27 +176,21 @@ public Cell GetCell(Vector2 position) {
             {
                 GenerateCell(spawnPos, new Vector2(x, y));
 
-                // Increase spawnPos y.
                 spawnPos.y += cellSize;
             }
-            
 
-            // Reset spawnPos y and increase spawnPos x.
             spawnPos.y = startPos.y;
             spawnPos.x += cellSize;
         }
         CreateCentre();
         SpawnPlayer();
         StartCoroutine(RunAlgorithm());
-        //ShowAvailableMoves();
     }
 
 public IEnumerator RunAlgorithm()
 {
     List<Cell> path = new List<Cell>();
     int targetCount = 0;
-
-    // Get start cell, make it visited (i.e. remove from unvisited list).
     unvisited.Remove(currentCell);
 
     if (!currentCell.cScript.isTarget)
@@ -245,54 +198,41 @@ public IEnumerator RunAlgorithm()
         currentCell.cScript.ChangeColor(cellColor);
     }
 
-    // While we have unvisited cells.
     while (unvisited.Count > 0)
     {
         List<Cell> unvisitedNeighbours = GetUnvisitedNeighbours(currentCell);
         if (unvisitedNeighbours.Count > 0)
         {
-            // Get a random unvisited neighbour.
             checkCell = unvisitedNeighbours[UnityEngine.Random.Range(0, unvisitedNeighbours.Count)];
-            // Add current cell to stack.
             stack.Add(currentCell);
-            // Compare and remove walls.
             CompareWalls(currentCell, checkCell);
-            // Make currentCell the neighbour cell.
             currentCell = checkCell;
-            // Mark new current cell as visited.
             if (!currentCell.cScript.isTarget)
             {
                 currentCell.cScript.ChangeColor(cellColor);
             }
             unvisited.Remove(currentCell);
-
-            // Add the current cell to the path
             path.Add(currentCell);
         }
         else if (stack.Count > 0)
         {
-            // Make current cell the most recently added Cell from the stack.
             currentCell = stack[stack.Count - 1];
-            // Remove it from stack.
             stack.Remove(currentCell);
-
-            // Change color to backtrack color and then back to normal color after some delay
             if (!currentCell.cScript.isTarget)
             {
-                currentCell.cScript.ChangeColor(Color.black); // Set your backtrack color here
-                yield return new WaitForSeconds(0.006f); // Wait for 0.02 second
+                currentCell.cScript.ChangeColor(Color.black); 
+                yield return new WaitForSeconds(0.006f); 
                 if (!currentCell.cScript.isTarget)
                 {
                     currentCell.cScript.ChangeColor(cellColor);
                 }
             }
         }
-        yield return new WaitForSeconds(0.002f); // Wait for 0.002 second before the next step
+        yield return new WaitForSeconds(0.002f); 
     }
 
-    // After the maze is generated, set the targets
    int totalSteps = path.Count;
-    int targetSteps = (int)Math.Ceiling(totalSteps / 3.0);  // Use Math.Ceiling to round up
+    int targetSteps = (int)Math.Ceiling(totalSteps / 3.0); 
 
  for (int i = 1; i <= 3; i++)
     {
@@ -301,10 +241,7 @@ public IEnumerator RunAlgorithm()
         {
             Cell targetCell = path[targetIndex];
             targetCell.cScript.isTarget = true;
-            // targetCell.cScript.ChangeColor(Color.red); // Set your target color here
             targetCount++;
-
-            // Instantiate a new submodule from the prefab
             GameObject submoduleObj = Instantiate(targetSubmodulePrefab, targetCell.cellObject.transform);
 
             // Get the Submodule component
@@ -415,6 +352,7 @@ public IEnumerator RunAlgorithm()
     public void DeleteMaze()
     {
         if (mazeParent != null) Destroy(mazeParent);
+        Destroy(player);
     }
 
     public void InitValues()

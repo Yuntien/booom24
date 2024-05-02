@@ -7,6 +7,11 @@ public class DeepRepairManager : MonoBehaviour
     // Start is called before the first frame update
     public List<string> logs = new List<string> { "愤怒", "伤心", "害羞" };
     private int currentLogIndex = 0;
+    private MazeGenerator maze;
+    private GameObject player;
+    public GameObject playerPrefab;
+
+
     
 void OnEnable()
 {
@@ -17,6 +22,18 @@ void OnDisable()
 {
     MazeGenerator.OnPlayerReachTarget -= HandlePlayerReachTarget;
 }
+
+private void Start() {
+    startReapir();
+}
+public void startReapir()
+{
+    maze=GetComponent<MazeGenerator>();
+    maze.GenerateMaze(10,10);
+
+    
+}
+
 void HandlePlayerReachTarget(MazeGenerator.Cell targetCell)
 {
     
@@ -46,6 +63,8 @@ void HandlePlayerReachTarget(MazeGenerator.Cell targetCell)
 public void FinishDeepReapir()
     { 
             Debug.Log("Find target");
+            maze.DeleteMaze();
+
     }
     
 
