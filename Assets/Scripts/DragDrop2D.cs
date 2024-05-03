@@ -31,12 +31,10 @@ public class DragDrop2D : MonoBehaviour
             checkport.Disconnect();
         }
     }
-
     void OnMouseDrag()
     {
         transform.position = MouseWorldPosition() + offset;
     }
-
     void OnMouseUp()
     {
         collider2d.enabled = false;
@@ -62,21 +60,6 @@ public class DragDrop2D : MonoBehaviour
                 // Move the power line back to the start position if the module is not checkable
                 transform.DOMove(startPos.position, 0.15f);
             }
-
-            /*if (hitInfo.transform.tag == destinationTag)
-            {
-                transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
-                module = hitInfo.transform.parent.GetComponent<Module>();
-                if (module != null)
-                {
-                    // Connect the power line when dropped on a drop area
-                    module.HighlightConnections();
-                }
-            }
-            else
-            {
-                transform.DOMove(startPos.position, 0.15f);
-            }*/
         }
         else
         {

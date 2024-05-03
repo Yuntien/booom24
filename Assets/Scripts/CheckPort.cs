@@ -31,7 +31,8 @@ public class CheckPort : MonoBehaviour
     {
         if (module != null && isCheckable)
         {
-            module.HighlightConnections();
+            module.StartHightLight();
+            
         }
     }
 
