@@ -1145,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &788615760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2136,6 +2136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFadeEventSO: {fileID: 11400000, guid: 1691735b16b4e3648a20e2c8d3f6e4a6, type: 2}
+  fadeEventSO: {fileID: 11400000, guid: 215d7f0e396712b47bfc80d6420b4ca0, type: 2}
 --- !u!4 &1700620790
 Transform:
   m_ObjectHideFlags: 0
@@ -2402,7 +2403,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!224 &1875503793
 RectTransform:
@@ -2638,9 +2639,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 3a7bec6b44eb23c4ab6bc1b4e07037d8, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 95b69276704582d4f8ac81ba9f055f5e, type: 2}
+  talkScene:
+    m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   loadEventSO: {fileID: 11400000, guid: b1fb5f178ef4a2b4397196b4e40f6597, type: 2}
   afterSceneLoadEventSO: {fileID: 11400000, guid: d13a771d549da8c4f8016f05f8bd424b, type: 2}
+  fadeEventSO: {fileID: 11400000, guid: 215d7f0e396712b47bfc80d6420b4ca0, type: 2}
 --- !u!1 &2069161076
 GameObject:
   m_ObjectHideFlags: 0

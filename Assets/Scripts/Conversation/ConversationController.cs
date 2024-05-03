@@ -16,6 +16,7 @@ public class ConversationController : Singleton<ConversationController>
 
     [Header("场景遮盖广播")]
     [SerializeField] private FadeEventSO sceneFadeEventSO;
+    [SerializeField] private FadeEventSO fadeEventSO;
 
     /// <summary>
     /// 开启对话
@@ -108,7 +109,11 @@ public class ConversationController : Singleton<ConversationController>
         } 
         else if (userEvent.Name == "进入场景")
         {
-            sceneFadeEventSO.FadeOut(0.5f);
+            // sceneFadeEventSO.FadeOut(0.5f);
+            Menu.Instance.FadeOut(1f).onComplete += () =>
+            {
+                userEvent.Advance.Invoke();
+            };
         }
         else if (userEvent.Name == "进行拆除")
         {
@@ -145,6 +150,13 @@ public class ConversationController : Singleton<ConversationController>
             tempAction = userEvent.Advance;
             GuestController.Instance.MoveGuestToFix().onComplete += () => {
                 tempAction.Invoke();
+            };
+        }
+        else if (userEvent.Name == "遮罩淡入")
+        {
+            FadeCanvas.Instance.FadeIn(1f).onComplete += () =>
+            {
+                userEvent.Advance.Invoke();
             };
         }
     }

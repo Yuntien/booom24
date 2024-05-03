@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79297acfcd94c447affd3589006e043, type: 3}
+  m_Name: TestTalk1
+  m_EditorClassIdentifier: 
+  fixSceneReference:
+    m_AssetGUID: ec7307887fb3e1243b3fe3b04d69467e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  conversation: {fileID: 11400000, guid: 6081a534a7d7d63428c13f8e86411f32, type: 2}
+  nextScene: {fileID: 11400000, guid: 3fd52b427cddf4942a1a6a31f0e2880c, type: 2}

@@ -25,6 +25,7 @@ public class GuestController : Singleton<GuestController>
     /// </summary>
     public void GuestFadeIn()
     {
+        Debug.Log("»ÀŒÔµ≠»Î");
         guestSprite.DOFade(1, fadeTime);
     }
 

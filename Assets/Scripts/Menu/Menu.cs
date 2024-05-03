@@ -59,4 +59,14 @@ public class Menu : Singleton<Menu>
     {
         menuBackground.DOBlendableColor(target, duration);
     }
+
+    public Tweener FadeIn(float duration)
+    {
+        return menuBackground.DOBlendableColor(Color.black, duration);
+    }
+
+    public Tweener FadeOut(float duration)
+    {
+        return menuBackground.DOBlendableColor(Color.clear, duration);
+    }
 }

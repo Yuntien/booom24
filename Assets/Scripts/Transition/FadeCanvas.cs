@@ -27,6 +27,7 @@ public class FadeCanvas : Singleton<FadeCanvas>
 
     public Tweener FadeIn(float duration)
     {
+        Debug.Log("узуж╣╜хК");
         return fadeImage.DOBlendableColor(Color.black, duration);
     }
 

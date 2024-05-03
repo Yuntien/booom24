@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("第一个对话场景")]
+    [Header("第一个对话")]
     [SerializeField] private TalkSceneSO firstTalkSO;
     
     private TalkSceneSO currentTalkSceneSO;
+
+    [Header("对话场景")]
+    [SerializeField] private AssetReference talkScene;
 
     [Header("事件挂载")]
     // 发起广播
@@ -21,7 +25,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         // 加载对话场景
-        loadEventSO?.RaiseEvent(firstTalkSO.sceneReference, false, LoadState.Menu);
+        loadEventSO?.RaiseEvent(talkScene, false, LoadState.Menu);
     }
 
     private void OnEnable()
@@ -73,7 +77,7 @@ public class GameManager : Singleton<GameManager>
     public void ContinueTalk()
     {
         // 重新加载对话场景
-        loadEventSO?.RaiseEvent(currentTalkSceneSO.sceneReference, true, LoadState.ContinueTalk);
+        loadEventSO?.RaiseEvent(talkScene, true, LoadState.ContinueTalk);
     }
 
     /// <summary>
@@ -82,7 +86,7 @@ public class GameManager : Singleton<GameManager>
     private void OnContinueTalkLoaded()
     {
         // 人物出现
-
+        GuestController.Instance.ShowGuest();
         // 继续对话
         ConversationController.Instance.ContinueConversation();
     }
@@ -107,6 +111,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void NextTalk()
     {
+        if (currentTalkSceneSO.nextScene == null)
+        {
+            return;
+        }
         currentTalkSceneSO = currentTalkSceneSO.nextScene;
         FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
         {
