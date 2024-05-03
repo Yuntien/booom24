@@ -11,6 +11,7 @@ public class LoadStateEventSO : ScriptableObject
     public UnityAction OnStartTalkEventRaised;
     public UnityAction OnFixEventRaised;
     public UnityAction OnContinueTalkEventRaised;
+    public UnityAction OnDeepFixEventRaised;
 
     public void RaiseEvent(LoadState loadState)
     {
@@ -27,6 +28,9 @@ public class LoadStateEventSO : ScriptableObject
                 break;
             case LoadState.ContinueTalk:
                 OnContinueTalkEventRaised?.Invoke();
+                break;
+            case LoadState.DeepFix:
+                OnDeepFixEventRaised?.Invoke();
                 break;
         }
     }

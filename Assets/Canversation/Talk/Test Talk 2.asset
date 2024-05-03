@@ -23,65 +23,108 @@ MonoBehaviour:
       height: 100
     name: Start
   nodes:
-  - rid: 7883047644631400767
-  - rid: 7883047644631400768
-  - rid: 7883047644631400769
-  - rid: 7883047644631400770
-  - rid: 7883047644631400771
-  - rid: 7883047644631400772
-  - rid: 7883047644631400773
-  - rid: 7883047644631400774
-  - rid: 7883047644631400775
-  - rid: 7883047644631400776
-  - rid: 7883047644631400777
-  - rid: 7883047644631400778
-  - rid: 7883047644631400779
-  - rid: 7883047644631400780
-  - rid: 7883047644631400781
-  - rid: 7883047644631400782
-  - rid: 7883047644631400783
-  - rid: 7883047644631400784
-  - rid: 7883047644631400785
-  - rid: 7883047644631400786
-  - rid: 7883047644631400787
-  - rid: 7883047644631400788
-  - rid: 7883047644631400789
-  - rid: 7883047644631400790
-  - rid: 7883047644631400791
-  - rid: 7883047644631400792
-  - rid: 7883047644631400793
-  - rid: 7883047644631400794
-  - rid: 7883047644631400795
+  - rid: 7883047653758468106
+  - rid: 7883047653758468107
+  - rid: 7883047653758468108
+  - rid: 7883047653758468109
+  - rid: 7883047653758468110
+  - rid: 7883047653758468111
+  - rid: 7883047653758468112
+  - rid: 7883047653758468113
+  - rid: 7883047653758468114
+  - rid: 7883047653758468115
+  - rid: 7883047653758468116
+  - rid: 7883047653758468117
+  - rid: 7883047653758468118
+  - rid: 7883047653758468119
+  - rid: 7883047653758468120
+  - rid: 7883047653758468121
+  - rid: 7883047653758468122
+  - rid: 7883047653758468123
+  - rid: 7883047653758468124
+  - rid: 7883047653758468125
+  - rid: 7883047653758468126
+  - rid: 7883047653758468127
+  - rid: 7883047653758468128
+  - rid: 7883047653758468129
+  - rid: 7883047653758468130
+  - rid: 7883047653758468131
+  - rid: 7883047653758468132
+  - rid: 7883047653758468133
+  - rid: 7883047653758468134
+  - rid: 7883047653758468135
+  - rid: 7883047653758468136
+  - rid: 7883047653758468137
+  - rid: 7883047653758468138
+  - rid: 7883047653758468139
+  - rid: 7883047653758468140
+  - rid: 7883047653758468141
+  - rid: 7883047653758468142
+  - rid: 7883047653758468143
+  - rid: 7883047653758468144
+  - rid: 7883047653758468145
+  - rid: 7883047653758468146
+  - rid: 7883047653758468147
+  - rid: 7883047653758468148
+  - rid: 7883047653758468149
+  - rid: 7883047653758468150
+  - rid: 7883047653758468151
+  - rid: 7883047653758468152
+  - rid: 7883047653758468153
   edges:
-  - rid: 7883047644631400796
-  - rid: 7883047644631400797
-  - rid: 7883047644631400798
-  - rid: 7883047644631400799
-  - rid: 7883047644631400800
-  - rid: 7883047644631400801
-  - rid: 7883047644631400802
-  - rid: 7883047644631400803
-  - rid: 7883047644631400804
-  - rid: 7883047644631400805
-  - rid: 7883047644631400806
-  - rid: 7883047644631400807
-  - rid: 7883047644631400808
-  - rid: 7883047644631400809
-  - rid: 7883047644631400810
-  - rid: 7883047644631400811
+  - rid: 7883047653758468154
+  - rid: 7883047653758468155
+  - rid: 7883047653758468156
+  - rid: 7883047653758468157
+  - rid: 7883047653758468158
+  - rid: 7883047653758468159
+  - rid: 7883047653758468160
+  - rid: 7883047653758468161
+  - rid: 7883047653758468162
+  - rid: 7883047653758468163
+  - rid: 7883047653758468164
+  - rid: 7883047653758468165
+  - rid: 7883047653758468166
+  - rid: 7883047653758468167
+  - rid: 7883047653758468168
+  - rid: 7883047653758468169
+  - rid: 7883047653758468170
+  - rid: 7883047653758468171
+  - rid: 7883047653758468172
+  - rid: 7883047653758468173
+  - rid: 7883047653758468174
+  - rid: 7883047653758468175
+  - rid: 7883047653758468176
+  - rid: 7883047653758468177
+  - rid: 7883047653758468178
+  - rid: 7883047653758468179
+  - rid: 7883047653758468180
+  - rid: 7883047653758468181
+  - rid: 7883047653758468182
+  - rid: 7883047653758468183
+  - rid: 7883047653758468184
+  - rid: 7883047653758468185
+  - rid: 7883047653758468186
+  - rid: 7883047653758468187
   properties:
-  - rid: 7883047644631400812
-  - rid: 7883047644631400813
-  - rid: 7883047644631400814
-  - rid: 7883047644631400815
-  - rid: 7883047644631400816
-  - rid: 7883047644631400817
+  - rid: 7883047653758468188
+  - rid: 7883047653758468189
+  - rid: 7883047653758468190
+  - rid: 7883047653758468191
+  - rid: 7883047653758468192
+  - rid: 7883047653758468193
+  - rid: 7883047653758468194
+  - rid: 7883047653758468195
+  - rid: 7883047653758468196
+  - rid: 7883047653758468197
+  - rid: 7883047653758468198
+  - rid: 7883047653758468199
   stickyNotes: []
   groups: []
   references:
     version: 2
     RefIds:
-    - rid: 7883047644631400767
+    - rid: 7883047653758468106
       type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         guid: 79efbadd-4086-4000-b41e-bd5efa65ad04
@@ -90,7 +133,7 @@ MonoBehaviour:
         - a4da8298-247b-4747-992d-040ab934002e
         - cfc8010a-ff02-4496-ba8f-f317f2b1cdc6
         - 6fa0ce6d-d7cc-405d-b746-ae0f258588e9
-    - rid: 7883047644631400768
+    - rid: 7883047653758468107
       type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: a4da8298-247b-4747-992d-040ab934002e
@@ -101,7 +144,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         actor: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
-    - rid: 7883047644631400769
+    - rid: 7883047653758468108
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: cfc8010a-ff02-4496-ba8f-f317f2b1cdc6
@@ -112,7 +155,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u6211\u5BF9\u8BDD"
-    - rid: 7883047644631400770
+    - rid: 7883047653758468109
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 6fa0ce6d-d7cc-405d-b746-ae0f258588e9
@@ -123,7 +166,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u6211\u5BF9\u8BDD"
-    - rid: 7883047644631400771
+    - rid: 7883047653758468110
       type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 151276e3-8501-43b6-8d8f-b444d49c34a2
@@ -136,7 +179,7 @@ MonoBehaviour:
         stopsFlow: 0
         eventGuid: dba46eb5-1b9f-4a47-89f8-f391e4dd6ec2
         eventName: "\u4EBA\u7269\u6DE1\u5165"
-    - rid: 7883047644631400772
+    - rid: 7883047653758468111
       type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         guid: c281abd0-f508-439e-a5be-28a19a5da301
@@ -145,7 +188,7 @@ MonoBehaviour:
         - c5959142-9d24-4545-8fdb-246ec5114ca6
         - 5d75d95a-c211-4534-9390-b007d7d94983
         - 0377fdee-f0f9-4d0d-82ab-eca610f2b8a0
-    - rid: 7883047644631400773
+    - rid: 7883047653758468112
       type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: c5959142-9d24-4545-8fdb-246ec5114ca6
@@ -156,7 +199,7 @@ MonoBehaviour:
           width: 129.59998
           height: 70.399994
         actor: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
-    - rid: 7883047644631400774
+    - rid: 7883047653758468113
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 5d75d95a-c211-4534-9390-b007d7d94983
@@ -167,7 +210,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u5BF9\u8BDD"
-    - rid: 7883047644631400775
+    - rid: 7883047653758468114
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 0377fdee-f0f9-4d0d-82ab-eca610f2b8a0
@@ -178,7 +221,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u5BF9\u8BDD"
-    - rid: 7883047644631400776
+    - rid: 7883047653758468115
       type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 05b318bd-1c57-40e0-9560-e52579482d48
@@ -191,7 +234,7 @@ MonoBehaviour:
         stopsFlow: 1
         eventGuid: c3f4bcf6-5141-4f29-8954-5fc77f5e7040
         eventName: "\u4EBA\u7269\u79FB\u52A8\u81F3\u7EF4\u4FEE\u5904"
-    - rid: 7883047644631400777
+    - rid: 7883047653758468116
       type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 10772bac-8ff0-4982-97fc-cdf5a86ccca0
@@ -204,18 +247,18 @@ MonoBehaviour:
         stopsFlow: 1
         eventGuid: f1c2c248-dd17-49b6-a4e6-ec904cfa2d1c
         eventName: "\u5F00\u59CB\u7EF4\u4FEE"
-    - rid: 7883047644631400778
+    - rid: 7883047653758468117
       type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: d81c1c0e-3896-498e-9bfa-d4ff815e22b2
         <NodeRect>k__BackingField:
           serializedVersion: 2
-          x: 1960.8
-          y: 45.6
-          width: 107.19995
-          height: 39.999992
+          x: 648.8
+          y: 884.8
+          width: 105.60004
+          height: 40
         name: "\u7EF4\u4FEE\u53CD\u9988"
-    - rid: 7883047644631400779
+    - rid: 7883047653758468118
       type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 724ec2b5-cfe1-48ed-aee8-1aa9625d3c0e
@@ -227,16 +270,16 @@ MonoBehaviour:
           height: 40.799988
         bookmarkName: "\u7EF4\u4FEE\u53CD\u9988"
         bookmarkGuid: d81c1c0e-3896-498e-9bfa-d4ff815e22b2
-    - rid: 7883047644631400780
+    - rid: 7883047653758468119
       type: {class: ChoiceNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 6b9db728-8029-4d64-b292-46032e432d42
         <NodeRect>k__BackingField:
           serializedVersion: 2
-          x: 2169.6
-          y: 67.2
+          x: 857.6
+          y: 906.4
           width: 208
-          height: 198.4
+          height: 198.39996
         actor: 
         actorProfile: {fileID: 0}
         useActorProfile: 0
@@ -246,15 +289,15 @@ MonoBehaviour:
           label: "\u60C5\u7EEA"
         - guid: no
           label: "\u53D1\u58F0"
-    - rid: 7883047644631400781
+    - rid: 7883047653758468120
       type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         guid: 7de02bd5-5032-4a6e-a639-0845a71f4d21
-        position: {x: 2558.4, y: 338.40002}
+        position: {x: 1246.4, y: 1177.6}
         blocks:
         - f85ffdcb-1ec8-4742-a7dc-e32cdac7c6a2
         - f4c23d79-f647-47a0-b88e-a8ec053d0ce6
-    - rid: 7883047644631400782
+    - rid: 7883047653758468121
       type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: f85ffdcb-1ec8-4742-a7dc-e32cdac7c6a2
@@ -265,7 +308,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         actor: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
-    - rid: 7883047644631400783
+    - rid: 7883047653758468122
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: f4c23d79-f647-47a0-b88e-a8ec053d0ce6
@@ -276,33 +319,33 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u8FD9\u662F\u53D1\u58F0"
-    - rid: 7883047644631400784
+    - rid: 7883047653758468123
       type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 313ee2d6-de04-4728-8caf-11c563e0225e
         <NodeRect>k__BackingField:
           serializedVersion: 2
-          x: 2832.8
-          y: 546.4
+          x: 1520.8
+          y: 1385.6
           width: 107.19995
-          height: 40.799988
+          height: 40.799927
         bookmarkName: "\u7EF4\u4FEE\u53CD\u9988"
         bookmarkGuid: d81c1c0e-3896-498e-9bfa-d4ff815e22b2
-    - rid: 7883047644631400785
+    - rid: 7883047653758468124
       type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: f91050af-7afb-45ce-820b-5d9410901849
         <NodeRect>k__BackingField:
           serializedVersion: 2
-          x: 2620
-          y: 39.199997
+          x: 1308
+          y: 878.4
           width: 208
-          height: 137.6
+          height: 137.60004
         actor: Actor name
         actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
         useActorProfile: 1
         message: "\u60C5\u7EEA\u6B63\u786E"
-    - rid: 7883047644631400786
+    - rid: 7883047653758468125
       type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         guid: 8ccdca94-918d-4570-ae33-e28abe821bae
@@ -310,7 +353,7 @@ MonoBehaviour:
         blocks:
         - f170b875-48f2-4ca6-ab00-8ab1bc9c3334
         - 1dae91a2-5b50-465f-b371-f063205c7c76
-    - rid: 7883047644631400787
+    - rid: 7883047653758468126
       type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: f170b875-48f2-4ca6-ab00-8ab1bc9c3334
@@ -321,7 +364,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         actor: {fileID: 11400000, guid: 1cd824b83a9b930469afe948797b6ec7, type: 2}
-    - rid: 7883047644631400788
+    - rid: 7883047653758468127
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 1dae91a2-5b50-465f-b371-f063205c7c76
@@ -332,7 +375,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u706B\u5C71"
-    - rid: 7883047644631400789
+    - rid: 7883047653758468128
       type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: fa4b551d-f01f-4dfb-97b8-83419b9fc323
@@ -345,7 +388,7 @@ MonoBehaviour:
         stopsFlow: 1
         eventGuid: c7f554f7-022b-4a55-9c7d-d72ba704db6b
         eventName: "\u8FDB\u5165\u573A\u666F"
-    - rid: 7883047644631400790
+    - rid: 7883047653758468129
       type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 53cf4ecb-de4c-4e89-8461-45f763170ef7
@@ -359,7 +402,7 @@ MonoBehaviour:
         actorProfile: {fileID: 11400000, guid: 1cd824b83a9b930469afe948797b6ec7, type: 2}
         useActorProfile: 1
         message: Enter your message here
-    - rid: 7883047644631400791
+    - rid: 7883047653758468130
       type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: c3161088-b958-40ad-993d-7c0d32e807b6
@@ -372,7 +415,7 @@ MonoBehaviour:
         stopsFlow: 1
         eventGuid: 5abd725d-d376-4444-993f-f46a61465ab8
         eventName: "\u7EF4\u4FEE\u5B8C\u6210"
-    - rid: 7883047644631400792
+    - rid: 7883047653758468131
       type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 33227f43-7d7a-4f52-a9b2-765dc1846b5e
@@ -385,7 +428,7 @@ MonoBehaviour:
         stopsFlow: 1
         eventGuid: 09a00054-fe7e-46f3-9359-7d17de4f4149
         eventName: "\u8FDB\u884C\u62C6\u9664"
-    - rid: 7883047644631400793
+    - rid: 7883047653758468132
       type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         guid: 3762f317-c655-48aa-9f17-a27e7f215d66
@@ -393,7 +436,7 @@ MonoBehaviour:
         blocks:
         - d326b274-7406-4a7a-bef3-b40e0cb64d05
         - a79023e4-7fc9-47f5-85ee-d2238c833ae8
-    - rid: 7883047644631400794
+    - rid: 7883047653758468133
       type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: d326b274-7406-4a7a-bef3-b40e0cb64d05
@@ -404,7 +447,7 @@ MonoBehaviour:
           width: NaN
           height: NaN
         actor: {fileID: 11400000, guid: 1cd824b83a9b930469afe948797b6ec7, type: 2}
-    - rid: 7883047644631400795
+    - rid: 7883047653758468134
       type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: a79023e4-7fc9-47f5-85ee-d2238c833ae8
@@ -415,7 +458,260 @@ MonoBehaviour:
           width: NaN
           height: NaN
         message: "\u7ED3\u675F"
-    - rid: 7883047644631400796
+    - rid: 7883047653758468135
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: f2a6570c-1042-46be-a79b-84009f48e44b
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1621.6
+          y: 873.60004
+          width: 208
+          height: 134.40002
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: "\u8FDB\u884C\u6DF1\u5EA6\u7EF4\u4FEE"
+    - rid: 7883047653758468136
+      type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 2435bba5-1ce7-4931-ac56-fed983a167cc
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 1894.4
+          y: 876
+          width: 158.40002
+          height: 100.79999
+        stopsFlow: 1
+        eventGuid: 159c9337-6f50-4345-a365-6be02d36dfc8
+        eventName: "\u8FDB\u884C\u6DF1\u5EA6\u7EF4\u4FEE"
+    - rid: 7883047653758468137
+      type: {class: ChoiceNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2229.6
+          y: 834.4
+          width: 208
+          height: 222.39996
+        actor: 
+        actorProfile: {fileID: 0}
+        useActorProfile: 0
+        message: 
+        options:
+        - guid: yes
+          label: "\u56DE\u5FC61"
+        - guid: no
+          label: "\u56DE\u5FC62"
+        - guid: 1df3bbeb-dd63-4163-ae99-00a7ecd54d97
+          label: "\u56DE\u5FC63"
+        - guid: 9649f749-7664-442f-a548-80caa137ff52
+          label: "\u5168\u90E8\u627E\u5230"
+    - rid: 7883047653758468138
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 6c5be504-d08b-49c1-9976-f5ea12d8e0b1
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2524.8
+          y: 683.2
+          width: 208
+          height: 134.40002
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: Enter your message here
+    - rid: 7883047653758468139
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 9f7f0b21-6a50-4e9d-aa1d-607433c021dd
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2538.4
+          y: 881.60004
+          width: 208
+          height: 134.40002
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: Enter your message here
+    - rid: 7883047653758468140
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: f31ea4a6-59b7-47bc-9269-43562fd7e042
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2523.2
+          y: 1078.3999
+          width: 208
+          height: 134.40002
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: Enter your message here
+    - rid: 7883047653758468141
+      type: {class: BookmarkNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 8fd26d0e-b328-43ae-a615-b522950261a3
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2077.6
+          y: 748
+          width: 131.19995
+          height: 40
+        name: "\u6DF1\u5EA6\u7EF4\u4FEE\u53CD\u9988"
+    - rid: 7883047653758468142
+      type: {class: BookmarkJumpNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 1ab613a7-7234-4f2f-983b-4c2c4002fc0a
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2836.8
+          y: 913.60004
+          width: 131.19995
+          height: 40.799927
+        bookmarkName: "\u6DF1\u5EA6\u7EF4\u4FEE\u53CD\u9988"
+        bookmarkGuid: 8fd26d0e-b328-43ae-a615-b522950261a3
+    - rid: 7883047653758468143
+      type: {class: LinearDialogueData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        guid: 13fab141-d1ab-4ab7-813a-980d4ac0f069
+        position: {x: 2685.8652, y: 1348.1036}
+        blocks:
+        - 30630a6b-7273-4b07-a2b1-391d17c48744
+        - 5707e5f8-759b-4818-9fc5-3cadf5c53c7f
+    - rid: 7883047653758468144
+      type: {class: ActorProfileBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 30630a6b-7273-4b07-a2b1-391d17c48744
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2788.8
+          y: 1398.9915
+          width: NaN
+          height: NaN
+        actor: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+    - rid: 7883047653758468145
+      type: {class: MessageBlockNode, ns: Conversa.Runtime.StackBlocks, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 5707e5f8-759b-4818-9fc5-3cadf5c53c7f
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2762.4001
+          y: 1452.5916
+          width: NaN
+          height: NaN
+        message: "\u5DF2\u7ECF\u627E\u5230\uFF0C\u8BF7\u9009\u62E9\u62C6\u9664"
+    - rid: 7883047653758468146
+      type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 33a2966d-d654-4317-bb27-d3752005e450
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 2992.1997
+          y: 1459.3707
+          width: NaN
+          height: NaN
+        stopsFlow: 1
+        eventGuid: 76ff78c7-8644-4a06-9608-be2843871674
+        eventName: "\u6DF1\u5EA6\u7EF4\u4FEE\u62C6\u9664"
+    - rid: 7883047653758468147
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: c090403f-cc2d-4be5-ad20-c7df8c4d7866
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 3239.2
+          y: 1436.7999
+          width: 208
+          height: 136.80005
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: "\u62C6\u9664\u5B8C\u6210"
+    - rid: 7883047653758468148
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 0689f99f-1efe-4574-8268-2adddee430da
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 3763.2
+          y: 1444
+          width: 208
+          height: 137.59998
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: "\u5168\u90E8\u7ED3\u675F"
+    - rid: 7883047653758468149
+      type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: e3f50437-a265-49ec-8f5e-76d00a4aae61
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 3516
+          y: 1440.7999
+          width: 158.3999
+          height: 100
+        stopsFlow: 1
+        eventGuid: 494d0f7b-707b-4121-99e7-acdc89fe246c
+        eventName: "\u6DF1\u5EA6\u7EF4\u4FEE\u5B8C\u6210"
+    - rid: 7883047653758468150
+      type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 9e4bbe6a-371c-4234-ac50-a57fc33255a4
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 4028
+          y: 1448
+          width: 153.6001
+          height: 100
+        stopsFlow: 1
+        eventGuid: f22174af-52b8-40e8-8114-d59c863a12cc
+        eventName: "\u9760\u8FD1\u7A97\u53E3"
+    - rid: 7883047653758468151
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: d2949a1a-f56c-4bc8-87e7-70405cf8d8fb
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 4245.6
+          y: 1452
+          width: 208
+          height: 137.59998
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: "\u4ECA\u5929\u7ED3\u675F\u4E86\u3002\u660E\u5929\u518D\u5F00\u59CB\u5427"
+    - rid: 7883047653758468152
+      type: {class: EventNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 4c7cff80-2f44-4880-8211-fe60bec2ac7b
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 4537.6
+          y: 1473.6
+          width: 154.3999
+          height: 100.79993
+        stopsFlow: 1
+        eventGuid: 44c2af2d-4cab-43fa-870a-6e62dd6e704c
+        eventName: "\u906E\u7F69\u6DE1\u5165"
+    - rid: 7883047653758468153
+      type: {class: MessageNode, ns: Conversa.Runtime.Nodes, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: c71d2159-8642-43fe-a7e7-4e34db59ca78
+        <NodeRect>k__BackingField:
+          serializedVersion: 2
+          x: 4763.2
+          y: 1472
+          width: 208
+          height: 136.79993
+        actor: Actor name
+        actorProfile: {fileID: 11400000, guid: 3059e6b30ec54594bbd2022949ae30e5, type: 2}
+        useActorProfile: 1
+        message: "\u65B0\u7684\u4E00\u5929\u5F00\u59CB\u4E86"
+    - rid: 7883047653758468154
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -424,7 +720,7 @@ MonoBehaviour:
         input:
           node: 79efbadd-4086-4000-b41e-bd5efa65ad04
           port: previous
-    - rid: 7883047644631400797
+    - rid: 7883047653758468155
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -433,7 +729,7 @@ MonoBehaviour:
         input:
           node: c281abd0-f508-439e-a5be-28a19a5da301
           port: previous
-    - rid: 7883047644631400798
+    - rid: 7883047653758468156
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -442,7 +738,7 @@ MonoBehaviour:
         input:
           node: 05b318bd-1c57-40e0-9560-e52579482d48
           port: previous
-    - rid: 7883047644631400799
+    - rid: 7883047653758468157
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -451,7 +747,7 @@ MonoBehaviour:
         input:
           node: 10772bac-8ff0-4982-97fc-cdf5a86ccca0
           port: previous
-    - rid: 7883047644631400800
+    - rid: 7883047653758468158
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -460,7 +756,7 @@ MonoBehaviour:
         input:
           node: 724ec2b5-cfe1-48ed-aee8-1aa9625d3c0e
           port: previous
-    - rid: 7883047644631400801
+    - rid: 7883047653758468159
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -469,7 +765,7 @@ MonoBehaviour:
         input:
           node: 6b9db728-8029-4d64-b292-46032e432d42
           port: previous
-    - rid: 7883047644631400802
+    - rid: 7883047653758468160
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -478,7 +774,7 @@ MonoBehaviour:
         input:
           node: 7de02bd5-5032-4a6e-a639-0845a71f4d21
           port: previous
-    - rid: 7883047644631400803
+    - rid: 7883047653758468161
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -487,7 +783,7 @@ MonoBehaviour:
         input:
           node: 313ee2d6-de04-4728-8caf-11c563e0225e
           port: previous
-    - rid: 7883047644631400804
+    - rid: 7883047653758468162
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -496,16 +792,7 @@ MonoBehaviour:
         input:
           node: f91050af-7afb-45ce-820b-5d9410901849
           port: previous
-    - rid: 7883047644631400805
-      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
-      data:
-        output:
-          node: f91050af-7afb-45ce-820b-5d9410901849
-          port: next
-        input:
-          node: 8ccdca94-918d-4570-ae33-e28abe821bae
-          port: previous
-    - rid: 7883047644631400806
+    - rid: 7883047653758468163
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -514,7 +801,7 @@ MonoBehaviour:
         input:
           node: fa4b551d-f01f-4dfb-97b8-83419b9fc323
           port: previous
-    - rid: 7883047644631400807
+    - rid: 7883047653758468164
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -523,7 +810,7 @@ MonoBehaviour:
         input:
           node: 151276e3-8501-43b6-8d8f-b444d49c34a2
           port: previous
-    - rid: 7883047644631400808
+    - rid: 7883047653758468165
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -532,7 +819,7 @@ MonoBehaviour:
         input:
           node: c3161088-b958-40ad-993d-7c0d32e807b6
           port: previous
-    - rid: 7883047644631400809
+    - rid: 7883047653758468166
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -541,7 +828,7 @@ MonoBehaviour:
         input:
           node: 33227f43-7d7a-4f52-a9b2-765dc1846b5e
           port: previous
-    - rid: 7883047644631400810
+    - rid: 7883047653758468167
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -550,7 +837,7 @@ MonoBehaviour:
         input:
           node: 53cf4ecb-de4c-4e89-8461-45f763170ef7
           port: previous
-    - rid: 7883047644631400811
+    - rid: 7883047653758468168
       type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
       data:
         output:
@@ -559,33 +846,234 @@ MonoBehaviour:
         input:
           node: 3762f317-c655-48aa-9f17-a27e7f215d66
           port: previous
-    - rid: 7883047644631400812
+    - rid: 7883047653758468169
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: f91050af-7afb-45ce-820b-5d9410901849
+          port: next
+        input:
+          node: f2a6570c-1042-46be-a79b-84009f48e44b
+          port: previous
+    - rid: 7883047653758468170
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: f2a6570c-1042-46be-a79b-84009f48e44b
+          port: next
+        input:
+          node: 2435bba5-1ce7-4931-ac56-fed983a167cc
+          port: previous
+    - rid: 7883047653758468171
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 2435bba5-1ce7-4931-ac56-fed983a167cc
+          port: next
+        input:
+          node: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+          port: previous
+    - rid: 7883047653758468172
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+          port: yes
+        input:
+          node: 6c5be504-d08b-49c1-9976-f5ea12d8e0b1
+          port: previous
+    - rid: 7883047653758468173
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+          port: no
+        input:
+          node: 9f7f0b21-6a50-4e9d-aa1d-607433c021dd
+          port: previous
+    - rid: 7883047653758468174
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+          port: 1df3bbeb-dd63-4163-ae99-00a7ecd54d97
+        input:
+          node: f31ea4a6-59b7-47bc-9269-43562fd7e042
+          port: previous
+    - rid: 7883047653758468175
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 8fd26d0e-b328-43ae-a615-b522950261a3
+          port: next
+        input:
+          node: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+          port: previous
+    - rid: 7883047653758468176
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 9f7f0b21-6a50-4e9d-aa1d-607433c021dd
+          port: next
+        input:
+          node: 1ab613a7-7234-4f2f-983b-4c2c4002fc0a
+          port: previous
+    - rid: 7883047653758468177
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: f31ea4a6-59b7-47bc-9269-43562fd7e042
+          port: next
+        input:
+          node: 1ab613a7-7234-4f2f-983b-4c2c4002fc0a
+          port: previous
+    - rid: 7883047653758468178
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 6c5be504-d08b-49c1-9976-f5ea12d8e0b1
+          port: next
+        input:
+          node: 1ab613a7-7234-4f2f-983b-4c2c4002fc0a
+          port: previous
+    - rid: 7883047653758468179
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4869d398-7b8f-4ceb-9d24-8caf8ddd6074
+          port: 9649f749-7664-442f-a548-80caa137ff52
+        input:
+          node: 13fab141-d1ab-4ab7-813a-980d4ac0f069
+          port: previous
+    - rid: 7883047653758468180
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 13fab141-d1ab-4ab7-813a-980d4ac0f069
+          port: next
+        input:
+          node: 33a2966d-d654-4317-bb27-d3752005e450
+          port: previous
+    - rid: 7883047653758468181
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 33a2966d-d654-4317-bb27-d3752005e450
+          port: next
+        input:
+          node: c090403f-cc2d-4be5-ad20-c7df8c4d7866
+          port: previous
+    - rid: 7883047653758468182
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: c090403f-cc2d-4be5-ad20-c7df8c4d7866
+          port: next
+        input:
+          node: e3f50437-a265-49ec-8f5e-76d00a4aae61
+          port: previous
+    - rid: 7883047653758468183
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: e3f50437-a265-49ec-8f5e-76d00a4aae61
+          port: next
+        input:
+          node: 0689f99f-1efe-4574-8268-2adddee430da
+          port: previous
+    - rid: 7883047653758468184
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 0689f99f-1efe-4574-8268-2adddee430da
+          port: next
+        input:
+          node: 9e4bbe6a-371c-4234-ac50-a57fc33255a4
+          port: previous
+    - rid: 7883047653758468185
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 9e4bbe6a-371c-4234-ac50-a57fc33255a4
+          port: next
+        input:
+          node: d2949a1a-f56c-4bc8-87e7-70405cf8d8fb
+          port: previous
+    - rid: 7883047653758468186
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: d2949a1a-f56c-4bc8-87e7-70405cf8d8fb
+          port: next
+        input:
+          node: 4c7cff80-2f44-4880-8211-fe60bec2ac7b
+          port: previous
+    - rid: 7883047653758468187
+      type: {class: EdgeData, ns: Conversa.Runtime, asm: Conversa.Runtime}
+      data:
+        output:
+          node: 4c7cff80-2f44-4880-8211-fe60bec2ac7b
+          port: next
+        input:
+          node: c71d2159-8642-43fe-a7e7-4e34db59ca78
+          port: previous
+    - rid: 7883047653758468188
       type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: dba46eb5-1b9f-4a47-89f8-f391e4dd6ec2
         name: "\u4EBA\u7269\u6DE1\u5165"
-    - rid: 7883047644631400813
+    - rid: 7883047653758468189
       type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: c3f4bcf6-5141-4f29-8954-5fc77f5e7040
         name: "\u4EBA\u7269\u79FB\u52A8\u81F3\u7EF4\u4FEE\u5904"
-    - rid: 7883047644631400814
+    - rid: 7883047653758468190
       type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: f1c2c248-dd17-49b6-a4e6-ec904cfa2d1c
         name: "\u5F00\u59CB\u7EF4\u4FEE"
-    - rid: 7883047644631400815
+    - rid: 7883047653758468191
       type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: c7f554f7-022b-4a55-9c7d-d72ba704db6b
         name: "\u8FDB\u5165\u573A\u666F"
-    - rid: 7883047644631400816
+    - rid: 7883047653758468192
       type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 09a00054-fe7e-46f3-9359-7d17de4f4149
         name: "\u8FDB\u884C\u62C6\u9664"
-    - rid: 7883047644631400817
+    - rid: 7883047653758468193
       type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
       data:
         <Guid>k__BackingField: 5abd725d-d376-4444-993f-f46a61465ab8
         name: "\u7EF4\u4FEE\u5B8C\u6210"
+    - rid: 7883047653758468194
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 159c9337-6f50-4345-a365-6be02d36dfc8
+        name: "\u8FDB\u884C\u6DF1\u5EA6\u7EF4\u4FEE"
+    - rid: 7883047653758468195
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 6f727930-57b7-4ead-99f2-b0a7ddd8ad93
+        name: "\u9690\u85CF\u5BF9\u8BDD\u6846"
+    - rid: 7883047653758468196
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 76ff78c7-8644-4a06-9608-be2843871674
+        name: "\u6DF1\u5EA6\u7EF4\u4FEE\u62C6\u9664"
+    - rid: 7883047653758468197
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 494d0f7b-707b-4121-99e7-acdc89fe246c
+        name: "\u6DF1\u5EA6\u7EF4\u4FEE\u5B8C\u6210"
+    - rid: 7883047653758468198
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: f22174af-52b8-40e8-8114-d59c863a12cc
+        name: "\u9760\u8FD1\u7A97\u53E3"
+    - rid: 7883047653758468199
+      type: {class: EventProperty, ns: Conversa.Runtime.Properties, asm: Conversa.Runtime}
+      data:
+        <Guid>k__BackingField: 44c2af2d-4cab-43fa-870a-6e62dd6e704c
+        name: "\u906E\u7F69\u6DE1\u5165"

@@ -5,6 +5,7 @@ using Conversa.Runtime;
 using Conversa.Runtime.Events;
 using Conversa.Runtime.Interfaces;
 using System;
+using DG.Tweening;
 
 public class ConversationController : Singleton<ConversationController>
 {
@@ -108,7 +109,7 @@ public class ConversationController : Singleton<ConversationController>
             GameManager.Instance.Fix();
         } 
         else if (userEvent.Name == "进入场景")
-        {
+        {                
             // sceneFadeEventSO.FadeOut(0.5f);
             Menu.Instance.FadeOut(1f).onComplete += () =>
             {
@@ -158,6 +159,37 @@ public class ConversationController : Singleton<ConversationController>
             {
                 userEvent.Advance.Invoke();
             };
+        }
+        else if (userEvent.Name == "进行深度维修")
+        {
+            tempAction = userEvent.Advance;
+            GameManager.Instance.DeepFix();
+        }
+        else if (userEvent.Name == "深度维修拆除")
+        {
+            DialogUIController.Instance.Hide();
+            tempAction = userEvent.Advance;
+            DisassemblyManager.Instance.StartRepairMode();
+        }
+        else if (userEvent.Name == "深度维修完成")
+        {
+            // FIX 先销毁Maze
+            //GameObject maze = GameObject.Find("Maze");
+            //if (maze != null)
+            //{
+            //    Destroy(maze);
+            //}
+
+            tempAction = userEvent.Advance;
+            DialogUIController.Instance.Hide();
+            GameManager.Instance.ContinueTalk();
+        }
+        else if (userEvent.Name == "靠近窗口")
+        {
+            BackgroundController.Instance.MoveToWindow().OnComplete(() =>
+            {
+                userEvent.Advance.Invoke();
+            });
         }
     }
     private void HandleActorMessageEvent(ActorMessageEvent evt)

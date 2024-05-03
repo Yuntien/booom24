@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Events; 
+using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class DisassemblyManager : MonoBehaviour
 {
@@ -35,6 +36,17 @@ public class DisassemblyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnEnable()
+    {
+        OnDisassemblyEnd.AddListener(ConversationController.Instance.ContinueConversation);
+    }
+
+    private void OnDisable()
+    {
+        OnDisassemblyEnd.RemoveAllListeners();
+    }
+
     private void RemoveAllListeners()
 {
     foreach (Screw screw in screws)

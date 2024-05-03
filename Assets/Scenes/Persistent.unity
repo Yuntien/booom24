@@ -1418,8 +1418,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 829973463, guid: 022ebfa2bd53e1a42ba1981e76cee8e7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2642,6 +2642,11 @@ MonoBehaviour:
   firstTalkSO: {fileID: 11400000, guid: 95b69276704582d4f8ac81ba9f055f5e, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  deepFixScene:
+    m_AssetGUID: 81614b62a28cd394ba05b823a5663bf6
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

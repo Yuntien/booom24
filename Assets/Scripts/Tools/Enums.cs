@@ -4,5 +4,11 @@ using UnityEngine;
 
 public enum LoadState
 {
-    StartTalk, Fix, ContinueTalk, Menu
+    StartTalk, Fix, ContinueTalk, Menu, DeepFix
+}
+
+public enum DeepRepairRuleType
+{
+    Rule1,
+    Rule2
 }

@@ -19,12 +19,12 @@ public class DeepRepairManager : MonoBehaviour
     [HideInInspector]
     public int submoduleCount = 0;
 
-[HideInInspector]
+    [HideInInspector]
     public MazeGenerator maze;
     private GameObject player;
     [HideInInspector]
     public UnityEvent OnAllSubmodulesFound;
-    private bool isFinished=false;
+    private bool isFinished = false;
     private void Awake()
     {
         if (Instance == null)
@@ -39,77 +39,81 @@ public class DeepRepairManager : MonoBehaviour
 
         // ... your code here ...
     }
-void OnEnable()
-{
-    MazeGenerator.OnPlayerReachTarget += HandlePlayerReachTarget;
-}
-
-void OnDisable()
-{
-    MazeGenerator.OnPlayerReachTarget -= HandlePlayerReachTarget;
-}
-
-private void Start() {
-
-}
-public void startReapir(IDeepRepairRule rule,List<string> names)
-{
-    if(maze!=null)
+    void OnEnable()
     {
-        maze.DeleteMaze();
+        MazeGenerator.OnPlayerReachTarget += HandlePlayerReachTarget;
     }
-    currentLogIndex=0;
-    isFinished=false;
-    SetRule(rule);
-    submoduleNames=names;
-    submoduleCount=names.Count;
-    maze=GetComponent<MazeGenerator>();
-    maze.GenerateMaze(10,10);  
-}
-public void EndDeepRepair()
-{
-    if(isFinished)
+
+    void OnDisable()
     {
-        if(maze!=null)
-         maze.DeleteMaze();
+        MazeGenerator.OnPlayerReachTarget -= HandlePlayerReachTarget;
+    }
+
+    private void Start()
+    {
 
     }
-    else
+    public void startReapir(IDeepRepairRule rule, List<string> names)
     {
-        Debug.Log("未完成维修，不能退出");
+        if (maze != null)
+        {
+            maze.DeleteMaze();
+        }
+        currentLogIndex = 0;
+        isFinished = false;
+        SetRule(rule);
+        submoduleNames = names;
+        submoduleCount = names.Count;
+        maze = GetComponent<MazeGenerator>();
+        maze.GenerateMaze(10, 10);
+    }
+    public void EndDeepRepair()
+    {
+        if (isFinished)
+        {
+            if (maze != null)
+                maze.DeleteMaze();
+
+        }
+        else
+        {
+            Debug.Log("未完成维修，不能退出");
+
+        }
 
     }
-    
-}
-public void IncrementLogIndex()
-{
-    currentLogIndex++;
-}
-public void SetRule(IDeepRepairRule rule)
-{
-    currentRule = rule;
-}void HandlePlayerReachTarget(MazeGenerator.Cell targetCell)
-{  
-   currentRule.HandlePlayerReachTarget(targetCell, this);
-    if (currentRule.CheckIfRepairFinished(this))
+    public void IncrementLogIndex()
     {
-        FinishDeepReapirCheck();
+        currentLogIndex++;
     }
-}
-public void FinishDeepReapirCheck()
-    { 
-            Debug.Log("Find target");
-            OnAllSubmodulesFound?.Invoke();
-            maze.disablePlayer();
-            DisassemblyManager.Instance.StartRepairMode();
-    }  
- 
-public void RemoveSubmodule(Submodule submodule)
-{
-    submodule.gameObject.SetActive(false); 
-    maze.SetSubmodulesRemoveable(false);
-    isFinished=true;
-}
+    public void SetRule(IDeepRepairRule rule)
+    {
+        currentRule = rule;
+    }
+    void HandlePlayerReachTarget(MazeGenerator.Cell targetCell)
+    {
+        currentRule.HandlePlayerReachTarget(targetCell, this);
+        if (currentRule.CheckIfRepairFinished(this))
+        {
+            FinishDeepReapirCheck();
+        }
+    }
+    public void FinishDeepReapirCheck()
+    {
+        Debug.Log("Find target");
+        OnAllSubmodulesFound?.Invoke();
+        maze.disablePlayer();
+        // 检修完成
+        ConversationController.Instance.ContinueChoice("全部找到");
+        // DisassemblyManager.Instance.StartRepairMode();
+    }
+
+    public void RemoveSubmodule(Submodule submodule)
+    {
+        submodule.gameObject.SetActive(false);
+        maze.SetSubmodulesRemoveable(false);
+        isFinished = true;
+    }
 }
 
 

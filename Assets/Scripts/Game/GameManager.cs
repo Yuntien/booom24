@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class GameManager : Singleton<GameManager>
 
     [Header("对话场景")]
     [SerializeField] private AssetReference talkScene;
+
+    [Header("深度维修场景")]
+    [SerializeField] private AssetReference deepFixScene;
 
     [Header("事件挂载")]
     // 发起广播
@@ -33,6 +37,7 @@ public class GameManager : Singleton<GameManager>
         afterSceneLoadEventSO.OnStartTalkEventRaised += OnStartTalkLoaded;
         afterSceneLoadEventSO.OnContinueTalkEventRaised += OnContinueTalkLoaded;
         afterSceneLoadEventSO.OnFixEventRaised += OnFixLoaded;
+        afterSceneLoadEventSO.OnDeepFixEventRaised += OnDeepFixLoad;
     }
 
     private void OnDisable()
@@ -106,6 +111,22 @@ public class GameManager : Singleton<GameManager>
         ConversationController.Instance.ContinueConversation();
     }
 
+    public void DeepFix()
+    {
+        // 进入深度维修场景
+        loadEventSO?.RaiseEvent(deepFixScene, true, LoadState.DeepFix);
+    }
+
+    private void OnDeepFixLoad()
+    {
+        // 先生成深度
+        IDeepRepairRule currentRule = DeepFixRuleFactory(currentTalkSceneSO.deepFixRule);
+        DeepRepairManager.Instance.startReapir(currentRule, currentTalkSceneSO.deepFixPartName);
+
+        // 继续对话
+        ConversationController.Instance.ContinueConversation();
+    }
+
     /// <summary>
     /// 进入下一段对话
     /// </summary>
@@ -115,10 +136,36 @@ public class GameManager : Singleton<GameManager>
         {
             return;
         }
-        currentTalkSceneSO = currentTalkSceneSO.nextScene;
-        FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
+
+        // 判断是否是最后一天
+        if (currentTalkSceneSO.isEndOfDay)
         {
-            ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
-        };
+            currentTalkSceneSO = currentTalkSceneSO.nextScene;
+            FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
+            {
+                ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
+            };
+        } 
+        else
+        {
+            currentTalkSceneSO = currentTalkSceneSO.nextScene;
+            Menu.Instance.FadeIn(0.1f);
+            FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
+            {
+                ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
+            };
+        }
+    }
+
+    private IDeepRepairRule DeepFixRuleFactory(DeepRepairRuleType type)
+    {
+        if (type == DeepRepairRuleType.Rule1)
+        {
+            return new Rule1();
+        } 
+        else
+        {
+            return new Rule2();
+        }
     }
 }

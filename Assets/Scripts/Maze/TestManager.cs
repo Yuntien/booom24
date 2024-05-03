@@ -5,11 +5,7 @@ using UnityEngine;
 public class TestManager : MonoBehaviour
 {
     public List<string> submoduleNames;
-    public enum DeepRepairRuleType
-{
-    Rule1,
-    Rule2
-}
+
     public DeepRepairRuleType currentRuleType;
     private IDeepRepairRule currentRule;
     private Dictionary<DeepRepairRuleType, IDeepRepairRule> ruleInstances;
@@ -26,9 +22,8 @@ public class TestManager : MonoBehaviour
     private void Start()
     {
         currentRule = ruleInstances[currentRuleType];
-        
-
     }
+
     public void startDeepRepair()
     {
         DeepRepairManager.Instance.startReapir(currentRule,submoduleNames);
