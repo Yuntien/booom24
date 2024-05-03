@@ -30,14 +30,12 @@ public class DeepRepairManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
 
-        // ... your code here ...
     }
 void OnEnable()
 {
@@ -101,7 +99,7 @@ public void FinishDeepReapirCheck()
             Debug.Log("Find target");
             OnAllSubmodulesFound?.Invoke();
             maze.disablePlayer();
-            DisassemblyManager.Instance.StartRepairMode();
+            DisassemblyManager.Instance.StartRepairMode(true);
     }  
  
 public void RemoveSubmodule(Submodule submodule)

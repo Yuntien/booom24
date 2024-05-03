@@ -95,7 +95,8 @@ public void UpdateConnectionInfoText(string startModuleName, string endModuleNam
 
         if (foundAnomalySources.Length == totalAnomalyValue)
         {
-           // checkCompleteUI.SetActive(true);
+            DisassemblyManager.Instance.StartRepairMode(false);
+            //checkCompleteUI.SetActive(true);
         }
     }
 

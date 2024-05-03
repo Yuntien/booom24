@@ -22,6 +22,9 @@ public class Module : MonoBehaviour
 
     private GameObject outline;
 
+    [HideInInspector]
+    public bool isRemovable=false;
+
     void Awake()
 {
     // Find the "in" and "out" child objects
@@ -40,6 +43,11 @@ public class Module : MonoBehaviour
     // Initialize the CheckPort
     checkport = GetComponentInChildren<CheckPort>();
 }
+private void OnMouseDown()
+{
+    // Trigger the OnModuleClicked event
+    Robot.Instance.ModuleClicked(this);
+}
 public void SetOutline(bool isActive)
 {
     outline.SetActive(isActive);
@@ -50,7 +58,7 @@ public void SetOutline(bool isActive)
         int inAnomalySum = inPorts.Sum(p => p.anomalyValue);
         int outAnomalySum = outPorts.Sum(p => p.anomalyValue);   
         finalAnomalyValue = inAnomalySum - outAnomalySum; 
-        if(finalAnomalyValue > 0 && !hasNotifiedAnomaly)
+        if(finalAnomalyValue > 0 && !hasNotifiedAnomaly)    
         {
             //起始问题模块模块
             OnAnomalyModuleFound?.Invoke(this, finalAnomalyValue);
@@ -64,9 +72,10 @@ public void SetOutline(bool isActive)
             //问题源头找到
             OnAnomalySourceFound?.Invoke(this);
             hasNotifiedAnomaly = true;
+            isRemovable=true;
            
         }
-         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
+         //UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
          checkport.isChecking=false;
     }
 

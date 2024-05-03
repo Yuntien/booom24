@@ -65,10 +65,12 @@ public class DragDrop2D : MonoBehaviour
     void OnMouseUp()
 {
     collider2d.enabled = false;
+    int moduleLayer = LayerMask.NameToLayer("Module");
+    int layerMask = ~(1 << moduleLayer);
     var rayOrigin = Camera.main.transform.position;
     var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
     RaycastHit2D hitInfo;
-    if (hitInfo = Physics2D.Raycast(rayOrigin, rayDirection))
+    if (hitInfo =  Physics2D.Raycast(rayOrigin, rayDirection, Mathf.Infinity, layerMask))
     {
         if (hitInfo.transform != null)
         {

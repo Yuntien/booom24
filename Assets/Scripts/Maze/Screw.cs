@@ -19,6 +19,30 @@ public class Screw : MonoBehaviour
     }
     void Update()
     {
+    if (Input.GetMouseButtonDown(0))
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        int layerMask = 1 << 9;  
+        layerMask = ~layerMask;  
+
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, layerMask);
+
+        if (hit.collider != null && hit.collider.gameObject == gameObject)
+        {
+            // The screw was clicked
+            isUnscrewing = true;
+            transform.DORotate(new Vector3(0, 0, -360), unscrewTime, RotateMode.FastBeyond360)
+                .SetEase(Ease.Linear)
+                .SetLoops(-1, LoopType.Incremental);
+        }
+    }
+
+    if (Input.GetMouseButtonUp(0))
+    {
+        isUnscrewing = false;
+        DOTween.Kill(transform);
+    }
         if (isUnscrewing && !isRemoved)
         {
             unscrewProgress += Time.deltaTime;

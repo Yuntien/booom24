@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1067982287748621760}
   - component: {fileID: 1278860940472832878}
-  m_Layer: 0
+  - component: {fileID: 9222323835715140933}
+  m_Layer: 9
   m_Name: Chip
   m_TagString: Horizontal
   m_Icon: {fileID: 0}
@@ -64,6 +65,52 @@ MonoBehaviour:
   finalAnomalyValue: 0
   checkport: {fileID: 9005385667733981438}
   anomalyValue: 2
+  isRemovable: 0
+--- !u!61 &9222323835715140933
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476271050389819791}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05370152, y: -0.038770825}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8344839, y: 1.8403771}
+  m_EdgeRadius: 0
 --- !u!1 &540226920393521311
 GameObject:
   m_ObjectHideFlags: 0

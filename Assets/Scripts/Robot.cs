@@ -7,6 +7,7 @@ using TMPro;
 
 public class Robot : MonoBehaviour
 {
+    public static Robot Instance { get; private set; } // Add this line
     public List<Module> Modules = new List<Module>();
     public List<Connection> Connections = new List<Connection>();
 
@@ -15,16 +16,24 @@ public class Robot : MonoBehaviour
     // The total anomalies found.
     public int TotalAnomaliesFound { get; private set; }
 
-    public GameObject screen; // The panel named "screen"
-    public TextMeshProUGUI anomalyModuleText; // The UI Text element to display anomaly module info
-    public TextMeshProUGUI taskText; // The UI Text element to display task info
-    public GameObject checkCompleteUI; // The UI for "check complete"
-
     private List<string> foundAnomalySources = new List<string>(); // Keep track of found anomaly sources
+    public event Action<Module> OnModuleClicked;
 
-    
-
-    // Event triggered when an anomaly is found.
+    public void ModuleClicked(Module module)
+    {
+        OnModuleClicked?.Invoke(module);
+    }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy the new instance if one already exists
+        }
+    }
 
     public Robot()
     {
@@ -51,6 +60,34 @@ public class Robot : MonoBehaviour
             module.OnAnomalySourceFound += HandleAnomalySourceFound;
         }
     }
+    public void RemoveModule(Module module)
+{
+    // Remove the module from the Modules list
+    Modules.Remove(module);
+
+    // Find all connections related to this module
+    List<Connection> connectionsToRemove = new List<Connection>();
+    foreach (var connection in Connections)
+    {
+        if (connection.startModule == module || connection.endModule == module)
+        {
+            connectionsToRemove.Add(connection);
+        }
+    }
+
+    // Remove the found connections from the Connections list
+    foreach (var connection in connectionsToRemove)
+    {
+        Connections.Remove(connection);
+    }
+
+    // Destroy the module and its related connections in the scene
+    foreach (var connection in connectionsToRemove)
+    {
+        Destroy(connection.gameObject);
+    }
+    Destroy(module.gameObject);
+}
 
     private void HandleAnomalyModuleFound(Module module, int anomalyValue)
     {
