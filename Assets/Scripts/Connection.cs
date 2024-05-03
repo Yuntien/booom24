@@ -12,6 +12,8 @@ public class Connection : MonoBehaviour
     public int anomalyValue;
 
     public LineRenderer lineRenderer;
+    public LineRenderer highlightLineRenderer;
+    
     //public static Dictionary<Port, Connection> portConnections = new Dictionary<Port, Connection>();
 
 private void Awake() {
@@ -26,7 +28,7 @@ private void Awake() {
 }
 public void Init()
 {
-    startPort.Connection=this;
+        startPort.Connection=this;
         endPort.Connection=this;
         lineRenderer=transform.GetComponent<LineRenderer>();
         startPort.anomalyValue=anomalyValue;
@@ -40,31 +42,62 @@ public void Init()
         lineRenderer.SetPosition(1, endPort.transform.position);
         Material myMaterial = Resources.Load<Material>("Materials/M_Wire");
         lineRenderer.material = myMaterial;
+        GameObject child = new GameObject("HighlightLine");
+
+    // 将新的子GameObject设置为原始GameObject的子对象
+    child.transform.SetParent(transform, false);
+
+    // 在新的子GameObject上添加一个新的LineRenderer组件
+    highlightLineRenderer = child.AddComponent<LineRenderer>();
+    highlightLineRenderer.startColor = Color.black;
+    highlightLineRenderer.endColor = Color.black;
+    highlightLineRenderer.startWidth = 0.1f; // Set the start width
+    highlightLineRenderer.endWidth = 0.1f; // Set the end width
+    highlightLineRenderer.SetPosition(0, startPort.transform.position);
+    highlightLineRenderer.SetPosition(1, startPort.transform.position);  // 初始时高亮线的终点和起点相同
+    highlightLineRenderer.material = myMaterial;
+
+
 
 }
 
-    public void Highlight()
+public IEnumerator Highlight()
+{
+    float duration = 0.5f;  // 点亮的持续时间
+    float elapsed = 0.0f;
+    Color highlightColor = (startPort.anomalyValue > 0 || endPort.anomalyValue > 0) ? Color.red : Color.white;
+
+    highlightLineRenderer.startColor = highlightColor;
+    highlightLineRenderer.endColor = highlightColor;
+
+    Vector3 startPosition = startPort.transform.position;
+    Vector3 endPosition = endPort.transform.position;
+
+    while (elapsed < duration)
     {
-        lineRenderer.startColor = Color.white;
-        lineRenderer.endColor = Color.white;
+        elapsed += Time.deltaTime;
+        float t = elapsed / duration;
+        Vector3 currentPosition = Vector3.Lerp(startPosition, endPosition, t);
+        highlightLineRenderer.SetPosition(1, currentPosition);
+        yield return null;
+    }
+
+    highlightLineRenderer.SetPosition(1, endPosition);
+     UIManager.instance.UpdateConnectionInfoText(
+        startModule.Name,
+        endModule.Name,
+        startPort.portType == Port.PortType.In ? "input" : "output",
+        anomalyValue > 0 ? "异常" : "正常"
+    );
+    
+}
+
+public void TurnOff()
+    {
         
-        if (startPort.anomalyValue > 0 || endPort.anomalyValue > 0)
-        {
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
-        }
-        else
-        {
-            lineRenderer.startColor = Color.white;
-            lineRenderer.endColor = Color.white;
-        }
-        //Debug.Log(lineRenderer.startColor);
-    } 
-    public void TurnOff()
-    {
         // Set the color of the LineRenderer to highlight the connection
-        lineRenderer.startColor = Color.black;
-        lineRenderer.endColor = Color.black;
+        highlightLineRenderer.startColor = Color.black;
+        highlightLineRenderer.endColor = Color.black;
     } 
 
 }

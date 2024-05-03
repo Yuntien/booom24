@@ -4,8 +4,6 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-
-
 public class Module : MonoBehaviour
 {
     public List<Port> inPorts = new List<Port>();
@@ -14,27 +12,26 @@ public class Module : MonoBehaviour
     public string Name;
     public string cn;
 
-    
-    //public int initialAnomalyValue = 0;
       [HideInInspector]
     public int finalAnomalyValue = 0;
-    //public int anomalyThreshold = 10;
-    //public bool isAnomalous = false;
-    //public bool isChecking = false;
-
-    //public bool isCheckable = false;
     public event Action<Module, int> OnAnomalyModuleFound;
     public event Action<Module> OnAnomalySourceFound;
     private bool hasNotifiedAnomaly = false; 
 
     public CheckPort checkport;
+    public int anomalyValue=2;
+
+    private GameObject outline;
+
+    [HideInInspector]
+    public bool isRemovable=false;
 
     void Awake()
 {
     // Find the "in" and "out" child objects
     Transform inObject = transform.Find("in");
     Transform outObject = transform.Find("out");
-
+    outline=transform.Find("outline").gameObject;
     // Get the Port components on the child objects and their descendants
     if (inObject != null)
     {
@@ -44,22 +41,29 @@ public class Module : MonoBehaviour
     {
         outPorts = new List<Port>(outObject.GetComponentsInChildren<Port>());
     }
-
     // Initialize the CheckPort
     checkport = GetComponentInChildren<CheckPort>();
 }
+private void OnMouseDown()
+{
+    // Trigger the OnModuleClicked event
+    Robot.Instance.ModuleClicked(this);
+}
+public void SetOutline(bool isActive)
+{
+    outline.SetActive(isActive);
 
+}
     public void CalculateFinalAnomalyValue()
     {     
         int inAnomalySum = inPorts.Sum(p => p.anomalyValue);
         int outAnomalySum = outPorts.Sum(p => p.anomalyValue);   
         finalAnomalyValue = inAnomalySum - outAnomalySum; 
-        if(finalAnomalyValue > 0 && !hasNotifiedAnomaly)
+        if(finalAnomalyValue > 0 && !hasNotifiedAnomaly)    
         {
-            //起始问题模块找到
+            //起始问题模块模块
             OnAnomalyModuleFound?.Invoke(this, finalAnomalyValue);
             hasNotifiedAnomaly = true;
-
         }
         bool inAnomaly = inPorts.Any(p => p.anomalyValue != 0);
         bool outAnomaly = outPorts.Any(p => p.anomalyValue != 0);
@@ -69,67 +73,49 @@ public class Module : MonoBehaviour
             //问题源头找到
             OnAnomalySourceFound?.Invoke(this);
             hasNotifiedAnomaly = true;
+            isRemovable=true;
            
         }
-
+         //UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
+         checkport.isChecking=false;
     }
-    public void HighlightConnections()
+
+    public void StartHightLight()
     {
-        //CalculateFinalAnomalyValue();
-
-        
-        /*foreach (var port in outPorts)
+        StartCoroutine(HighlightConnectionsProcess());       
+    }
+public IEnumerator HighlightConnectionsProcess()
+{
+    
+    foreach (var port in inPorts)
+    {
+        if (port.Connection != null)
         {
-            if (port.Connection!=null)
-            {
-                port.Connection.Highlight();
-                
-            }
-        }
-        foreach (var port in inPorts)
-        {
-            if (port.Connection!=null)
-            {
-                
-                port.Connection.Highlight();
-            
-                
-            }
-        }*/
-        /*if (!isCheckable)
-        {
-            return;
-        }*/
-
-        CalculateFinalAnomalyValue();
-
-        foreach (var port in outPorts)
-        {
-            if (port.Connection != null)
-            {
-                port.Connection.Highlight();
-                // Set the module at the end of the connection as checkable
-                //port.Connection.startModule.isCheckable = true; 
-                //port.Connection.endModule.isCheckable = true; 
-                port.Connection.startModule.checkport.OpenCover();
-                port.Connection.endModule.checkport.OpenCover(); 
-                
-            }
-        }
-        foreach (var port in inPorts)
-        {
-            if (port.Connection != null)
-            {
-                port.Connection.Highlight();
-                //port.Connection.startModule.isCheckable = true; 
-                //port.Connection.endModule.isCheckable = true; 
-                port.Connection.startModule.checkport.OpenCover();
-                port.Connection.endModule.checkport.OpenCover(); 
-                // Set the module at the start of the connection as checkable
-            }
+            StartCoroutine(port.Connection.Highlight());
+            /*UIManager.instance.UpdateConnectionInfoText(
+                port.Connection.startModule.Name,
+                port.Connection.endModule.Name,
+                port.portType == Port.PortType.In ? "in" : "out",
+                port.anomalyValue > 0 ? "异常" : "正常"
+            );*/
+            port.Connection.startModule.checkport.OpenCover();
+            port.Connection.endModule.checkport.OpenCover();
+            yield return new WaitForSeconds(1.0f);  // 等待1秒
         }
     }
-
+    foreach (var port in outPorts)
+    {
+        if (port.Connection != null)
+        {
+            StartCoroutine(port.Connection.Highlight());
+            port.Connection.startModule.checkport.OpenCover();
+            port.Connection.endModule.checkport.OpenCover();
+            yield return new WaitForSeconds(1.0f);  // 等待1秒
+        }
+    }
+    yield return new WaitForSeconds(0.5f); 
+    CalculateFinalAnomalyValue();
+}
     public void TurnOffConnections()
     {
         foreach (var port in outPorts)
@@ -149,7 +135,6 @@ public class Module : MonoBehaviour
             }
         }
     }
-
     private void Update() {
         //CheckModule();
     }

@@ -16,8 +16,8 @@ TagManager:
   - UI
   - PowerLine
   - Drag
-  - 
-  - 
+  - Screw
+  - Module
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Screw
+    uniqueID: 137110649
     locked: 0

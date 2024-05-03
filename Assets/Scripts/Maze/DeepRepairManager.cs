@@ -30,14 +30,12 @@ public class DeepRepairManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
 
-        // ... your code here ...
     }
     void OnEnable()
     {
