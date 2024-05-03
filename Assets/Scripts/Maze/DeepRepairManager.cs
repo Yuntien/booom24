@@ -54,6 +54,10 @@ private void Start() {
 }
 public void startReapir(IDeepRepairRule rule,List<string> names)
 {
+    if(maze!=null)
+    {
+        maze.DeleteMaze();
+    }
     currentLogIndex=0;
     isFinished=false;
     SetRule(rule);

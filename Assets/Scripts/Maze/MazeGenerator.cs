@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 
 public class MazeGenerator : MonoBehaviour {
@@ -54,6 +55,7 @@ public class MazeGenerator : MonoBehaviour {
     private float cellSize;
 
     private GameObject mazeParent;
+    private float speed = 1000f;
     [HideInInspector]
     public static event Action<Cell> OnPlayerReachTarget;
     public delegate void SubmoduleClickedHandler(Submodule clickedSubmodule);
@@ -101,27 +103,33 @@ public void disablePlayer()
 {
     player.SetActive(false);
 }
-void MovePlayerTo(Vector2 position, bool forceMove = false) {
+void MovePlayerTo(Vector2 targetPosition, bool forceMove = false) {
     Cell targetCell = null;
     foreach (Cell cell in GetAvailableMoves()) {
-        if (cell.cellObject.GetComponent<Collider2D>().bounds.Contains(position)) {
+        if (cell.cellObject.GetComponent<Collider2D>().bounds.Contains(targetPosition)) {
             targetCell = cell;
             break;
         }
     }
 
     if (targetCell != null) {
-        player.transform.position = targetCell.cellObject.transform.position;
+        Vector3 start = player.transform.position;
+        Vector3 end = targetCell.cellObject.transform.position;
+        float distance = Vector3.Distance(start, end);
+        float speed = 5.0f;  // 这是你想要的速度，单位是单位/秒
+        float time = distance / speed;
+        player.transform.DOMove(end, time);
         playerGridPos = targetCell.gridPos;
         if (targetCell.cScript.isTarget)
         {
             OnPlayerReachTarget?.Invoke(targetCell);
         }
     } else if (forceMove) {
-        player.transform.position = position;
+        float distance = Vector3.Distance(player.transform.position, targetPosition);
+        float time = distance / speed;
+        player.transform.DOMove(targetPosition, time);
     }
 }
-
 public Cell GetCellAt(Vector2 position)
 {
     if (allCells.ContainsKey(position))
