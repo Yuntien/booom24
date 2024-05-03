@@ -56,7 +56,7 @@ public class Robot : MonoBehaviour
     {
         Debug.Log(module.name);
         TotalAnomalyValue=anomalyValue;
-        UIManager.instance.UpdateAnomalyModuleText(module.Name, anomalyValue);
+        UIManager.instance.UpdateAnomalyModuleText(module.Name, anomalyValue,module.anomalyValue);
         
     }
 

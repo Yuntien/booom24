@@ -18,12 +18,16 @@ public class Module : MonoBehaviour
     private bool hasNotifiedAnomaly = false; 
 
     public CheckPort checkport;
+    public int anomalyValue=2;
+
+    private GameObject outline;
 
     void Awake()
 {
     // Find the "in" and "out" child objects
     Transform inObject = transform.Find("in");
     Transform outObject = transform.Find("out");
+    outline=transform.Find("outline").gameObject;
     // Get the Port components on the child objects and their descendants
     if (inObject != null)
     {
@@ -36,6 +40,11 @@ public class Module : MonoBehaviour
     // Initialize the CheckPort
     checkport = GetComponentInChildren<CheckPort>();
 }
+public void SetOutline(bool isActive)
+{
+    outline.SetActive(isActive);
+
+}
     public void CalculateFinalAnomalyValue()
     {     
         int inAnomalySum = inPorts.Sum(p => p.anomalyValue);
@@ -43,7 +52,7 @@ public class Module : MonoBehaviour
         finalAnomalyValue = inAnomalySum - outAnomalySum; 
         if(finalAnomalyValue > 0 && !hasNotifiedAnomaly)
         {
-            //起始问题模块找到
+            //起始问题模块模块
             OnAnomalyModuleFound?.Invoke(this, finalAnomalyValue);
             hasNotifiedAnomaly = true;
         }
@@ -57,6 +66,8 @@ public class Module : MonoBehaviour
             hasNotifiedAnomaly = true;
            
         }
+         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
+         checkport.isChecking=false;
     }
 
     public void StartHightLight()
@@ -65,13 +76,18 @@ public class Module : MonoBehaviour
     }
 public IEnumerator HighlightConnectionsProcess()
 {
-    CalculateFinalAnomalyValue();
-
+    
     foreach (var port in inPorts)
     {
         if (port.Connection != null)
         {
             StartCoroutine(port.Connection.Highlight());
+            /*UIManager.instance.UpdateConnectionInfoText(
+                port.Connection.startModule.Name,
+                port.Connection.endModule.Name,
+                port.portType == Port.PortType.In ? "in" : "out",
+                port.anomalyValue > 0 ? "异常" : "正常"
+            );*/
             port.Connection.startModule.checkport.OpenCover();
             port.Connection.endModule.checkport.OpenCover();
             yield return new WaitForSeconds(1.0f);  // 等待1秒
@@ -87,6 +103,8 @@ public IEnumerator HighlightConnectionsProcess()
             yield return new WaitForSeconds(1.0f);  // 等待1秒
         }
     }
+    yield return new WaitForSeconds(0.5f); 
+    CalculateFinalAnomalyValue();
 }
     public void TurnOffConnections()
     {
@@ -94,8 +112,7 @@ public IEnumerator HighlightConnectionsProcess()
         {
             if (port.Connection!=null)
             {
-                StartCoroutine(port.Connection.TurnOff());
-                //port.Connection.TurnOff();
+                port.Connection.TurnOff();
                 
             }
         }
@@ -103,7 +120,7 @@ public IEnumerator HighlightConnectionsProcess()
         {
             if (port.Connection!=null)
             {
-                StartCoroutine(port.Connection.TurnOff());
+                port.Connection.TurnOff();
                 
             }
         }

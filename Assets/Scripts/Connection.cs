@@ -13,6 +13,7 @@ public class Connection : MonoBehaviour
 
     public LineRenderer lineRenderer;
     public LineRenderer highlightLineRenderer;
+    
     //public static Dictionary<Port, Connection> portConnections = new Dictionary<Port, Connection>();
 
 private void Awake() {
@@ -62,7 +63,7 @@ public void Init()
 
 public IEnumerator Highlight()
 {
-    float duration = 0.8f;  // 点亮的持续时间
+    float duration = 0.5f;  // 点亮的持续时间
     float elapsed = 0.0f;
     Color highlightColor = (startPort.anomalyValue > 0 || endPort.anomalyValue > 0) ? Color.red : Color.white;
 
@@ -82,30 +83,21 @@ public IEnumerator Highlight()
     }
 
     highlightLineRenderer.SetPosition(1, endPosition);
+     UIManager.instance.UpdateConnectionInfoText(
+        startModule.Name,
+        endModule.Name,
+        startPort.portType == Port.PortType.In ? "input" : "output",
+        anomalyValue > 0 ? "异常" : "正常"
+    );
+    
 }
 
- public IEnumerator TurnOff()
-{
-    float duration = 0.1f;  // 回退的持续时间
-    float elapsed = 0.0f;
-
-    Vector3 startPosition = startPort.transform.position;
-    Vector3 endPosition = endPort.transform.position;
-
-    while (elapsed < duration)
+public void TurnOff()
     {
-        elapsed += Time.deltaTime;
-        float t = elapsed / duration;
-        Vector3 currentPosition = Vector3.Lerp(endPosition, startPosition, t);
-        highlightLineRenderer.SetPosition(1, currentPosition);
-        yield return null;
-    }
-
-    highlightLineRenderer.SetPosition(1, startPosition);
-
-    // Set the color of the LineRenderer to highlight the connection
-    lineRenderer.startColor = Color.black;
-    lineRenderer.endColor = Color.black;
-}
+        
+        // Set the color of the LineRenderer to highlight the connection
+        highlightLineRenderer.startColor = Color.black;
+        highlightLineRenderer.endColor = Color.black;
+    } 
 
 }

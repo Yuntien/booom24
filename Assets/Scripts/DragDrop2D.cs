@@ -10,6 +10,10 @@ public class DragDrop2D : MonoBehaviour
     Collider2D collider2d;
     public string destinationTag = "DropArea";
     CheckPort checkport;
+    private float lastDragTime = 0f;
+
+    // The cooldown time in seconds between two dragging operations
+    private float dragCooldown = 0.1f;
 
     void Awake()
     {
@@ -21,52 +25,90 @@ public class DragDrop2D : MonoBehaviour
         transform.position = startPos.position;
     }
 
-    void OnMouseDown()
+      void OnMouseDown()
     {
+        if (Time.time < lastDragTime + dragCooldown)
+        {
+            return;
+        }
+
+
+
+        if (checkport && checkport.isChecking)
+        {
+            // If the port is currently checking, don't allow dragging
+            return;
+        }
+
         offset = transform.position - MouseWorldPosition();
 
         // Disconnect the power line when starting to drag
         if (checkport)
         {
             checkport.Disconnect();
+            checkport=null;
         }
+        lastDragTime = Time.time;
     }
+
     void OnMouseDrag()
     {
+        if (checkport && checkport.isChecking)
+        {
+            // If the port is currently checking, don't allow dragging
+            return;
+        }
+
         transform.position = MouseWorldPosition() + offset;
     }
+
     void OnMouseUp()
+{
+    collider2d.enabled = false;
+    var rayOrigin = Camera.main.transform.position;
+    var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
+    RaycastHit2D hitInfo;
+    if (hitInfo = Physics2D.Raycast(rayOrigin, rayDirection))
     {
-        collider2d.enabled = false;
-        var rayOrigin = Camera.main.transform.position;
-        var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-        RaycastHit2D hitInfo;
-        if (hitInfo = Physics2D.Raycast(rayOrigin, rayDirection))
+        if (hitInfo.transform != null)
         {
-
-            if (hitInfo.transform != null)
+            CheckPort newCheckPort = hitInfo.transform.GetComponent<CheckPort>();
+            if (newCheckPort != null && newCheckPort.isCheckable)
             {
-                checkport = hitInfo.transform.GetComponent<CheckPort>();
-            }
-
-            if (checkport != null && checkport.isCheckable)
-            {
-                // Connect the power line when dropped on a checkable drop area
+                // If the power line is dropped on a checkable drop area,
+                // connect it and update the checkport reference.
                 transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
+                checkport = newCheckPort;
                 checkport.Connect();
             }
             else
             {
-                // Move the power line back to the start position if the module is not checkable
-                transform.DOMove(startPos.position, 0.15f);
+                // If the power line is dropped on a non-checkable area,
+                // move it back to the start position.
+                // But if the old checkport is checking, don't move it.
+                if (checkport == null || !checkport.isChecking)
+                    transform.DOMove(startPos.position, 0.15f);
             }
         }
         else
         {
-            transform.DOMove(startPos.position, 0.15f);
+            // If the power line is dropped on a non-checkable area,
+            // move it back to the start position.
+            // But if the old checkport is checking, don't move it.
+            if (checkport == null || !checkport.isChecking)
+                transform.DOMove(startPos.position, 0.15f);
         }
-        collider2d.enabled = true;
     }
+    else
+    {
+        // If the power line is dropped on a non-checkable area,
+        // move it back to the start position.
+        // But if the old checkport is checking, don't move it.
+        if (checkport == null || !checkport.isChecking)
+            transform.DOMove(startPos.position, 0.15f);
+    }
+    collider2d.enabled = true;
+}
 
     Vector3 MouseWorldPosition()
     {
