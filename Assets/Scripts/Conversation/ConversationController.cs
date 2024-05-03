@@ -118,12 +118,35 @@ public class ConversationController : Singleton<ConversationController>
             UIManager.instance.ShowRemoveWindow();
             tempAction = userEvent.Advance;
         }
-        else if(userEvent.Name == "维修完成")
+        else if (userEvent.Name == "维修完成")
         {
             DialogUIController.Instance.Hide();
             // 维修完成
             tempAction = userEvent.Advance;
             GameManager.Instance.ContinueTalk();
+        }
+        else if (userEvent.Name == "人物淡入")
+        {
+            GuestController.Instance.GuestFadeIn();
+        }
+        else if (userEvent.Name == "人物淡出")
+        {
+            GuestController.Instance.GuestFadeOut();
+        }
+        else if (userEvent.Name == "人物出现")
+        {
+            GuestController.Instance.ShowGuest();
+        }
+        else if (userEvent.Name == "人物隐藏")
+        {
+            GuestController.Instance.HideGuest();
+        }
+        else if (userEvent.Name == "人物移动至维修处")
+        {
+            tempAction = userEvent.Advance;
+            GuestController.Instance.MoveGuestToFix().onComplete += () => {
+                tempAction.Invoke();
+            };
         }
     }
 

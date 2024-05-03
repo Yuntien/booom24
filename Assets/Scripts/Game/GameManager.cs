@@ -79,6 +79,8 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private void OnContinueTalkLoaded()
     {
+        // 人物出现
+
         // 继续对话
         ConversationController.Instance.ContinueConversation();
     }
