@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     // 接受监听
     [SerializeField] private LoadStateEventSO afterSceneLoadEventSO;
 
+    [SerializeField] private FadeEventSO fadeEventSO;
+
     private void Start()
     {
         // 加载对话场景
@@ -98,5 +100,17 @@ public class GameManager : Singleton<GameManager>
     {
         // 场景加载完成，对话继续
         ConversationController.Instance.ContinueConversation();
+    }
+
+    /// <summary>
+    /// 进入下一段对话
+    /// </summary>
+    public void NextTalk()
+    {
+        currentTalkSceneSO = currentTalkSceneSO.nextScene;
+        FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
+        {
+            ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
+        };
     }
 }

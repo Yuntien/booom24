@@ -57,4 +57,13 @@ public class GuestController : Singleton<GuestController>
     {
         return guestSprite.transform.DOMove(fixPos.position, 1f);
     }
+
+    /// <summary>
+    /// 切换人物图片
+    /// </summary>
+    /// <param name="picLocation">图片文件在Resource文件夹中的位置</param>
+    public void ChangeGuestPic(string picLocation)
+    {
+        guestSprite.sprite = Resources.Load<Sprite>(picLocation);
+    }
 }

@@ -53,7 +53,6 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleConversationEvent(IConversationEvent evt)
     {
-        Debug.Log(evt.ToString());
         switch (evt)
         {
             case MessageEvent messageEvent:
@@ -149,7 +148,6 @@ public class ConversationController : Singleton<ConversationController>
             };
         }
     }
-
     private void HandleActorMessageEvent(ActorMessageEvent evt)
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
@@ -166,6 +164,7 @@ public class ConversationController : Singleton<ConversationController>
     {
         Debug.Log("对话完成，隐藏对话框");
         DialogUIController.Instance.Hide();
+        GameManager.Instance.NextTalk();
     }
 }
 
