@@ -78,6 +78,7 @@ public void SetOutline(bool isActive)
         }
          //UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
          checkport.isChecking=false;
+         ConversationController.Instance.ContinueChoice(Name);
     }
 
     public void StartHightLight()

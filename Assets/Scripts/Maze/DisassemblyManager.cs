@@ -89,9 +89,11 @@ public class DisassemblyManager : MonoBehaviour
         }   
         screwsRemovedCount = 0;
     }
+       //维修开始，触发这里
+
     public void StartRepairMode(bool isSub)
     {
-        Initialize();
+        Initialize(); 
         isInRepairMode = true;
         // Instantiate the screwdriverPrefab
         screwdriver=Instantiate(screwdriverPrefab);
@@ -105,8 +107,10 @@ public class DisassemblyManager : MonoBehaviour
         }
         
     }
+    //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
+    ConversationController.Instance.ContinueChoice(module.Name);
     if (module != null)
     {
         if (module.isRemovable)
@@ -120,8 +124,10 @@ public class DisassemblyManager : MonoBehaviour
         }
     }
 }
+ //维修时点击模块，触发这里
     private void HandleSubmoduleClicked(Submodule submodule)
     {
+        ConversationController.Instance.ContinueChoice(submodule.name);
 
         if (submodule != null)
                 {
@@ -167,10 +173,10 @@ public class DisassemblyManager : MonoBehaviour
      
     screwsRemovedCount++;
     Debug.Log("remove screw");
-
-    // If all screws have been removed
+    //螺丝全部拧掉，修完成，触发这里
     if (screwsRemovedCount >= screws.Count)
     {
+        GameManager.Instance.ContinueTalk();   
         // Disable the visual GameObjects
         subModuleVisual.SetActive(false);
         Destroy(screwdriver);
