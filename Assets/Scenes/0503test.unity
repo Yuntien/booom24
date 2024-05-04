@@ -329,9 +329,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4200873711919423326, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: Name
+      value: VISUAL
+      objectReference: {fileID: 0}
     - target: {fileID: 5165613994682887374, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Name
       value: RobotSell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987386473434625853, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: Name
+      value: LISTENER
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
