@@ -42,7 +42,7 @@ public class DisassemblyManager : MonoBehaviour
 
     private void OnEnable()
     {
-        OnDisassemblyEnd.AddListener(ConversationController.Instance.ContinueConversation);
+        //OnDisassemblyEnd.AddListener(ConversationController.Instance.ContinueConversation);
     }
 
     private void OnDisable()
@@ -132,7 +132,7 @@ public class DisassemblyManager : MonoBehaviour
  //维修时点击模块，触发这里
     private void HandleSubmoduleClicked(Submodule submodule)
     {
-        ConversationController.Instance.ContinueChoice(submodule.name);
+        //ConversationController.Instance.ContinueChoice(submodule.name);
 
         if (submodule != null)
                 {
@@ -160,9 +160,7 @@ public class DisassemblyManager : MonoBehaviour
             {
                 moduleVisual.SetActive(true);
                 moduleVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
-                Robot.Instance.OnModuleClicked -= HandleModuleClicked;
-                
-
+                Robot.Instance.OnModuleClicked -= HandleModuleClicked;              
             }
             
             //moduleVisual.SetActive(false);

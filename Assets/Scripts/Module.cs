@@ -95,16 +95,10 @@ public IEnumerator HighlightConnectionsProcess()
         {
             Debug.Log(port.Connection.name);
             coroutines.Add(StartCoroutine(port.Connection.Highlight()));
-            //StartCoroutine(port.Connection.Highlight());
-            /*UIManager.instance.UpdateConnectionInfoText(
-                port.Connection.startModule.Name,
-                port.Connection.endModule.Name,
-                port.portType == Port.PortType.In ? "in" : "out",
-                port.anomalyValue > 0 ? "异常" : "正常"
-            );*/
+
             port.Connection.startModule.checkport.OpenCover();
             port.Connection.endModule.checkport.OpenCover();
-            //yield return new WaitForSeconds(1.0f);  // 等待1秒
+
         }
     }
     foreach (var port in outPorts)
@@ -112,10 +106,9 @@ public IEnumerator HighlightConnectionsProcess()
         if (port.Connection != null)
         {
             coroutines.Add(StartCoroutine(port.Connection.Highlight()));
-            //StartCoroutine(port.Connection.Highlight());
             port.Connection.startModule.checkport.OpenCover();
             port.Connection.endModule.checkport.OpenCover();
-            //yield return new WaitForSeconds(1.0f);  // 等待1秒
+
         }
     }
     foreach (Coroutine coroutine in coroutines)

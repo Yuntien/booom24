@@ -80,7 +80,7 @@ public void UpdateConnectionInfoText(string startModuleName, string endModuleNam
     {
         Debug.Log("111222");
 
-        anomalyModuleText.text = $"问题模块: {moduleName}\n异常值: {finalAnomalyValue}\nyuzhi: {anomalyValue}";
+        anomalyModuleText.text = $"问题模块: {moduleName}";
         taskText.text = $"找到异常源: {0} / {finalAnomalyValue}\n";
     }
 
