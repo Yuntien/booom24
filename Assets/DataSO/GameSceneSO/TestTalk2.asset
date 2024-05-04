@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestTalk2
   m_EditorClassIdentifier: 
   fixSceneReference:
-    m_AssetGUID: ec7307887fb3e1243b3fe3b04d69467e
+    m_AssetGUID: da0680207a8baa74b845313c4dd73114
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

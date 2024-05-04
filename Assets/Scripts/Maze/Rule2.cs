@@ -7,7 +7,7 @@ public class Rule2 : IDeepRepairRule
             targetCell.submodule.screenText.text = manager.submoduleNames[manager.GetCurrentLogIndex()];
             targetCell.submodule.isDefined = true;
             manager.IncrementLogIndex();
-
+            ConversationController.Instance.ContinueChoice(targetCell.submodule.screenText.text);
             // In Rule2, submodule is set as removable every time a target is reached
             targetCell.submodule.SetRemovable(true);
         }

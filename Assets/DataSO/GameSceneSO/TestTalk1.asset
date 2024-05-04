@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: TestTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
-    m_AssetGUID: ec7307887fb3e1243b3fe3b04d69467e
+    m_AssetGUID: da0680207a8baa74b845313c4dd73114
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  deepFixPartName: []
+  deepFixRule: 0
   conversation: {fileID: 11400000, guid: 6081a534a7d7d63428c13f8e86411f32, type: 2}
   nextScene: {fileID: 11400000, guid: 3fd52b427cddf4942a1a6a31f0e2880c, type: 2}
+  isEndOfDay: 0

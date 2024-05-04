@@ -138,7 +138,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         // 判断是否是最后一天
-        if (currentTalkSceneSO.isEndOfDay)
+        if (!currentTalkSceneSO.isEndOfDay)
         {
             currentTalkSceneSO = currentTalkSceneSO.nextScene;
             FadeCanvas.Instance.FadeOut(1f).onComplete += () =>

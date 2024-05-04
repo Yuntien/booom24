@@ -83,7 +83,8 @@ void Update() {
         {
             if (submodule.GetComponent<Collider2D>().bounds.Contains(mousePos))
             {
-                Debug.Log(submodule.name);
+                    // Debug.Log(submodule.name);
+                ConversationController.Instance.ContinueChoice(submodule.name);
                 // Trigger the event
                 OnSubmoduleClicked?.Invoke(submodule);
                 break;

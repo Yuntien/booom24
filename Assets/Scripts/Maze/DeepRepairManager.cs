@@ -102,7 +102,7 @@ public class DeepRepairManager : MonoBehaviour
         OnAllSubmodulesFound?.Invoke();
         maze.disablePlayer();
         // 检修完成
-        ConversationController.Instance.ContinueChoice("全部找到");
+        ConversationController.Instance.AllFound();
         // DisassemblyManager.Instance.StartRepairMode();
     }
 

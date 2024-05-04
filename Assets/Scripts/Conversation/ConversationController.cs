@@ -46,11 +46,18 @@ public class ConversationController : Singleton<ConversationController>
     /// <param name="choiceName">选项名称</param>
     public void ContinueChoice(string choiceName)
     {
+        Debug.Log(choiceName);
+        Debug.Log(runner.GetProperty<bool>("全部找到").ToString());
         if (optionMap.ContainsKey(choiceName))
         {
             var choice = optionMap[choiceName];
             choice.Advance.Invoke();
         }
+    }
+
+    public void AllFound()
+    {
+        runner.SetProperty("全部找到", true);
     }
 
     private void HandleConversationEvent(IConversationEvent evt)
@@ -118,6 +125,7 @@ public class ConversationController : Singleton<ConversationController>
         }
         else if (userEvent.Name == "进行拆除")
         {
+            Debug.Log("进行拆除");
             DialogUIController.Instance.Hide();
             // TODO 打开进行拆除面板
             DisassemblyManager.Instance.StartRepairMode(false);

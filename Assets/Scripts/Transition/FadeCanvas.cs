@@ -22,6 +22,7 @@ public class FadeCanvas : Singleton<FadeCanvas>
 
     private void OnFadeEvent(Color target, float duration, bool fadeIn)
     {
+        Debug.Log("узуж" + fadeIn);
         fadeImage.DOBlendableColor(target, duration);
     }
 
@@ -33,6 +34,7 @@ public class FadeCanvas : Singleton<FadeCanvas>
 
     public Tweener FadeOut(float duration)
     {
+        Debug.Log("узуж╣╜ЁЖ");
         return fadeImage.DOBlendableColor(Color.clear, duration);
     }
 }

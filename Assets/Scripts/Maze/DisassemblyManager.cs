@@ -93,6 +93,7 @@ public class DisassemblyManager : MonoBehaviour
 
     public void StartRepairMode(bool isSub)
     {
+        Debug.Log("Repair");
         Initialize(); 
         isInRepairMode = true;
         // Instantiate the screwdriverPrefab
@@ -110,8 +111,10 @@ public class DisassemblyManager : MonoBehaviour
     //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
-    ConversationController.Instance.ContinueChoice(module.Name);
-    if (module != null)
+
+        ConversationController.Instance.ContinueChoice(module.Name);
+        
+        if (module != null)
     {
         if (module.isRemovable)
         {
