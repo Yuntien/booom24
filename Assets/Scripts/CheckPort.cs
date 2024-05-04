@@ -36,12 +36,12 @@ IEnumerator connectCoroutine = null;
 {
     if (module != null && isCheckable)
     {
+        //这里是每次插module的地方
         isChecking = true;
         module.SetOutline(true);
         Debug.Log(module.name+"ischecking");
         UIManager.instance.UpdateModuleCheckText(module.Name);
 
-        // Store the coroutine in a variable so it can be stopped later.
         connectCoroutine = WaitAndHighlight(1.0f);
         StartCoroutine(connectCoroutine);
     }
@@ -54,6 +54,7 @@ IEnumerator connectCoroutine = null;
     }
     public void HighlightBegin()
     {
+        //这里是每次插点亮的地方，现在用协程去模拟下停顿
         if (module != null && isCheckable)
         {
             
