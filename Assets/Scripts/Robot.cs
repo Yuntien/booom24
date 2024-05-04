@@ -103,7 +103,7 @@ public class Robot : MonoBehaviour
         // Add the found anomaly source to our list
         foundAnomalySources.Add(module.Name);
         UIManager.instance.UpdateTaskText(foundAnomalySources.ToArray(), TotalAnomalyValue);
-        //ConversationController.Instance.ContinueChoice("全部找到");
+        ConversationController.Instance.ContinueChoice("全部找到");
 
     }
     

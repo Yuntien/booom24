@@ -102,8 +102,8 @@ public class DeepRepairManager : MonoBehaviour
         OnAllSubmodulesFound?.Invoke();
         maze.disablePlayer();
         // 检修完成
-        //ConversationController.Instance.AllFound();
-        DisassemblyManager.Instance.StartRepairMode(true);
+        ConversationController.Instance.AllFound();
+        //DisassemblyManager.Instance.StartRepairMode(true);
     }
 
     public void RemoveSubmodule(Submodule submodule)
