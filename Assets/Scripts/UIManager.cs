@@ -93,16 +93,16 @@ public void UpdateConnectionInfoText(string startModuleName, string endModuleNam
             taskText.text += $"异常源: {source}已找到\n";
         }
 
-        if (foundAnomalySources.Length == totalAnomalyValue)
+        /*if (foundAnomalySources.Length == totalAnomalyValue)
         {
             DisassemblyManager.Instance.StartRepairMode(false);
             //checkCompleteUI.SetActive(true);
-        }
+        }*/
     }
 
     public void ContinueTalk()
     {
-        removeWindow.SetActive(false);
+        
         GameManager.Instance.ContinueTalk();
     }
 }

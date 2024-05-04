@@ -120,7 +120,7 @@ public class ConversationController : Singleton<ConversationController>
         {
             DialogUIController.Instance.Hide();
             // TODO 打开进行拆除面板
-            UIManager.instance.ShowRemoveWindow();
+            DisassemblyManager.Instance.StartRepairMode(false);
             tempAction = userEvent.Advance;
         }
         else if (userEvent.Name == "维修完成")
@@ -169,7 +169,7 @@ public class ConversationController : Singleton<ConversationController>
         {
             DialogUIController.Instance.Hide();
             tempAction = userEvent.Advance;
-            DisassemblyManager.Instance.StartRepairMode();
+            DisassemblyManager.Instance.StartRepairMode(true);
         }
         else if (userEvent.Name == "深度维修完成")
         {
