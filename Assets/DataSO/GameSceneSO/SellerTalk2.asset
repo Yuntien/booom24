@@ -17,7 +17,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  deepFixPartName: []
+  deepFixPartName:
+  - "\u7AE5\u5E74"
+  - "\u540C\u4E8B"
+  - "\u60C5\u612B"
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: 9d33d8cbb88a0114c954ac564feec330, type: 2}
   nextScene: {fileID: 11400000, guid: 3a7bec6b44eb23c4ab6bc1b4e07037d8, type: 2}
