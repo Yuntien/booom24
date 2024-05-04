@@ -78,7 +78,7 @@ public void SetOutline(bool isActive)
         }
          //UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
          checkport.isChecking=false;
-         ConversationController.Instance.ContinueChoice(Name);
+        // ConversationController.Instance.ContinueChoice(Name);
     }
 
     public void StartHightLight()
@@ -87,12 +87,15 @@ public void SetOutline(bool isActive)
     }
 public IEnumerator HighlightConnectionsProcess()
 {
+    List<Coroutine> coroutines = new List<Coroutine>();
     
     foreach (var port in inPorts)
     {
         if (port.Connection != null)
         {
-            StartCoroutine(port.Connection.Highlight());
+            Debug.Log(port.Connection.name);
+            coroutines.Add(StartCoroutine(port.Connection.Highlight()));
+            //StartCoroutine(port.Connection.Highlight());
             /*UIManager.instance.UpdateConnectionInfoText(
                 port.Connection.startModule.Name,
                 port.Connection.endModule.Name,
@@ -101,20 +104,24 @@ public IEnumerator HighlightConnectionsProcess()
             );*/
             port.Connection.startModule.checkport.OpenCover();
             port.Connection.endModule.checkport.OpenCover();
-            yield return new WaitForSeconds(1.0f);  // 等待1秒
+            //yield return new WaitForSeconds(1.0f);  // 等待1秒
         }
     }
     foreach (var port in outPorts)
     {
         if (port.Connection != null)
         {
-            StartCoroutine(port.Connection.Highlight());
+            coroutines.Add(StartCoroutine(port.Connection.Highlight()));
+            //StartCoroutine(port.Connection.Highlight());
             port.Connection.startModule.checkport.OpenCover();
             port.Connection.endModule.checkport.OpenCover();
-            yield return new WaitForSeconds(1.0f);  // 等待1秒
+            //yield return new WaitForSeconds(1.0f);  // 等待1秒
         }
     }
-    yield return new WaitForSeconds(0.5f); 
+    foreach (Coroutine coroutine in coroutines)
+    {
+        yield return coroutine;
+    }
     CalculateFinalAnomalyValue();
 }
     public void TurnOffConnections()

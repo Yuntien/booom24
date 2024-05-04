@@ -9,7 +9,7 @@ public class DragDrop2D : MonoBehaviour
     public Transform startPos;
     Collider2D collider2d;
     public string destinationTag = "DropArea";
-    CheckPort checkport;
+    CheckPort checkport=null;
     private float lastDragTime = 0f;
 
     // The cooldown time in seconds between two dragging operations
@@ -44,10 +44,12 @@ public class DragDrop2D : MonoBehaviour
 
         // Disconnect the power line when starting to drag
         if (checkport)
-        {
-            checkport.Disconnect();
-            checkport=null;
-        }
+    {
+        Debug.Log("Disconnecting checkport...");
+        checkport.Disconnect();
+        checkport=null;
+        Debug.Log("Checkport disconnected and cleared.");
+    }
         lastDragTime = Time.time;
     }
 
@@ -62,35 +64,24 @@ public class DragDrop2D : MonoBehaviour
         transform.position = MouseWorldPosition() + offset;
     }
 
-    void OnMouseUp()
+   void OnMouseUp()
 {
     collider2d.enabled = false;
-    int moduleLayer = LayerMask.NameToLayer("Module");
-    int layerMask = ~(1 << moduleLayer);
-    var rayOrigin = Camera.main.transform.position;
-    var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-    RaycastHit2D hitInfo;
-    if (hitInfo =  Physics2D.Raycast(rayOrigin, rayDirection, Mathf.Infinity, layerMask))
+
+    int layerMask = LayerMask.GetMask("Checkport");
+    Collider2D hitCollider = Physics2D.OverlapCircle(MouseWorldPosition(), 0.1f, layerMask);
+
+    if (hitCollider != null)
     {
-        if (hitInfo.transform != null)
+        Debug.Log("鼠标抬起来发现了" + hitCollider.transform.name);
+        CheckPort newCheckPort = hitCollider.transform.GetComponent<CheckPort>();
+        if (newCheckPort != null && newCheckPort.isCheckable)
         {
-            CheckPort newCheckPort = hitInfo.transform.GetComponent<CheckPort>();
-            if (newCheckPort != null && newCheckPort.isCheckable)
-            {
-                // If the power line is dropped on a checkable drop area,
-                // connect it and update the checkport reference.
-                transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
-                checkport = newCheckPort;
-                checkport.Connect();
-            }
-            else
-            {
-                // If the power line is dropped on a non-checkable area,
-                // move it back to the start position.
-                // But if the old checkport is checking, don't move it.
-                if (checkport == null || !checkport.isChecking)
-                    transform.DOMove(startPos.position, 0.15f);
-            }
+            // If the power line is dropped on a checkable drop area,
+            // connect it and update the checkport reference.
+            transform.position = hitCollider.transform.position + new Vector3(0, 0, -0.01f);
+            checkport = newCheckPort;
+            checkport.Connect();
         }
         else
         {
@@ -109,6 +100,7 @@ public class DragDrop2D : MonoBehaviour
         if (checkport == null || !checkport.isChecking)
             transform.DOMove(startPos.position, 0.15f);
     }
+
     collider2d.enabled = true;
 }
 
