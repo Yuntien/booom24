@@ -6,7 +6,7 @@ using System;
 using DG.Tweening;
 
 
-public class MazeGenerator : MonoBehaviour {
+public class MazeGenerator : Singleton<MazeGenerator> {
 
     #region Variables:
 
@@ -399,6 +399,7 @@ void SpawnSubModule(List<Cell> path,int targetCount)
         allSubmodules.Clear();
         if (mazeParent != null) Destroy(mazeParent);
         Destroy(player);
+        DisassemblyManager.Instance.DestroyScrewdriver();
     }
 
     public void InitValues()

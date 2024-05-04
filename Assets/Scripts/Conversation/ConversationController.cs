@@ -81,10 +81,25 @@ public class ConversationController : Singleton<ConversationController>
             case UserEvent userEvent:
                 HandleUserEvent(userEvent);
                 break;
+            case GameControlEvent gameControlEvent:
+                HandleGameControlEvent(gameControlEvent);
+                break;
             case EndEvent endEvent:
                 HandleEnd();
                 break;
             default:
+                break;
+        }
+    }
+
+    private void HandleGameControlEvent(GameControlEvent evt)
+    {
+        switch (evt.Key)
+        {
+            case "延时":
+                DialogUIController.Instance.Hide();
+                float delayTime = float.Parse(evt.Value);
+                StartCoroutine(Delay(delayTime, evt.Advance));
                 break;
         }
     }
@@ -187,6 +202,7 @@ public class ConversationController : Singleton<ConversationController>
             //{
             //    Destroy(maze);
             //}
+            MazeGenerator.Instance.DeleteMaze();
 
             tempAction = userEvent.Advance;
             DialogUIController.Instance.Hide();
@@ -217,6 +233,12 @@ public class ConversationController : Singleton<ConversationController>
         Debug.Log("对话完成，隐藏对话框");
         DialogUIController.Instance.Hide();
         GameManager.Instance.NextTalk();
+    }
+
+    private IEnumerator Delay(float delayTime, Action action)
+    {
+        yield return new WaitForSeconds(delayTime);
+        action?.Invoke();
     }
 }
 

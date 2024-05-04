@@ -4,13 +4,15 @@ using Conversa.Runtime.Interfaces;
 public class GameControlEvent : IConversationEvent
 {
     // TEMPLATE: Replace with your custom fields 
-    public string Message { get; }
+    public string Key { get; }
+    public string Value { get; }
     public Action Advance { get; }
 
     // TEMPLATE: Replace with your custom fields 
-    public GameControlEvent(string message, Action advance)
+    public GameControlEvent(string key, string value, Action advance)
     {
-        Message = message;
+        Key = key;
+        Value = value;
         Advance = advance;
     }
 }

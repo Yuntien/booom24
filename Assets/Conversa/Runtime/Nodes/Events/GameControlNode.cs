@@ -10,7 +10,8 @@ using UnityEngine;
 public class GameControlNode : BaseNode, IEventNode
 {
     // TEMPLATE: Replace with your own custom fields
-    public string message;
+    public string key;
+    public string value;
 
     public GameControlNode() { }
 
@@ -23,7 +24,7 @@ public class GameControlNode : BaseNode, IEventNode
         }
 
         // TEMPLATE: Replace with your own custom event
-        var e = new GameControlEvent(message, Advance);
+        var e = new GameControlEvent(key, value, Advance);
         conversationEvents.OnConversationEvent.Invoke(e);
     }
 }

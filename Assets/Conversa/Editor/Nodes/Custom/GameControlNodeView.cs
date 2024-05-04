@@ -7,7 +7,9 @@ namespace Conversa.Editor
     {
         protected override string Title => "GameControl";
 
-        protected TextField messageField;
+        protected TextField keyField;
+
+        protected TextField valueField;
 
         // Constructors
 
@@ -18,12 +20,18 @@ namespace Conversa.Editor
         protected override void SetBody()
         {
             // TEMPLATE: Write your view body here
-            messageField = new TextField();
-            messageField.SetValueWithoutNotify(Data.message);
-            messageField.RegisterValueChangedCallback(e => Data.message = e.newValue);
-            messageField.isDelayed = true;
+            keyField = new TextField();
+            keyField.SetValueWithoutNotify(Data.key);
+            keyField.RegisterValueChangedCallback(e => Data.key = e.newValue);
+            keyField.isDelayed = true;
 
-            bodyContainer.Add(messageField);
+            valueField = new TextField();
+            valueField.SetValueWithoutNotify(Data.value);
+            valueField.RegisterValueChangedCallback(e => Data.value = e.newValue);
+            valueField.isDelayed = true;
+
+            bodyContainer.Add(keyField);
+            bodyContainer.Add(valueField);
         }
 
         [NodeMenuModifier]

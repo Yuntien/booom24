@@ -111,10 +111,10 @@ public class DisassemblyManager : MonoBehaviour
     //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
-        if (isSub)
-        {
-            ConversationController.Instance.ContinueChoice(module.Name);
-        }
+        //if (isSub)
+        //{
+        //    ConversationController.Instance.ContinueChoice(module.Name);
+        //}
         
         if (module != null)
     {
@@ -180,8 +180,7 @@ public class DisassemblyManager : MonoBehaviour
     Debug.Log("remove screw");
     //螺丝全部拧掉，修完成，触发这里
     if (screwsRemovedCount >= screws.Count)
-    {
-        GameManager.Instance.ContinueTalk();   
+    {  
         // Disable the visual GameObjects
         subModuleVisual.SetActive(false);
         Destroy(screwdriver);
@@ -198,6 +197,12 @@ public class DisassemblyManager : MonoBehaviour
         }
         isInRepairMode=false;
         OnDisassemblyEnd?.Invoke();
+            //GameManager.Instance.ContinueTalk();
+        }
     }
+
+    public void DestroyScrewdriver()
+    {
+        Destroy(screwdriver);
     }
 }
