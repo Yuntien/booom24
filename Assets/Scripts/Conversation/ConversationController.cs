@@ -47,7 +47,6 @@ public class ConversationController : Singleton<ConversationController>
     public void ContinueChoice(string choiceName)
     {
         Debug.Log(choiceName);
-        Debug.Log(runner.GetProperty<bool>("È«²¿ÕÒµ½").ToString());
         if (optionMap.ContainsKey(choiceName))
         {
             var choice = optionMap[choiceName];

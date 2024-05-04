@@ -103,7 +103,7 @@ public class DeepRepairManager : MonoBehaviour
         maze.disablePlayer();
         // 检修完成
         ConversationController.Instance.AllFound();
-        // DisassemblyManager.Instance.StartRepairMode();
+        //DisassemblyManager.Instance.StartRepairMode(true);
     }
 
     public void RemoveSubmodule(Submodule submodule)

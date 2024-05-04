@@ -46,16 +46,24 @@ public void Init()
 
     // 将新的子GameObject设置为原始GameObject的子对象
     child.transform.SetParent(transform, false);
+    gameObject.layer = LayerMask.NameToLayer("Module");
+    child.gameObject.layer=LayerMask.NameToLayer("Module");
+    
+    if(!highlightLineRenderer)
+    {
+        highlightLineRenderer = child.AddComponent<LineRenderer>();
+        highlightLineRenderer.sortingOrder = 2;
+        highlightLineRenderer.startColor = Color.black;
+        highlightLineRenderer.endColor = Color.black;
+        highlightLineRenderer.startWidth = 0.1f; // Set the start width
+        highlightLineRenderer.endWidth = 0.1f; // Set the end width
+        highlightLineRenderer.SetPosition(0, startPort.transform.position);
+        highlightLineRenderer.SetPosition(1, startPort.transform.position);  // 初始时高亮线的终点和起点相同
+        highlightLineRenderer.material = myMaterial;
 
+    }
     // 在新的子GameObject上添加一个新的LineRenderer组件
-    highlightLineRenderer = child.AddComponent<LineRenderer>();
-    highlightLineRenderer.startColor = Color.black;
-    highlightLineRenderer.endColor = Color.black;
-    highlightLineRenderer.startWidth = 0.1f; // Set the start width
-    highlightLineRenderer.endWidth = 0.1f; // Set the end width
-    highlightLineRenderer.SetPosition(0, startPort.transform.position);
-    highlightLineRenderer.SetPosition(1, startPort.transform.position);  // 初始时高亮线的终点和起点相同
-    highlightLineRenderer.material = myMaterial;
+    
 
 
 
@@ -63,10 +71,11 @@ public void Init()
 
 public IEnumerator Highlight()
 {
+    
     float duration = 0.5f;  // 点亮的持续时间
     float elapsed = 0.0f;
     Color highlightColor = (startPort.anomalyValue > 0 || endPort.anomalyValue > 0) ? Color.red : Color.white;
-
+    highlightLineRenderer.enabled=true;
     highlightLineRenderer.startColor = highlightColor;
     highlightLineRenderer.endColor = highlightColor;
 
@@ -98,6 +107,7 @@ public void TurnOff()
         // Set the color of the LineRenderer to highlight the connection
         highlightLineRenderer.startColor = Color.black;
         highlightLineRenderer.endColor = Color.black;
+        highlightLineRenderer.enabled=false;
     } 
 
 }

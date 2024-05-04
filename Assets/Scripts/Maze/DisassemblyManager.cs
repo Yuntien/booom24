@@ -160,12 +160,11 @@ public class DisassemblyManager : MonoBehaviour
             {
                 moduleVisual.SetActive(true);
                 moduleVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
-                Robot.Instance.OnModuleClicked -= HandleModuleClicked;
-                
-
+                Robot.Instance.OnModuleClicked -= HandleModuleClicked;              
             }
             
             //moduleVisual.SetActive(false);
+
            
         
          foreach (Screw screw in screws)

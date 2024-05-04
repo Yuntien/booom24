@@ -4,7 +4,6 @@ using TMPro;
 
 public class Submodule : MonoBehaviour
 {
-    public SpriteRenderer screenSpriteRenderer;
     public SpriteRenderer lightSpriteRenderer;
     public TextMeshPro screenText;
     [HideInInspector]
