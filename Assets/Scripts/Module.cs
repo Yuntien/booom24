@@ -6,24 +6,21 @@ using System;
 
 public class Module : MonoBehaviour
 {
+    [HideInInspector]
     public List<Port> inPorts = new List<Port>();
+    [HideInInspector]
     public List<Port> outPorts = new List<Port>();
-
     public string Name;
     public string cn;
-
       [HideInInspector]
     public int finalAnomalyValue = 0;
     public event Action<Module, int> OnAnomalyModuleFound;
     public event Action<Module> OnAnomalySourceFound;
     private bool hasNotifiedAnomaly = false; 
-
+    [HideInInspector]
     public CheckPort checkport;
     public int anomalyValue=2;
-
     private GameObject outline;
-
-    [HideInInspector]
     public bool isRemovable=false;
 
     void Awake()
