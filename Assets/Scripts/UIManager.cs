@@ -40,6 +40,20 @@ public void UpdateModuleCheckText(string moduleName)
     
      
 }
+public void GetMemeryFormMoudule()
+{
+    if (!screen.activeSelf)
+            screen.SetActive(true);
+    checking.text = $"正在从模块拷贝记忆到回收站\n正在从模块删除记忆";
+
+}
+public void SendMemeryToMoudle()
+{
+    if (!screen.activeSelf)
+            screen.SetActive(true);
+    checking.text = $"正在从回收站拷贝记忆到模块\n正在从回收站删除记忆";
+
+}
 public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, int outAnomalySum, int finalAnomalyValue, bool inAnomaly, bool outAnomaly, bool hasNotifiedAnomaly,int anomalyValue)
 {
     //string infoText = $"in模块异常值={inAnomalySum}\nout模块异常值={outAnomalySum}\n流入异常值={finalAnomalyValue}\n当前异常值={finalAnomalyValue - anomalyValue}";

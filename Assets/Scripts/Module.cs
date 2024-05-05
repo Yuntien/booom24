@@ -22,6 +22,8 @@ public class Module : MonoBehaviour
     public int anomalyValue=2;
     private GameObject outline;
     public bool isRemovable=false;
+    public bool getMemeryFormMoudule=false;
+    public bool sendMemeryToMoudle=false;
 
     void Awake()
 {
@@ -85,6 +87,7 @@ public void SetOutline(bool isActive)
 public IEnumerator HighlightConnectionsProcess()
 {
     List<Coroutine> coroutines = new List<Coroutine>();
+    
     
     foreach (var port in inPorts)
     {

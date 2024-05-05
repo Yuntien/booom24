@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CheckPort : MonoBehaviour
 {
     public SpriteRenderer cover; // The cover of the check port
     public Module module;
+     public event Action<Module> OnFirstConnection;
+    private bool hasBeenConnected = false;
     public bool isCheckable=false;
 
     public bool isChecking = false;
@@ -36,6 +39,25 @@ IEnumerator connectCoroutine = null;
 {
     if (module != null && isCheckable)
     {
+        if(module.getMemeryFormMoudule)
+        {
+            UIManager.instance.GetMemeryFormMoudule();
+            isChecking=true;
+            return;
+        }
+        if(module.sendMemeryToMoudle)
+        { 
+             UIManager.instance.SendMemeryToMoudle();
+             isChecking=true;
+             return;
+
+        }
+        if (!hasBeenConnected)
+        {
+            OnFirstConnection?.Invoke(module);
+            hasBeenConnected = true;
+        }
+
         //这里是每次插module的地方
         isChecking = true;
         module.SetOutline(true);
