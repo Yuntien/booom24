@@ -100,6 +100,27 @@ public class ConversationController : Singleton<ConversationController>
                 float delayTime = float.Parse(evt.Value);
                 StartCoroutine(Delay(delayTime, evt.Advance));
                 break;
+            case "播放记忆音效":
+                AudioManager.Instance.PlayMemoryAudio(evt.Value);
+                break;
+            case "暂停记忆音效":
+                AudioManager.Instance.PauseMemoryAudio();
+                break;
+            case "继续记忆音效":
+                AudioManager.Instance.ContinueMemoryAudio();
+                break;
+            case "播放循环音效":
+                AudioManager.Instance.PlayLoopAudio(evt.Value);
+                break;
+            case "暂停循环音效":
+                AudioManager.Instance.PauseLoopAudio();
+                break;
+            case "继续循环音效":
+                AudioManager.Instance.ContinueLoopAudio();
+                break;
+            case "播放交互音效":
+                AudioManager.Instance.RandomPlayInteraction(evt.Value);
+                break;
         }
     }
 
