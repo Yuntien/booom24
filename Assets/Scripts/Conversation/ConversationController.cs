@@ -6,6 +6,7 @@ using Conversa.Runtime.Events;
 using Conversa.Runtime.Interfaces;
 using System;
 using DG.Tweening;
+using UnityEditor;
 
 public class ConversationController : Singleton<ConversationController>
 {
@@ -170,6 +171,14 @@ public class ConversationController : Singleton<ConversationController>
                 {
                     evt.Advance.Invoke();
                 }
+                break;
+            case "µ­ÈëµçÊÓ":
+                float value;
+                if (!float.TryParse(evt.Value, out value))
+                {
+                    value = 0f;
+                }
+                Menu.Instance.FadeIn(value).onComplete += () => evt.Advance.Invoke();
                 break;
         }
     }
