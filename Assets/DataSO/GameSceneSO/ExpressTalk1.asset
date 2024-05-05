@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79297acfcd94c447affd3589006e043, type: 3}
-  m_Name: SellerTalk1
+  m_Name: ExpressTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
     m_AssetGUID: a56762266491dee4280830cda49e4d06
@@ -19,6 +19,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   deepFixPartName: []
   deepFixRule: 0
-  conversation: {fileID: 11400000, guid: 38361605604d7944998894f55dbe8916, type: 2}
-  nextScene: {fileID: 11400000, guid: 872ab5c7d231c314e83864c3e688ab8a, type: 2}
+  conversation: {fileID: 11400000, guid: 0a02ffc5df918764aa47de1c6dad74f4, type: 2}
+  nextScene: {fileID: 11400000, guid: b2282d36eb4fcbb4da42ae935de7144c, type: 2}
   isEndOfDay: 0
