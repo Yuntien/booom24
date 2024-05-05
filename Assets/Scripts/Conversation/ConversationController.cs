@@ -99,15 +99,17 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleGameControlEvent(GameControlEvent evt)
     {
-        switch (evt.Key)
+        string key = evt.Key.Trim();
+        string evtValue = evt.Value.Trim();
+        switch (key)
         {
             case "延时":
                 DialogUIController.Instance.Hide();
-                float delayTime = float.Parse(evt.Value);
+                float delayTime = float.Parse(evtValue);
                 StartCoroutine(Delay(delayTime, evt.Advance));
                 break;
             case "播放记忆音效":
-                AudioManager.Instance.PlayMemoryAudio(evt.Value);
+                AudioManager.Instance.PlayMemoryAudio(evtValue);
                 evt.Advance.Invoke();
                 break;
             case "暂停记忆音效":
@@ -119,7 +121,7 @@ public class ConversationController : Singleton<ConversationController>
                 evt.Advance.Invoke();
                 break;
             case "播放循环音效":
-                AudioManager.Instance.PlayLoopAudio(evt.Value);
+                AudioManager.Instance.PlayLoopAudio(evtValue);
                 evt.Advance.Invoke();
                 break;
             case "暂停循环音效":
@@ -131,17 +133,17 @@ public class ConversationController : Singleton<ConversationController>
                 evt.Advance.Invoke();
                 break;
             case "播放交互音效":
-                AudioManager.Instance.RandomPlayInteraction(evt.Value);
+                AudioManager.Instance.RandomPlayInteraction(evtValue);
                 evt.Advance.Invoke();
                 break;
             case "切换人物图片":
-                GuestController.Instance.ChangeGuestPic(evt.Actor.name, evt.Value);
+                GuestController.Instance.ChangeGuestPic(evt.Actor.name, evtValue);
                 evt.Advance.Invoke();
                 break;
             case "人物淡入":
                 if (evt.Actor is DialogActor dialogActor)
                 {
-                    GuestController.Instance.GuestFadeIn(dialogActor.FileName, evt.Value).onComplete += () => evt.Advance.Invoke();
+                    GuestController.Instance.GuestFadeIn(dialogActor.FileName, evtValue).onComplete += () => evt.Advance.Invoke();
                 }
                 else
                 {
@@ -153,7 +155,7 @@ public class ConversationController : Singleton<ConversationController>
                 break;
             case "切换场景":
                 DialogUIController.Instance.Hide();
-                GameManager.Instance.SceneChange(evt.Value);
+                GameManager.Instance.SceneChange(evtValue);
                 tempAction = evt.Advance;
                 break;
             case "展示图片":
@@ -162,7 +164,7 @@ public class ConversationController : Singleton<ConversationController>
                 evt.Advance.Invoke();
                 break;
             case "电视切换":
-                Tweener tweener = Menu.Instance.TVSwitch(evt.Value);
+                Tweener tweener = Menu.Instance.TVSwitch(evtValue);
                 if (tweener != null)
                 {
                     tweener.onComplete += () => evt.Advance.Invoke();
@@ -174,7 +176,7 @@ public class ConversationController : Singleton<ConversationController>
                 break;
             case "淡入电视":
                 float value;
-                if (!float.TryParse(evt.Value, out value))
+                if (!float.TryParse(evtValue, out value))
                 {
                     value = 0f;
                 }
