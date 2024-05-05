@@ -816,7 +816,7 @@ PrefabInstance:
       objectReference: {fileID: 1574667627}
     - target: {fileID: 1431000187111319149, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: anomalyValue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1431000187111319149, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: highlightLineRenderer

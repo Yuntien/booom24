@@ -19,6 +19,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   deepFixPartName: []
   deepFixRule: 0
-  conversation: {fileID: 11400000, guid: 0a02ffc5df918764aa47de1c6dad74f4, type: 2}
+  conversation: {fileID: 11400000, guid: a0169064057c74d47996b4f16791892e, type: 2}
   nextScene: {fileID: 11400000, guid: b2282d36eb4fcbb4da42ae935de7144c, type: 2}
   isEndOfDay: 1
