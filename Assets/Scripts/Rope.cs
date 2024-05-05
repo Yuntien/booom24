@@ -6,8 +6,9 @@ public class Rope : MonoBehaviour
 {
 
     public event System.Action OnChargeReached;
-
-    public Color deadPortCol;
+    public float transitionTime = 1.0f; // The time it takes for the transition to complete. You can adjust this.
+    public Color recallColor = Color.white; // The color for memory recall. You can adjust this.
+    public Color transferColor = Color.white; // Th      public Color deadPortCol;
     public Color poweredWireCol;
     public Color deadWireCol;
     public Color poweredPortCol;
@@ -34,6 +35,66 @@ public class Rope : MonoBehaviour
     Vector2 startOld;
     Vector2 endOld;
     LineRenderer lineRenderer;
+
+public IEnumerator MemoryRecall()
+{
+    while (true) // Infinite loop.
+    {
+        // Gradient from deadWireCol to recallColor.
+        for (float t = 0; t <= 1; t += Time.deltaTime / transitionTime)
+        {
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(recallColor, t), new GradientColorKey(deadWireCol, 1.0f) },
+                new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, t), new GradientAlphaKey(1, 1.0f) }
+            );
+
+            lineRenderer.colorGradient = gradient;
+
+            yield return null;
+        }
+
+        // Pause for transitionTime seconds with the line black.
+        Gradient blackGradient = new Gradient();
+        blackGradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(deadWireCol, 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f) }
+        );
+        lineRenderer.colorGradient = blackGradient;
+        yield return new WaitForSeconds(transitionTime);
+    }
+}
+
+public IEnumerator MemoryTransfer()
+{
+    while (true) // Infinite loop.
+    {
+        // Gradient from deadWireCol to transferColor.
+        for (float t = 0; t <= 1; t += Time.deltaTime / transitionTime)
+        {
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(transferColor, 1.0f - t), new GradientColorKey(deadWireCol, 1.0f) },
+                new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f - t), new GradientAlphaKey(1, 1.0f) }
+            );
+
+            lineRenderer.colorGradient = gradient;
+
+            yield return null;
+        }
+
+        // Pause for transitionTime seconds with the line black.
+        Gradient blackGradient = new Gradient();
+        blackGradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(deadWireCol, 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f) }
+        );
+        lineRenderer.colorGradient = blackGradient;
+        yield return new WaitForSeconds(transitionTime);
+    }
+}
+
+
 
     public void PowerDone()
     {

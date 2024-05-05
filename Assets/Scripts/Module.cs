@@ -24,6 +24,11 @@ public class Module : MonoBehaviour
     public bool isRemovable=false;
     public bool getMemeryFormMoudule=false;
     public bool sendMemeryToMoudle=false;
+    public string errortext=null;
+    public string warningtext=null;
+    [HideInInspector]
+    public bool isSource=false;
+
 
     void Awake()
 {
@@ -75,7 +80,7 @@ public void SetOutline(bool isActive)
             isRemovable=true;
            
         }
-         //UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
+         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext);
          checkport.isChecking=false;
          ConversationController.Instance.ContinueChoice(Name);
     }
@@ -115,6 +120,7 @@ public IEnumerator HighlightConnectionsProcess()
     {
         yield return coroutine;
     }
+
     CalculateFinalAnomalyValue();
 }
     public void TurnOffConnections()

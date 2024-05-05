@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class CheckPort : MonoBehaviour
 {
@@ -43,10 +44,14 @@ IEnumerator connectCoroutine = null;
         {
             UIManager.instance.GetMemeryFormMoudule();
             isChecking=true;
+            Rope rope  = FindObjectOfType<Rope>();
+            rope.StartCoroutine(rope.MemoryRecall());
             return;
         }
         if(module.sendMemeryToMoudle)
         { 
+            Rope rope  = FindObjectOfType<Rope>();
+            rope.StartCoroutine(rope.MemoryTransfer());
              UIManager.instance.SendMemeryToMoudle();
              isChecking=true;
              return;
@@ -92,6 +97,7 @@ IEnumerator connectCoroutine = null;
     if (module != null)
     {
         isChecking = false;
+        if(!module.isSource)
         module.SetOutline(false);
         // If a connection is in progress, stop it.
         if (connectCoroutine != null)

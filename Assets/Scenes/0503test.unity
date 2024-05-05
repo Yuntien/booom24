@@ -168,14 +168,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 2795243968231750505, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -256
-      objectReference: {fileID: 0}
-    - target: {fileID: 2795243968231750505, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -147
-      objectReference: {fileID: 0}
     - target: {fileID: 3566835852412389066, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -255,18 +247,6 @@ PrefabInstance:
     - target: {fileID: 3566835852412389066, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5095215858443689044, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625163016010500734, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -256
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625163016010500734, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -795,6 +775,14 @@ PrefabInstance:
     - target: {fileID: 7492380820767401910, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682854053144170069, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: sendMemeryToMoudle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682854053144170069, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: getMemeryFormMoudule
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7720014718898778353, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Layer
