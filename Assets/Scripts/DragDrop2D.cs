@@ -15,6 +15,15 @@ public class DragDrop2D : MonoBehaviour
     // The cooldown time in seconds between two dragging operations
     private float dragCooldown = 0.1f;
 
+    private bool isInRepairMode=false;
+
+    public void DisableDrag()
+    {
+        isInRepairMode=true;
+        transform.position = startPos.position;
+
+    }
+
     void Awake()
     {
         collider2d = GetComponent<Collider2D>();
@@ -27,6 +36,8 @@ public class DragDrop2D : MonoBehaviour
 
       void OnMouseDown()
     {
+        if(isInRepairMode)
+        return;
         if (Time.time < lastDragTime + dragCooldown)
         {
             return;
@@ -55,6 +66,8 @@ public class DragDrop2D : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if(isInRepairMode)
+        return;
         if (checkport && checkport.isChecking)
         {
             // If the port is currently checking, don't allow dragging
@@ -66,6 +79,8 @@ public class DragDrop2D : MonoBehaviour
 
    void OnMouseUp()
 {
+    if(isInRepairMode)
+        return;
     collider2d.enabled = false;
 
     int layerMask = LayerMask.GetMask("Checkport");
