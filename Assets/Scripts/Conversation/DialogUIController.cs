@@ -8,16 +8,31 @@ using UnityEngine.UI;
 
 public class DialogUIController : Singleton<DialogUIController>
 {
-    [Header("信息面板")]
+    private GameObject curMessageWindow;
+    private Text curActorNameText;
+    private Text curMessageText;
+    private Button curNextMessageButton;
+    private GameObject curChoiceBox;
+    private Image curHeadImage;
+    [Header("普通对话面板")]
     [SerializeField] private GameObject messageWindow;
     [SerializeField] private Text actorNameText;
     [SerializeField] private Text messageText;
     [SerializeField] private Button nextMessageButton;
     [SerializeField] private GameObject choiceBox;
+    [Header("带头像对话面板")]
+    [SerializeField] private GameObject messageWindowHead;
+    [SerializeField] private Text actorNameTextHead;
+    [SerializeField] private Text messageTextHead;
+    [SerializeField] private Button nextMessageButtonHead;
+    [SerializeField] private GameObject choiceBoxHead;
+    [SerializeField] private Image headImage;
     [Header("按钮预制体")]
     [SerializeField] private GameObject choiceOptionButtonPrefab;
     [Header("文字显示速度")]
     [SerializeField] private float textSpeed = 0.05f;
+    [Header("空白头像")]
+    [SerializeField] private Sprite emptyHead;
 
     private bool textIsPlaying;
     private Tweener textTweener;
@@ -29,21 +44,27 @@ public class DialogUIController : Singleton<DialogUIController>
     /// <param name="actorName">人物名称</param>
     /// <param name="message">信息</param>
     /// <param name="onContinue">下一步的行为</param>
-    public void ShowMessage(string actorName, string message, Action onContinue)
+    public void ShowMessage(string actorName, string message, Action onContinue, Sprite head)
     {
         // 显示对话面板
-        messageWindow.SetActive(true);
-        nextMessageButton.gameObject.SetActive(false);
-        choiceBox.SetActive(false);
+        curMessageWindow.SetActive(true);
+        curNextMessageButton.gameObject.SetActive(false);
+        curChoiceBox.SetActive(false);
 
         // 更新文本
-        actorNameText.text = actorName;
-        messageText.text = "";
+        curActorNameText.text = actorName;
+        curMessageText.text = "";
+
+        if (curHeadImage != null)
+        {
+            headImage.sprite = head == null ? emptyHead : head;
+        }
+
         textIsPlaying = true;
-        textTweener = messageText.DOText(message, message.Length * textSpeed).SetEase(Ease.Linear).OnComplete(() =>
+        textTweener = curMessageText.DOText(message, message.Length * textSpeed).SetEase(Ease.Linear).OnComplete(() =>
         {
             Invoke("TextPlayingEnd", 0.5f);
-            nextMessageButton.gameObject.SetActive(true);
+            curNextMessageButton.gameObject.SetActive(true);
             // 存储下一步的动作
             nextStep = onContinue;
         });
@@ -55,16 +76,20 @@ public class DialogUIController : Singleton<DialogUIController>
     /// <param name="actorName">人物名</param>
     /// <param name="message">消息</param>
     /// <param name="options">选项</param>
-    public void ShowChoice(string actorName, string message, List<Option> options)
+    public void ShowChoice(string actorName, string message, List<Option> options, Sprite head)
     {
         // 显示组件
-        messageWindow.SetActive(true);
-        choiceBox.SetActive(true);
-        nextMessageButton.gameObject.SetActive(false);
+        curMessageWindow.SetActive(true);
+        curChoiceBox.SetActive(true);
+        curNextMessageButton.gameObject.SetActive(false);
 
         // 更新文本
-        actorNameText.text = actorName;
-        messageText.text = message;
+        curActorNameText.text = actorName;
+        curMessageText.text = message;
+        if (curHeadImage != null)
+        {
+            headImage.sprite = head == null ? emptyHead : head;
+        }
 
         // 清除选择面板的子物体
         foreach (Transform child in choiceBox.transform)
@@ -76,7 +101,7 @@ public class DialogUIController : Singleton<DialogUIController>
         options.ForEach(option =>
         {
             var instance = Instantiate(choiceOptionButtonPrefab, Vector3.zero, Quaternion.identity);
-            instance.transform.SetParent(choiceBox.transform);
+            instance.transform.SetParent(curChoiceBox.transform);
             instance.GetComponentInChildren<Text>().text = option.Message;
             instance.GetComponent<Button>().onClick.AddListener(() => option.Advance());
         });
@@ -87,7 +112,7 @@ public class DialogUIController : Singleton<DialogUIController>
     /// </summary>
     public void Hide()
     {
-        messageWindow.SetActive(false);
+        curMessageWindow.SetActive(false);
     }
 
     private void Update()
@@ -106,6 +131,30 @@ public class DialogUIController : Singleton<DialogUIController>
                 // 点击时终止语音
                 AudioManager.Instance.StopVoice();
             }
+        }
+    }
+
+    public void SwitchDialog(DialogTpye type)
+    {
+        if (type == DialogTpye.Head)
+        {
+            messageWindow.gameObject.SetActive(false);
+            curMessageWindow = messageWindowHead;
+            curActorNameText = actorNameTextHead;
+            curMessageText = messageTextHead;
+            curNextMessageButton = nextMessageButtonHead;
+            curChoiceBox = choiceBoxHead;
+            curHeadImage = headImage;
+        }
+        else
+        {
+            messageWindowHead.gameObject.SetActive(false);
+            curMessageWindow = messageWindow;
+            curActorNameText = actorNameText;
+            curMessageText = messageText;
+            curNextMessageButton = nextMessageButton;
+            curChoiceBox = choiceBox;
+            curHeadImage = null;
         }
     }
 

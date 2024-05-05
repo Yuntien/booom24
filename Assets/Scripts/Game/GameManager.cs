@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
     public void StartTalk()
     {
         // 加载对话场景
-        // loadEventSO?.RaiseEvent(currentTalkSceneSO.sceneReference, true, LoadState.StartTalk);
+        DialogUIController.Instance.SwitchDialog(DialogTpye.Normal);
         ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
     }
 
@@ -84,6 +84,7 @@ public class GameManager : Singleton<GameManager>
     public void ContinueTalk()
     {
         // 重新加载对话场景
+        DialogUIController.Instance.SwitchDialog(DialogTpye.Normal);
         loadEventSO?.RaiseEvent(talkScene, true, LoadState.ContinueTalk);
     }
 
@@ -110,6 +111,7 @@ public class GameManager : Singleton<GameManager>
     public void Fix()
     {
         // 转到维修场景
+        DialogUIController.Instance.SwitchDialog(DialogTpye.Head);
         loadEventSO?.RaiseEvent(currentTalkSceneSO.fixSceneReference[fixIndex], true, LoadState.Fix);
         fixIndex++;
     }
@@ -122,6 +124,7 @@ public class GameManager : Singleton<GameManager>
 
     public void DeepFix()
     {
+        DialogUIController.Instance.SwitchDialog(DialogTpye.Head);
         // 进入深度维修场景
         loadEventSO?.RaiseEvent(deepFixScene, true, LoadState.DeepFix);
     }
