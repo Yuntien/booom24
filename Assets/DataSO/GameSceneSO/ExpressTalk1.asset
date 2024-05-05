@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: ExpressTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
+  - m_AssetGUID: 7b593efd75f2ae147a1d24691d0cf2af
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   - m_AssetGUID: 48afebfabc470384ba064a227a68faa6
     m_SubObjectName: 
     m_SubObjectType: 

@@ -5162,7 +5162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7682854053144170069, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: Name
-      value: MVOEMENT
+      value: ADVANCEDMOVEMENT
       objectReference: {fileID: 0}
     - target: {fileID: 7720014718898778353, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Layer
@@ -5226,13 +5226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498423360962923908, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_text
-      value: 'MOVEMENT
-
-'
+      value: ADVANCEDMOVEMENT
       objectReference: {fileID: 0}
     - target: {fileID: 8498423360962923908, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_fontSize
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8499323885320091899, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5308,7 +5306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060569336948509876, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Name
-      value: ChipMovement
+      value: ChipAdvancedMovement
       objectReference: {fileID: 0}
     - target: {fileID: 9193394945608352147, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_LocalPosition.x
