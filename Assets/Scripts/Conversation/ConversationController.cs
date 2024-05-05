@@ -58,6 +58,10 @@ public class ConversationController : Singleton<ConversationController>
     {
         runner.SetProperty("全部找到", true);
     }
+    public void AllMoudleConnected()
+    {
+        runner.SetProperty("全部模块被连过",true);
+    }
 
     private void HandleConversationEvent(IConversationEvent evt)
     {
