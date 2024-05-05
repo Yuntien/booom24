@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79297acfcd94c447affd3589006e043, type: 3}
-  m_Name: PainterTalk1
+  m_Name: ExpressTalk2
   m_EditorClassIdentifier: 
   fixSceneReference:
-    m_AssetGUID: ff3a35062f91ec846aef1c173375ba7f
+    m_AssetGUID: a56762266491dee4280830cda49e4d06
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   deepFixPartName: []
   deepFixRule: 0
-  conversation: {fileID: 11400000, guid: c6a3d9076ab51e54482766200aca826d, type: 2}
-  nextScene: {fileID: 11400000, guid: caaaa87b4ec6317449dc7f8d505eb1e4, type: 2}
+  conversation: {fileID: 11400000, guid: 0a02ffc5df918764aa47de1c6dad74f4, type: 2}
+  nextScene: {fileID: 11400000, guid: b2282d36eb4fcbb4da42ae935de7144c, type: 2}
   isEndOfDay: 1
