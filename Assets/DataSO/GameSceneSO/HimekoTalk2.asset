@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79297acfcd94c447affd3589006e043, type: 3}
+  m_Name: HimekoTalk2
+  m_EditorClassIdentifier: 
+  fixSceneReference:
+  - m_AssetGUID: 3445d25b4b6340043b539d8ca7102aad
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  deepFixPartName:
+  - "\u9A82\u6D41\u8424"
+  - HIVEMIND
+  - "\u5B89\u88C5HIVEMIND"
+  deepFixRule: 0
+  conversation: {fileID: 11400000, guid: f2bd1e19d8867ec489d149d0252a9a61, type: 2}
+  nextScene: {fileID: 11400000, guid: 872ab5c7d231c314e83864c3e688ab8a, type: 2}
+  isEndOfDay: 0
