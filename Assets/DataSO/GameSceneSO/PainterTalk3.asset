@@ -10,10 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79297acfcd94c447affd3589006e043, type: 3}
-  m_Name: PainterTalk1
+  m_Name: PainterTalk3
   m_EditorClassIdentifier: 
   fixSceneReference:
-  - m_AssetGUID: e70bf6d9689a8f5439c45fbe90e0934f
+  - m_AssetGUID: 5e584950db09a0c41a557d748845e615
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 3e8450f414dfcea4b895b7e513f0fe1e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: fa62272183afe914e91f7b700a3761ca
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -22,6 +30,6 @@ MonoBehaviour:
   - "\u843D\u65E5"
   - "\u5931\u53BB\u8272\u89C9"
   deepFixRule: 0
-  conversation: {fileID: 11400000, guid: c6a3d9076ab51e54482766200aca826d, type: 2}
+  conversation: {fileID: 11400000, guid: d7f41e7e3482d7f4ab9230c4439b249a, type: 2}
   nextScene: {fileID: 11400000, guid: caaaa87b4ec6317449dc7f8d505eb1e4, type: 2}
   isEndOfDay: 1

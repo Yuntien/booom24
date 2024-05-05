@@ -62,6 +62,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e70bf6d9689a8f5439c45fbe90e0934f
+    m_Address: Assets/Scenes/PainterFix1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e584950db09a0c41a557d748845e615
+    m_Address: Assets/Scenes/PainterFix3.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa62272183afe914e91f7b700a3761ca
+    m_Address: Assets/Scenes/PainterFix3.2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e8450f414dfcea4b895b7e513f0fe1e
+    m_Address: Assets/Scenes/PainterFix3.1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b74bfbbdf04e5214fbe55a936270a8d3, type: 2}
   m_SchemaSet:
