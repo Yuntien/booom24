@@ -208,6 +208,7 @@ public class DisassemblyManager : MonoBehaviour
 
     public void DestroyScrewdriver()
     {
-        Destroy(screwdriver);
+        if (screwdriver != null) 
+            Destroy(screwdriver);
     }
 }

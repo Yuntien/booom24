@@ -94,6 +94,12 @@ public class GameManager : Singleton<GameManager>
     {
         // 人物出现
         GuestController.Instance.ShowGuest();
+        
+        if (MazeGenerator.Instance != null)
+        {
+            MazeGenerator.Instance.DeleteMaze();
+        }
+        
         // 继续对话
         ConversationController.Instance.ContinueConversation();
     }

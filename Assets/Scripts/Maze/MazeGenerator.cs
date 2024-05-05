@@ -398,7 +398,7 @@ void SpawnSubModule(List<Cell> path,int targetCount)
     {
         allSubmodules.Clear();
         if (mazeParent != null) Destroy(mazeParent);
-        Destroy(player);
+        if (player != null) Destroy(player);
         DisassemblyManager.Instance.DestroyScrewdriver();
     }
 

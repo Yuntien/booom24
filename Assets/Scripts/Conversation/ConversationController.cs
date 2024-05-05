@@ -290,8 +290,7 @@ public class ConversationController : Singleton<ConversationController>
             //{
             //    Destroy(maze);
             //}
-            MazeGenerator.Instance.DeleteMaze();
-
+ 
             tempAction = userEvent.Advance;
             DialogUIController.Instance.Hide();
             GameManager.Instance.ContinueTalk();
