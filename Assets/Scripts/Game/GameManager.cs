@@ -26,6 +26,8 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private FadeEventSO fadeEventSO;
 
+    private int fixIndex = 0;
+
     private void Start()
     {
         // 加载对话场景
@@ -102,7 +104,8 @@ public class GameManager : Singleton<GameManager>
     public void Fix()
     {
         // 转到维修场景
-        loadEventSO?.RaiseEvent(currentTalkSceneSO.fixSceneReference, true, LoadState.Fix);
+        loadEventSO?.RaiseEvent(currentTalkSceneSO.fixSceneReference[fixIndex], true, LoadState.Fix);
+        fixIndex++;
     }
 
     private void OnFixLoaded()
@@ -155,6 +158,7 @@ public class GameManager : Singleton<GameManager>
                 ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
             };
         }
+        fixIndex = 0;
     }
 
     private IDeepRepairRule DeepFixRuleFactory(DeepRepairRuleType type)
@@ -166,6 +170,22 @@ public class GameManager : Singleton<GameManager>
         else
         {
             return new Rule2();
+        }
+    }
+
+    public void SceneChange(string sceneType)
+    {
+        switch (sceneType)
+        {
+            case "维修":
+                Fix();
+                break;
+            case "对话":
+                ContinueTalk();
+                break;
+            case "深度维修":
+                DeepFix();
+                break;
         }
     }
 }

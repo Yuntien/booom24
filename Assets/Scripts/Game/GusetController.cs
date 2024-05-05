@@ -1,3 +1,4 @@
+using Conversa.Runtime;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,18 +16,29 @@ public class GuestController : Singleton<GuestController>
     /// <summary>
     /// 人物淡出
     /// </summary>
-    public void GuestFadeOut()
+    public Tweener GuestFadeOut()
     {
-        guestSprite.DOFade(0, fadeTime);
+        return guestSprite.DOFade(0, fadeTime);
     }
 
     /// <summary>
     /// 人物淡入
     /// </summary>
-    public void GuestFadeIn()
+    public Tweener GuestFadeIn(string actor, string picName)
     {
-        Debug.Log("人物淡入");
-        guestSprite.DOFade(1, fadeTime);
+        if (picName != null && picName != "")
+        {
+            guestSprite.sprite = Resources.Load<Sprite>($"Art/{actor}/{picName}");
+        }
+        return guestSprite.DOFade(1, fadeTime);
+    }
+
+    /// <summary>
+    /// 人物淡入
+    /// </summary>
+    public Tweener GuestFadeIn()
+    {
+        return guestSprite.DOFade(1, fadeTime);
     }
 
     /// <summary>
@@ -63,8 +75,8 @@ public class GuestController : Singleton<GuestController>
     /// 切换人物图片
     /// </summary>
     /// <param name="picLocation">图片文件在Resource文件夹中的位置</param>
-    public void ChangeGuestPic(string picLocation)
+    public void ChangeGuestPic(string actor, string picName)
     {
-        guestSprite.sprite = Resources.Load<Sprite>(picLocation);
+        guestSprite.sprite = Resources.Load<Sprite>($"Art/{actor}/{picName}");
     }
 }

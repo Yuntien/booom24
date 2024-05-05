@@ -59,6 +59,11 @@ public class ConversationController : Singleton<ConversationController>
         runner.SetProperty("全部找到", true);
     }
 
+    public void SetPropertuy(string name, bool value)
+    {
+        runner.SetProperty(name, value);
+    }
+
     private void HandleConversationEvent(IConversationEvent evt)
     {
         switch (evt)
@@ -102,24 +107,69 @@ public class ConversationController : Singleton<ConversationController>
                 break;
             case "播放记忆音效":
                 AudioManager.Instance.PlayMemoryAudio(evt.Value);
+                evt.Advance.Invoke();
                 break;
             case "暂停记忆音效":
                 AudioManager.Instance.PauseMemoryAudio();
+                evt.Advance.Invoke();
                 break;
             case "继续记忆音效":
                 AudioManager.Instance.ContinueMemoryAudio();
+                evt.Advance.Invoke();
                 break;
             case "播放循环音效":
                 AudioManager.Instance.PlayLoopAudio(evt.Value);
+                evt.Advance.Invoke();
                 break;
             case "暂停循环音效":
                 AudioManager.Instance.PauseLoopAudio();
+                evt.Advance.Invoke();
                 break;
             case "继续循环音效":
                 AudioManager.Instance.ContinueLoopAudio();
+                evt.Advance.Invoke();
                 break;
             case "播放交互音效":
                 AudioManager.Instance.RandomPlayInteraction(evt.Value);
+                evt.Advance.Invoke();
+                break;
+            case "切换人物图片":
+                GuestController.Instance.ChangeGuestPic(evt.Actor.name, evt.Value);
+                evt.Advance.Invoke();
+                break;
+            case "人物淡入":
+                if (evt.Actor is DialogActor dialogActor)
+                {
+                    GuestController.Instance.GuestFadeIn(dialogActor.FileName, evt.Value).onComplete += () => evt.Advance.Invoke();
+                }
+                else
+                {
+                    GuestController.Instance.GuestFadeIn().onComplete += () => evt.Advance.Invoke();
+                }
+                break;
+            case "人物淡出":
+                GuestController.Instance.GuestFadeOut().onComplete += () => evt.Advance.Invoke();
+                break;
+            case "切换场景":
+                DialogUIController.Instance.Hide();
+                GameManager.Instance.SceneChange(evt.Value);
+                tempAction = evt.Advance;
+                break;
+            case "展示图片":
+                DialogUIController.Instance.Hide();
+                Debug.Log("图片展示占位");
+                evt.Advance.Invoke();
+                break;
+            case "电视切换":
+                Tweener tweener = Menu.Instance.TVSwitch(evt.Value);
+                if (tweener != null)
+                {
+                    tweener.onComplete += () => evt.Advance.Invoke();
+                }
+                else
+                {
+                    evt.Advance.Invoke();
+                }
                 break;
         }
     }
@@ -203,6 +253,13 @@ public class ConversationController : Singleton<ConversationController>
                 userEvent.Advance.Invoke();
             };
         }
+        else if (userEvent.Name == "遮罩淡出")
+        {
+            FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
+            {
+                userEvent.Advance.Invoke();
+            };
+        }
         else if (userEvent.Name == "进行深度维修")
         {
             tempAction = userEvent.Advance;
@@ -240,12 +297,24 @@ public class ConversationController : Singleton<ConversationController>
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
         DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance);
+
+        if (evt.Actor is DialogActor dialogActor)
+        {
+            // 对话时播放语音
+            AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+        }
     }
 
     private void HandleActorChoiceEvent(ActorChoiceEvent evt)
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
         DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options);
+
+        if (evt.Actor is DialogActor dialogActor)
+        {
+            // 对话时播放语音
+            AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+        }
     }
 
     private void HandleEnd()

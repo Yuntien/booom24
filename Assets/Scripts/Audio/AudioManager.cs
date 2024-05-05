@@ -6,11 +6,6 @@ using UnityEngine.AddressableAssets;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    private static string LOOP_PATH = "Audio/Loop/";
-    private static string INTERACTION_PATH = "Audio/Interaction/";
-    private static string VOICE_PATH = "Audio/Voice/";
-    private static string MEMORY_PATH = "Audio/Memory/";
-
     [Header("循环音效")]
     [SerializeField] private AudioSource loopSource;
     [Header("交互音效")]
@@ -22,22 +17,12 @@ public class AudioManager : Singleton<AudioManager>
     [Header("混合器")]
     [SerializeField] public AudioMixer mixer;
 
-    public int voiceSize;
     public int interactionSize;
 
     public float fadeTime;
 
-    private void Start()
-    {
-        var clip = Resources.Load<AudioClip>("Audio/xxx");
-        if (clip == null)
-        {
-            Debug.Log("空的");
-        }
-    }
-
     #region 随机播放
-    public void RandomPlayVoice(string actorName)
+    public void RandomPlayVoice(string actorName, int voiceSize)
     {
         AudioClip clip = RandomLoadAudioClip(voiceSize, $"Audio/Voice/{actorName}");
         voiceSource.clip = clip;
@@ -46,7 +31,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void RandomPlayInteraction(string interactionName)
     {
-        AudioClip clip = RandomLoadAudioClip(voiceSize, $"Audio/Interaction/{interactionName}");
+        AudioClip clip = RandomLoadAudioClip(interactionSize, $"Audio/Interaction/{interactionName}");
         voiceSource.clip = clip;
         voiceSource.Play();
     }
@@ -124,13 +109,13 @@ public class AudioManager : Singleton<AudioManager>
     private AudioClip RandomLoadAudioClip(int audioSize, string path)
     {
         int randomIndex = Random.Range(0, audioSize);
-        return Resources.Load<AudioClip>($"{path}/{randomIndex}");
+        return Resources.Load<AudioClip>($"{path}_{randomIndex}");
     }
 
     private IEnumerator AsyncPlayMemoryAudio(string memoryName)
     {
-        AudioClip intro = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}/intro");
-        AudioClip loop = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}/loop");
+        AudioClip intro = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}_intro");
+        AudioClip loop = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}_loop");
         memorySource.clip = intro;
         memorySource.loop = false;
         memorySource.Play();
