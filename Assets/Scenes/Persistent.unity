@@ -3171,7 +3171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: caaaa87b4ec6317449dc7f8d505eb1e4, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 872ab5c7d231c314e83864c3e688ab8a, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 

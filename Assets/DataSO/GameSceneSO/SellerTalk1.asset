@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SellerTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
-  - m_AssetGUID: 48afebfabc470384ba064a227a68faa6
+  - m_AssetGUID: 6d3bfbc9fb84dbe4d98c2ffe2b4b4b9c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

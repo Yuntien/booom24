@@ -52,6 +52,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36694de40d6350e41ab7efb936cb32d7
+    m_Address: Assets/Scenes/SellerFix2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b74bfbbdf04e5214fbe55a936270a8d3, type: 2}
   m_SchemaSet:
