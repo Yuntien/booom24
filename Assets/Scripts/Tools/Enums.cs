@@ -12,3 +12,8 @@ public enum DeepRepairRuleType
     Rule1,
     Rule2
 }
+
+public enum TVState
+{
+    Black, News, Seller
+}

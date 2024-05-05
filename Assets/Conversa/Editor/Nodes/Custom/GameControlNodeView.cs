@@ -11,6 +11,10 @@ namespace Conversa.Editor
 
         protected TextField valueField;
 
+        protected TextField nameField;
+
+        protected ActorField actorField;
+
         // Constructors
 
         public GameControlNodeView(Conversation conversation) : base(new GameControlNode(), conversation) { }
@@ -30,6 +34,15 @@ namespace Conversa.Editor
             valueField.RegisterValueChangedCallback(e => Data.value = e.newValue);
             valueField.isDelayed = true;
 
+            actorField = new ActorField();
+            actorField.SetValueWithoutNotify(Data.actorName, Data.isActorProfile, Data.actor);
+            actorField.OnChange((actorName, isActorProfile, actor) => {
+                Data.actorName = actorName;
+                Data.isActorProfile = isActorProfile;
+                Data.actor = actor;
+            });
+
+            bodyContainer.Add(actorField);
             bodyContainer.Add(keyField);
             bodyContainer.Add(valueField);
         }

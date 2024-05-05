@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 [CreateAssetMenu(menuName = "Game Scene/TalkSceneSO")]
 public class TalkSceneSO : ScriptableObject
 {
-    public AssetReference fixSceneReference;
+    public List<AssetReference> fixSceneReference;
 
     public List<string> deepFixPartName;
 

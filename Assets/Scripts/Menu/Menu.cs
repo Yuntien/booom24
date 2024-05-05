@@ -8,11 +8,20 @@ public class Menu : Singleton<Menu>
 {
     [Header("菜单背景")]
     [SerializeField] private Image menuBackground;
+    [Header("电视")]
+    [SerializeField] private Image tv;
     [Header("菜单文字")]
     [SerializeField] private CanvasGroup menuText;
 
+    [Header("电视图片")]
+    [SerializeField] private Sprite news;
+    [SerializeField] private Sprite champion;
+
     [Header("场景切换事件")]
     [SerializeField] private FadeEventSO sceneFadeEventSO;
+
+    [Header("电视切换时间")]
+    [SerializeField] private float tvDuration;
 
     private void OnEnable()
     {
@@ -68,5 +77,24 @@ public class Menu : Singleton<Menu>
     public Tweener FadeOut(float duration)
     {
         return menuBackground.DOBlendableColor(Color.clear, duration);
+    }
+
+    public Tweener TVSwitch(string state)
+    {
+        switch (state)
+        {
+            case "黑屏":
+                return tv.DOBlendableColor(Color.clear, tvDuration);
+            case "新闻":
+                tv.color = Color.black;
+                tv.sprite = news;
+                return tv.DOBlendableColor(Color.white, tvDuration);
+            case "销售冠军":
+                tv.color = Color.black;
+                tv.sprite = champion;
+                return tv.DOBlendableColor(Color.white, tvDuration);
+            default:
+                return null;
+        }
     }
 }

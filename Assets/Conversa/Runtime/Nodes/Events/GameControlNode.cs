@@ -12,6 +12,9 @@ public class GameControlNode : BaseNode, IEventNode
     // TEMPLATE: Replace with your own custom fields
     public string key;
     public string value;
+    public Actor actor;
+    public string actorName;
+    public bool isActorProfile;
 
     public GameControlNode() { }
 
@@ -24,7 +27,7 @@ public class GameControlNode : BaseNode, IEventNode
         }
 
         // TEMPLATE: Replace with your own custom event
-        var e = new GameControlEvent(key, value, Advance);
+        var e = new GameControlEvent(key, value, Advance, actor, actorName, isActorProfile);
         conversationEvents.OnConversationEvent.Invoke(e);
     }
 }

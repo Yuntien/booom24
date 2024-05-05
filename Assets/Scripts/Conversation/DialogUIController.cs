@@ -103,6 +103,8 @@ public class DialogUIController : Singleton<DialogUIController>
             {
                 nextStep?.Invoke();
                 nextStep = null;
+                // µ„ª˜ ±÷’÷π”Ô“Ù
+                AudioManager.Instance.StopVoice();
             }
         }
     }
