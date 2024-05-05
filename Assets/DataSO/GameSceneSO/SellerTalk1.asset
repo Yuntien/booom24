@@ -20,5 +20,5 @@ MonoBehaviour:
   deepFixPartName: []
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: 38361605604d7944998894f55dbe8916, type: 2}
-  nextScene: {fileID: 11400000, guid: 872ab5c7d231c314e83864c3e688ab8a, type: 2}
+  nextScene: {fileID: 11400000, guid: 4b02d0410a2fcb9429b2763981dd6fee, type: 2}
   isEndOfDay: 0

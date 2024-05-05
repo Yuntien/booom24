@@ -23,5 +23,5 @@ MonoBehaviour:
   - "\u843D\u65E5"
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: 8cbe9566154417449a392001ce028f66, type: 2}
-  nextScene: {fileID: 11400000, guid: caaaa87b4ec6317449dc7f8d505eb1e4, type: 2}
+  nextScene: {fileID: 11400000, guid: e10a620139548294eb38fdaeec6cd3dc, type: 2}
   isEndOfDay: 1
