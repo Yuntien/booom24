@@ -45,23 +45,14 @@ public IEnumerator MemoryRecall()
         {
             Gradient gradient = new Gradient();
             gradient.SetKeys(
-                new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(recallColor, t), new GradientColorKey(deadWireCol, 1.0f) },
-                new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, t), new GradientAlphaKey(1, 1.0f) }
+                new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(recallColor, 1.0f - t), new GradientColorKey(deadWireCol, 1.0f - t + 0.1f), new GradientColorKey(deadWireCol, 1.0f) },
+                new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f - t), new GradientAlphaKey(1, 1.0f - t + 0.1f), new GradientAlphaKey(1, 1.0f) }
             );
 
             lineRenderer.colorGradient = gradient;
 
             yield return null;
         }
-
-        // Pause for transitionTime seconds with the line black.
-        Gradient blackGradient = new Gradient();
-        blackGradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(deadWireCol, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f) }
-        );
-        lineRenderer.colorGradient = blackGradient;
-        yield return new WaitForSeconds(transitionTime);
     }
 }
 
@@ -74,25 +65,17 @@ public IEnumerator MemoryTransfer()
         {
             Gradient gradient = new Gradient();
             gradient.SetKeys(
-                new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(transferColor, 1.0f - t), new GradientColorKey(deadWireCol, 1.0f) },
-                new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f - t), new GradientAlphaKey(1, 1.0f) }
+                new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(transferColor, t), new GradientColorKey(deadWireCol, t + 0.1f), new GradientColorKey(deadWireCol, 1.0f) },
+                new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, t), new GradientAlphaKey(1, t + 0.1f), new GradientAlphaKey(1, 1.0f) }
             );
 
             lineRenderer.colorGradient = gradient;
 
             yield return null;
         }
-
-        // Pause for transitionTime seconds with the line black.
-        Gradient blackGradient = new Gradient();
-        blackGradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(deadWireCol, 0.0f), new GradientColorKey(deadWireCol, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(1, 0.0f), new GradientAlphaKey(1, 1.0f) }
-        );
-        lineRenderer.colorGradient = blackGradient;
-        yield return new WaitForSeconds(transitionTime);
     }
 }
+
 
 
 
