@@ -111,10 +111,12 @@ public class DisassemblyManager : MonoBehaviour
     //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
-        //if (isSub)
-        //{
-        //    ConversationController.Instance.ContinueChoice(module.Name);
-        //}
+        if (isSub)
+        {
+            return;
+        }
+            //ConversationController.Instance.ContinueChoice(module.Name);
+        
         
         if (module != null)
     {
@@ -132,7 +134,11 @@ public class DisassemblyManager : MonoBehaviour
  //维修时点击模块，触发这里
     private void HandleSubmoduleClicked(Submodule submodule)
     {
-        ConversationController.Instance.ContinueChoice(submodule.name);
+        if(!isSub)
+        {
+            return;
+        }
+        //ConversationController.Instance.ContinueChoice(submodule.name);
 
         if (submodule != null)
                 {
