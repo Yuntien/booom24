@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 public class Module : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class Module : MonoBehaviour
     public string warningtext=null;
     [HideInInspector]
     public bool isSource=false;
+    private Tweener colorTween;
+    public SpriteRenderer lightSprite;
 
 
     void Awake()
@@ -78,6 +81,7 @@ public void SetOutline(bool isActive)
             OnAnomalySourceFound?.Invoke(this);
             hasNotifiedAnomaly = true;
             isRemovable=true;
+            colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo);
            
         }
          UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext);
