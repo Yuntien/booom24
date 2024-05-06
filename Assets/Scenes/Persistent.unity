@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3236,8 +3236,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b10012bd6edda2a4187fec993ca32118, type: 2}
+  m_sharedMaterial: {fileID: -7072014946953876674, guid: b10012bd6edda2a4187fec993ca32118, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3632,6 +3632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeEvent: {fileID: 11400000, guid: 215d7f0e396712b47bfc80d6420b4ca0, type: 2}
   fadeImage: {fileID: 788615761}
+  newDay: {fileID: 0}
 --- !u!1 &1903776787
 GameObject:
   m_ObjectHideFlags: 0
