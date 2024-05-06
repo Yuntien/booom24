@@ -139,6 +139,8 @@ public class DisassemblyManager : MonoBehaviour
         else
         {
             Debug.Log("Module is not removable.");
+            DialogUIController.Instance.ShowMessage(null,"刚才说好要拆除的不是这个吧",DialogUIController.Instance.Hide,null);
+
         }
     }
 }
@@ -165,6 +167,7 @@ public class DisassemblyManager : MonoBehaviour
                     else
                     {
                         Debug.Log("Submodule is not removable.");
+                        DialogUIController.Instance.ShowMessage(null,"刚才说好要拆除的不是这个吧",DialogUIController.Instance.Hide,null);
                     }
                 }
     }
