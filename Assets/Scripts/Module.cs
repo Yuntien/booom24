@@ -12,14 +12,14 @@ public class Module : MonoBehaviour
     [HideInInspector]
     public List<Port> outPorts = new List<Port>();
     public string Name;
-    public string cn;
-      [HideInInspector]
+    [HideInInspector]
     public int finalAnomalyValue = 0;
     public event Action<Module, int> OnAnomalyModuleFound;
     public event Action<Module> OnAnomalySourceFound;
     private bool hasNotifiedAnomaly = false; 
     [HideInInspector]
     public CheckPort checkport;
+    [HideInInspector]
     public int anomalyValue=2;
     private GameObject outline;
     public bool isRemovable=false;
