@@ -35,6 +35,7 @@ public class Submodule : MonoBehaviour
     public void SetScreenText(string text)
     {
         screenText.text = text;
+        this.name=text;
         
     }
 
