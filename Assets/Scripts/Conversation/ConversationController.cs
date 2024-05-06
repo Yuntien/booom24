@@ -300,6 +300,7 @@ public class ConversationController : Singleton<ConversationController>
         {
             BackgroundController.Instance.MoveToWindow().OnComplete(() =>
             {
+                // ¿¿½ü´°¿Ú
                 userEvent.Advance.Invoke();
             });
         }

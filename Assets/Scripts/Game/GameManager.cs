@@ -161,6 +161,7 @@ public class GameManager : Singleton<GameManager>
         {
             currentTalkSceneSO = currentTalkSceneSO.nextScene;
             Menu.Instance.FadeIn(0.1f);
+            BackgroundController.Instance.ResetBackground();
             FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
             {
                 ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
