@@ -18,11 +18,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   deepFixPartName:
-  - "\u9A82\u6D41\u8424"
-  - HIVEMIND
-  - "\u5B89\u88C5HIVEMIND"
+  - "\u8FB1\u9A82"
+  - "\u5C01\u95ED"
+  - "\u9694\u79BB"
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: f2bd1e19d8867ec489d149d0252a9a61, type: 2}
   nextScene: {fileID: 11400000, guid: 872ab5c7d231c314e83864c3e688ab8a, type: 2}
   isEndOfDay: 0
   mainActor: {fileID: 11400000, guid: 39458921f5541884c9916f46a208fcdd, type: 2}
+  windowType: 
