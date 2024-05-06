@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.AddressableAssets;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -45,9 +44,11 @@ public class AudioManager : Singleton<AudioManager>
     #region Ñ­»·²¥·Å
     public void PlayLoopAudio(string audioName)
     {
-        AudioClip clip = Resources.Load<AudioClip>(audioName);
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/Loop/{audioName}");
         loopSource.clip = clip;
+        loopSource.volume = 0f;
         loopSource.Play();
+        StartCoroutine(FadeTo(1.0f, fadeTime, loopSource));
     }
 
     public void PauseLoopAudio()
@@ -58,7 +59,7 @@ public class AudioManager : Singleton<AudioManager>
     public void ContinueLoopAudio()
     {
         loopSource.volume = 0.0f;
-        loopSource.Play();
+        loopSource.UnPause();
         StartCoroutine(FadeTo(1.0f, fadeTime, loopSource));
     }
     #endregion

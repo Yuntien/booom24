@@ -98,7 +98,7 @@ public class GameManager : Singleton<GameManager>
     private void OnContinueTalkLoaded()
     {
         // 人物出现
-        GuestController.Instance.ShowGuest();
+        GuestController.Instance.ShowGuest(currentTalkSceneSO.mainActor.FileName);
         
         // 继续对话
         ConversationController.Instance.ContinueConversation();

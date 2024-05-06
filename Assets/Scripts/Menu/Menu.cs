@@ -71,6 +71,7 @@ public class Menu : Singleton<Menu>
 
     public Tweener FadeIn(float duration)
     {
+        menuBackground.gameObject.SetActive(true);
         tv.DOBlendableColor(Color.white, duration);
         return menuBackground.DOBlendableColor(Color.white, duration);
     }
