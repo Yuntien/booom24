@@ -17,6 +17,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  - m_AssetGUID: d80c99a2f0f71294d9128659d3ced5cc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   deepFixPartName:
   - "\u9A82\u6D41\u8424"
   - "\u5B89\u88C5HIVEMIND"
@@ -26,3 +30,4 @@ MonoBehaviour:
   nextScene: {fileID: 11400000, guid: 05ae2f68124275e4b8b8a9a0ce4dda8a, type: 2}
   isEndOfDay: 0
   mainActor: {fileID: 11400000, guid: 39458921f5541884c9916f46a208fcdd, type: 2}
+  windowType: 
