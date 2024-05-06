@@ -13,6 +13,10 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource voiceSource;
     [Header("º«“‰“Ù–ß")]
     [SerializeField] private AudioSource memorySource;
+    [Header("±≥æ∞“Ù–ß1")]
+    [SerializeField] private AudioSource amb1Source;
+    [Header("±≥æ∞“Ù–ß2")]
+    [SerializeField] private AudioSource amb2Source;
     [Header("ªÏ∫œ∆˜")]
     [SerializeField] public AudioMixer mixer;
 
@@ -55,9 +59,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         AudioClip clip = Resources.Load<AudioClip>($"Audio/Loop/{audioName}");
         loopSource.clip = clip;
-        loopSource.volume = 0f;
         loopSource.Play();
-        StartCoroutine(FadeTo(1.0f, fadeTime, loopSource));
     }
 
     public void PauseLoopAudio()
@@ -67,9 +69,51 @@ public class AudioManager : Singleton<AudioManager>
 
     public void ContinueLoopAudio()
     {
-        loopSource.volume = 0.0f;
         loopSource.UnPause();
-        StartCoroutine(FadeTo(1.0f, fadeTime, loopSource));
+    }
+    #endregion
+
+    #region ±≥æ∞“Ù—≠ª∑≤•∑≈
+    public void PlayAmb1Audio(string audioName)
+    {
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/Amb/{audioName}");
+        amb1Source.clip = clip;
+        amb1Source.volume = 0f;
+        amb1Source.Play();
+        StartCoroutine(FadeTo(1.0f, fadeTime, amb1Source));
+    }
+
+    public void PauseAmb1Audio()
+    {
+        amb1Source.Pause();
+    }
+
+    public void ContinueAmb1Audio()
+    {
+        amb1Source.volume = 0.0f;
+        amb1Source.UnPause();
+        StartCoroutine(FadeTo(1.0f, fadeTime, amb1Source));
+    }
+
+    public void PlayAmb2Audio(string audioName)
+    {
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/Amb/{audioName}");
+        amb2Source.clip = clip;
+        amb2Source.volume = 0f;
+        amb2Source.Play();
+        StartCoroutine(FadeTo(1.0f, fadeTime, amb2Source));
+    }
+
+    public void PauseAmb2Audio()
+    {
+        amb2Source.Pause();
+    }
+
+    public void ContinueAmb2Audio()
+    {
+        amb2Source.volume = 0.0f;
+        amb2Source.UnPause();
+        StartCoroutine(FadeTo(1.0f, fadeTime, amb2Source));
     }
     #endregion
 

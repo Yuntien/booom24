@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 83562f2fc978b594fb0291b9b1581806
   m_SerializeEntries:
-  - m_GUID: 96cb00287050a6641b92b5798e99b2ae
-    m_Address: Choice Button
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 623aea00065118f4f861587a7dce5208
     m_Address: CheckLineManager
     m_ReadOnly: 0
