@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4b5f5c32482704eb75f62e21e6ec86, type: 3}
   m_Name: Painter new
   m_EditorClassIdentifier: 
-  displayName: "\u6D41\u8424"
+  displayName: "\u4F69\u4F69"
   avatar: {fileID: 21300000, guid: 0e80fbd831b149f4f819730c358fbf3d, type: 3}
   audioNum: 0
   fileName: Firefly
