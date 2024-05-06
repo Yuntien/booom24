@@ -95,7 +95,7 @@ public class DisassemblyManager : MonoBehaviour
     {
         isSub=isSuboutside;
         DragDrop2D line=FindObjectOfType<DragDrop2D>();
-        line.DisableDrag();
+        line?.DisableDrag();
         Debug.Log("Repair");
         Initialize(); 
         isInRepairMode = true;
