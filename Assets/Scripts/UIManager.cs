@@ -68,6 +68,8 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
     {
         anomalyModuleText.color = Color.red;
         anomalyModuleText.text = $"错误信息: {errortext}";
+        log.enabled=false;
+        checking.enabled=false;
         return;
     }
     if(warningtext!="")
@@ -75,6 +77,8 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
         anomalyModuleText.color = Color.yellow;
            
          anomalyModuleText.text = $"警告信息: {warningtext}";
+         log.enabled=false;
+        checking.enabled=false;
          return;
 
     }

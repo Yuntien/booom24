@@ -19,12 +19,15 @@ public class ConversationController : Singleton<ConversationController>
     [SerializeField] private FadeEventSO sceneFadeEventSO;
     [SerializeField] private FadeEventSO fadeEventSO;
 
+    private bool isTalking;
+
     /// <summary>
     /// 开启对话
     /// </summary>
     /// <param name="conversation">对话</param>
     public void StartConversation(Conversation conversation)
     {
+        isTalking = false;
         runner = new ConversationRunner(conversation);
         runner.OnConversationEvent.AddListener(HandleConversationEvent);
 
@@ -37,13 +40,13 @@ public class ConversationController : Singleton<ConversationController>
     /// </summary>
     public void ContinueConversation()
     {
-        runner.SetProperty("正在对话", true);
+        isTalking = true;
         tempAction.Invoke();
     }
 
     public bool IsTalking()
     {
-        return runner.GetProperty<bool>("正在对话");
+        return isTalking;
     }
 
     /// <summary>
@@ -53,7 +56,7 @@ public class ConversationController : Singleton<ConversationController>
     public void ContinueChoice(string choiceName)
     {
         Debug.Log(choiceName);
-        runner.SetProperty("正在对话", true);
+        isTalking = true;
         if (optionMap.ContainsKey(choiceName))
         {
             var choice = optionMap[choiceName];
@@ -201,22 +204,24 @@ public class ConversationController : Singleton<ConversationController>
                 Menu.Instance.FadeIn(value).onComplete += () => evt.Advance.Invoke();
                 break;
             case "设置开始模块":
-                runner.SetProperty("正在对话", false);
+                isTalking = false;
                 tempAction = evt.Advance;
                 Robot.Instance.SetStartModule(evtValue);
                 break;
             case "设置结束模块":
-                runner.SetProperty("正在对话", false);
+                isTalking = false;
                 tempAction = evt.Advance;
                 Robot.Instance.SetEndModule(evtValue);
                 break;
             case "激活开始模块":
-                runner.SetProperty("正在对话", false);
+                isTalking = false;
+                DialogUIController.Instance.Hide();
                 tempAction = evt.Advance;
                 Robot.Instance.ActiveStartModule();
                 break;
             case "激活结束模块":
-                runner.SetProperty("正在对话", false);
+                isTalking = false;
+                DialogUIController.Instance.Hide();
                 tempAction = evt.Advance;
                 Robot.Instance.ActiveEndModule();
                 break;
@@ -232,7 +237,7 @@ public class ConversationController : Singleton<ConversationController>
     private void HandleChoiceEvent(ChoiceEvent evt)
     {
         // 设置正在对话
-        runner.SetProperty("正在对话", false);
+        isTalking = false;
 
         DialogUIController.Instance.Hide();
         optionMap.Clear();
@@ -252,7 +257,7 @@ public class ConversationController : Singleton<ConversationController>
             Debug.Log(userEvent.Name);
             GameManager.Instance.Fix();
 
-            runner.SetProperty("正在对话", true);
+            isTalking = true;
         } 
         else if (userEvent.Name == "进入场景")
         {                

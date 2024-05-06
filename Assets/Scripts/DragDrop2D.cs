@@ -48,6 +48,10 @@ public class DragDrop2D : MonoBehaviour
 
       void OnMouseDown()
     {
+        if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
         if(isInRepairMode)
         return;
         if (Time.time < lastDragTime + dragCooldown)
@@ -81,6 +85,11 @@ public class DragDrop2D : MonoBehaviour
 
     void OnMouseDrag()
     {
+    if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
+    
         if(isInRepairMode)
         return;
         if (checkport && checkport.isChecking)
@@ -92,8 +101,13 @@ public class DragDrop2D : MonoBehaviour
         transform.position = MouseWorldPosition() + offset;
     }
 
-   void OnMouseUp()
+void OnMouseUp()
 {
+    if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
+    
     if(isInRepairMode)
         return;
     collider2d.enabled = false;

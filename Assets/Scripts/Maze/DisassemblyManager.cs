@@ -120,6 +120,10 @@ public class DisassemblyManager : MonoBehaviour
     //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
+    if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
         if (isSub)
         {
             return;
@@ -137,12 +141,18 @@ public class DisassemblyManager : MonoBehaviour
         else
         {
             Debug.Log("Module is not removable.");
+            DialogUIController.Instance.ShowMessage(null,"刚才说好要拆除的不是这个吧",DialogUIController.Instance.Hide,null);
+
         }
     }
 }
  //维修时点击模块，触发这里
     private void HandleSubmoduleClicked(Submodule submodule)
     {
+        if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
         if(!isSub)
         {
             return;
@@ -160,6 +170,7 @@ public class DisassemblyManager : MonoBehaviour
                     else
                     {
                         Debug.Log("Submodule is not removable.");
+                        DialogUIController.Instance.ShowMessage(null,"刚才说好要拆除的不是这个吧",DialogUIController.Instance.Hide,null);
                     }
                 }
     }
