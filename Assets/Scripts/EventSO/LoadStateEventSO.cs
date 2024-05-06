@@ -12,6 +12,8 @@ public class LoadStateEventSO : ScriptableObject
     public UnityAction OnFixEventRaised;
     public UnityAction OnContinueTalkEventRaised;
     public UnityAction OnDeepFixEventRaised;
+    public UnityAction OnWindowEventRaised;
+    public UnityAction OnNewDayEventRaised;
 
     public void RaiseEvent(LoadState loadState)
     {
@@ -31,6 +33,12 @@ public class LoadStateEventSO : ScriptableObject
                 break;
             case LoadState.DeepFix:
                 OnDeepFixEventRaised?.Invoke();
+                break;
+            case LoadState.LookAtWindow:
+                OnWindowEventRaised?.Invoke();
+                break;
+            case LoadState.NewDay:
+                OnNewDayEventRaised?.Invoke();
                 break;
         }
     }

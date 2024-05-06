@@ -298,10 +298,11 @@ public class ConversationController : Singleton<ConversationController>
         }
         else if (userEvent.Name == "靠近窗口")
         {
+            tempAction = userEvent.Advance;
+            DialogUIController.Instance.Hide();
             BackgroundController.Instance.MoveToWindow().OnComplete(() =>
             {
-                // 靠近窗口
-                userEvent.Advance.Invoke();
+                GameManager.Instance.LookAtWindow();
             });
         }
     }

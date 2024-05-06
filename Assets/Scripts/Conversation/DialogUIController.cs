@@ -92,7 +92,7 @@ public class DialogUIController : Singleton<DialogUIController>
         }
 
         // 清除选择面板的子物体
-        foreach (Transform child in choiceBox.transform)
+        foreach (Transform child in curChoiceBox.transform)
         {
             Destroy(child.gameObject);
         }

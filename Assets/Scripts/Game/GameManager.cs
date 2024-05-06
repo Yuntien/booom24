@@ -43,6 +43,8 @@ public class GameManager : Singleton<GameManager>
         afterSceneLoadEventSO.OnContinueTalkEventRaised += OnContinueTalkLoaded;
         afterSceneLoadEventSO.OnFixEventRaised += OnFixLoaded;
         afterSceneLoadEventSO.OnDeepFixEventRaised += OnDeepFixLoad;
+        afterSceneLoadEventSO.OnWindowEventRaised += OnLookAtWindowLoad;
+        afterSceneLoadEventSO.OnNewDayEventRaised += OnNewDayLoad;
     }
 
     private void OnDisable()
@@ -50,6 +52,9 @@ public class GameManager : Singleton<GameManager>
         afterSceneLoadEventSO.OnStartTalkEventRaised -= OnStartTalkLoaded;
         afterSceneLoadEventSO.OnContinueTalkEventRaised -= OnContinueTalkLoaded;
         afterSceneLoadEventSO.OnFixEventRaised -= OnFixLoaded;
+        afterSceneLoadEventSO.OnDeepFixEventRaised -= OnDeepFixLoad;
+        afterSceneLoadEventSO.OnWindowEventRaised -= OnLookAtWindowLoad;
+        afterSceneLoadEventSO.OnNewDayEventRaised -= OnNewDayLoad;
     }
 
     public void StartNewGame()
@@ -148,6 +153,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (currentTalkSceneSO.nextScene == null)
         {
+            // TODO 此处游戏结束
             return;
         }
 
@@ -159,18 +165,8 @@ public class GameManager : Singleton<GameManager>
             {
                 ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
             };
-        } 
-        else
-        {
-            currentTalkSceneSO = currentTalkSceneSO.nextScene;
-            Menu.Instance.FadeIn(0.1f);
-            BackgroundController.Instance.ResetBackground();
-            FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
-            {
-                ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
-            };
+            fixIndex = 0;
         }
-        fixIndex = 0;
     }
 
     public void LookAtWindow()
@@ -180,7 +176,25 @@ public class GameManager : Singleton<GameManager>
 
     private void OnLookAtWindowLoad()
     {
-        //Window.Instance.StartAnimation(currentTalkSceneSO.);
+        Window.Instance.StartAnimation(currentTalkSceneSO.windowType);
+        ConversationController.Instance.ContinueConversation();
+    }
+
+    public void NewDay()
+    {
+        FadeCanvas.Instance.FadeIn(1f).onComplete += () =>
+        {
+            loadEventSO?.RaiseEvent(talkScene, false, LoadState.NewDay);
+            currentTalkSceneSO = currentTalkSceneSO.nextScene;
+            Menu.Instance.FadeIn(0.1f);
+            fixIndex = 0;
+            ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
+        };
+    }
+
+    private void OnNewDayLoad()
+    {
+        FadeCanvas.Instance.FadeOut(0.5f);
     }
 
     private IDeepRepairRule DeepFixRuleFactory(DeepRepairRuleType type)

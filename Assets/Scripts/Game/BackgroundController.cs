@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Android;
 using DG.Tweening;
 
 public class BackgroundController : Singleton<BackgroundController>
 {
     [Header("对话背景")]
     [SerializeField] private Transform backgorund;
+    [Header("移动位置")]
+    [SerializeField] private Transform movePos;
+    [Header("缩小比例")]
+    [SerializeField] private int scaleNum;
 
     public Sequence MoveToWindow()
     {
         var sequence = DOTween.Sequence();
-        sequence.Append(backgorund.DOMove(new Vector3(0.8f, -2f, 0f), 5f));
-        sequence.Join(backgorund.DOScale(new Vector3(2f, 2f, 2f), 5f));
+        sequence.Append(backgorund.DOMove(-movePos.position, 5f));
+        sequence.Join(backgorund.DOScale(new Vector3(scaleNum, scaleNum, scaleNum), 5f));
         return sequence;
     }
 

@@ -56,6 +56,7 @@ public class Drag : MonoBehaviour
 
     public void EndDay()
     {
-
+        DialogUIController.Instance.Hide();
+        GameManager.Instance.NewDay();
     }
 }

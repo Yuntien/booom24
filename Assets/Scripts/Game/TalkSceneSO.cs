@@ -20,4 +20,6 @@ public class TalkSceneSO : ScriptableObject
     public bool isEndOfDay;
 
     public DialogActor mainActor;
+
+    public string windowType;
 }

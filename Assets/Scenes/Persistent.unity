@@ -3723,6 +3723,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  windowScene:
+    m_AssetGUID: 19a037fba21e31b47ba9db081e905d34
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   loadEventSO: {fileID: 11400000, guid: b1fb5f178ef4a2b4397196b4e40f6597, type: 2}
   afterSceneLoadEventSO: {fileID: 11400000, guid: d13a771d549da8c4f8016f05f8bd424b, type: 2}
   fadeEventSO: {fileID: 11400000, guid: 215d7f0e396712b47bfc80d6420b4ca0, type: 2}
