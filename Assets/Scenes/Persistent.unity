@@ -802,7 +802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &496109018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,15 +1989,8 @@ MonoBehaviour:
   messageText: {fileID: 804119202}
   nextMessageButton: {fileID: 93761075}
   choiceBox: {fileID: 27598657}
-  messageWindowHead: {fileID: 1764138765}
-  actorNameTextHead: {fileID: 2074005946}
-  messageTextHead: {fileID: 1858651368}
-  nextMessageButtonHead: {fileID: 1862288161}
-  choiceBoxHead: {fileID: 970396634}
-  headImage: {fileID: 766054389}
   choiceOptionButtonPrefab: {fileID: 659956759807646603, guid: 96cb00287050a6641b92b5798e99b2ae, type: 3}
   textSpeed: 0.05
-  emptyHead: {fileID: 21300000, guid: 9b404f5088be8624ea4be79a73383168, type: 3}
 --- !u!4 &1221353552
 Transform:
   m_ObjectHideFlags: 0

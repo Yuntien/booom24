@@ -185,14 +185,6 @@ public class ConversationController : Singleton<ConversationController>
                 }
                 Menu.Instance.FadeIn(value).onComplete += () => evt.Advance.Invoke();
                 break;
-            case "µ­ÈëµçÊÓ":
-                float value;
-                if (!float.TryParse(evt.Value, out value))
-                {
-                    value = 0f;
-                }
-                Menu.Instance.FadeIn(value).onComplete += () => evt.Advance.Invoke();
-                break;
         }
     }
 
