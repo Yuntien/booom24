@@ -3550,7 +3550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 3fd52b427cddf4942a1a6a31f0e2880c, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 95b69276704582d4f8ac81ba9f055f5e, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 

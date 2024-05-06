@@ -7,12 +7,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance; // Singleton instance
 
-    public GameObject shortscreen; // The panel named "screen"
-    public GameObject longScreen; // The panel named "screen"
-    public TextMeshProUGUI checking; // The UI Text element to display anomaly module info
-    public TextMeshProUGUI log; // The UI Text element to display task info
-    public TextMeshProUGUI anomalyModuleText;
-    public TextMeshProUGUI taskText;
+    //public GameObject shortscreen; // The panel named "screen"
+    //public GameObject longScreen; // The panel named "screen"
+    public TextMeshPro checking; // The UI Text element to display anomaly module info
+    public TextMeshPro log; // The UI Text element to display task info
+    public TextMeshPro anomalyModuleText;
+    //public TextMeshPro taskText;
 
 
     private void Awake()
@@ -26,22 +26,26 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
     public void ClearText()
 {
-    longScreen.gameObject.SetActive(false);
-    shortscreen.GetComponent<Image>().color=new Color(0.27f,0.27f,0.27f,1);
-    longScreen.GetComponent<Image>().color=new Color(0.27f,0.27f,0.27f,1);
+    //longScreen.gameObject.SetActive(false);
+    //shortscreen.GetComponent<Image>().color=new Color(0.27f,0.27f,0.27f,1);
+    //longScreen.GetComponent<Image>().color=new Color(0.27f,0.27f,0.27f,1);
     anomalyModuleText.text="";
     checking.text = "";
     log.text = "";
+    log.color=Color.white;
+    anomalyModuleText.color=Color.white;
+    checking.color=Color.white;
 }
 public void UpdateModuleCheckText(string moduleName)
 {
 
 
-    checking.text = $"checking: {moduleName}\nfinding connection...";
+    checking.text = $"检查{moduleName}中\n激活连接关系...";
     
      
 }
@@ -63,15 +67,19 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
 
     if (finalAnomalyValue > 0)
     {
-        shortscreen.GetComponent<Image>().color=Color.red;
+        //shortscreen.GetComponent<Image>().color=Color.red;
+        
         log.text=null;
-        log.text=$"\n当前模块（{moduleName}）受到排异反应影响异常，需要寻找排异源头";
+        log.color = Color.red;
+        log.text=$"异常\n当前模块（{moduleName}）受到排异反应影响异常，需要寻找排异源头";
+       
 
         if(errortext!="")
         {
-            longScreen.gameObject.SetActive(true);
-            longScreen.GetComponent<Image>().color=Color.red;
-            anomalyModuleText.text = $"Error message: {errortext}";
+            //longScreen.gameObject.SetActive(true);
+            //longScreen.GetComponent<Image>().color=Color.red;
+            anomalyModuleText.color = Color.red;
+            anomalyModuleText.text = $"错误信息: {errortext}";
 
         }
 
@@ -81,14 +89,16 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
     }
     else if (!inAnomaly && outAnomaly)
     {
-        shortscreen.GetComponent<Image>().color=Color.red;
+        //shortscreen.GetComponent<Image>().color=Color.red;
         log.text=null;
-        log.text=$"\n该模块为排异源头,需要去除";
+        log.color = Color.red;
+        log.text=$"异常\n该模块为排异源头,需要去除";
         if(errortext!="")
         {
-            longScreen.gameObject.SetActive(true);
-            longScreen.GetComponent<Image>().color=Color.red;
-            anomalyModuleText.text = $"Error message: {errortext}";
+            anomalyModuleText.color = Color.red;
+            //longScreen.gameObject.SetActive(true);
+            //longScreen.GetComponent<Image>().color=Color.red;
+            anomalyModuleText.text = $"错误信息: {errortext}";
         }
 
         //log.text=null;
@@ -102,9 +112,10 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
         log.text= $"\n该模块正常";
         if(warningtext!="")
         {
-            longScreen.gameObject.SetActive(true);
-             longScreen.GetComponent<Image>().color=Color.yellow;
-             anomalyModuleText.text = $"Warning message: {warningtext}";
+            anomalyModuleText.color = Color.yellow;
+            //longScreen.gameObject.SetActive(true);
+             //longScreen.GetComponent<Image>().color=Color.yellow;
+             anomalyModuleText.text = $"警告信息: {warningtext}";
         }
 
         //log.text=null;

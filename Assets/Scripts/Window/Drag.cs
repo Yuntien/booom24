@@ -1,65 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;  // 引入 DOTween 命名空间
 
 public class Drag : MonoBehaviour
 {
     private bool isDragging = false;
-    public Transform curtain;  // Your curtain object
-    public Vector3 curtainFinalPosition;  // The final position of the curtain
-
-    private Vector3 curtainInitialPosition;  // The initial position of the curtain
     private Vector3 ropeInitialPosition;  // The initial position of the rope
-
-    private const float ropeUpperLimit = 3.65f;
-    private const float ropeLowerLimit = -2.28f;
+    private const float ropeUpperLimit = 4f;
+    private const float ropeLowerLimit = -4.27f;
+    private Vector3 ropeFinalPos=new Vector3(7.67f,4f,0);
+    private bool isAtBottom = false;
 
     void Start()
     {
-        curtainInitialPosition = curtain.position;
-        ropeInitialPosition = transform.position;
+        ropeInitialPosition = transform.position;  // 记录绳子的初始位置
+    }
+
+    void OnMouseDown()
+    {
+        if(!isAtBottom)
+            isDragging = true;
+    }
+
+    void OnMouseUp()
+    {
+        isDragging = false;
+        
+        // 如果绳子的位置没有到达最下面的边界，就使绳子回到开始的位置
+        if (transform.position.y > ropeLowerLimit + 2f)
+        {
+            transform.DOMove(ropeFinalPos, 0.5f);  // 0.5f 是动画的持续时间，你可以根据需要调整
+        }
     }
 
     void Update()
     {
-        // Check if the left mouse button was clicked
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Check if the mouse is over the rope
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (GetComponent<Collider2D>().OverlapPoint(mousePosition))
-            {
-                isDragging = true;
-            }
-        }
-        // Check if the left mouse button was released
-        else if (Input.GetMouseButtonUp(0))
-        {
-            isDragging = false;
-        }
-
         // Drag the rope
         if (isDragging)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float newY = Mathf.Clamp(mousePosition.y, ropeLowerLimit, ropeUpperLimit);
 
-            // If the rope is near the lower limit, snap it to the limit
-            if (Mathf.Abs(newY - ropeLowerLimit) < 0.1f)
+            if (newY <= ropeLowerLimit + 2f)
             {
-                
-                newY = ropeLowerLimit;
-                isDragging = false;  // Stop dragging once the rope has reached the lower limit
+                transform.DOMove(new Vector3(transform.position.x, ropeLowerLimit, transform.position.z), 0.5f);
+                isDragging = false;
+                isAtBottom = true;
                 EndDay();
             }
 
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-
-            // Update the curtain's position based on the rope's position
-            float t = (newY - ropeInitialPosition.y) / (ropeLowerLimit - ropeInitialPosition.y);
-            curtain.position = Vector3.Lerp(curtainInitialPosition, curtainFinalPosition, t);
         }
     }
+
     public void EndDay()
     {
 
