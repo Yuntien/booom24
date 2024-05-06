@@ -101,7 +101,7 @@ public void SetStartModule(string name)
     }
 }
 
-public void SetStEndModule(string name)
+public void SetEndModule(string name)
 {
     // 在 modulelist 里找这个传入名称的 module,找到后将它的 isRemovable 改为 true
     // 然后去调用 ConversationController.Instance.ContinueConversation()

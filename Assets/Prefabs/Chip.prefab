@@ -72,6 +72,7 @@ MonoBehaviour:
   warningtext: 
   isSource: 0
   lightSprite: {fileID: 1795293564345331029}
+  showName: 
 --- !u!61 &9222323835715140933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -838,7 +839,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_SortAtRoot: 0
 --- !u!1 &4692577780237255067
 GameObject:
@@ -1829,9 +1830,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 1689cc9ccb2cb2e47b1d6d9ef5482601, type: 3}
-  m_Color: {r: 0.89327615, g: 1, b: 0.65471697, a: 1}
+  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
