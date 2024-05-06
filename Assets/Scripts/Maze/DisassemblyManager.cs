@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-using Unity.VisualScripting;
+//using Unity.VisualScripting;
+using DG.Tweening;
 
 public class DisassemblyManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class DisassemblyManager : MonoBehaviour
 
     private Submodule currentSubmodule; 
     private Module currentModule; 
+
+    public GameObject subSprite;
+    public GameObject moduleSprite;
 
     private bool isSub;
 
@@ -181,34 +185,71 @@ public class DisassemblyManager : MonoBehaviour
             screw.OnScrewRemoved.AddListener(HandleScrewRemoved);
         }
     }
-     private void HandleScrewRemoved()
-    {
-     
+    private void HandleScrewRemoved()
+{
     screwsRemovedCount++;
     Debug.Log("remove screw");
-    //螺丝全部拧掉，修完成，触发这里
+
+    // 所有螺丝都已经被拧掉
     if (screwsRemovedCount >= screws.Count)
     {  
-        // Disable the visual GameObjects
-        subModuleVisual.SetActive(false);
-        Destroy(screwdriver);
-        moduleVisual.SetActive(false);
-        if (currentSubmodule != null)
+        Transform target;
+        // 获取 AudioSource 组件
+        //AudioSource audioSource = GetComponent<AudioSource>();
+        if (isSub)
         {
-            DeepRepairManager.Instance.RemoveSubmodule(currentSubmodule);
-            currentSubmodule = null; 
+            target = subSprite.transform;
+            subModuleVisual.GetComponentInChildren<TextMeshPro>().text="";
         }
-        if (currentModule != null)
+        else
         {
-            Robot.Instance.RemoveModule(currentModule);
-            currentModule = null; 
+            target = moduleSprite.transform;
+            moduleVisual.GetComponentInChildren<TextMeshPro>().text="";
         }
-        isInRepairMode=false;
-        OnDisassemblyEnd?.Invoke();
-            //GameManager.Instance.ContinueTalk();
-        }
-    }
+        // 创建一个新的序列
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(1f);
 
+        // 向序列中添加一个旋转动画
+        sequence.Append(target.DORotate(new Vector3(0, 0, 45), 0.5f));
+
+        // 向序列中添加一个移动动画
+        sequence.Append(target.DOMoveY(-15f, 1.2f).SetRelative().SetEase(Ease.OutQuad));
+
+        // 向序列中添加一个延迟
+        sequence.AppendInterval(1.5f);
+
+        // 向序列中添加一个回调来播放音频剪辑
+        //sequence.AppendCallback(() => audioSource.Play());
+
+        // 向序列中添加一个延迟
+        //sequence.AppendInterval(audioSource.clip.length);
+
+        // 向序列中添加一个回调来销毁模块或子模块
+        sequence.AppendCallback(() =>
+        {
+            // Disable the visual GameObjects
+            subModuleVisual.SetActive(false);
+            Destroy(screwdriver);
+            moduleVisual.SetActive(false);
+            if (currentSubmodule != null)
+            {
+                DeepRepairManager.Instance.RemoveSubmodule(currentSubmodule);
+                currentSubmodule = null; 
+            }
+            if (currentModule != null)
+            {
+                Robot.Instance.RemoveModule(currentModule);
+                currentModule = null; 
+            }
+            isInRepairMode=false;
+            OnDisassemblyEnd?.Invoke();
+        });
+
+        // 开始序列
+        sequence.Play();
+    }
+}
     public void DestroyScrewdriver()
     {
         if (screwdriver != null) 
