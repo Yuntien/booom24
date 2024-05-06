@@ -104,9 +104,10 @@ public class Window : Singleton<Window>
        //新增的表现
         sequence.Append(targetImage.transform.DOMove(finalPosition, duration));
         sequence.Join(targetImage.transform.DOScale(finalScale, duration));
-        sequence.Append(rope.DOMove(ropeFinalPos, Ropeduration).SetEase(Ease.OutElastic));
+        
     }
-
-
-
+    public void DropRope()
+    {
+        rope.DOMove(ropeFinalPos, Ropeduration).SetEase(Ease.OutElastic);
+    }
 }

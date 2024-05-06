@@ -37,7 +37,13 @@ public class ConversationController : Singleton<ConversationController>
     /// </summary>
     public void ContinueConversation()
     {
+        runner.SetProperty("正在对话", true);
         tempAction.Invoke();
+    }
+
+    public bool IsTalking()
+    {
+        return runner.GetProperty<bool>("正在对话");
     }
 
     /// <summary>
@@ -47,6 +53,7 @@ public class ConversationController : Singleton<ConversationController>
     public void ContinueChoice(string choiceName)
     {
         Debug.Log(choiceName);
+        runner.SetProperty("正在对话", true);
         if (optionMap.ContainsKey(choiceName))
         {
             var choice = optionMap[choiceName];
@@ -193,6 +200,26 @@ public class ConversationController : Singleton<ConversationController>
                 }
                 Menu.Instance.FadeIn(value).onComplete += () => evt.Advance.Invoke();
                 break;
+            case "设置开始模块":
+                runner.SetProperty("正在对话", false);
+                tempAction = evt.Advance;
+                Robot.Instance.SetStartModule(evtValue);
+                break;
+            case "设置结束模块":
+                runner.SetProperty("正在对话", false);
+                tempAction = evt.Advance;
+                Robot.Instance.SetEndModule(evtValue);
+                break;
+            case "激活开始模块":
+                runner.SetProperty("正在对话", false);
+                tempAction = evt.Advance;
+                Robot.Instance.ActiveStartModule();
+                break;
+            case "激活结束模块":
+                runner.SetProperty("正在对话", false);
+                tempAction = evt.Advance;
+                Robot.Instance.ActiveEndModule();
+                break;
         }
     }
 
@@ -204,6 +231,9 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleChoiceEvent(ChoiceEvent evt)
     {
+        // 设置正在对话
+        runner.SetProperty("正在对话", false);
+
         DialogUIController.Instance.Hide();
         optionMap.Clear();
         // 进入接线事件就把选项暂存起来
@@ -221,6 +251,8 @@ public class ConversationController : Singleton<ConversationController>
             tempAction = userEvent.Advance;
             Debug.Log(userEvent.Name);
             GameManager.Instance.Fix();
+
+            runner.SetProperty("正在对话", true);
         } 
         else if (userEvent.Name == "进入场景")
         {                
@@ -317,10 +349,22 @@ public class ConversationController : Singleton<ConversationController>
         if (evt.Actor is DialogActor dialogActor)
         {
             head = dialogActor.Avatar;
-            // 对话时播放语音
-            AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+            string[] strs = evt.Message.Trim().Split("||");
+            if (strs.Length > 1)
+            {
+                AudioManager.Instance.PlayVoice(dialogActor.FileName, strs[1].Trim());
+            }
+            else
+            {
+                // 对话时播放语音
+                AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+            }
+            DialogUIController.Instance.ShowMessage(actorName, strs[0], evt.Advance, head);
         }
-        DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, head);
+        else
+        {
+            DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, head);
+        }
     }
 
     private void HandleActorChoiceEvent(ActorChoiceEvent evt)

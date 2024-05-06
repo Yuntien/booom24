@@ -10,6 +10,7 @@ public class CheckPort : MonoBehaviour
     public Module module;
      public event Action<Module> OnFirstConnection;
     private bool hasBeenConnected = false;
+    [HideInInspector]
     public bool isCheckable=false;
 
     public bool isChecking = false;
@@ -17,14 +18,15 @@ public class CheckPort : MonoBehaviour
     void Awake()
     {
         module = GetComponentInParent<Module>();
-        if(isCheckable)
+
+        /*if(isCheckable)
         {
             cover.enabled=false;
         }
         else
         {
             cover.enabled=true;
-        }
+        }*/
 
     }
 
@@ -34,7 +36,19 @@ public class CheckPort : MonoBehaviour
         isCheckable=true;
     }
 
+public void OpenCheckPort()
+{
+    if(isCheckable)
+        {
+            cover.enabled=false;
+        }
+        else
+        {
+            cover.enabled=true;
+        }
 
+
+}
 IEnumerator connectCoroutine = null;
    public void Connect()
 {

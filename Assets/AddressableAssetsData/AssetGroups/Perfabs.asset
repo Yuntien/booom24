@@ -42,6 +42,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b74b8f84adbd7d7498e69b68860a2b93
+    m_Address: Assets/Prefabs/CellTile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7ebbca15ebeb9f4f9cf8fa6a2c0a943
+    m_Address: Assets/Prefabs/DisassemblyManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ba56a85f850301499dd3178f0ca8905
+    m_Address: Assets/Prefabs/player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 378895ecf02c0c2429e3328921886853
+    m_Address: Assets/Prefabs/screw-driver.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f3a88d620546ea42b1854e8766352d6
+    m_Address: Assets/Prefabs/SubModel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b74bfbbdf04e5214fbe55a936270a8d3, type: 2}
   m_SchemaSet:

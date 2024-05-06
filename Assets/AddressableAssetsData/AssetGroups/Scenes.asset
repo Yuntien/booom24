@@ -117,8 +117,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d68352a8b1c75e7489835a33e1c3768c
-    m_Address: Assets/Scenes/HimekoFIx1.1.unity
+  - m_GUID: 8e7c6216dfd2d654e9453adce39c2001
+    m_Address: Assets/Prefabs/repairbackground.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c844f6202ee8fef4ea9e8c1a2d7f2040
+    m_Address: Assets/Prefabs/Screw.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 331f71e3c397efb4e87faa565b302cf5
+    m_Address: "Assets/Prefabs/\u6DF1\u5EA6\u7EF4\u4FEE\u5E95\u677F.prefab"
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
