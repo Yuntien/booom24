@@ -29,7 +29,8 @@ public class Module : MonoBehaviour
     public string warningtext=null;
     [HideInInspector]
     public bool isSource=false;
-    private Tweener colorTween;
+    [HideInInspector]
+    public Tweener colorTween;
     public SpriteRenderer lightSprite;
 
 
@@ -50,6 +51,14 @@ public class Module : MonoBehaviour
     }
     // Initialize the CheckPort
     checkport = GetComponentInChildren<CheckPort>();
+}
+public void ActiveStartModule()
+{
+
+}
+public void ActiveEndModule()
+{
+
 }
 private void OnMouseDown()
 {
@@ -81,12 +90,23 @@ public void SetOutline(bool isActive)
             OnAnomalySourceFound?.Invoke(this);
             hasNotifiedAnomaly = true;
             isRemovable=true;
-            colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            lightingEndError();
+           
            
         }
          UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext);
          checkport.isChecking=false;
          ConversationController.Instance.ContinueChoice(Name);
+    }
+    public void lightingEndError()
+    {
+         colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        
+    }
+    public void lightingStartError()
+    {
+         colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(4, LoopType.Yoyo)
+    .OnComplete(() => ConversationController.Instance.ContinueConversation());  
     }
 
     public void StartHightLight()

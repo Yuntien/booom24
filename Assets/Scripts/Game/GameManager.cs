@@ -166,6 +166,11 @@ public class GameManager : Singleton<GameManager>
                 ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
             };
             fixIndex = 0;
+        } 
+        else
+        {
+            // ´°Á±À­ÏÂ
+            Window.Instance.DropRope();
         }
     }
 

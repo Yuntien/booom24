@@ -59,6 +59,62 @@ public class Robot : MonoBehaviour
     }
 
     }
+   public void ActiveStartModule()
+{
+    // 在模块里寻找模组的 checkport，尝试激活 checkport 的 OpenCheckPort 并且激活模组的 lightingStartError()
+    // 在这个 lightingStartError 的 DOTween 结束后调用 ConversationController.Instance.ContinueConversation()
+    foreach (var module in Modules)
+    {
+        if (module.checkport != null && module.checkport.isCheckable)
+        {
+            module.checkport.OpenCheckPort();
+            module.lightingStartError();
+        }
+    }
+}
+
+public void ActiveEndModule()
+{
+    // 在模块里寻找模组，如果有模组的 isRemovable 是 true，那就激活这个模块的 lightEnderror
+    // 然后去调用 ConversationController.Instance.ContinueConversation()
+    foreach (var module in Modules)
+    {
+        if (module.isRemovable)
+        {
+            module.lightingEndError();
+            ConversationController.Instance.ContinueConversation();
+        }
+    }
+}
+
+public void SetStartModule(string name)
+{
+    // 在 modulelist 里找这个传入名称的 module，找到后将它的 checkport 的 isCheckable 改为 true
+    // 然后去调用 ConversationController.Instance.ContinueConversation()
+    foreach (var module in Modules)
+    {
+        if (module.Name == name && module.checkport != null)
+        {
+            module.checkport.isCheckable = true;
+            ConversationController.Instance.ContinueConversation();
+        }
+    }
+}
+
+public void SetEndModule(string name)
+{
+    // 在 modulelist 里找这个传入名称的 module,找到后将它的 isRemovable 改为 true
+    // 然后去调用 ConversationController.Instance.ContinueConversation()
+    foreach (var module in Modules)
+    {
+        if (module.Name == name)
+        {
+            module.isRemovable = true;
+            ConversationController.Instance.ContinueConversation();
+        }
+    }
+}
+
 
     private void Start()
     {
