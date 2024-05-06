@@ -8,7 +8,9 @@ using TMPro;
 public class Robot : MonoBehaviour
 {
     public static Robot Instance { get; private set; } // Add this line
+    [HideInInspector]
     public List<Module> Modules = new List<Module>();
+    [HideInInspector]
     public List<Connection> Connections = new List<Connection>();
 
     public int TotalAnomalyValue { get; private set; }
@@ -38,6 +40,7 @@ public class Robot : MonoBehaviour
         }
     }
 
+
     public Robot()
     {
         Modules = new List<Module>();
@@ -45,6 +48,8 @@ public class Robot : MonoBehaviour
     }
     public void Init()
     {
+        Modules = new List<Module>(GetComponentsInChildren<Module>());
+        
         Transform connections = transform.Find("Connections");
 
     // Get the Port components on the child objects and their descendants
@@ -57,25 +62,26 @@ public class Robot : MonoBehaviour
 
     private void Start()
     {
+        Init();
         foreach (var module in Modules)
         {
             module.OnAnomalyModuleFound += HandleAnomalyModuleFound;
             module.OnAnomalySourceFound += HandleAnomalySourceFound;
-             module.checkport.OnFirstConnection += HandleFirstConnection;
+            module.checkport.OnFirstConnection += HandleFirstConnection;
         }
     }
     private void HandleFirstConnection(Module module)
     {
-        // Add the module to the list of connected modules
         if (!connectedModules.Contains(module))
         {
             connectedModules.Add(module);
+            Debug.Log("connectedcount"+connectedModules.Count+""+"modulecount"+Modules.Count);
         }
 
-        // If all modules have been connected, trigger the event
         if (connectedModules.Count == Modules.Count)
         {
             OnAllModulesConnected?.Invoke();
+            Debug.Log("allconnected");
             ConversationController.Instance.AllMoudleConnected();
         }
     }
