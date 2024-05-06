@@ -17,3 +17,8 @@ public enum TVState
 {
     Black, News, Seller
 }
+
+public enum DialogTpye
+{
+    Head, Normal
+}

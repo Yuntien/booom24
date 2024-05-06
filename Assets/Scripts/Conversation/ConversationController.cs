@@ -6,7 +6,6 @@ using Conversa.Runtime.Events;
 using Conversa.Runtime.Interfaces;
 using System;
 using DG.Tweening;
-using UnityEditor;
 
 public class ConversationController : Singleton<ConversationController>
 {
@@ -200,7 +199,7 @@ public class ConversationController : Singleton<ConversationController>
     private void HandleMessageEvent(MessageEvent evt)
     {
         var actorName = evt.Actor == null ? "" : evt.Actor;
-        DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance);
+        DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, null);
     }
 
     private void HandleChoiceEvent(ChoiceEvent evt)
@@ -318,25 +317,29 @@ public class ConversationController : Singleton<ConversationController>
     private void HandleActorMessageEvent(ActorMessageEvent evt)
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
-        DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance);
-
+        
+        Sprite head = null;
         if (evt.Actor is DialogActor dialogActor)
         {
+            head = dialogActor.Avatar;
             // 对话时播放语音
             AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
         }
+        DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, head);
     }
 
     private void HandleActorChoiceEvent(ActorChoiceEvent evt)
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
-        DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options);
 
+        Sprite head = null;
         if (evt.Actor is DialogActor dialogActor)
         {
+            head = dialogActor.Avatar;
             // 对话时播放语音
             AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
         }
+        DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options, head);
     }
 
     private void HandleEnd()
