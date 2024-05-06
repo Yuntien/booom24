@@ -83,6 +83,8 @@ public void SetOutline(bool isActive)
         int inAnomalySum = inPorts.Sum(p => p.anomalyValue);
         int outAnomalySum = outPorts.Sum(p => p.anomalyValue);   
         finalAnomalyValue = inAnomalySum - outAnomalySum; 
+        bool inAnomaly = inPorts.Any(p => p.anomalyValue != 0);
+        bool outAnomaly = outPorts.Any(p => p.anomalyValue != 0);
         if(finalAnomalyValue > 0 && !hasNotifiedAnomaly)    
         {
             //起始问题模块模块
@@ -90,10 +92,9 @@ public void SetOutline(bool isActive)
             hasNotifiedAnomaly = true;
             lightSprite.color=Color.yellow;
         }
-        bool inAnomaly = inPorts.Any(p => p.anomalyValue != 0);
-        bool outAnomaly = outPorts.Any(p => p.anomalyValue != 0);
+        
 
-        if (!inAnomaly && outAnomaly && !hasNotifiedAnomaly)
+        else if (!inAnomaly && outAnomaly && !hasNotifiedAnomaly)
         {
             //问题源头找到
             OnAnomalySourceFound?.Invoke(this);

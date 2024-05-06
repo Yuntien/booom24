@@ -118,6 +118,10 @@ public class DisassemblyManager : MonoBehaviour
     //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
+    if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
         if (isSub)
         {
             return;
@@ -141,6 +145,10 @@ public class DisassemblyManager : MonoBehaviour
  //维修时点击模块，触发这里
     private void HandleSubmoduleClicked(Submodule submodule)
     {
+        if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
         if(!isSub)
         {
             return;
