@@ -414,7 +414,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2081683952322848002, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5093123695108805207, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 3276958167786845661, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e55573d946256c046a71ddaa3709f7a8, type: 3}
 --- !u!114 &709497401 stripped
 MonoBehaviour:
@@ -1266,6 +1275,10 @@ PrefabInstance:
       propertyPath: Name
       value: ADVANCEDMOVEMENT
       objectReference: {fileID: 0}
+    - target: {fileID: 7682854053144170069, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: warningtext
+      value: "WARNING\uFF1A\u5185\u5B58\u4E0D\u8DB3\u3002 /r \u8BF7\u67E5\u9605\u8BCA\u7597\u624B\u518C"
+      objectReference: {fileID: 0}
     - target: {fileID: 7720014718898778353, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -1518,6 +1531,15 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 18396605}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7477285852671659112, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5131708651672222060, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7792542586603085450, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 4274456006014551920, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
