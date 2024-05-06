@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class FadeCanvas : Singleton<FadeCanvas>
 {
     [Header("ÊÂ¼þ¼àÌý")]
     public FadeEventSO fadeEvent;
     public Image fadeImage;
+    public TextMeshPro newDay;
 
     private void OnEnable()
     {

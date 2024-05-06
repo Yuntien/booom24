@@ -118,7 +118,7 @@ public class DialogUIController : Singleton<DialogUIController>
     private void Update()
     {
         // µã»÷ÊÂ¼þ
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             if (textIsPlaying)
             {

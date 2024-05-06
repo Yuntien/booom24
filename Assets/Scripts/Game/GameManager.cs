@@ -229,4 +229,11 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
     }
+
+    public void GameEnd()
+    {
+        // 遮罩淡入
+        FadeCanvas.Instance.FadeIn(3f);
+        // 显示感谢游玩
+    }
 }
