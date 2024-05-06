@@ -108,6 +108,8 @@ public class DisassemblyManager : MonoBehaviour
         if(isSub)
         {
             DeepRepairManager.Instance.maze.OnSubmoduleClicked += HandleSubmoduleClicked;
+            //ConversationController.Instance.ContinueConversation();
+
         }
         else
         {
@@ -145,13 +147,14 @@ public class DisassemblyManager : MonoBehaviour
         {
             return;
         }
-        //ConversationController.Instance.ContinueChoice(submodule.name);
+        //
 
         if (submodule != null)
                 {
                     if (submodule.isRemovable)
                     {
                          currentSubmodule = submodule; 
+                        //ConversationController.Instance.ContinueChoice(submodule.name);
                         StartDisassemblyMode(submodule.name);
                     }
                     else
