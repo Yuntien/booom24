@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Window : MonoBehaviour
+public class Window : Singleton<Window>
 {
     // Start is called before the first frame updatepublic GameObject targetImage;  // 你的图像对象
     public float duration = 1.0f;  // 动画的持续时间
@@ -33,7 +33,7 @@ public class Window : MonoBehaviour
     {
         targetImage.SetActive(true);
         Sequence sequence = DOTween.Sequence();
-        switch ("销售大赛")
+        switch (animType)
     {
         case "普通":
             // 添加普通的动画

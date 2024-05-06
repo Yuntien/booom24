@@ -17,6 +17,9 @@ public class GameManager : Singleton<GameManager>
     [Header("深度维修场景")]
     [SerializeField] private AssetReference deepFixScene;
 
+    [Header("床边场景")]
+    [SerializeField] private AssetReference windowScene;
+
     [Header("事件挂载")]
     // 发起广播
     [SerializeField] private SceneLoadEventSO loadEventSO;
@@ -168,6 +171,16 @@ public class GameManager : Singleton<GameManager>
             };
         }
         fixIndex = 0;
+    }
+
+    public void LookAtWindow()
+    {
+        loadEventSO?.RaiseEvent(windowScene, true, LoadState.LookAtWindow);
+    }
+
+    private void OnLookAtWindowLoad()
+    {
+        //Window.Instance.StartAnimation(currentTalkSceneSO.);
     }
 
     private IDeepRepairRule DeepFixRuleFactory(DeepRepairRuleType type)

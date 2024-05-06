@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public enum LoadState
 {
-    StartTalk, Fix, ContinueTalk, Menu, DeepFix
+    StartTalk, Fix, ContinueTalk, Menu, DeepFix, LookAtWindow, NewDay
 }
 
 public enum DeepRepairRuleType
