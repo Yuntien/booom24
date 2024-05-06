@@ -41,6 +41,15 @@ public class AudioManager : Singleton<AudioManager>
     }
     #endregion
 
+    #region ²¥·Å³ª¸è
+    public void PlayVoice(string actorName, string voiceName)
+    {
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/Voice/{actorName}/{voiceName}");
+        voiceSource.clip = clip;
+        voiceSource.Play();
+    }
+    #endregion
+
     #region Ñ­»·²¥·Å
     public void PlayLoopAudio(string audioName)
     {
