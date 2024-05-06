@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cinemachine;
 
 public class DragDrop2D : MonoBehaviour
 {
@@ -15,7 +16,13 @@ public class DragDrop2D : MonoBehaviour
     // The cooldown time in seconds between two dragging operations
     private float dragCooldown = 0.1f;
 
+    private SpriteRenderer plugin;
+
     private bool isInRepairMode=false;
+    [HideInInspector]
+    public bool isDragging = false;
+    float radius;
+    //public GameObject plug; // The plug object
 
     public void DisableDrag()
     {
@@ -27,6 +34,11 @@ public class DragDrop2D : MonoBehaviour
     void Awake()
     {
         collider2d = GetComponent<Collider2D>();
+        plugin=GetComponent<SpriteRenderer>();
+        plugin.enabled=false;
+        CircleCollider2D circleCollider = GetComponent<CircleCollider2D>();
+        radius = circleCollider.radius;
+        //plug.SetActive(false);
     }
 
     void Start()
@@ -61,6 +73,9 @@ public class DragDrop2D : MonoBehaviour
         checkport=null;
         Debug.Log("Checkport disconnected and cleared.");
     }
+     //plug.SetActive(true); 
+     plugin.enabled=true;
+     isDragging = true;
         lastDragTime = Time.time;
     }
 
@@ -84,7 +99,7 @@ public class DragDrop2D : MonoBehaviour
     collider2d.enabled = false;
 
     int layerMask = LayerMask.GetMask("Checkport");
-    Collider2D hitCollider = Physics2D.OverlapCircle(MouseWorldPosition(), 0.1f, layerMask);
+    Collider2D hitCollider = Physics2D.OverlapCircle(MouseWorldPosition()+new Vector3(-0.3f,0.3f,0), 0.3f, layerMask);
 
     if (hitCollider != null)
     {
@@ -115,7 +130,9 @@ public class DragDrop2D : MonoBehaviour
         if (checkport == null || !checkport.isChecking)
             transform.DOMove(startPos.position, 0.15f);
     }
-
+    //plug.SetActive(false);
+    plugin.enabled=false;
+    isDragging = false;
     collider2d.enabled = true;
 }
 
