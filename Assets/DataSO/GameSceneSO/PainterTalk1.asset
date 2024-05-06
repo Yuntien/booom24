@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: PainterTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
-    m_AssetGUID: ff3a35062f91ec846aef1c173375ba7f
+  - m_AssetGUID: e70bf6d9689a8f5439c45fbe90e0934f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  deepFixPartName: []
+  deepFixPartName:
+  - "\u5199\u751F"
+  - "\u843D\u65E5"
+  - "\u5931\u53BB\u8272\u89C9"
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: c6a3d9076ab51e54482766200aca826d, type: 2}
   nextScene: {fileID: 11400000, guid: caaaa87b4ec6317449dc7f8d505eb1e4, type: 2}

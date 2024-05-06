@@ -1619,8 +1619,7 @@ MonoBehaviour:
   voiceSource: {fileID: 833223610}
   memorySource: {fileID: 833223609}
   mixer: {fileID: 0}
-  voiceSize: 0
-  interactionSize: 0
+  interactionSize: 3
   fadeTime: 0
 --- !u!82 &833223609
 AudioSource:

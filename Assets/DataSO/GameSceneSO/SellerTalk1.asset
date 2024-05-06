@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: SellerTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
-    m_AssetGUID: a56762266491dee4280830cda49e4d06
+  - m_AssetGUID: 6d3bfbc9fb84dbe4d98c2ffe2b4b4b9c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   deepFixPartName: []
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: 38361605604d7944998894f55dbe8916, type: 2}
-  nextScene: {fileID: 11400000, guid: 872ab5c7d231c314e83864c3e688ab8a, type: 2}
+  nextScene: {fileID: 11400000, guid: 4b02d0410a2fcb9429b2763981dd6fee, type: 2}
   isEndOfDay: 0

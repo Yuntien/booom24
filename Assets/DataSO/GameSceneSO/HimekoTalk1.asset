@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79297acfcd94c447affd3589006e043, type: 3}
-  m_Name: SellerTalk2
+  m_Name: HimekoTalk1
   m_EditorClassIdentifier: 
   fixSceneReference:
-  - m_AssetGUID: 36694de40d6350e41ab7efb936cb32d7
+  - m_AssetGUID: 3445d25b4b6340043b539d8ca7102aad
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  deepFixPartName:
-  - "\u7AE5\u5E74"
-  - "\u540C\u4E8B"
-  - "\u60C5\u612B"
+  deepFixPartName: []
   deepFixRule: 0
-  conversation: {fileID: 11400000, guid: 9d33d8cbb88a0114c954ac564feec330, type: 2}
-  nextScene: {fileID: 11400000, guid: 922efbaa762d9ba4f9605dad87f6c62c, type: 2}
-  isEndOfDay: 1
+  conversation: {fileID: 11400000, guid: 87e774e84eb0473448debab5e6cff63d, type: 2}
+  nextScene: {fileID: 11400000, guid: 001fc16e066f1ea4db8ff667996a33f9, type: 2}
+  isEndOfDay: 0
