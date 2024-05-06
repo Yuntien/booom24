@@ -214,7 +214,7 @@ public class DisassemblyManager : MonoBehaviour
         sequence.Append(target.DORotate(new Vector3(0, 0, 45), 0.5f));
 
         // 向序列中添加一个移动动画
-        sequence.Join(target.DOMoveY(-15f, 1f).SetRelative());
+        sequence.Append(target.DOMoveY(-15f, 1.2f).SetRelative().SetEase(Ease.OutQuad));
 
         // 向序列中添加一个延迟
         sequence.AppendInterval(1.5f);

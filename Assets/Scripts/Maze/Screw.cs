@@ -61,7 +61,7 @@ public class Screw : MonoBehaviour
         OnScrewRemoved.RemoveAllListeners();  // Remove all listeners
         Sequence sequence = DOTween.Sequence();
         //sequence.Append(transform.DORotate(new Vector3(0, 0, 90), 0.5f));
-        sequence.Append(transform.DOMoveY(-5f, 1f).SetRelative());
+        sequence.Append(transform.DOMoveY(-5f, 0.8f).SetRelative().SetEase(Ease.OutQuad));
         sequence.AppendInterval(1f);
         sequence.AppendCallback(() => Destroy(gameObject));
         //sequence.AppendCallback(() => audioSource.Play());
