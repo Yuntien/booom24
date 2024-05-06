@@ -12,9 +12,12 @@ public class Rope : MonoBehaviour
     public Color poweredWireCol;
     public Color deadWireCol;
     public Color poweredPortCol;
+    public DragDrop2D dragDrop2D;
 
     public Transform startT;
     public Transform endT;
+    public Transform isDragPos;
+
     public int numPoints = 10;
     //public float F = 5;
     public float forceMax = 200;
@@ -28,6 +31,7 @@ public class Rope : MonoBehaviour
     bool charging;
     public float chargeTime = 1;
     float chargePercent;
+    //public GameObject plug; 
 
 
     //List<Vector2> points = new List<Vector2>();
@@ -155,6 +159,11 @@ public IEnumerator MemoryTransfer()
                 points[i] += Vector2.down * 9.8f * Time.deltaTime / k;
             }
         }
+       //Vector2 direction = points[points.Length - 1] - points[points.Length - 2];
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Set the plug's rotation.
+        //plug.transform.rotation = Quaternion.Euler(0, 0, angle - 90); // Subtract 
     }
     public void HasPower()
     {
@@ -209,7 +218,12 @@ public IEnumerator MemoryTransfer()
     {
         get
         {
-            return endT.position;
+            
+        
+            // If the plug is being dragged, return the position of isDragPos.
+            // Otherwise, return the position of endT.
+            return dragDrop2D.isDragging ? (Vector2)isDragPos.position : (Vector2)endT.position;
         }
+        
     }
 }
