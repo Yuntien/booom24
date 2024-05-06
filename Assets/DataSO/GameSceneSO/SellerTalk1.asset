@@ -23,3 +23,4 @@ MonoBehaviour:
   nextScene: {fileID: 11400000, guid: 4b02d0410a2fcb9429b2763981dd6fee, type: 2}
   isEndOfDay: 0
   mainActor: {fileID: 11400000, guid: b6bf5b62e26c71b47b35a680545f6289, type: 2}
+  windowType: 
