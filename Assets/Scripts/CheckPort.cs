@@ -13,12 +13,16 @@ public class CheckPort : MonoBehaviour
     private bool hasBeenConnected = false;
     [HideInInspector]
     public bool isCheckable=false;
+     [HideInInspector]
 
     public bool isChecking = false;
 
     void Awake()
     {
         module = GetComponentInParent<Module>();
+        isCheckable=false;
+        isChecking = false;
+
 
         /*if(isCheckable)
         {
