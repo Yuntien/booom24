@@ -18,6 +18,9 @@ public class Robot : MonoBehaviour
 
     private List<string> foundAnomalySources = new List<string>(); // Keep track of found anomaly sources
     public event Action<Module> OnModuleClicked;
+    private List<Module> connectedModules = new List<Module>();
+
+    public event Action OnAllModulesConnected;
 
     public void ModuleClicked(Module module)
     {
@@ -58,6 +61,22 @@ public class Robot : MonoBehaviour
         {
             module.OnAnomalyModuleFound += HandleAnomalyModuleFound;
             module.OnAnomalySourceFound += HandleAnomalySourceFound;
+             module.checkport.OnFirstConnection += HandleFirstConnection;
+        }
+    }
+    private void HandleFirstConnection(Module module)
+    {
+        // Add the module to the list of connected modules
+        if (!connectedModules.Contains(module))
+        {
+            connectedModules.Add(module);
+        }
+
+        // If all modules have been connected, trigger the event
+        if (connectedModules.Count == Modules.Count)
+        {
+            OnAllModulesConnected?.Invoke();
+            ConversationController.Instance.AllMoudleConnected();
         }
     }
     public void RemoveModule(Module module)

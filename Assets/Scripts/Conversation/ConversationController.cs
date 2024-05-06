@@ -59,6 +59,10 @@ public class ConversationController : Singleton<ConversationController>
     {
         runner.SetProperty("全部找到", true);
     }
+    public void AllMoudleConnected()
+    {
+        runner.SetProperty("全部模块被连过",true);
+    }
 
     public void SetPropertuy(string name, bool value)
     {

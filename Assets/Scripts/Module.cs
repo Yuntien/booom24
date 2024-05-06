@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 public class Module : MonoBehaviour
 {
+    [HideInInspector]
     public List<Port> inPorts = new List<Port>();
+    [HideInInspector]
     public List<Port> outPorts = new List<Port>();
-
     public string Name;
     public string cn;
-
       [HideInInspector]
     public int finalAnomalyValue = 0;
     public event Action<Module, int> OnAnomalyModuleFound;
     public event Action<Module> OnAnomalySourceFound;
     private bool hasNotifiedAnomaly = false; 
-
+    [HideInInspector]
     public CheckPort checkport;
     public int anomalyValue=2;
-
     private GameObject outline;
-
-    [HideInInspector]
     public bool isRemovable=false;
+    public bool getMemeryFormMoudule=false;
+    public bool sendMemeryToMoudle=false;
+    public string errortext=null;
+    public string warningtext=null;
+    [HideInInspector]
+    public bool isSource=false;
+    private Tweener colorTween;
+    public SpriteRenderer lightSprite;
+
 
     void Awake()
 {
@@ -74,9 +81,10 @@ public void SetOutline(bool isActive)
             OnAnomalySourceFound?.Invoke(this);
             hasNotifiedAnomaly = true;
             isRemovable=true;
+            colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo);
            
         }
-         //UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue);
+         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext,lightSprite);
          checkport.isChecking=false;
          ConversationController.Instance.ContinueChoice(Name);
     }
@@ -88,6 +96,7 @@ public void SetOutline(bool isActive)
 public IEnumerator HighlightConnectionsProcess()
 {
     List<Coroutine> coroutines = new List<Coroutine>();
+    
     
     foreach (var port in inPorts)
     {
@@ -115,6 +124,7 @@ public IEnumerator HighlightConnectionsProcess()
     {
         yield return coroutine;
     }
+
     CalculateFinalAnomalyValue();
 }
     public void TurnOffConnections()

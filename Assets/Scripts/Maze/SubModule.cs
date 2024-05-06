@@ -13,7 +13,7 @@ public class Submodule : MonoBehaviour
 
     void OnEnable()
     {
-        SetScreenText("未定义");
+        SetScreenText("");
         if (isRemovable)
         {
             // Start blinking when the submodule is enabled

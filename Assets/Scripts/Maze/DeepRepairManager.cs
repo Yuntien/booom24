@@ -63,7 +63,7 @@ public class DeepRepairManager : MonoBehaviour
         submoduleNames = names;
         submoduleCount = names.Count;
         maze = GetComponent<MazeGenerator>();
-        maze.GenerateMaze(10, 10);
+        maze.GenerateMaze(8, 8);
     }
     public void EndDeepRepair()
     {

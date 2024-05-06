@@ -93,6 +93,8 @@ public class DisassemblyManager : MonoBehaviour
 
     public void StartRepairMode(bool isSub)
     {
+        DragDrop2D line=FindObjectOfType<DragDrop2D>();
+        line.DisableDrag();
         Debug.Log("Repair");
         Initialize(); 
         isInRepairMode = true;

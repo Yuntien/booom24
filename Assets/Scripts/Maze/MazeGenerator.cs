@@ -295,7 +295,6 @@ void SpawnSubModule(List<Cell> path,int targetCount)
             allSubmodules.Add(submodule);
         }
     }
-
 }
 
     public List<Cell> GetUnvisitedNeighbours(Cell curCell)
