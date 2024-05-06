@@ -83,6 +83,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void ContinueTalk()
     {
+        if (MazeGenerator.Instance != null)
+        {
+            MazeGenerator.Instance.DeleteMaze();
+        }
         // 重新加载对话场景
         DialogUIController.Instance.SwitchDialog(DialogTpye.Normal);
         loadEventSO?.RaiseEvent(talkScene, true, LoadState.ContinueTalk);
@@ -95,11 +99,6 @@ public class GameManager : Singleton<GameManager>
     {
         // 人物出现
         GuestController.Instance.ShowGuest();
-        
-        if (MazeGenerator.Instance != null)
-        {
-            MazeGenerator.Instance.DeleteMaze();
-        }
         
         // 继续对话
         ConversationController.Instance.ContinueConversation();
