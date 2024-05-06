@@ -22,10 +22,10 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   deepFixPartName:
-  - "\u9A82\u6D41\u8424"
-  - "\u5B89\u88C5HIVEMIND"
-  - "\u7AE5\u5E74\u56DE\u5FC6"
-  deepFixRule: 0
+  - "\u9500\u51A0"
+  - "\u7AE5\u5E74"
+  - "\u5C01\u95ED"
+  deepFixRule: 1
   conversation: {fileID: 11400000, guid: 3e4008e79fcc7374493199955016175a, type: 2}
   nextScene: {fileID: 11400000, guid: 05ae2f68124275e4b8b8a9a0ce4dda8a, type: 2}
   isEndOfDay: 0

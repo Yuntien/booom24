@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc473f58794d4943abddce76e326c1c5, type: 3}
   m_Name: HimekoinSellerMemory
   m_EditorClassIdentifier: 
-  displayName: "\u7EA2\u53D1\u5973\u6027"
+  displayName: "\u91D1\u53D1\u5973\u6027"
