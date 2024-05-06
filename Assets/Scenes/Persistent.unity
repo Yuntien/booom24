@@ -179,7 +179,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 3
+  m_Spacing: 1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
-    m_LineSpacing: 2
+    m_LineSpacing: 0
   m_Text: "\u4F60\u597D\u3002"
 --- !u!222 &804119203
 CanvasRenderer:
@@ -1830,7 +1830,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 3
+  m_Spacing: 1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1989,8 +1989,15 @@ MonoBehaviour:
   messageText: {fileID: 804119202}
   nextMessageButton: {fileID: 93761075}
   choiceBox: {fileID: 27598657}
+  messageWindowHead: {fileID: 1764138765}
+  actorNameTextHead: {fileID: 2074005946}
+  messageTextHead: {fileID: 1858651368}
+  nextMessageButtonHead: {fileID: 1862288161}
+  choiceBoxHead: {fileID: 970396634}
+  headImage: {fileID: 766054389}
   choiceOptionButtonPrefab: {fileID: 659956759807646603, guid: 96cb00287050a6641b92b5798e99b2ae, type: 3}
   textSpeed: 0.05
+  emptyHead: {fileID: 21300000, guid: 9b404f5088be8624ea4be79a73383168, type: 3}
 --- !u!4 &1221353552
 Transform:
   m_ObjectHideFlags: 0
@@ -3093,7 +3100,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
-    m_LineSpacing: 2
+    m_LineSpacing: 1
   m_Text: "\u4F60\u597D\u3002"
 --- !u!222 &1858651369
 CanvasRenderer:
@@ -3543,7 +3550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 786c8c0dd4f04df4f844dbc6c1ce382c, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 3fd52b427cddf4942a1a6a31f0e2880c, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 
