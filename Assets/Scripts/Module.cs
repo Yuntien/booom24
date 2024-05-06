@@ -84,7 +84,7 @@ public void SetOutline(bool isActive)
             colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo);
            
         }
-         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext);
+         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext,lightSprite);
          checkport.isChecking=false;
          ConversationController.Instance.ContinueChoice(Name);
     }
