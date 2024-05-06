@@ -48,6 +48,7 @@ public class Robot : MonoBehaviour
     }
     public void Init()
     {
+        Modules.Clear();
         Modules = new List<Module>(GetComponentsInChildren<Module>());
         
         Transform connections = transform.Find("Connections");
