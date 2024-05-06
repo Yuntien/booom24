@@ -56,10 +56,21 @@ public class Screw : MonoBehaviour
     }
      private void RemoveScrew()
     {
+        //AudioSource audioSource = GetComponent<AudioSource>();
         OnScrewRemoved?.Invoke();
         OnScrewRemoved.RemoveAllListeners();  // Remove all listeners
+        Sequence sequence = DOTween.Sequence();
+        //sequence.Append(transform.DORotate(new Vector3(0, 0, 90), 0.5f));
+        sequence.Append(transform.DOMoveY(-5f, 1f).SetRelative());
+        sequence.AppendInterval(1f);
+        sequence.AppendCallback(() => Destroy(gameObject));
+        //sequence.AppendCallback(() => audioSource.Play());
+
+    // Add a delay to the sequence
+        //sequence.AppendInterval(audioSource.clip.length);
+        sequence.Play();
         DOTween.Kill(transform);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     void OnMouseDown()
