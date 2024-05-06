@@ -210,12 +210,12 @@ public class ConversationController : Singleton<ConversationController>
             case "激活开始模块":
                 runner.SetProperty("正在对话", false);
                 tempAction = evt.Advance;
-                Robot.Instance.ActiceStartModule();
+                Robot.Instance.ActiveStartModule();
                 break;
             case "激活结束模块":
                 runner.SetProperty("正在对话", false);
                 tempAction = evt.Advance;
-                Robot.Instance.ActiceEndModule();
+                Robot.Instance.ActiveEndModule();
                 break;
         }
     }
