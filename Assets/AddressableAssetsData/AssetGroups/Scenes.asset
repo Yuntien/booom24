@@ -117,6 +117,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d68352a8b1c75e7489835a33e1c3768c
+    m_Address: Assets/Scenes/HimekoFIx1.1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b74bfbbdf04e5214fbe55a936270a8d3, type: 2}
   m_SchemaSet:
