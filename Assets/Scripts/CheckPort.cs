@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 using Unity.VisualScripting;
 
 public class CheckPort : MonoBehaviour
@@ -34,6 +35,7 @@ public class CheckPort : MonoBehaviour
     {
         cover.enabled=false;
         isCheckable=true;
+        //module.transform.Find("body").GetComponentInChildren<TextMeshPro>().text=module.showName;
     }
 
 public void OpenCheckPort()
@@ -54,6 +56,7 @@ IEnumerator connectCoroutine = null;
 {
     if (module != null && isCheckable)
     {
+        module.transform.Find("body").GetComponentInChildren<TextMeshPro>().text=module.showName;
         if(module.getMemeryFormMoudule)
         {
             UIManager.instance.GetMemeryFormMoudule();

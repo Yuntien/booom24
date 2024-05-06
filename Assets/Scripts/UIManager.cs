@@ -64,7 +64,20 @@ public void SendMemeryToMoudle()
 public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, int outAnomalySum, int finalAnomalyValue, bool inAnomaly, bool outAnomaly, bool hasNotifiedAnomaly,int anomalyValue,string errortext,string warningtext)
 {
     //string infoText = $"in模块异常值={inAnomalySum}\nout模块异常值={outAnomalySum}\n流入异常值={finalAnomalyValue}\n当前异常值={finalAnomalyValue - anomalyValue}";
+    if(errortext!="")
+    {
+        anomalyModuleText.color = Color.red;
+        anomalyModuleText.text = $"错误信息: {errortext}";
+        return;
+    }
+    if(warningtext!="")
+    {
+        anomalyModuleText.color = Color.yellow;
+           
+         anomalyModuleText.text = $"警告信息: {warningtext}";
+         return;
 
+    }
     if (finalAnomalyValue > 0)
     {
         //shortscreen.GetComponent<Image>().color=Color.red;
@@ -74,14 +87,14 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
         log.text=$"异常\n当前模块（{moduleName}）受到排异反应影响异常，需要寻找排异源头";
        
 
-        if(errortext!="")
+        /*if(errortext!="")
         {
             //longScreen.gameObject.SetActive(true);
             //longScreen.GetComponent<Image>().color=Color.red;
             anomalyModuleText.color = Color.red;
             anomalyModuleText.text = $"错误信息: {errortext}";
 
-        }
+        }*/
 
         //infoText += $"\n当前模块（{moduleName}）存在流入异常，需要寻找排异源头";
         //log.text=null;
@@ -93,13 +106,13 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
         log.text=null;
         log.color = Color.red;
         log.text=$"异常\n该模块为排异源头,需要去除";
-        if(errortext!="")
+        /*if(errortext!="")
         {
             anomalyModuleText.color = Color.red;
             //longScreen.gameObject.SetActive(true);
             //longScreen.GetComponent<Image>().color=Color.red;
             anomalyModuleText.text = $"错误信息: {errortext}";
-        }
+        }*/
 
         //log.text=null;
         //infoText += $"\n找到排异源头";
@@ -110,13 +123,13 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
         //shortscreen.GetComponent<Image>().color=Color.yellow;
         log.text=null;
         log.text= $"\n该模块正常";
-        if(warningtext!="")
+        /*if(warningtext!="")
         {
             anomalyModuleText.color = Color.yellow;
             //longScreen.gameObject.SetActive(true);
              //longScreen.GetComponent<Image>().color=Color.yellow;
              anomalyModuleText.text = $"警告信息: {warningtext}";
-        }
+        }*/
 
         //log.text=null;
         //infoText += $"\n该模块正常";

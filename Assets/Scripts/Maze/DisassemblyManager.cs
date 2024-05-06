@@ -130,7 +130,7 @@ public class DisassemblyManager : MonoBehaviour
         if (module.isRemovable)
         {
             currentModule = module;
-            StartDisassemblyMode(module.name);
+            StartDisassemblyMode(module.showName);
         }
         else
         {

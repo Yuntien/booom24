@@ -17,9 +17,14 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  - m_AssetGUID: d68352a8b1c75e7489835a33e1c3768c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   deepFixPartName: []
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: 87e774e84eb0473448debab5e6cff63d, type: 2}
   nextScene: {fileID: 11400000, guid: 001fc16e066f1ea4db8ff667996a33f9, type: 2}
   isEndOfDay: 0
   mainActor: {fileID: 11400000, guid: 39458921f5541884c9916f46a208fcdd, type: 2}
+  windowType: 

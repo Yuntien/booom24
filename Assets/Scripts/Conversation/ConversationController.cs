@@ -150,7 +150,10 @@ public class ConversationController : Singleton<ConversationController>
                 evt.Advance.Invoke();
                 break;
             case "切换人物图片":
-                GuestController.Instance.ChangeGuestPic(evt.Actor.name, evtValue);
+                if (evt.Actor is DialogActor dialogActor1)
+                {
+                    GuestController.Instance.ChangeGuestPic(dialogActor1.FileName, evtValue);
+                }
                 evt.Advance.Invoke();
                 break;
             case "人物淡入":
