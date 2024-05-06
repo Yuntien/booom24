@@ -106,7 +106,4 @@ public class Window : Singleton<Window>
         sequence.Join(targetImage.transform.DOScale(finalScale, duration));
         sequence.Append(rope.DOMove(ropeFinalPos, Ropeduration).SetEase(Ease.OutElastic));
     }
-
-
-
 }
