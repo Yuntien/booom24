@@ -163,7 +163,12 @@ public class ConversationController : Singleton<ConversationController>
                 break;
             case "展示图片":
                 DialogUIController.Instance.Hide();
-                Debug.Log("图片展示占位");
+                ShowObjController.Instance.ShowObj(evtValue);
+                evt.Advance.Invoke();
+                break;
+            case "隐藏图片":
+                DialogUIController.Instance.Hide();
+                ShowObjController.Instance.HideObj();
                 evt.Advance.Invoke();
                 break;
             case "电视切换":
@@ -286,14 +291,7 @@ public class ConversationController : Singleton<ConversationController>
             DisassemblyManager.Instance.StartRepairMode(true);
         }
         else if (userEvent.Name == "深度维修完成")
-        {
-            // FIX 先销毁Maze
-            //GameObject maze = GameObject.Find("Maze");
-            //if (maze != null)
-            //{
-            //    Destroy(maze);
-            //}
- 
+        { 
             tempAction = userEvent.Advance;
             DialogUIController.Instance.Hide();
             GameManager.Instance.ContinueTalk();
@@ -302,6 +300,7 @@ public class ConversationController : Singleton<ConversationController>
         {
             BackgroundController.Instance.MoveToWindow().OnComplete(() =>
             {
+                // 靠近窗口
                 userEvent.Advance.Invoke();
             });
         }

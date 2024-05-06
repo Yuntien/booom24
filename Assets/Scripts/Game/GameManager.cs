@@ -86,6 +86,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void ContinueTalk()
     {
+        if (MazeGenerator.Instance != null)
+        {
+            MazeGenerator.Instance.DeleteMaze();
+        }
         // 重新加载对话场景
         DialogUIController.Instance.SwitchDialog(DialogTpye.Normal);
         loadEventSO?.RaiseEvent(talkScene, true, LoadState.ContinueTalk);
@@ -97,12 +101,7 @@ public class GameManager : Singleton<GameManager>
     private void OnContinueTalkLoaded()
     {
         // 人物出现
-        GuestController.Instance.ShowGuest();
-        
-        if (MazeGenerator.Instance != null)
-        {
-            MazeGenerator.Instance.DeleteMaze();
-        }
+        GuestController.Instance.ShowGuest(currentTalkSceneSO.mainActor.FileName);
         
         // 继续对话
         ConversationController.Instance.ContinueConversation();
@@ -165,6 +164,7 @@ public class GameManager : Singleton<GameManager>
         {
             currentTalkSceneSO = currentTalkSceneSO.nextScene;
             Menu.Instance.FadeIn(0.1f);
+            BackgroundController.Instance.ResetBackground();
             FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
             {
                 ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);

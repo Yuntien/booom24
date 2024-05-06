@@ -16,4 +16,10 @@ public class BackgroundController : Singleton<BackgroundController>
         sequence.Join(backgorund.DOScale(new Vector3(2f, 2f, 2f), 5f));
         return sequence;
     }
+
+    public void ResetBackground()
+    {
+        backgorund.position = Vector3.zero;
+        backgorund.localScale = Vector3.one;
+    }
 }

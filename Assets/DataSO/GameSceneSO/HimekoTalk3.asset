@@ -25,3 +25,4 @@ MonoBehaviour:
   conversation: {fileID: 11400000, guid: 3e4008e79fcc7374493199955016175a, type: 2}
   nextScene: {fileID: 11400000, guid: 05ae2f68124275e4b8b8a9a0ce4dda8a, type: 2}
   isEndOfDay: 0
+  mainActor: {fileID: 11400000, guid: 39458921f5541884c9916f46a208fcdd, type: 2}
