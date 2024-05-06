@@ -91,8 +91,9 @@ public class DisassemblyManager : MonoBehaviour
     }
        //维修开始，触发这里
 
-    public void StartRepairMode(bool isSub)
+    public void StartRepairMode(bool isSuboutside)
     {
+        isSub=isSuboutside;
         DragDrop2D line=FindObjectOfType<DragDrop2D>();
         line.DisableDrag();
         Debug.Log("Repair");
