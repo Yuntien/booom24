@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using DG.Tweening;
+using TMPro;
 
 public class Module : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class Module : MonoBehaviour
     [HideInInspector]
     public Tweener colorTween;
     public SpriteRenderer lightSprite;
+  [HideInInspector]
+    public string showName;
 
 
     void Awake()
@@ -51,6 +54,11 @@ public class Module : MonoBehaviour
     }
     // Initialize the CheckPort
     checkport = GetComponentInChildren<CheckPort>();
+    lightSprite.color=Color.gray;
+    showName=transform.Find("body").GetComponentInChildren<TextMeshPro>().text;
+    transform.Find("body").GetComponentInChildren<TextMeshPro>().text="";
+
+
 }
 public void ActiveStartModule()
 {
@@ -80,6 +88,7 @@ public void SetOutline(bool isActive)
             //起始问题模块模块
             OnAnomalyModuleFound?.Invoke(this, finalAnomalyValue);
             hasNotifiedAnomaly = true;
+            lightSprite.color=Color.yellow;
         }
         bool inAnomaly = inPorts.Any(p => p.anomalyValue != 0);
         bool outAnomaly = outPorts.Any(p => p.anomalyValue != 0);
@@ -94,20 +103,33 @@ public void SetOutline(bool isActive)
            
            
         }
-         UIManager.instance.UpdateAnomalyCalculationText(Name, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext);
+        else
+        {
+            lightSprite.DOColor(new Color(0.8932762f,1f,0.654717f,1), 0.5f);
+
+
+        }
+         UIManager.instance.UpdateAnomalyCalculationText(showName, inAnomalySum, outAnomalySum, finalAnomalyValue, inAnomaly, outAnomaly, hasNotifiedAnomaly, anomalyValue,errortext,warningtext);
          checkport.isChecking=false;
          ConversationController.Instance.ContinueChoice(Name);
     }
     public void lightingEndError()
     {
+        transform.Find("body").GetComponentInChildren<TextMeshPro>().text=showName;
          colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo);
+         outline.SetActive(true);
         
     }
     public void lightingStartError()
+{
+    transform.Find("body").GetComponentInChildren<TextMeshPro>().text = showName;
+    colorTween = lightSprite.DOColor(Color.yellow, 0.5f).SetLoops(4, LoopType.Yoyo)
+    .OnComplete(() => 
     {
-         colorTween = lightSprite.DOColor(Color.red, 0.5f).SetLoops(4, LoopType.Yoyo)
-    .OnComplete(() => ConversationController.Instance.ContinueConversation());  
-    }
+        lightSprite.color = Color.yellow;
+        ConversationController.Instance.ContinueConversation();
+    });  
+}
 
     public void StartHightLight()
     {
