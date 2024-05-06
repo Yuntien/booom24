@@ -1017,6 +1017,10 @@ PrefabInstance:
       value: UNSTABLEFUSION
       objectReference: {fileID: 0}
     - target: {fileID: 7682854053144170069, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: errortext
+      value: "ERROR#9964\uFF1A\u4E0D\u517C\u5BB9\u578B\u6392\u5F02\u53CD\u5E94"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682854053144170069, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: isRemovable
       value: 0
       objectReference: {fileID: 0}
