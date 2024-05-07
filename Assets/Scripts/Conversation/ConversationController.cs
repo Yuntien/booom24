@@ -321,11 +321,13 @@ public class ConversationController : Singleton<ConversationController>
         }
         else if (userEvent.Name == "进行深度维修")
         {
+            
             tempAction = userEvent.Advance;
             GameManager.Instance.DeepFix();
         }
         else if (userEvent.Name == "深度维修拆除")
         {
+            isTalking = false;
             DialogUIController.Instance.Hide();
             tempAction = userEvent.Advance;
             DisassemblyManager.Instance.StartRepairMode(true);
