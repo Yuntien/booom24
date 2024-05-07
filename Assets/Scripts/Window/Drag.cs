@@ -60,6 +60,7 @@ public class Drag : MonoBehaviour
 
     public void EndDay()
     {
+        AudioManager.Instance.RandomPlayInteraction("day_end");
         DialogUIController.Instance.Hide();
         GameManager.Instance.NewDay();
     }
