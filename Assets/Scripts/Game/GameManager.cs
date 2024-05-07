@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -36,12 +37,18 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         //// 检查是否有继续游戏
-        //string sceneName = PlayerPrefs.GetString("aibiss_scene_name");
-        //TalkSceneSO sceneSO = FindTalkSceneByName(sceneName);
-        //if (sceneSO == null)
-        //{
-
-        //}
+        string sceneName = PlayerPrefs.GetString("aibiss_scene_name");
+        TalkSceneSO sceneSO = FindTalkSceneByName(sceneName);
+        if (sceneSO == null)
+        {
+            Menu.Instance.continueButton.gameObject.GetComponentInChildren<Text>().color = Color.gray;
+            Menu.Instance.continueButton.enabled = false;
+            
+        } 
+        else
+        {
+            Menu.Instance.continueButton.enabled = true;
+        }
 
         // 加载对话场景
         loadEventSO?.RaiseEvent(talkScene, false, LoadState.Menu);
@@ -74,6 +81,21 @@ public class GameManager : Singleton<GameManager>
         afterSceneLoadEventSO.OnDeepFixEventRaised -= OnDeepFixLoad;
         afterSceneLoadEventSO.OnWindowEventRaised -= OnLookAtWindowLoad;
         afterSceneLoadEventSO.OnNewDayEventRaised -= OnNewDayLoad;
+    }
+
+    public void ContinueGame()
+    {
+        string sceneName = PlayerPrefs.GetString("aibiss_scene_name");
+        TalkSceneSO sceneSO = FindTalkSceneByName(sceneName);
+        if (sceneSO != null)
+        {
+            // 按钮淡出
+            Menu.Instance.TextFadeOut().onComplete += () =>
+            {
+                currentTalkSceneSO = sceneSO;
+                StartTalk();
+            };
+        }
     }
 
     public void StartNewGame()
@@ -178,6 +200,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void NextTalk()
     {
+        PlayerPrefs.SetString("aibiss_scene_name", currentTalkSceneSO.nextScene.name);
         if (currentTalkSceneSO.nextScene == null)
         {
             // TODO 此处游戏结束

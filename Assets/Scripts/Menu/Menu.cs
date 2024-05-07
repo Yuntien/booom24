@@ -24,6 +24,8 @@ public class Menu : Singleton<Menu>
     [SerializeField] private float tvDuration;
 
     [SerializeField] private Button start;
+    public Button continueButton;
+    public Button quitButton;
 
     private void OnEnable()
     {
@@ -43,6 +45,7 @@ public class Menu : Singleton<Menu>
 
     public void ContinueGame()
     {
+        GameManager.Instance.ContinueGame();
         // TODO Ìí¼Ó¼ÌÐøÓÎÏ·Âß¼­
     }
 
