@@ -73,13 +73,16 @@ public class DragDrop2D : MonoBehaviour
         if (checkport)
     {
         Debug.Log("Disconnecting checkport...");
+
         checkport.Disconnect();
+  
         checkport=null;
         Debug.Log("Checkport disconnected and cleared.");
     }
+        AudioManager.Instance.RandomPlayInteraction("plug_out");
      //plug.SetActive(true); 
-     plugin.enabled=true;
-     isDragging = true;
+         plugin.enabled=true;
+         isDragging = true;
         lastDragTime = Time.time;
     }
 
@@ -126,6 +129,7 @@ void OnMouseUp()
             transform.position = hitCollider.transform.position + new Vector3(0, 0, -0.01f);
             checkport = newCheckPort;
             checkport.Connect();
+            AudioManager.Instance.RandomPlayInteraction("plug_in");
         }
         else
         {
@@ -134,6 +138,7 @@ void OnMouseUp()
             // But if the old checkport is checking, don't move it.
             if (checkport == null || !checkport.isChecking)
                 transform.DOMove(startPos.position, 0.15f);
+                AudioManager.Instance.RandomPlayInteraction("plug_in");
         }
     }
     else
@@ -143,6 +148,7 @@ void OnMouseUp()
         // But if the old checkport is checking, don't move it.
         if (checkport == null || !checkport.isChecking)
             transform.DOMove(startPos.position, 0.15f);
+            AudioManager.Instance.RandomPlayInteraction("plug_in");
     }
     //plug.SetActive(false);
     plugin.enabled=false;
