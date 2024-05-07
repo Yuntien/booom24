@@ -23,6 +23,8 @@ public class Menu : Singleton<Menu>
     [Header("电视切换时间")]
     [SerializeField] private float tvDuration;
 
+    [SerializeField] private Button start;
+
     private void OnEnable()
     {
         sceneFadeEventSO.OnEventRaised += OnFadeEvent;
@@ -57,9 +59,11 @@ public class Menu : Singleton<Menu>
     public Tweener TextFadeOut()
     {
         Tweener fadeCallBack = menuText.DOFade(0, 2);
+        //start.enabled = false;
         fadeCallBack.OnComplete(() =>
         {
             menuText.gameObject.SetActive(false);
+            start.enabled = true;
         });
         return fadeCallBack;
     }

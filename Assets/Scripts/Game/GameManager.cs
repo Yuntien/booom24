@@ -175,7 +175,7 @@ public class GameManager : Singleton<GameManager>
             };
             fixIndex = 0;
         } 
-        else if (currentTalkSceneSO.windowType == "生小孩")
+        else if (currentTalkSceneSO.windowType != "生小孩")
         {
             // 窗帘拉下
             Window.Instance.DropRope();
