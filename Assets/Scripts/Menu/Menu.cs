@@ -90,10 +90,12 @@ public class Menu : Singleton<Menu>
             case "黑屏":
                 return tv.DOBlendableColor(Color.clear, tvDuration);
             case "新闻":
+                AudioManager.Instance.RandomPlayInteraction("tv_in");
                 tv.color = Color.black;
                 tv.sprite = news;
                 return tv.DOBlendableColor(Color.white, tvDuration);
             case "销售冠军":
+                AudioManager.Instance.RandomPlayInteraction("tv_in");
                 tv.color = Color.black;
                 tv.sprite = champion;
                 return tv.DOBlendableColor(Color.white, tvDuration);
