@@ -72,6 +72,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void StartTalk()
     {
+        AudioManager.Instance.PlayAmb2Audio("amb_room");
         // 加载对话场景
         DialogUIController.Instance.SwitchDialog(DialogTpye.Normal);
         ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
@@ -91,6 +92,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void ContinueTalk()
     {
+        AudioManager.Instance.FadeOutAmb2Audio();
         if (MazeGenerator.Instance != null)
         {
             MazeGenerator.Instance.DeleteMaze();
@@ -105,6 +107,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private void OnContinueTalkLoaded()
     {
+        AudioManager.Instance.PlayAmb2Audio("amb_room");
         // 人物出现
         GuestController.Instance.ShowGuest(currentTalkSceneSO.mainActor.FileName);
         
@@ -117,6 +120,8 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void Fix()
     {
+        AudioManager.Instance.PauseAmb2Audio();
+        AudioManager.Instance.RandomPlayInteraction("main_in");
         // 转到维修场景
         DialogUIController.Instance.SwitchDialog(DialogTpye.Head);
         loadEventSO?.RaiseEvent(currentTalkSceneSO.fixSceneReference[fixIndex], true, LoadState.Fix);
@@ -125,12 +130,14 @@ public class GameManager : Singleton<GameManager>
 
     private void OnFixLoaded()
     {
+        AudioManager.Instance.PlayAmb2Audio("amb_main");
         // 场景加载完成，对话继续
         ConversationController.Instance.ContinueConversation();
     }
 
     public void DeepFix()
     {
+        AudioManager.Instance.RandomPlayInteraction("deep_in");
         DialogUIController.Instance.SwitchDialog(DialogTpye.Head);
         // 进入深度维修场景
         loadEventSO?.RaiseEvent(deepFixScene, true, LoadState.DeepFix);
@@ -138,6 +145,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnDeepFixLoad()
     {
+        AudioManager.Instance.PlayAmb2Audio("amb_deep");
         // 先生成深度
         IDeepRepairRule currentRule = DeepFixRuleFactory(currentTalkSceneSO.deepFixRule);
         DeepRepairManager.Instance.startReapir(currentRule, currentTalkSceneSO.deepFixPartName);
@@ -167,7 +175,7 @@ public class GameManager : Singleton<GameManager>
             };
             fixIndex = 0;
         } 
-        else
+        else if (currentTalkSceneSO.windowType == "生小孩")
         {
             // 窗帘拉下
             Window.Instance.DropRope();

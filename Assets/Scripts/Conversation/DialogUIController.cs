@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class DialogUIController : Singleton<DialogUIController>
 {
@@ -92,6 +93,17 @@ public class DialogUIController : Singleton<DialogUIController>
             headImage.sprite = head == null ? emptyHead : head;
         }
 
+        textTweener = curMessageText.DOText(message, message.Length * textSpeed).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            AudioManager.Instance.StopVoice();
+            Invoke("TextPlayingEnd", 0.5f);
+            // 存储下一步的动作
+            GenerateChoiceButton(options);
+        });
+    }
+
+    private void GenerateChoiceButton(List<Option> options)
+    {
         // 清除选择面板的子物体
         foreach (Transform child in curChoiceBox.transform)
         {

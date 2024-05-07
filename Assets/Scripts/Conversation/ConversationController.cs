@@ -151,6 +151,10 @@ public class ConversationController : Singleton<ConversationController>
                 AudioManager.Instance.RandomPlayInteraction(evtValue);
                 evt.Advance.Invoke();
                 break;
+            case "停止交互音效":
+                AudioManager.Instance.StopInteraction();
+                evt.Advance.Invoke();
+                break;
             case "切换人物图片":
                 if (evt.Actor is DialogActor dialogActor1)
                 {
@@ -332,6 +336,7 @@ public class ConversationController : Singleton<ConversationController>
             isTalking = false;
             DialogUIController.Instance.Hide();
             tempAction = userEvent.Advance;
+            AudioManager.Instance.PlayAmb2Audio("amb_remove");
             DisassemblyManager.Instance.StartRepairMode(true);
         }
         else if (userEvent.Name == "深度维修完成")
@@ -350,6 +355,7 @@ public class ConversationController : Singleton<ConversationController>
             });
         }
     }
+
     private void HandleActorMessageEvent(ActorMessageEvent evt)
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
@@ -385,14 +391,40 @@ public class ConversationController : Singleton<ConversationController>
     {
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
 
+        //Sprite head = null;
+        //if (evt.Actor is DialogActor dialogActor)
+        //{
+        //    head = dialogActor.Avatar;
+        //    // 对话时播放语音
+        //    AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+        //}
+        //DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options, head);
+
         Sprite head = null;
         if (evt.Actor is DialogActor dialogActor)
         {
             head = dialogActor.Avatar;
-            // 对话时播放语音
-            AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+            string[] strs = evt.Message.Trim().Split("||");
+            if (strs.Length > 1)
+            {
+                AudioManager.Instance.PlayVoice(dialogActor.FileName, strs[1].Trim());
+            }
+            else
+            {
+                // 对话时播放语音
+                AudioManager.Instance.RandomPlayVoice(dialogActor.FileName, dialogActor.AudioNum);
+            }
+            DialogUIController.Instance.ShowChoice(actorName, strs[0], evt.Options, head);
         }
-        DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options, head);
+        else if (evt.Actor.DisplayName == "我")
+        {
+            AudioManager.Instance.RandomPlayVoice("me", 0);
+            DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options, head);
+        }
+        else
+        {
+            DialogUIController.Instance.ShowChoice(actorName, evt.Message, evt.Options, head);
+        }
     }
 
     private void HandleEnd()

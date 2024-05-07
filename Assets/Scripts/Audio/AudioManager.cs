@@ -89,6 +89,10 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayLoopAudio(string audioName)
     {
         AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
+        if (clip == null)
+        {
+            clip = RandomLoadAudioClip(3, $"Audio/{audioName}");
+        }
         loopSource.clip = clip;
         loopSource.Play();
     }
@@ -112,6 +116,7 @@ public class AudioManager : Singleton<AudioManager>
     #region ±≥æ∞“Ù—≠ª∑≤•∑≈
     public void PlayAmb1Audio(string audioName)
     {
+        amb1Source.Stop();
         AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
         amb1Source.clip = clip;
         amb1Source.volume = 0f;
@@ -124,6 +129,11 @@ public class AudioManager : Singleton<AudioManager>
         amb1Source.Pause();
     }
 
+    public void FadeOutAmb1Audio()
+    {
+        StartCoroutine(FadeTo(0.0f, fadeTime, amb1Source));
+    }
+
     public void ContinueAmb1Audio()
     {
         amb1Source.volume = 0.0f;
@@ -133,6 +143,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayAmb2Audio(string audioName)
     {
+        amb2Source.Stop();
         AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
         amb2Source.clip = clip;
         amb2Source.volume = 0f;
@@ -143,6 +154,11 @@ public class AudioManager : Singleton<AudioManager>
     public void PauseAmb2Audio()
     {
         amb2Source.Pause();
+    }
+
+    public void FadeOutAmb2Audio()
+    {
+        StartCoroutine(FadeTo(0.0f, fadeTime, amb2Source));
     }
 
     public void ContinueAmb2Audio()
