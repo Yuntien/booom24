@@ -101,6 +101,11 @@ public class AudioManager : Singleton<AudioManager>
     {
         loopSource.UnPause();
     }
+
+    public bool IsLoopPlaying()
+    {
+        return loopSource.isPlaying;
+    }
     #endregion
 
     #region ±≥æ∞“Ù—≠ª∑≤•∑≈
