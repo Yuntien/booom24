@@ -51,25 +51,28 @@ public class Window : Singleton<Window>
             case "普通":
                 // 添加普通的动画
                 AudioManager.Instance.PlayAmb2Audio("amb_window_1");
-                sequence.AppendInterval(5);
+                sequence.AppendInterval(7);
                 break;
             case "快递员":
                 // 添加快递员的动画
-                AudioManager.Instance.PlayAmb2Audio("amb_window_2");
-                sequence.Append(sender.DOMove(new Vector3(13.66f, -4.370073f, 0), 6f).SetEase(Ease.Linear));
+                AudioManager.Instance.PlayAmb2Audio("amb_window_1");
+                AudioManager.Instance.RandomPlayInteraction("sing_window_a");
+                sequence.Append(sender.DOMove(new Vector3(13.66f, -4.370073f, 0), 5f).SetEase(Ease.Linear));
                 sequence.AppendCallback(() => Destroy(sender.gameObject));
                 sequence.AppendInterval(2);
 
                 break;
             case "警车":
-                AudioManager.Instance.PlayAmb2Audio("amb_window_3");
-                sequence.Append(policeCar.DOMove(new Vector3(7.12f, -4.135658f, 0), 6f).SetEase(Ease.Linear));
+
+                AudioManager.Instance.PlayAmb2Audio("amb_window_1");
+                AudioManager.Instance.RandomPlayInteraction("siren");
+                sequence.Append(policeCar.DOMove(new Vector3(7.12f, -4.135658f, 0), 5f).SetEase(Ease.Linear));
                 sequence.AppendCallback(() => Destroy(policeCar.gameObject));
                 sequence.AppendInterval(2);
                 break;
             case "销售大赛":
-                AudioManager.Instance.PlayAmb2Audio("amb_window_4");
-                sequence.AppendInterval(6);
+                AudioManager.Instance.PlayAmb2Audio("amb_window_1");
+                sequence.AppendInterval(7);
                 // 创建一个新的Sequence
                 lightSequence = DOTween.Sequence();
 
@@ -101,9 +104,9 @@ public class Window : Singleton<Window>
                 //sequence.Append(targetImage.transform.DOMove(salesFinalPosition, duration));
                 break;
             case "展品":
-                AudioManager.Instance.PlayAmb2Audio("amb_window_5");
+                AudioManager.Instance.PlayAmb2Audio("amb_window_1");
                 startBanner.SetActive(true);
-                sequence.AppendInterval(6);
+                sequence.AppendInterval(7);
                 // 创建一个新的Sequence
                 lightSequence = DOTween.Sequence();
 
@@ -128,7 +131,7 @@ public class Window : Singleton<Window>
                 //sequence.Append(targetImage.transform.DOMove(exhibitFinalPosition, duration));
                 break;
             case "生小孩":
-                AudioManager.Instance.PlayAmb2Audio("amb_window_6");
+                AudioManager.Instance.PlayAmb2Audio("amb_window_1");
                 night.color = new Color(night.color.r, night.color.g, night.color.b, 1f);
                 nightCity.color = new Color(night.color.r, night.color.g, night.color.b, 1f);
                 sequence.AppendInterval(2);
@@ -148,6 +151,9 @@ public class Window : Singleton<Window>
                 sequence.Join(targetImage.transform.DOScale(finalScale, duration));
 
                 // 移动child
+                AudioManager.Instance.RandomPlayInteraction("amb_baby");
+                AudioManager.Instance.PlayLoopAudio("game_end");
+                
                 sequence.Append(child.transform.DOMove(childFinalPosition, 4f));
                 sequence.AppendInterval(4);
                 return;
