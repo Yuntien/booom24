@@ -21,15 +21,18 @@ public class Drag : MonoBehaviour
     {
         if(!isAtBottom)
             isDragging = true;
+            //AudioManager.Instance.PlayLoopAudio("curtain_pull");
     }
 
     void OnMouseUp()
     {
         isDragging = false;
+        //AudioManager.Instance.PauseLoopAudio(); 
         
         // 如果绳子的位置没有到达最下面的边界，就使绳子回到开始的位置
         if (transform.position.y > ropeLowerLimit + 2f)
         {
+            AudioManager.Instance.PlayLoopAudio("curtain_back");
             transform.DOMove(ropeFinalPos, 0.5f);  // 0.5f 是动画的持续时间，你可以根据需要调整
         }
     }
@@ -44,6 +47,7 @@ public class Drag : MonoBehaviour
 
             if (newY <= ropeLowerLimit + 2f)
             {
+                //AudioManager.Instance.PauseLoopAudio(); 
                 transform.DOMove(new Vector3(transform.position.x, ropeLowerLimit, transform.position.z), 0.5f);
                 isDragging = false;
                 isAtBottom = true;

@@ -39,7 +39,7 @@ public class Window : Singleton<Window>
     private void Start() {
         targetImage.transform.position=initialPosition;
         targetImage.transform.localScale=initialScale;
-        //StartAnimation("销售大赛");
+        StartAnimation("销售大赛");
     }
     public void StartAnimation(string animType)
     {
@@ -156,6 +156,7 @@ lightSequence.Play();
        //新增的表现
         sequence.Append(targetImage.transform.DOMove(finalPosition, duration));
         sequence.Join(targetImage.transform.DOScale(finalScale, duration));
+        sequence.AppendCallback(() => DropRope());
         
     }
     public void DropRope()
