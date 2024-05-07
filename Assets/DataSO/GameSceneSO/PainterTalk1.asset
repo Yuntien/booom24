@@ -20,7 +20,7 @@ MonoBehaviour:
   deepFixPartName:
   - "\u5199\u751F"
   - "\u843D\u65E5"
-  - "\u5931\u53BB\u8272\u89C9"
+  - "\u5931\u8272"
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: c6a3d9076ab51e54482766200aca826d, type: 2}
   nextScene: {fileID: 11400000, guid: caaaa87b4ec6317449dc7f8d505eb1e4, type: 2}
