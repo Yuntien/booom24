@@ -74,7 +74,13 @@ public class GuestController : Singleton<GuestController>
     /// </summary>
     public Tweener MoveGuestToFix()
     {
-        return guestSprite.transform.DOMove(fixPos.position, 1f);
+        AudioManager.Instance.RandomPlayInteraction("walk");
+        Tweener res = guestSprite.transform.DOMove(fixPos.position, 1f);
+        res.onComplete = () =>
+        {
+            AudioManager.Instance.StopInteraction();
+        };
+        return res;
     }
 
     /// <summary>

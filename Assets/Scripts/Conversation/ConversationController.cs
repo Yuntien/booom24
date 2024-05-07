@@ -368,6 +368,11 @@ public class ConversationController : Singleton<ConversationController>
             }
             DialogUIController.Instance.ShowMessage(actorName, strs[0], evt.Advance, head);
         }
+        else if (evt.Actor.DisplayName == "Œ“")
+        {
+            AudioManager.Instance.RandomPlayVoice("me", 0);
+            DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, head);
+        }
         else
         {
             DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, head);

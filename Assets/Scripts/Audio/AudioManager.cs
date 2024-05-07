@@ -38,7 +38,16 @@ public class AudioManager : Singleton<AudioManager>
     #region Ëæ»ú²¥·Å
     public void RandomPlayVoice(string actorName, int voiceSize)
     {
-        string audioName = nameReplace[actorName];
+        string audioName;
+        if (nameReplace.ContainsKey(actorName))
+        {
+            audioName = nameReplace[actorName];
+        }
+        else
+        {
+            audioName = actorName;
+        }
+
         AudioClip clip = RandomLoadAudioClip(3, $"Audio/voice_{audioName}");
         voiceSource.clip = clip;
         voiceSource.Play();
@@ -58,6 +67,11 @@ public class AudioManager : Singleton<AudioManager>
     public void StopVoice()
     {
         voiceSource.Stop();
+    }
+
+    public void StopInteraction()
+    {
+        interactionSource.Stop();
     }
     #endregion
 
