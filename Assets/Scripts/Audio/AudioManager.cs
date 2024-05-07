@@ -168,8 +168,8 @@ public class AudioManager : Singleton<AudioManager>
 
     private IEnumerator AsyncPlayMemoryAudio(string memoryName)
     {
-        AudioClip intro = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}_intro");
-        AudioClip loop = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}_loop");
+        AudioClip intro = Resources.Load<AudioClip>($"Audio/Memory/intro");
+        AudioClip loop = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}");
         memorySource.clip = intro;
         memorySource.loop = false;
         memorySource.Play();

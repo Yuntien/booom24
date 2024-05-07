@@ -40,7 +40,7 @@ public class ConversationController : Singleton<ConversationController>
     /// </summary>
     public void ContinueConversation()
     {
-        isTalking = true;
+        // isTalking = true;
         tempAction.Invoke();
     }
 
