@@ -856,6 +856,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33b43b2c56e6df4688c565a0be40e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plugOut: {fileID: 341344530901131687}
+  plugTarget: {fileID: 5978453288418521959}
+  dragDeepRepairPlayer: {fileID: 2587933158744730812}
+  clickToFix: {fileID: 8700423734935282146}
+  pressScrew: {fileID: 8050664037539820412}
 --- !u!1 &8050664037539820412
 GameObject:
   m_ObjectHideFlags: 0
