@@ -24,12 +24,22 @@ public class Window : Singleton<Window>
     public Transform rope;
     public Transform sender;
     public Transform policeCar;
+    public SpriteRenderer night;
+    public SpriteRenderer nightCity;
+    public SpriteRenderer day;
+
+    public SpriteRenderer dayCity;
+    
+    public Transform child;
+
+     private Vector3 childFinalPosition = new Vector3(1f, -4.7f, 0);
+    
 
     // 这个方法应该在你想要开始动画的时候被调用
     private void Start() {
         targetImage.transform.position=initialPosition;
         targetImage.transform.localScale=initialScale;
-        StartAnimation("展品");
+        //StartAnimation("销售大赛");
     }
     public void StartAnimation(string animType)
     {
@@ -96,11 +106,11 @@ public class Window : Singleton<Window>
     foreach (var light in banners)
     {
     // 假设你的灯光是通过改变GameObject的透明度来表示激活和关闭的
-    var spriteRenderer = light.GetComponent<SpriteRenderer>();
+    var banner = light.GetComponent<SpriteRenderer>();
 
-    lightSequence.Append(spriteRenderer.DOFade(1, 1.5f)); // 激活灯光
+    lightSequence.Append(banner.DOFade(1, 1.5f)); // 激活灯光
     lightSequence.AppendInterval(1.5f); // 暂停一段时间
-    lightSequence.Append(spriteRenderer.DOFade(0, 1.5f)); // 关闭灯光
+    lightSequence.Append(banner.DOFade(0, 1.5f)); // 关闭灯光
     lightSequence.AppendInterval(1.5f); // 暂停一段时间
     }
 
@@ -113,10 +123,29 @@ lightSequence.Play();
             //sequence.Append(targetImage.transform.DOMove(exhibitFinalPosition, duration));
             break;
         case "生小孩":
-            sequence.AppendInterval(6);
-            // 添加生小孩的动画
-            //sequence.Append(targetImage.transform.DOMove(babyFinalPosition, duration));
-            break;
+        night.color=new Color(night.color.r,night.color.g,night.color.b,1f);
+        nightCity.color=new Color(night.color.r,night.color.g,night.color.b,1f);
+        sequence.AppendInterval(2);
+    
+        // 获取nightToDay的SpriteRenderer组件
+        //var daynight = nightToDay.GetComponent<SpriteRenderer>();
+    
+        // 让nightToDay淡入
+        sequence.Append(day.DOFade(1, 4f));
+        sequence.Join(dayCity.DOFade(1, 4f));
+    
+        // 等待一段时间
+        sequence.AppendInterval(2);
+    
+        // 移动和缩放targetImage
+        sequence.Append(targetImage.transform.DOMove(finalPosition, duration));
+        sequence.Join(targetImage.transform.DOScale(finalScale, duration));
+    
+        // 移动child
+        sequence.Append(child.transform.DOMove(childFinalPosition, 4f));
+        sequence.AppendInterval(4);
+        return;
+        break;
         default:
             sequence.AppendInterval(6);
             // 如果 animType 的值不是以上任何一个，那么就添加一个默认的动画

@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager>
 {
+    private static Dictionary<string, string> nameReplace = new Dictionary<string, string>();
+
     [Header("循环音效")]
     [SerializeField] private AudioSource loopSource;
     [Header("交互音效")]
@@ -24,10 +26,20 @@ public class AudioManager : Singleton<AudioManager>
 
     public float fadeTime;
 
+    private void Start()
+    {
+        nameReplace.Add("Seller", "huoshan");
+        nameReplace.Add("Can", "huoshan_incan");
+        nameReplace.Add("Firefly", "peipei");
+        nameReplace.Add("Express", "shitou");
+        nameReplace.Add("Himeko", "yingli");
+    }
+
     #region 随机播放
     public void RandomPlayVoice(string actorName, int voiceSize)
     {
-        AudioClip clip = RandomLoadAudioClip(3, $"Audio/voice_{actorName}");
+        string audioName = nameReplace[actorName];
+        AudioClip clip = RandomLoadAudioClip(3, $"Audio/voice_{audioName}");
         voiceSource.clip = clip;
         voiceSource.Play();
     }
@@ -35,6 +47,10 @@ public class AudioManager : Singleton<AudioManager>
     public void RandomPlayInteraction(string interactionName)
     {
         AudioClip clip = RandomLoadAudioClip(interactionSize, $"Audio/{interactionName}");
+        if (clip == null)
+        {
+            clip = Resources.Load<AudioClip>($"Audio/{interactionName}");
+        }
         voiceSource.clip = clip;
         voiceSource.Play();
     }
@@ -48,7 +64,7 @@ public class AudioManager : Singleton<AudioManager>
     #region 播放唱歌
     public void PlayVoice(string actorName, string voiceName)
     {
-        AudioClip clip = Resources.Load<AudioClip>($"Audio/voice_{actorName}_{voiceName}");
+        AudioClip clip = RandomLoadAudioClip(3, $"Audio/{actorName}");
         voiceSource.clip = clip;
         voiceSource.Play();
     }
