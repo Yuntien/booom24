@@ -2607,7 +2607,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402725316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -2615,7 +2615,7 @@ MonoBehaviour:
   sharedProfile: {fileID: 11400000, guid: aafe6b9e1bdaa5f4e819855d90eeec71, type: 2}
   isGlobal: 1
   blendDistance: 0
-  weight: 1
+  weight: 0
   priority: 0
 --- !u!114 &1402725321
 MonoBehaviour:
@@ -3971,6 +3971,7 @@ MonoBehaviour:
   fadeEvent: {fileID: 11400000, guid: 215d7f0e396712b47bfc80d6420b4ca0, type: 2}
   fadeImage: {fileID: 788615761}
   newDay: {fileID: 0}
+  volume: {fileID: 1402725320}
 --- !u!1 &1903776787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,7 +4173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 786c8c0dd4f04df4f844dbc6c1ce382c, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 05ae2f68124275e4b8b8a9a0ce4dda8a, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 

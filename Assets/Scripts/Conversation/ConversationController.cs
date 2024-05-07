@@ -231,6 +231,10 @@ public class ConversationController : Singleton<ConversationController>
                 tempAction = evt.Advance;
                 Robot.Instance.ActiveEndModule();
                 break;
+            case "Ê§È¥ÑÕÉ«":
+                FadeCanvas.Instance.LostColor();
+                evt.Advance.Invoke();
+                break;
         }
     }
 

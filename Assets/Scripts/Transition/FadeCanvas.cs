@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 public class FadeCanvas : Singleton<FadeCanvas>
 {
@@ -11,6 +12,9 @@ public class FadeCanvas : Singleton<FadeCanvas>
     public FadeEventSO fadeEvent;
     public Image fadeImage;
     public TextMeshPro newDay;
+
+    [Header("ºÚ°×´¦Àí")]
+    [SerializeField] private PostProcessVolume volume;
 
     private void OnEnable()
     {
@@ -38,5 +42,15 @@ public class FadeCanvas : Singleton<FadeCanvas>
     {
         Debug.Log("ÕÚÕÖµ­³ö");
         return fadeImage.DOBlendableColor(Color.clear, duration);
+    }
+
+    public void LostColor()
+    {
+        volume.weight = 1;
+    }
+
+    public void ShowColor()
+    {
+        volume.weight = 0;
     }
 }
