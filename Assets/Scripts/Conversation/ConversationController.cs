@@ -61,6 +61,8 @@ public class ConversationController : Singleton<ConversationController>
         {
             var choice = optionMap[choiceName];
             choice.Advance.Invoke();
+
+            optionMap.Clear();
         }
     }
 
