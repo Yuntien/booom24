@@ -21,7 +21,7 @@ public class Drag : MonoBehaviour
     {
         if(!isAtBottom)
             isDragging = true;
-            //AudioManager.Instance.PlayLoopAudio("curtain_pull");
+            AudioManager.Instance.PlayLoopAudio("curtain_pull");
     }
 
     void OnMouseUp()
@@ -47,7 +47,7 @@ public class Drag : MonoBehaviour
 
             if (newY <= ropeLowerLimit + 2f)
             {
-                //AudioManager.Instance.PauseLoopAudio(); 
+                AudioManager.Instance.PauseLoopAudio(); 
                 transform.DOMove(new Vector3(transform.position.x, ropeLowerLimit, transform.position.z), 0.5f);
                 isDragging = false;
                 isAtBottom = true;
