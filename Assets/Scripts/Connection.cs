@@ -52,7 +52,7 @@ public void Init()
     if(!highlightLineRenderer)
     {
         highlightLineRenderer = child.AddComponent<LineRenderer>();
-        highlightLineRenderer.sortingOrder = 2;
+        highlightLineRenderer.sortingOrder = 3;
         highlightLineRenderer.startColor = Color.black;
         highlightLineRenderer.endColor = Color.black;
         highlightLineRenderer.startWidth = 0.1f; // Set the start width

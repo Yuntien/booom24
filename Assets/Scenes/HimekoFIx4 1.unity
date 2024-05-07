@@ -131,6 +131,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 696781604183797327, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 867944465966672500, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859108193463288262, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2936697523315363302, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.77
@@ -171,9 +183,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3554721853167459165, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089802751811872649, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7084305559299001151, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
       propertyPath: m_Name
       value: RobotHimeko Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386177163255905435, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581144238730018037, guid: 73f1838fa20c3f147bf0f37650f9492e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
