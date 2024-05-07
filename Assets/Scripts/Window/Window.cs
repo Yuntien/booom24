@@ -18,6 +18,8 @@ public class Window : Singleton<Window>
     private Sequence lightSequence;
 
     public GameObject[] lights; // 将你的灯光拖到这个数组中
+    public GameObject[] banners;
+    public GameObject startBanner;
     public float lightDuration = 0.5f;
     public Transform rope;
     public Transform sender;
@@ -27,7 +29,7 @@ public class Window : Singleton<Window>
     private void Start() {
         targetImage.transform.position=initialPosition;
         targetImage.transform.localScale=initialScale;
-        //StartAnimation("普通");
+        StartAnimation("展品");
     }
     public void StartAnimation(string animType)
     {
@@ -85,7 +87,28 @@ public class Window : Singleton<Window>
             //sequence.Append(targetImage.transform.DOMove(salesFinalPosition, duration));
             break;
         case "展品":
-            sequence.AppendInterval(6);
+                startBanner.SetActive(true);
+    sequence.AppendInterval(6);
+// 创建一个新的Sequence
+    lightSequence = DOTween.Sequence();
+
+    // 循环，将每个灯光的激活和关闭添加到Sequence中
+    foreach (var light in banners)
+    {
+    // 假设你的灯光是通过改变GameObject的透明度来表示激活和关闭的
+    var spriteRenderer = light.GetComponent<SpriteRenderer>();
+
+    lightSequence.Append(spriteRenderer.DOFade(1, 1.5f)); // 激活灯光
+    lightSequence.AppendInterval(1.5f); // 暂停一段时间
+    lightSequence.Append(spriteRenderer.DOFade(0, 1.5f)); // 关闭灯光
+    lightSequence.AppendInterval(1.5f); // 暂停一段时间
+    }
+
+// 设置Sequence为循环
+lightSequence.SetLoops(-1);
+
+// 开始播放Sequence
+lightSequence.Play();
             // 添加展品的动画
             //sequence.Append(targetImage.transform.DOMove(exhibitFinalPosition, duration));
             break;
