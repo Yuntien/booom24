@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private AssetReference windowScene;
 
     [Header("事件挂载")]
-    // 发起广播
+    // 发起广播0
     [SerializeField] private SceneLoadEventSO loadEventSO;
 
     // 接受监听
@@ -29,13 +29,22 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private FadeEventSO fadeEventSO;
 
+    [SerializeField] private List<TalkSceneSO> talkScenes;
+
     private int fixIndex = 0;
 
     private void Start()
     {
+        // 检查是否有继续游戏
+        Debug.Log(firstTalkSO.name);
         // 加载对话场景
         loadEventSO?.RaiseEvent(talkScene, false, LoadState.Menu);
     }
+
+    //private TalkSceneSO FindTalkSceneByName(string name)
+    //{
+
+    //}
 
     private void OnEnable()
     {

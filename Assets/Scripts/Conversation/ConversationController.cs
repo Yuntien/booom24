@@ -263,7 +263,6 @@ public class ConversationController : Singleton<ConversationController>
                     tempAction = null;
                 }
                 break;
-
         }
     }
 
