@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Conversa.Demo.Scripts;
 using UnityEngine;
 
-public class ToturialManager : Singleton<AudioManager>
+public class ToturialManager : Singleton<ToturialManager>
 {
     // Start is called before the first frame update
     public GameObject plugOut;

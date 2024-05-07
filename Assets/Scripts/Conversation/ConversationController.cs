@@ -235,6 +235,35 @@ public class ConversationController : Singleton<ConversationController>
                 FadeCanvas.Instance.LostColor();
                 evt.Advance.Invoke();
                 break;
+            case "½Ì³Ì":
+                tempAction = evt.Advance;
+                if (evtValue == "ActivePlugOut")
+                {
+                    ToturialManager.Instance.ActivePlugOut();
+                } 
+                else if (evtValue == "ActivePlugTarget")
+                {
+                    ToturialManager.Instance.ActivePlugTarget();
+                }
+                else if (evtValue == "ActiveDragDeepRepairPlayer")
+                {
+                    ToturialManager.Instance.ActiveDragDeepRepairPlayer();
+                }
+                else if (evtValue == "ActiveClickToFix")
+                {
+                    ToturialManager.Instance.ActiveClickToFix();
+                }
+                else if (evtValue == "ActivePressScrewt")
+                {
+                    ToturialManager.Instance.ActivePressScrewt();
+                }
+                else
+                {
+                    evt.Advance.Invoke();
+                    tempAction = null;
+                }
+                break;
+
         }
     }
 
