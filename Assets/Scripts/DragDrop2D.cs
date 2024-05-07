@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class DragDrop2D : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class DragDrop2D : MonoBehaviour
     private bool isInRepairMode=false;
     [HideInInspector]
     public bool isDragging = false;
+
+    public UnityEvent OnPlugClicked;
+    public UnityEvent OnPlugTarget;
     float radius;
     //public GameObject plug; // The plug object
 
@@ -48,6 +52,7 @@ public class DragDrop2D : MonoBehaviour
 
       void OnMouseDown()
     {
+        OnPlugClicked?.Invoke();
         if(ConversationController.Instance.IsTalking())
     {
         return;
@@ -83,7 +88,7 @@ public class DragDrop2D : MonoBehaviour
      //plug.SetActive(true); 
          plugin.enabled=true;
          isDragging = true;
-        lastDragTime = Time.time;
+    lastDragTime = Time.time;
     }
 
     void OnMouseDrag()
@@ -129,6 +134,8 @@ void OnMouseUp()
             transform.position = hitCollider.transform.position + new Vector3(0, 0, -0.01f);
             checkport = newCheckPort;
             checkport.Connect();
+            OnPlugTarget.Invoke();
+
             AudioManager.Instance.RandomPlayInteraction("plug_in");
         }
         else

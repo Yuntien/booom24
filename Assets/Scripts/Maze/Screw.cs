@@ -9,6 +9,7 @@ public class Screw : MonoBehaviour
     public float unscrewProgress = 0f;  // The current progress of unscrewing
     private bool isUnscrewing = false;  // Whether the screw is currently being unscrewed
     public UnityEvent OnScrewRemoved;
+    public UnityEvent OnStartRemove;
 
     private bool isRemoved = false; 
     public void Initialize()
@@ -45,6 +46,7 @@ public class Screw : MonoBehaviour
     }
         if (isUnscrewing && !isRemoved)
         {
+            OnStartRemove.Invoke();
             
         /*if (!AudioManager.Instance.IsPlaying("screw")) // 如果没有播放螺丝扭动的声音，那么开始播放
         {
