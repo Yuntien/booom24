@@ -229,6 +229,8 @@ public class DisassemblyManager : MonoBehaviour
 
         // 向序列中添加一个移动动画
         sequence.Append(target.DOMoveY(-15f, 1.2f).SetRelative().SetEase(Ease.OutQuad));
+ 
+        sequence.AppendCallback(() => AudioManager.Instance.RandomPlayInteraction("screw_end"));  
 
         // 向序列中添加一个延迟
         sequence.AppendInterval(1.5f);

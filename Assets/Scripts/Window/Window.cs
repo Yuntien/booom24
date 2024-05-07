@@ -49,22 +49,25 @@ public class Window : Singleton<Window>
     {
         case "普通":
             // 添加普通的动画
+            AudioManager.Instance.PlayAmb2Audio("amb_window_1");
             sequence.AppendInterval(5);
             break;
         case "快递员":
             // 添加快递员的动画
+            AudioManager.Instance.PlayAmb2Audio("amb_window_2");
             sequence.Append(sender.DOMove(new Vector3(13.66f,-4.370073f,0), 6f).SetEase(Ease.Linear));
             sequence.AppendCallback(() => Destroy(sender.gameObject));
             sequence.AppendInterval(2);
 
             break;
         case "警车":
-
+            AudioManager.Instance.PlayAmb2Audio("amb_window_3");
             sequence.Append(policeCar.DOMove(new Vector3(7.12f,-4.135658f,0), 6f).SetEase(Ease.Linear));
             sequence.AppendCallback(() => Destroy(policeCar.gameObject));
             sequence.AppendInterval(2);
             break;
         case "销售大赛":
+                AudioManager.Instance.PlayAmb2Audio("amb_window_4");
                 sequence.AppendInterval(6);
                 // 创建一个新的Sequence
                 lightSequence = DOTween.Sequence();
@@ -97,6 +100,7 @@ public class Window : Singleton<Window>
             //sequence.Append(targetImage.transform.DOMove(salesFinalPosition, duration));
             break;
         case "展品":
+                AudioManager.Instance.PlayAmb2Audio("amb_window_5");
                 startBanner.SetActive(true);
     sequence.AppendInterval(6);
 // 创建一个新的Sequence
@@ -123,6 +127,7 @@ lightSequence.Play();
             //sequence.Append(targetImage.transform.DOMove(exhibitFinalPosition, duration));
             break;
         case "生小孩":
+        AudioManager.Instance.PlayAmb2Audio("amb_window_6");
         night.color=new Color(night.color.r,night.color.g,night.color.b,1f);
         nightCity.color=new Color(night.color.r,night.color.g,night.color.b,1f);
         sequence.AppendInterval(2);
@@ -156,6 +161,7 @@ lightSequence.Play();
        //新增的表现
         sequence.Append(targetImage.transform.DOMove(finalPosition, duration));
         sequence.Join(targetImage.transform.DOScale(finalScale, duration));
+        //sequence.AppendCallback(() => DropRope());
         
     }
     public void DropRope()

@@ -45,9 +45,15 @@ public class Screw : MonoBehaviour
     }
         if (isUnscrewing && !isRemoved)
         {
+            
+        /*if (!AudioManager.Instance.IsPlaying("screw")) // 如果没有播放螺丝扭动的声音，那么开始播放
+        {
+            AudioManager.Instance.PlayLoopAudio("screw");
+        }*/
             unscrewProgress += Time.deltaTime;
             if (unscrewProgress >= unscrewTime)
             {
+                //AudioManager.Instance.PauseLoopAudio();
                 RemoveScrew();
                 //isRemoved = true;  // Set the flag to true
                 
@@ -62,6 +68,7 @@ public class Screw : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         //sequence.Append(transform.DORotate(new Vector3(0, 0, 90), 0.5f));
         sequence.Append(transform.DOMoveY(-5f, 0.8f).SetRelative().SetEase(Ease.OutQuad));
+        sequence.AppendCallback(() => AudioManager.Instance.RandomPlayInteraction("screw_out"));
         sequence.AppendInterval(1f);
         sequence.AppendCallback(() => Destroy(gameObject));
         //sequence.AppendCallback(() => audioSource.Play());
@@ -76,6 +83,7 @@ public class Screw : MonoBehaviour
     void OnMouseDown()
     {
         isUnscrewing = true;
+        //AudioManager.Instance.PlayLoopAudio("screw");
         transform.DORotate(new Vector3(0, 0, -360), unscrewTime, RotateMode.FastBeyond360)
             .SetEase(Ease.Linear)
             .SetLoops(-1, LoopType.Incremental);
@@ -84,6 +92,7 @@ public class Screw : MonoBehaviour
     void OnMouseUp()
     {
         isUnscrewing = false;
+        //AudioManager.Instance.PauseLoopAudio();
         DOTween.Kill(transform);
     }
 }
