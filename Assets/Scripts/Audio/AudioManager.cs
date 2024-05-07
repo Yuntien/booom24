@@ -27,14 +27,14 @@ public class AudioManager : Singleton<AudioManager>
     #region Ëæ»ú²¥·Å
     public void RandomPlayVoice(string actorName, int voiceSize)
     {
-        AudioClip clip = RandomLoadAudioClip(voiceSize, $"Audio/Voice/{actorName}");
+        AudioClip clip = RandomLoadAudioClip(3, $"Audio/voice_{actorName}");
         voiceSource.clip = clip;
         voiceSource.Play();
     }
 
     public void RandomPlayInteraction(string interactionName)
     {
-        AudioClip clip = RandomLoadAudioClip(interactionSize, $"Audio/Interaction/{interactionName}");
+        AudioClip clip = RandomLoadAudioClip(interactionSize, $"Audio/{interactionName}");
         voiceSource.clip = clip;
         voiceSource.Play();
     }
@@ -48,7 +48,7 @@ public class AudioManager : Singleton<AudioManager>
     #region ²¥·Å³ª¸è
     public void PlayVoice(string actorName, string voiceName)
     {
-        AudioClip clip = Resources.Load<AudioClip>($"Audio/Voice/{actorName}/{voiceName}");
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/voice_{actorName}_{voiceName}");
         voiceSource.clip = clip;
         voiceSource.Play();
     }
@@ -57,7 +57,7 @@ public class AudioManager : Singleton<AudioManager>
     #region Ñ­»·²¥·Å
     public void PlayLoopAudio(string audioName)
     {
-        AudioClip clip = Resources.Load<AudioClip>($"Audio/Loop/{audioName}");
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
         loopSource.clip = clip;
         loopSource.Play();
     }
@@ -76,7 +76,7 @@ public class AudioManager : Singleton<AudioManager>
     #region ±³¾°ÒôÑ­»·²¥·Å
     public void PlayAmb1Audio(string audioName)
     {
-        AudioClip clip = Resources.Load<AudioClip>($"Audio/Amb/{audioName}");
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
         amb1Source.clip = clip;
         amb1Source.volume = 0f;
         amb1Source.Play();
@@ -97,7 +97,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayAmb2Audio(string audioName)
     {
-        AudioClip clip = Resources.Load<AudioClip>($"Audio/Amb/{audioName}");
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
         amb2Source.clip = clip;
         amb2Source.volume = 0f;
         amb2Source.Play();
@@ -168,8 +168,8 @@ public class AudioManager : Singleton<AudioManager>
 
     private IEnumerator AsyncPlayMemoryAudio(string memoryName)
     {
-        AudioClip intro = Resources.Load<AudioClip>($"Audio/Memory/intro");
-        AudioClip loop = Resources.Load<AudioClip>($"Audio/Memory/{memoryName}");
+        AudioClip intro = Resources.Load<AudioClip>($"Audio/mem_play");
+        AudioClip loop = Resources.Load<AudioClip>($"Audio/{memoryName}");
         memorySource.clip = intro;
         memorySource.loop = false;
         memorySource.Play();
