@@ -35,16 +35,26 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        // 检查是否有继续游戏
-        Debug.Log(firstTalkSO.name);
+        //// 检查是否有继续游戏
+        //string sceneName = PlayerPrefs.GetString("aibiss_scene_name");
+        //TalkSceneSO sceneSO = FindTalkSceneByName(sceneName);
+        //if (sceneSO == null)
+        //{
+
+        //}
+
         // 加载对话场景
         loadEventSO?.RaiseEvent(talkScene, false, LoadState.Menu);
     }
 
-    //private TalkSceneSO FindTalkSceneByName(string name)
-    //{
-
-    //}
+    private TalkSceneSO FindTalkSceneByName(string name)
+    {
+        foreach (TalkSceneSO sceneSO in talkScenes)
+        {
+            if (sceneSO.name == name) return sceneSO;
+        }
+        return null;
+    }
 
     private void OnEnable()
     {
