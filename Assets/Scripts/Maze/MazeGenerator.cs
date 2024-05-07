@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using DG.Tweening;
+using UnityEngine.Events;
 
 
 public class MazeGenerator : Singleton<MazeGenerator> {
@@ -64,6 +65,8 @@ public class MazeGenerator : Singleton<MazeGenerator> {
     public event SubmoduleClickedHandler OnSubmoduleClicked;
     [HideInInspector]
     public List<Submodule> allSubmodules = new List<Submodule>();
+    public UnityEvent OnClickPlayer;
+    public UnityEvent OnClickSubMoule;
     #endregion
 
     private void Start()
@@ -73,7 +76,9 @@ public class MazeGenerator : Singleton<MazeGenerator> {
 void Update() {
 
     if (Input.GetMouseButton(0)&&player!=null) {
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        OnClickPlayer.Invoke();
         MovePlayerTo(mousePos);
     }
     if (Input.GetMouseButtonDown(0))
@@ -87,6 +92,7 @@ void Update() {
                 //ConversationController.Instance.ContinueChoice(submodule.name);
                 // Trigger the event
                 OnSubmoduleClicked?.Invoke(submodule);
+                OnClickSubMoule.Invoke();
                 break;
             }
         }

@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.590097, y: 2.7295787, z: 9.572179, w: 2.0409324}
+  m_margin: {x: 9.521388, y: 2.7295787, z: 9.537824, w: 2.0409324}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -1956,12 +1956,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.6
+  m_fontSize: 1.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 1.6
-  m_fontSizeMax: 1.6
+  m_fontSizeMin: 1.5
+  m_fontSizeMax: 1.5
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1992,7 +1992,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.590098, y: 2.732282, z: 9.574881, w: 2.0463386}
+  m_margin: {x: 9.555744, y: 2.732282, z: 9.555249, w: 2.0463386}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
