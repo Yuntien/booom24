@@ -286,8 +286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -350.55188, y: 130.5486}
-  m_SizeDelta: {x: 564.0493, y: 141.4594}
+  m_AnchoredPosition: {x: -360.7776, y: 157.0151}
+  m_SizeDelta: {x: 584.5007, y: 194.3924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27598659
 MonoBehaviour:
@@ -1086,6 +1086,7 @@ MonoBehaviour:
   champion: {fileID: 21300000, guid: 147195be07773bc41b4150616fe92124, type: 3}
   sceneFadeEventSO: {fileID: 11400000, guid: 1691735b16b4e3648a20e2c8d3f6e4a6, type: 2}
   tvDuration: 1
+  start: {fileID: 1716860619}
 --- !u!1 &735833885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,8 +1610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -350.55188, y: 130.5486}
-  m_SizeDelta: {x: 564.0493, y: 141.4594}
+  m_AnchoredPosition: {x: -357.77002, y: 155.21059}
+  m_SizeDelta: {x: 578.4856, y: 190.7833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970396636
 MonoBehaviour:
@@ -1797,7 +1798,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7153806545622413142, guid: b65263df801c26b4da065118a2d1db65, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 77aa9280815fd434e98bb1ad9e9c1d1c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2979,7 +2980,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4498361833321277297, guid: b65263df801c26b4da065118a2d1db65, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 77aa9280815fd434e98bb1ad9e9c1d1c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4092,7 +4093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 19e014b01ac248d49845ceaa0816c879, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 786c8c0dd4f04df4f844dbc6c1ce382c, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 
@@ -4491,7 +4492,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2706746563363330224, guid: b65263df801c26b4da065118a2d1db65, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

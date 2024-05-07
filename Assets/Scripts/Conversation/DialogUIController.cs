@@ -87,7 +87,7 @@ public class DialogUIController : Singleton<DialogUIController>
 
         // 更新文本
         curActorNameText.text = actorName;
-        curMessageText.text = message;
+        curMessageText.text = "";
         if (curHeadImage != null)
         {
             headImage.sprite = head == null ? emptyHead : head;

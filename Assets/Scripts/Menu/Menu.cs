@@ -59,7 +59,7 @@ public class Menu : Singleton<Menu>
     public Tweener TextFadeOut()
     {
         Tweener fadeCallBack = menuText.DOFade(0, 2);
-        //start.enabled = false;
+        start.enabled = false;
         fadeCallBack.OnComplete(() =>
         {
             menuText.gameObject.SetActive(false);
