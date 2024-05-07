@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HimekoTalk2
   m_EditorClassIdentifier: 
   fixSceneReference:
-  - m_AssetGUID: 3445d25b4b6340043b539d8ca7102aad
+  - m_AssetGUID: c726ecdaff37349459271b1d5727def6
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

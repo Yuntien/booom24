@@ -13,7 +13,27 @@ MonoBehaviour:
   m_Name: HimekoTalk4
   m_EditorClassIdentifier: 
   fixSceneReference:
-  - m_AssetGUID: 1cafb4c5c61b46041ba49f2b9f4857ee
+  - m_AssetGUID: 6ff4724116e8bc641aa0261b7235574a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: f1585b8815f7ac645b233d14282aabf2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 17c343b5962a27546bd57aa9a128586d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 4fc13a0ffe105a1478cc96abebcd7964
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e2142603e47c5a14ba19a7c557171e92
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: d19bfcf9e3cfb2943b84a92eeae3abbe
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -21,5 +41,6 @@ MonoBehaviour:
   deepFixRule: 0
   conversation: {fileID: 11400000, guid: c68dac5a7a93b0548b0fe0d01df8e17b, type: 2}
   nextScene: {fileID: 11400000, guid: 05ae2f68124275e4b8b8a9a0ce4dda8a, type: 2}
-  isEndOfDay: 0
+  isEndOfDay: 1
   mainActor: {fileID: 11400000, guid: 39458921f5541884c9916f46a208fcdd, type: 2}
+  windowType: "\u751F\u5C0F\u5B69"

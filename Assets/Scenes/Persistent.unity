@@ -286,8 +286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -369.1371, y: 169.73912}
-  m_SizeDelta: {x: 601.2197, y: 219.8404}
+  m_AnchoredPosition: {x: -350.55188, y: 130.5486}
+  m_SizeDelta: {x: 564.0493, y: 141.4594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27598659
 MonoBehaviour:
@@ -1609,8 +1609,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -350.55188, y: 176.60759}
-  m_SizeDelta: {x: 564.0493, y: 233.5774}
+  m_AnchoredPosition: {x: -350.55188, y: 130.5486}
+  m_SizeDelta: {x: 564.0493, y: 141.4594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970396636
 MonoBehaviour:
@@ -4092,7 +4092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 922efbaa762d9ba4f9605dad87f6c62c, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 19e014b01ac248d49845ceaa0816c879, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 
