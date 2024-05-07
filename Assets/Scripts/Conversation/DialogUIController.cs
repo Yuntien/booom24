@@ -63,6 +63,7 @@ public class DialogUIController : Singleton<DialogUIController>
         textIsPlaying = true;
         textTweener = curMessageText.DOText(message, message.Length * textSpeed).SetEase(Ease.Linear).OnComplete(() =>
         {
+            //AudioManager.Instance.StopVoice();
             Invoke("TextPlayingEnd", 0.5f);
             curNextMessageButton.gameObject.SetActive(true);
             // 存储下一步的动作

@@ -38,6 +38,7 @@ public class AudioManager : Singleton<AudioManager>
     #region Ëæ»ú²¥·Å
     public void RandomPlayVoice(string actorName, int voiceSize)
     {
+        Debug.Log(actorName);
         string audioName;
         if (nameReplace.ContainsKey(actorName))
         {
@@ -197,7 +198,7 @@ public class AudioManager : Singleton<AudioManager>
 
     private AudioClip RandomLoadAudioClip(int audioSize, string path)
     {
-        int randomIndex = Random.Range(0, audioSize);
+        int randomIndex = Random.Range(0, audioSize) + 1;
         return Resources.Load<AudioClip>($"{path}_{randomIndex}");
     }
 
