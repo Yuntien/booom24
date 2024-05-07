@@ -93,6 +93,12 @@ public class DialogUIController : Singleton<DialogUIController>
             headImage.sprite = head == null ? emptyHead : head;
         }
 
+        // 清除选择面板的子物体
+        foreach (Transform child in curChoiceBox.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         textTweener = curMessageText.DOText(message, message.Length * textSpeed).SetEase(Ease.Linear).OnComplete(() =>
         {
             AudioManager.Instance.StopVoice();
@@ -104,11 +110,7 @@ public class DialogUIController : Singleton<DialogUIController>
 
     private void GenerateChoiceButton(List<Option> options)
     {
-        // 清除选择面板的子物体
-        foreach (Transform child in curChoiceBox.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        
 
         // 添加选择项
         options.ForEach(option =>
