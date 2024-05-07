@@ -67,6 +67,7 @@ IEnumerator connectCoroutine = null;
             isChecking=true;
             Rope rope  = FindObjectOfType<Rope>();
             rope.StartCoroutine(rope.MemoryRecall());
+            ConversationController.Instance.ContinueChoice(module.Name);
             return;
         }
         if(module.sendMemeryToMoudle)
@@ -74,6 +75,7 @@ IEnumerator connectCoroutine = null;
             Rope rope  = FindObjectOfType<Rope>();
             rope.StartCoroutine(rope.MemoryTransfer());
              UIManager.instance.SendMemeryToMoudle();
+             ConversationController.Instance.ContinueChoice(module.Name);
              isChecking=true;
              return;
 
