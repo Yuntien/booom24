@@ -11,7 +11,8 @@ public class FadeCanvas : Singleton<FadeCanvas>
     [Header("事件监听")]
     public FadeEventSO fadeEvent;
     public Image fadeImage;
-    public TextMeshPro newDay;
+    public TextMeshProUGUI thanksText;
+    public GameObject returnMenu;
 
     [Header("黑白处理")]
     [SerializeField] private PostProcessVolume volume;
@@ -52,5 +53,27 @@ public class FadeCanvas : Singleton<FadeCanvas>
     public void ShowColor()
     {
         volume.weight = 0;
+    }
+
+    public void ShowThanksText()
+    {
+        thanksText.DOBlendableColor(Color.white, 1f);
+        Invoke("ShowReturnMenu", 1);
+    }
+
+    private void ShowReturnMenu()
+    {
+        returnMenu.SetActive(true);
+    }
+
+    public void ReturnMenu()
+    {
+        thanksText.color = Color.clear;
+        returnMenu.SetActive(false);
+        
+        Menu.Instance.FadeIn(0.1f);
+        Menu.Instance.TextFadeIn().onComplete += () => {
+            FadeOut(2);
+        };
     }
 }

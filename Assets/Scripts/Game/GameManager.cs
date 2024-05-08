@@ -178,6 +178,7 @@ public class GameManager : Singleton<GameManager>
         if (currentTalkSceneSO.nextScene == null)
         {
             // TODO 此处游戏结束
+            GameEnd();
             return;
         }
 
@@ -257,7 +258,10 @@ public class GameManager : Singleton<GameManager>
     public void GameEnd()
     {
         // 遮罩淡入
-        FadeCanvas.Instance.FadeIn(3f);
-        // 显示感谢游玩
+        FadeCanvas.Instance.FadeIn(3f).onComplete += () =>
+        {
+            // 显示感谢游玩
+            FadeCanvas.Instance.ShowThanksText();
+        };
     }
 }

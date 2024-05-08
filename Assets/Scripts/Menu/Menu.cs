@@ -131,6 +131,14 @@ public class Menu : Singleton<Menu>
         return fadeCallBack;
     }
 
+    public Tweener TextFadeIn()
+    {
+        menuText.gameObject.SetActive(false);
+        Tweener fadeCallBack = menuText.DOFade(1, 0.1f);
+        start.enabled = true;
+        return fadeCallBack;
+    }
+
     private void OnFadeEvent(Color target, float duration, bool fadeIn)
     {
         menuBackground.DOBlendableColor(target, duration);
