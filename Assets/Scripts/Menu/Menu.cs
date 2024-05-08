@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class Menu : Singleton<Menu>
 {
@@ -25,6 +26,38 @@ public class Menu : Singleton<Menu>
 
     [SerializeField] private Button start;
 
+    [SerializeField] private GameObject tabPanel;
+
+    [SerializeField] private GameObject levelPanel;
+
+    [Header("关卡选择")]
+    [SerializeField] private GameObject levelChoicePrefab;
+
+    private void Start()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            var levelButtonObj = Instantiate(levelChoicePrefab, Vector3.zero, Quaternion.identity);
+            levelButtonObj.transform.SetParent(levelPanel.transform);
+            levelButtonObj.GetComponent<TextMeshPro>().text = $"关卡{i}";
+            Button levelButton = levelButtonObj.GetComponent<Button>();
+            levelButton.onClick.AddListener(() => { ChooseLevel(i); });
+        }
+
+        var returnObj = Instantiate(levelChoicePrefab, Vector3.zero, Quaternion.identity);
+        returnObj.transform.SetParent(levelPanel.transform);
+        returnObj.GetComponent<TextMeshPro>().text = "返回";
+        Button returnButton = returnObj.GetComponent<Button>();
+        returnButton.onClick.AddListener(() => { 
+
+        });
+    }
+
+    private void CloseLevelChoice()
+    {
+
+    }
+
     private void OnEnable()
     {
         sceneFadeEventSO.OnEventRaised += OnFadeEvent;
@@ -43,7 +76,27 @@ public class Menu : Singleton<Menu>
 
     public void ContinueGame()
     {
+
         // TODO 添加继续游戏逻辑
+    }
+
+    public void ShowLevel()
+    {
+        // 展示选关界面
+        tabPanel.SetActive(false);
+
+        
+
+        levelPanel.SetActive(true);
+    }
+
+    private void ChooseLevel(int index)
+    {
+        Button[] buttons = levelPanel.GetComponentsInChildren<Button>();
+        foreach (Button levelButton in buttons)
+        {
+            levelButton.enabled = false;
+        }
     }
 
     public void StartNewGame()
