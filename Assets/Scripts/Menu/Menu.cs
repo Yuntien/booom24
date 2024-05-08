@@ -39,14 +39,15 @@ public class Menu : Singleton<Menu>
         {
             var levelButtonObj = Instantiate(levelChoicePrefab, Vector3.zero, Quaternion.identity);
             levelButtonObj.transform.SetParent(levelPanel.transform);
-            levelButtonObj.GetComponent<TextMeshPro>().text = $"关卡{i}";
+            levelButtonObj.GetComponent<TextMeshProUGUI>().text = $"关卡{i + 1}";
             Button levelButton = levelButtonObj.GetComponent<Button>();
-            levelButton.onClick.AddListener(() => { ChooseLevel(i); });
+            int newIdx = i;
+            levelButton.onClick.AddListener(() => { ChooseLevel(newIdx); });
         }
 
         var returnObj = Instantiate(levelChoicePrefab, Vector3.zero, Quaternion.identity);
         returnObj.transform.SetParent(levelPanel.transform);
-        returnObj.GetComponent<TextMeshPro>().text = "返回";
+        returnObj.GetComponent<TextMeshProUGUI>().text = "返回";
         Button returnButton = returnObj.GetComponent<Button>();
         returnButton.onClick.AddListener(() => {
             CloseLevelChoice();
@@ -104,12 +105,8 @@ public class Menu : Singleton<Menu>
 
     private void ChooseLevel(int index)
     {
-        Button[] buttons = levelPanel.GetComponentsInChildren<Button>();
-        foreach (Button levelButton in buttons)
-        {
-            levelButton.enabled = false;
-        }
-
+        CloseLevelChoice();
+        GameManager.Instance.StartNewGame(index);
     }
 
     public void StartNewGame()

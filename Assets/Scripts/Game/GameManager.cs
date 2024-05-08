@@ -29,6 +29,10 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private FadeEventSO fadeEventSO;
 
+    [Header("所有场景")]
+    [SerializeField] private List<TalkSceneSO> talkScenes;
+
+
     private int fixIndex = 0;
 
     private void Start()
@@ -63,6 +67,18 @@ public class GameManager : Singleton<GameManager>
         Menu.Instance.TextFadeOut().onComplete += () =>
         {
             currentTalkSceneSO = firstTalkSO;
+            StartTalk();
+        };
+    }
+
+    public void StartNewGame(int startLevel)
+    {
+        Debug.Log(startLevel);
+        Debug.Log(talkScenes[startLevel].name);
+        // 按钮淡出
+        Menu.Instance.TextFadeOut().onComplete += () =>
+        {
+            currentTalkSceneSO = talkScenes[startLevel];
             StartTalk();
         };
     }
