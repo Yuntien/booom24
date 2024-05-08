@@ -48,14 +48,22 @@ public class Menu : Singleton<Menu>
         returnObj.transform.SetParent(levelPanel.transform);
         returnObj.GetComponent<TextMeshPro>().text = "返回";
         Button returnButton = returnObj.GetComponent<Button>();
-        returnButton.onClick.AddListener(() => { 
-
+        returnButton.onClick.AddListener(() => {
+            CloseLevelChoice();
         });
     }
 
     private void CloseLevelChoice()
     {
+        levelPanel.SetActive(false);
 
+        Button[] buttons = levelPanel.GetComponentsInChildren<Button>();
+        foreach (Button levelButton in buttons)
+        {
+            levelButton.enabled = false;
+        }
+
+        tabPanel.SetActive(true);
     }
 
     private void OnEnable()
@@ -85,7 +93,11 @@ public class Menu : Singleton<Menu>
         // 展示选关界面
         tabPanel.SetActive(false);
 
-        
+        Button[] buttons = levelPanel.GetComponentsInChildren<Button>();
+        foreach (Button levelButton in buttons)
+        {
+            levelButton.enabled = true;
+        }
 
         levelPanel.SetActive(true);
     }
@@ -97,6 +109,7 @@ public class Menu : Singleton<Menu>
         {
             levelButton.enabled = false;
         }
+
     }
 
     public void StartNewGame()
