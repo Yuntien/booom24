@@ -42,6 +42,7 @@ public class Screw : MonoBehaviour
     if (Input.GetMouseButtonUp(0))
     {
         isUnscrewing = false;
+        AudioManager.Instance.PauseLoopAudio(); 
         DOTween.Kill(transform);
     }
         if (isUnscrewing && !isRemoved)
@@ -69,6 +70,7 @@ public class Screw : MonoBehaviour
         OnScrewRemoved.RemoveAllListeners();  // Remove all listeners
         Sequence sequence = DOTween.Sequence();
         //sequence.Append(transform.DORotate(new Vector3(0, 0, 90), 0.5f));
+        sequence.AppendCallback(() => AudioManager.Instance.PauseLoopAudio()); 
         sequence.Append(transform.DOMoveY(-5f, 0.8f).SetRelative().SetEase(Ease.OutQuad));
         sequence.AppendCallback(() => AudioManager.Instance.RandomPlayInteraction("screw_out"));
         sequence.AppendInterval(1f);
