@@ -26,6 +26,8 @@ public class AudioManager : Singleton<AudioManager>
 
     public float fadeTime;
 
+    // ≤‚ ‘
+
     private void Start()
     {
         nameReplace.Add("Seller", "huoshan");
