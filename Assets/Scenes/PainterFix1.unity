@@ -984,6 +984,10 @@ PrefabInstance:
       propertyPath: Name
       value: VISUAL
       objectReference: {fileID: 0}
+    - target: {fileID: 6987386473434625853, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: warningtext
+      value: "WARNING\uFF1A\u65E0\u6CD5\u8BFB\u53D6\u8272\u89C9\u6A21\u7EC4\u3002"
+      objectReference: {fileID: 0}
     - target: {fileID: 7005778382512561933, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_Layer
       value: 9

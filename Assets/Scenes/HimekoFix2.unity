@@ -578,7 +578,7 @@ MonoBehaviour:
   endPort: {fileID: 1703722111}
   startModule: {fileID: 18396604}
   endModule: {fileID: 1574667637}
-  anomalyValue: 0
+  anomalyValue: 1
   lineRenderer: {fileID: 97565773}
   highlightLineRenderer: {fileID: 0}
 --- !u!1001 &635636073
