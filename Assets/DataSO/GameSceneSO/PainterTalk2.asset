@@ -31,3 +31,4 @@ MonoBehaviour:
   isEndOfDay: 1
   mainActor: {fileID: 11400000, guid: 72ffb4c15ec37e24493dc43b460652bf, type: 2}
   windowType: "\u8B66\u8F66"
+  period: 1

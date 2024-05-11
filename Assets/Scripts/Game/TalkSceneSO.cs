@@ -22,4 +22,6 @@ public class TalkSceneSO : ScriptableObject
     public DialogActor mainActor;
 
     public string windowType;
+
+    public Period period;
 }

@@ -41,6 +41,17 @@ public class GuestController : Singleton<GuestController>
         return guestSprite.DOFade(1, fadeTime);
     }
 
+    /// <summary>
+    /// 人物显示
+    /// </summary>
+    /// <param name="actorName">人物</param>
+    /// <param name="picName">照片名</param>
+    public void ShowGuest(string actorName, string picName)
+    {
+        guestSprite.sprite = Resources.Load<Sprite>($"Art/{actorName}/{picName}");
+        ShowGuest();
+    }
+
     public void ShowGuest(string name)
     {
         guestSprite.sprite = Resources.Load<Sprite>($"Art/{name}/1");

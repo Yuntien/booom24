@@ -21,3 +21,8 @@ public enum DialogTpye
 {
     Head, Normal
 }
+
+public enum Period
+{
+    Morning, Afternoon, Night
+}

@@ -40,7 +40,6 @@ public class ConversationController : Singleton<ConversationController>
     /// </summary>
     public void ContinueConversation()
     {
-        // isTalking = true;
         tempAction.Invoke();
     }
 
@@ -55,8 +54,6 @@ public class ConversationController : Singleton<ConversationController>
     /// <param name="choiceName">选项名称</param>
     public void ContinueChoice(string choiceName)
     {
-        Debug.Log(choiceName);
-        isTalking = true;
         if (optionMap.ContainsKey(choiceName))
         {
             var choice = optionMap[choiceName];
@@ -114,6 +111,8 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleGameControlEvent(GameControlEvent evt)
     {
+        isTalking = false;
+        // 处理
         string key = evt.Key.Trim();
         string evtValue = evt.Value.Trim();
         switch (key)
@@ -269,6 +268,8 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleMessageEvent(MessageEvent evt)
     {
+        isTalking = true;
+
         var actorName = evt.Actor == null ? "" : evt.Actor;
         DialogUIController.Instance.ShowMessage(actorName, evt.Message, evt.Advance, null);
     }
@@ -289,14 +290,14 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleUserEvent(UserEvent userEvent)
     {
+        isTalking = false;
+
         if (userEvent.Name == "开始维修")
         {
             DialogUIController.Instance.Hide();
             tempAction = userEvent.Advance;
             Debug.Log(userEvent.Name);
             GameManager.Instance.Fix();
-
-            isTalking = true;
         } 
         else if (userEvent.Name == "进入场景")
         {                
@@ -366,7 +367,6 @@ public class ConversationController : Singleton<ConversationController>
         }
         else if (userEvent.Name == "深度维修拆除")
         {
-            isTalking = false;
             DialogUIController.Instance.Hide();
             tempAction = userEvent.Advance;
             AudioManager.Instance.PlayAmb2Audio("amb_remove");
@@ -391,6 +391,8 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleActorMessageEvent(ActorMessageEvent evt)
     {
+        isTalking = true;
+
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
         
         Sprite head = null;
@@ -422,6 +424,8 @@ public class ConversationController : Singleton<ConversationController>
 
     private void HandleActorChoiceEvent(ActorChoiceEvent evt)
     {
+        isTalking = true;
+
         var actorName = evt.Actor == null ? "" : evt.Actor.DisplayName;
 
         //Sprite head = null;

@@ -3753,7 +3753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -755796840, guid: 4782efc69d2d1a24dbb6a82704b1a78e, type: 3}
+  m_Sprite: {fileID: -1557923647, guid: 4839f9a8f8f1a9d428fa3eda1815ff02, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4622,7 +4622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d195825149cba4ea736299247b46ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTalkSO: {fileID: 11400000, guid: 786c8c0dd4f04df4f844dbc6c1ce382c, type: 2}
+  firstTalkSO: {fileID: 11400000, guid: 19e014b01ac248d49845ceaa0816c879, type: 2}
   talkScene:
     m_AssetGUID: ed54558165e4d5e4baec0703c2e0e72f
     m_SubObjectName: 

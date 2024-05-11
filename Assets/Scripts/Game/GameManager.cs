@@ -63,22 +63,23 @@ public class GameManager : Singleton<GameManager>
 
     public void StartNewGame()
     {
+        currentTalkSceneSO = firstTalkSO;
+        BackgroundController.Instance.ChangeBackground(currentTalkSceneSO.period);
+
         // 按钮淡出
         Menu.Instance.TextFadeOut().onComplete += () =>
         {
-            currentTalkSceneSO = firstTalkSO;
             StartTalk();
         };
     }
 
     public void StartNewGame(int startLevel)
     {
-        Debug.Log(startLevel);
-        Debug.Log(talkScenes[startLevel].name);
+        currentTalkSceneSO = talkScenes[startLevel];
+        BackgroundController.Instance.ChangeBackground(currentTalkSceneSO.period);
         // 按钮淡出
         Menu.Instance.TextFadeOut().onComplete += () =>
         {
-            currentTalkSceneSO = talkScenes[startLevel];
             StartTalk();
         };
     }
@@ -126,6 +127,7 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlayAmb2Audio("amb_room");
         // 人物出现
         GuestController.Instance.ShowGuest(currentTalkSceneSO.mainActor.FileName);
+        BackgroundController.Instance.ChangeBackground(currentTalkSceneSO.period);
         
         // 继续对话
         ConversationController.Instance.ContinueConversation();
@@ -186,6 +188,7 @@ public class GameManager : Singleton<GameManager>
         if (!currentTalkSceneSO.isEndOfDay)
         {
             currentTalkSceneSO = currentTalkSceneSO.nextScene;
+            BackgroundController.Instance.ChangeBackground(currentTalkSceneSO.period);
             FadeCanvas.Instance.FadeOut(1f).onComplete += () =>
             {
                 ConversationController.Instance.StartConversation(currentTalkSceneSO.conversation);
@@ -224,6 +227,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnNewDayLoad()
     {
+        BackgroundController.Instance.ChangeBackground(currentTalkSceneSO.period);
         FadeCanvas.Instance.FadeOut(0.5f);
     }
 

@@ -12,6 +12,11 @@ public class BackgroundController : Singleton<BackgroundController>
     [Header("ËõÐ¡±ÈÀý")]
     [SerializeField] private int scaleNum;
 
+    [Header("Ç°¾°")]
+    [SerializeField] private SpriteRenderer front;
+    [Header("±³¾°")]
+    [SerializeField] private SpriteRenderer back;
+
     public Sequence MoveToWindow()
     {
         AudioManager.Instance.RandomPlayInteraction("amb_window_1");
@@ -29,5 +34,24 @@ public class BackgroundController : Singleton<BackgroundController>
     {
         backgorund.position = Vector3.zero;
         backgorund.localScale = Vector3.one;
+    }
+
+    public void ChangeBackground(Period period)
+    {
+        Debug.Log(period.ToString().ToLower());
+        Sprite backSprite = Resources.Load<Sprite>($"Art/Background/daily_{period.ToString().ToLower()}_back");
+
+        switch (period)
+        {
+            case Period.Morning:
+                back.sprite = backSprite;
+                break;
+            case Period.Afternoon: 
+                back.sprite = backSprite;
+                break;
+            case Period.Night:
+                back.sprite = backSprite;
+                break;
+        }
     }
 }
