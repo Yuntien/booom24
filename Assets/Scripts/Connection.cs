@@ -13,6 +13,7 @@ public class Connection : MonoBehaviour
 
     public LineRenderer lineRenderer;
     public LineRenderer highlightLineRenderer;
+    private Color errorColor=new Color(0.68f,0.05f,0.08f,1);
     
     //public static Dictionary<Port, Connection> portConnections = new Dictionary<Port, Connection>();
 
@@ -74,7 +75,7 @@ public IEnumerator Highlight()
     
     float duration = 0.5f;  // 点亮的持续时间
     float elapsed = 0.0f;
-    Color highlightColor = (startPort.anomalyValue > 0 || endPort.anomalyValue > 0) ? Color.red : Color.white;
+    Color highlightColor = (startPort.anomalyValue > 0 || endPort.anomalyValue > 0) ? errorColor : Color.white;
     highlightLineRenderer.enabled=true;
     highlightLineRenderer.startColor = highlightColor;
     highlightLineRenderer.endColor = highlightColor;
