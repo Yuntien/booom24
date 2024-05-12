@@ -52,8 +52,6 @@ public void OpenCheckPort()
         {
             cover.enabled=true;
         }
-
-
 }
 IEnumerator connectCoroutine = null;
    public void Connect()
@@ -105,7 +103,7 @@ IEnumerator connectCoroutine = null;
     public void HighlightBegin()
     {
         //这里是每次插点亮的地方，现在用协程去模拟下停顿
-        if (module != null && isCheckable)
+        if (module != null && isCheckable && isChecking)
         {
             
             module.StartHightLight();

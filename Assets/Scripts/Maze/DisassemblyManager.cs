@@ -11,12 +11,15 @@ public class DisassemblyManager : MonoBehaviour
     public static DisassemblyManager Instance { get; private set; }
     public GameObject screwdriverPrefab;
     public GameObject screwPrefab;
+    public GameObject subScrewPrefab;
     public List<GameObject> SubModulescrewPositions = new List<GameObject>();
     public List<GameObject> ModulescrewPositions = new List<GameObject>();
+    public List<GameObject> HiveModulescrewPositions = new List<GameObject>();
 
     private GameObject screwdriver;
     public GameObject subModuleVisual;
     public GameObject moduleVisual;
+    public GameObject hiveMindVisual;
     public UnityEvent OnDisassemblyEnd;  // Add this line
     private List<Screw> screws = new List<Screw>();
 
@@ -25,6 +28,7 @@ public class DisassemblyManager : MonoBehaviour
 
     public GameObject subSprite;
     public GameObject moduleSprite;
+      public GameObject HivemoduleSprite;
 
     private bool isSub;
 
@@ -77,18 +81,14 @@ public class DisassemblyManager : MonoBehaviour
         {
             foreach (GameObject screwPosition in SubModulescrewPositions)
             {
-            Screw s=Instantiate(screwPrefab, screwPosition.transform.position, Quaternion.identity, screwPosition.transform).GetComponent<Screw>();
+            Screw s=Instantiate(subScrewPrefab, screwPosition.transform.position, Quaternion.identity, screwPosition.transform).GetComponent<Screw>();
             screws.Add(s);
             }
 
         }  
-        else
+        else 
         {
-            foreach (GameObject screwPosition in ModulescrewPositions)
-            {
-            Screw s=Instantiate(screwPrefab, screwPosition.transform.position, Quaternion.identity, screwPosition.transform).GetComponent<Screw>();
-            screws.Add(s);
-            }
+            
 
         }   
         screwsRemovedCount = 0;
@@ -120,10 +120,10 @@ public class DisassemblyManager : MonoBehaviour
     //维修时点击子模块，触发这里
     private void HandleModuleClicked(Module module)
 {
-    //if(ConversationController.Instance.IsTalking())
-    //{
-    //    return;
-    //}
+    if(ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
         if (isSub)
         {
             return;
@@ -141,7 +141,7 @@ public class DisassemblyManager : MonoBehaviour
         else
         {
             Debug.Log("Module is not removable.");
-            DialogUIController.Instance.ShowMessage(null,"刚才说好要拆除的不是这个吧",DialogUIController.Instance.Hide,null);
+            DialogUIController.Instance.ShowMessage(null,"嗯……刚才说要拆除的模块，好像不是这个。",DialogUIController.Instance.Hide,null);
 
         }
     }
@@ -170,7 +170,7 @@ public class DisassemblyManager : MonoBehaviour
                     else
                     {
                         Debug.Log("Submodule is not removable.");
-                        DialogUIController.Instance.ShowMessage(null,"刚才说好要拆除的不是这个吧",DialogUIController.Instance.Hide,null);
+                        DialogUIController.Instance.ShowMessage(null,"嗯……刚才说要拆除的模块，好像不是这个。",DialogUIController.Instance.Hide,null);
                     }
                 }
     }
@@ -179,14 +179,42 @@ public class DisassemblyManager : MonoBehaviour
             RemoveAllListeners();
             if(isSub)
             {
+             
                 subModuleVisual.SetActive(true);
                 subModuleVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
 
             }
             else
             {
-                moduleVisual.SetActive(true);
-                moduleVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
+                //moduleVisual.SetActive(true);
+                if(currentModule!=null)
+                {
+                    if(currentModule.Name=="HIVEMIND")
+                    {
+                           foreach (GameObject screwPosition in HiveModulescrewPositions)
+                            {
+                                Screw s=Instantiate(screwPrefab, screwPosition.transform.position, Quaternion.identity, screwPosition.transform).GetComponent<Screw>();
+                                screws.Add(s);
+                            }
+                        hiveMindVisual.SetActive(true);
+                        hiveMindVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
+
+                    }
+                    else
+                    {
+                        foreach (GameObject screwPosition in ModulescrewPositions)
+                            {
+                                Screw s=Instantiate(screwPrefab, screwPosition.transform.position, Quaternion.identity, screwPosition.transform).GetComponent<Screw>();
+                                screws.Add(s);
+                            }
+                        moduleVisual.SetActive(true);
+                        moduleVisual.GetComponentInChildren<TextMeshPro>().text = moduleName;
+
+                    }
+                    
+
+                }
+                
                 Robot.Instance.OnModuleClicked -= HandleModuleClicked;              
             }
             
@@ -215,10 +243,16 @@ public class DisassemblyManager : MonoBehaviour
             target = subSprite.transform;
             subModuleVisual.GetComponentInChildren<TextMeshPro>().text="";
         }
+        else if(currentModule.Name=="HIVEMIND")
+        {
+            target = HivemoduleSprite.transform;
+            hiveMindVisual.GetComponentInChildren<TextMeshPro>().text="";
+        }
         else
         {
             target = moduleSprite.transform;
             moduleVisual.GetComponentInChildren<TextMeshPro>().text="";
+
         }
         // 创建一个新的序列
         Sequence sequence = DOTween.Sequence();

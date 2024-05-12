@@ -67,15 +67,53 @@ public class MazeGenerator : Singleton<MazeGenerator> {
     public List<Submodule> allSubmodules = new List<Submodule>();
     public UnityEvent OnClickPlayer;
     public UnityEvent OnClickSubMoule;
+    private float moveDelay = 0.2f;  // 你可以根据需要调整这个值
+    private float nextMoveTime = 0f;
     #endregion
 
     private void Start()
     {
         //GenerateMaze(mazeRows, mazeColumns);
     }
+    bool IsValidPosition(Vector2 position) {
+    return position.x >= 1 && position.x <= mazeColumns &&
+           position.y >= 1 && position.y <= mazeRows;
+}
+void TryMovePlayer(Vector2 direction) {
+    if (Time.time < nextMoveTime) {
+        return;
+    }
+
+    Vector2 targetGridPos = playerGridPos + direction;
+
+    // Check if the target position is within the maze boundaries
+    if (!IsValidPosition(targetGridPos)) {
+        return;
+    }
+
+    Cell targetCell = GetCell(targetGridPos);
+
+    if (ConversationController.Instance.IsTalking())
+    {
+        return;
+    }
+
+    if (targetCell != null && !HasWallBetween(GetCellAt(playerGridPos), targetCell)) {
+        nextMoveTime = Time.time + moveDelay;
+        MovePlayerTo(targetCell.cellObject.transform.position);
+    }
+}
 void Update() {
 
+    
+
     if (Input.GetMouseButton(0)&&player!=null) {
+            if(ConversationController.Instance.IsTalking())
+        {
+        return;
+        }
+
+        
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         OnClickPlayer.Invoke();
@@ -97,6 +135,24 @@ void Update() {
             }
         }
     }
+    float moveSpeed = 5.0f;  // 这是你想要的移动速度，单位是单位/秒
+    Vector2 direction = Vector2.zero;
+
+    // 检测 WASD 或者上下左右键的输入
+     // 检测 WASD 或者上下左右键的输入
+    if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+        TryMovePlayer(Vector2.up);
+    }
+    if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+        TryMovePlayer(Vector2.down);
+    }
+    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+        TryMovePlayer(Vector2.left);
+    }
+    if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+        TryMovePlayer(Vector2.right);
+    }
+
 }
 public void SetSubmodulesRemoveable(bool isRemovable)
 {
