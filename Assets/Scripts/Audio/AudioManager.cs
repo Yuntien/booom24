@@ -35,12 +35,13 @@ public class AudioManager : Singleton<AudioManager>
         nameReplace.Add("Firefly", "peipei");
         nameReplace.Add("Express", "shitou");
         nameReplace.Add("Himeko", "yingli");
+        nameReplace.Add("ExpressSing", "sing");
+        nameReplace.Add("SellerStutter", "huoshan_stutter");
     }
 
     #region Ëæ»ú²¥·Å
     public void RandomPlayVoice(string actorName, int voiceSize)
     {
-        Debug.Log(actorName);
         string audioName;
         if (nameReplace.ContainsKey(actorName))
         {
