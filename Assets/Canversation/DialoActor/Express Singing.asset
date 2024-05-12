@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4b5f5c32482704eb75f62e21e6ec86, type: 3}
+  m_Name: Express Singing
+  m_EditorClassIdentifier: 
+  displayName: "\u77F3\u5934"
+  avatar: {fileID: 21300000, guid: c577317da5372d149a7419cb7f00b65b, type: 3}
+  audioNum: 0
+  fileName: Express
