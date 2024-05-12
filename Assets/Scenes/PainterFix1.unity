@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7776510905343594303, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
+      propertyPath: errortext
+      value: "Error\uFF1A\u8BB0\u5FC6\u6A21\u5757\u517C\u5BB9\u6027\u8FC7\u5F31"
+      objectReference: {fileID: 0}
     - target: {fileID: 7960842152473652483, guid: ae9a9881efb9a6a459a192ccbd4d1f44, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.74
