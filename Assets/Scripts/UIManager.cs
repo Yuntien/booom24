@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public TextMeshPro checking; // The UI Text element to display anomaly module info
     public TextMeshPro log; // The UI Text element to display task info
     public TextMeshPro anomalyModuleText;
+
+    public Color errorColor=new Color(0.54f,0.01f,0f,1f);
+
     //public TextMeshPro taskText;
 
 
@@ -66,7 +69,7 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
     //string infoText = $"in模块异常值={inAnomalySum}\nout模块异常值={outAnomalySum}\n流入异常值={finalAnomalyValue}\n当前异常值={finalAnomalyValue - anomalyValue}";
     if(errortext!="")
     {
-        anomalyModuleText.color = Color.red;
+        anomalyModuleText.color = errorColor;
         anomalyModuleText.text = $"错误信息: {errortext}";
         log.enabled=false;
         checking.enabled=false;
@@ -74,7 +77,7 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
     }
     if(warningtext!="")
     {
-        anomalyModuleText.color = Color.yellow;
+        anomalyModuleText.color = errorColor;
            
          anomalyModuleText.text = $"警告信息: {warningtext}";
          log.enabled=false;
@@ -87,7 +90,7 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
         //shortscreen.GetComponent<Image>().color=Color.red;
         
         log.text=null;
-        log.color = Color.red;
+        log.color = errorColor;
         log.text=$"异常\n当前模块（{moduleName}）受到排异反应影响异常，需要寻找排异源头";
        
 
@@ -108,7 +111,7 @@ public void UpdateAnomalyCalculationText(string moduleName, int inAnomalySum, in
     {
         //shortscreen.GetComponent<Image>().color=Color.red;
         log.text=null;
-        log.color = Color.red;
+        log.color = errorColor;
         log.text=$"异常\n该模块为排异源头,需要去除";
         /*if(errortext!="")
         {
