@@ -134,6 +134,7 @@ public void SetOutline(bool isActive)
 
     public void StartHightLight()
     {
+        
         StartCoroutine(HighlightConnectionsProcess());       
     }
 public IEnumerator HighlightConnectionsProcess()

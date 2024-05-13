@@ -949,6 +949,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 705006488056459923, guid: a7ebbca15ebeb9f4f9cf8fa6a2c0a943, type: 3}
+      propertyPath: hiveMindVisual
+      value: 
+      objectReference: {fileID: 7058186388472612246}
     - target: {fileID: 4947894342443522698, guid: a7ebbca15ebeb9f4f9cf8fa6a2c0a943, type: 3}
       propertyPath: m_Name
       value: DisassemblyManager
@@ -958,6 +962,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7ebbca15ebeb9f4f9cf8fa6a2c0a943, type: 3}
+--- !u!1 &7058186388472612246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5584182389443388531, guid: a7ebbca15ebeb9f4f9cf8fa6a2c0a943, type: 3}
+  m_PrefabInstance: {fileID: 7058186388472612245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7553160856881018363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,7 +984,7 @@ MonoBehaviour:
   cellPrefab: {fileID: 7006034551328200592, guid: b74b8f84adbd7d7498e69b68860a2b93, type: 3}
   playerPrefab: {fileID: 4290481711745387992, guid: 4ba56a85f850301499dd3178f0ca8905, type: 3}
   disableCellSprite: 0
-  cellColor: {r: 0.28588378, g: 0.6037736, b: 0.2699893, a: 1}
+  cellColor: {r: 0.16078432, g: 0.25882354, b: 0.16470589, a: 1}
   targetSubmodulePrefab: {fileID: 1945478692285489632, guid: 6f3a88d620546ea42b1854e8766352d6, type: 3}
   centreSize: 2
   neighbourPositions:
@@ -984,6 +993,12 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
   allSubmodules: []
+  OnClickPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClickSubMoule:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8908046250743138310
 MonoBehaviour:
   m_ObjectHideFlags: 0

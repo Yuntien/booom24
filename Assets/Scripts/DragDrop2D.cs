@@ -95,6 +95,12 @@ public class DragDrop2D : MonoBehaviour
     {
     if(ConversationController.Instance.IsTalking())
     {
+        transform.DOMove(startPos.position, 0.15f);
+        AudioManager.Instance.RandomPlayInteraction("plug_in");
+        plugin.enabled=false;
+        isDragging = false;
+        collider2d.enabled = true;
+
         return;
     }
     
@@ -108,11 +114,17 @@ public class DragDrop2D : MonoBehaviour
 
         transform.position = MouseWorldPosition() + offset;
     }
+    
 
 void OnMouseUp()
 {
     if(ConversationController.Instance.IsTalking())
     {
+        transform.DOMove(startPos.position, 0.15f);
+        AudioManager.Instance.RandomPlayInteraction("plug_in");
+        plugin.enabled=false;
+        isDragging = false;
+        collider2d.enabled = true;
         return;
     }
     
