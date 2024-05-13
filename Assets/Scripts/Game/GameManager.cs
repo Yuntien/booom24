@@ -148,7 +148,11 @@ public class GameManager : Singleton<GameManager>
 
     private void OnFixLoaded()
     {
-        AudioManager.Instance.PlayAmb2Audio("amb_main");
+        if (currentTalkSceneSO.name != "HimekoTalk4")
+        {
+            AudioManager.Instance.PlayAmb2Audio("amb_main");
+        }
+        
         // 场景加载完成，对话继续
         ConversationController.Instance.ContinueConversation();
     }

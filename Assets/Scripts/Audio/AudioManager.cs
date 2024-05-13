@@ -37,6 +37,7 @@ public class AudioManager : Singleton<AudioManager>
         nameReplace.Add("Himeko", "yingli");
         nameReplace.Add("ExpressSing", "sing");
         nameReplace.Add("SellerStutter", "huoshan_stutter");
+        nameReplace.Add("HimekoDying", "yingli_dying");
     }
 
     #region Ëæ»ú²¥·Å
@@ -146,8 +147,10 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayAmb2Audio(string audioName)
     {
+        Debug.Log(audioName);
         amb2Source.Stop();
         AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioName}");
+        Debug.Log(clip == null);
         amb2Source.clip = clip;
         amb2Source.volume = 0f;
         amb2Source.Play();

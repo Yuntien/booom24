@@ -146,6 +146,30 @@ public class ConversationController : Singleton<ConversationController>
                 AudioManager.Instance.ContinueLoopAudio();
                 evt.Advance.Invoke();
                 break;
+            case "播放amb1音效":
+                AudioManager.Instance.PlayAmb1Audio(evtValue);
+                evt.Advance.Invoke();
+                break;
+            case "暂停amb1音效":
+                AudioManager.Instance.PauseAmb1Audio();
+                evt.Advance.Invoke();
+                break;
+            case "继续amb1音效":
+                AudioManager.Instance.ContinueAmb1Audio();
+                evt.Advance.Invoke();
+                break;
+            case "播放amb2音效":
+                AudioManager.Instance.PlayAmb2Audio(evtValue);
+                evt.Advance.Invoke();
+                break;
+            case "暂停amb2音效":
+                AudioManager.Instance.PauseAmb2Audio();
+                evt.Advance.Invoke();
+                break;
+            case "继续amb2音效":
+                AudioManager.Instance.ContinueAmb2Audio();
+                evt.Advance.Invoke();
+                break;
             case "播放交互音效":
                 AudioManager.Instance.RandomPlayInteraction(evtValue);
                 evt.Advance.Invoke();
