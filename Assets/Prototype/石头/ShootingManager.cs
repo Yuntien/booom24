@@ -24,9 +24,19 @@ public class ShootingManager : MonoBehaviour
     public Transform startTransform; // 照片开始的位置
     public Transform endTransform; // 照片结束的位置
 
+     List<_2dxFX_BlurHQX> viewForwardSprites = new List<_2dxFX_BlurHQX>();
+    List<_2dxFX_BlurHQX> viewMidSprites = new List<_2dxFX_BlurHQX>();
+    List<_2dxFX_BlurHQX> viewBackSprites = new List<_2dxFX_BlurHQX>();
+
 
     private void Start()
     {
+        FindSpritesAndAddToList(photoScene.transform.Find("Forward"), viewForwardSprites);
+        FindSpritesAndAddToList(photoScene.transform.Find("Mid"), viewMidSprites);
+        FindSpritesAndAddToList(photoScene.transform.Find("Back"), viewBackSprites);
+        ApplyBlur(viewForwardSprites, forwardFocus, "Forward");
+        ApplyBlur(viewMidSprites, midFocus, "Mid");
+        ApplyBlur(viewBackSprites, backFocus, "Back");
         ShowView();
         RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
         shootingCamera.targetTexture = renderTexture;
@@ -43,6 +53,9 @@ public class ShootingManager : MonoBehaviour
     private void UpdateFocus(float value)
     {
         currentFocus = (int)value;
+        ApplyBlur(viewForwardSprites, forwardFocus, "Forward");
+        ApplyBlur(viewMidSprites, midFocus, "Mid");
+        ApplyBlur(viewBackSprites, backFocus, "Back");
     }
     private void ShowView()
     {
