@@ -8,6 +8,7 @@ public class ShootingManager : MonoBehaviour
 {
     public GameObject photoScene; // 包含前景，中景，背景的父物体
     public Slider focusSlider; // 焦点滑块
+    public Slider exposureSlider; // 曝光滑块
     public Camera mainCamera; // 主相机
     public Camera shootingCamera; // 拍照相机
     public Image photoImage; // 用于显示"相片"的UI Image组件
@@ -17,6 +18,7 @@ public class ShootingManager : MonoBehaviour
     private int midFocus = 4;
     private int backFocus = 8;
     private int currentFocus = -1; // 当前焦点
+    public int currentbaseExposure = 0; // 当前基础曝光
 
     public Camera viewCamera;
     public RawImage viewImage;
@@ -44,6 +46,11 @@ public class ShootingManager : MonoBehaviour
         focusSlider.minValue = 0;
         focusSlider.maxValue = 8;
         focusSlider.wholeNumbers = true;
+
+         // 设置曝光滑块的范围和初始值
+        exposureSlider.minValue = -3;
+        exposureSlider.maxValue = 3;
+        exposureSlider.value = 0;
 
         // 当滑块的值改变时，更新焦点
         focusSlider.onValueChanged.AddListener(UpdateFocus);
@@ -80,6 +87,14 @@ public class ShootingManager : MonoBehaviour
         list.Add(sprite);
     }
 }
+private void FindComponentsAndAddToList<T>(GameObject parent, List<T> list) where T : Component
+{
+    T[] components = parent.GetComponentsInChildren<T>();
+    foreach (T component in components)
+    {
+        list.Add(component);
+    }
+}
 
     // 应用模糊效果
     private void ApplyBlur(List<_2dxFX_BlurHQX> sprites, int focusPoint, string layerName)
@@ -90,6 +105,17 @@ public class ShootingManager : MonoBehaviour
             blurValue = Mathf.Clamp01(Mathf.Abs(currentFocus - focusPoint) / 8f) * 4f;
             sprite.Blur = blurValue;
             //Debug.Log($"{layerName} blur: {blurValue}");
+        }
+    }
+    private void ApplyExposure(float baseExposure, List<_2dxFX_ColorChange> sprites)
+    {
+        float finalExposure = exposureSlider.value + baseExposure; // Add base exposure to current exposure
+        finalExposure = Mathf.Clamp(finalExposure, -5, 5); // Clamp final exposure between -5 and 5
+        float mappedExposure = Mathf.Lerp(-1, 1, Mathf.InverseLerp(-5, 5, finalExposure)); // Map final exposure from [-5, 5] to [-1, 1]
+
+        foreach (_2dxFX_ColorChange sprite in sprites)
+        {
+            sprite._ValueBrightness = mappedExposure;
         }
     }
       private void DisApplyBlur(List<_2dxFX_BlurHQX> sprites)
@@ -142,6 +168,10 @@ public class ShootingManager : MonoBehaviour
         FindSpritesAndAddToList(clone.transform.Find("Mid"), midSprites);
         FindSpritesAndAddToList(clone.transform.Find("Back"), backSprites);
 
+        List<_2dxFX_ColorChange> colorChangeSprites = new List<_2dxFX_ColorChange>();
+        _2dxFX_ColorChange[] sprites = clone.GetComponentsInChildren<_2dxFX_ColorChange>();
+        FindComponentsAndAddToList(clone, colorChangeSprites);
+
         // 创建一个新的RenderTexture
         RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
         shootingCamera.targetTexture = renderTexture;
@@ -150,6 +180,7 @@ public class ShootingManager : MonoBehaviour
         ApplyBlur(forwardSprites, forwardFocus, "Forward");
         ApplyBlur(midSprites, midFocus, "Mid");
         ApplyBlur(backSprites, backFocus, "Back");
+        ApplyExposure(currentbaseExposure, colorChangeSprites);
 
         yield return new WaitForSeconds(0.2f);
         shootingCamera.Render();

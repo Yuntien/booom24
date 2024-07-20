@@ -23,7 +23,7 @@ public class _2dxFX_ColorChange : MonoBehaviour
     [HideInInspector] [Range(0, 1)] public float _Tolerance = 1f;
     [HideInInspector] [Range(0, 360)] public float _HueShift = 180f;
     [HideInInspector] [Range(-2, 2)] public float _Saturation = 1f;
-    [HideInInspector] [Range(-2, 2)] public float _ValueBrightness = 1f;
+    [Range(-1, 1)] public float _ValueBrightness = 0f; 
     [HideInInspector] public Color _Color = new Color(0f, 1f, 1f, 1f);
 
     [HideInInspector] public int ShaderChange = 0;
@@ -126,6 +126,17 @@ public class _2dxFX_ColorChange : MonoBehaviour
 #endif
         if (ActiveChange)
         {
+
+            float convertedValueBrightness;
+            if (_ValueBrightness <= 0) 
+            {
+                convertedValueBrightness = _ValueBrightness + 1;  // Map [-1, 0] to [0, 1]
+            }
+            else 
+            {
+                convertedValueBrightness = 1 + (_ValueBrightness * 100);  // Map [0, 1] to [1, 120]
+            }
+
             if (CanvasSpriteRenderer != null)
             {
                 CanvasSpriteRenderer.sharedMaterial.SetFloat("_Alpha", 1 - _Alpha);
@@ -133,7 +144,7 @@ public class _2dxFX_ColorChange : MonoBehaviour
                 CanvasSpriteRenderer.sharedMaterial.SetFloat("_Tolerance", _Tolerance);
                 CanvasSpriteRenderer.sharedMaterial.SetFloat("_HueShift", _HueShift);
                 CanvasSpriteRenderer.sharedMaterial.SetFloat("_Sat", _Saturation);
-                CanvasSpriteRenderer.sharedMaterial.SetFloat("_Val", _ValueBrightness);
+                CanvasSpriteRenderer.sharedMaterial.SetFloat("_Val", convertedValueBrightness);
             }
             else if (CanvasImage != null)
             {
@@ -142,7 +153,7 @@ public class _2dxFX_ColorChange : MonoBehaviour
                 CanvasImage.material.SetFloat("_Tolerance", _Tolerance);
                 CanvasImage.material.SetFloat("_HueShift", _HueShift);
                 CanvasImage.material.SetFloat("_Sat", _Saturation);
-                CanvasImage.material.SetFloat("_Val", _ValueBrightness);
+                CanvasImage.material.SetFloat("_Val", convertedValueBrightness);
             }
         }
 
