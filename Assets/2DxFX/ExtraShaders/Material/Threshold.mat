@@ -30,23 +30,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Displacement_Value: 0.3
-    - Effect_Fading: 1
-    - PixelSnap: 0
-    - Pixel_Size: 22
-    - Symbiose_Distance: 0.040489357
-    - Symbiose_Position: -0.209
     - _ColorMask: 15
-    - _Sharpness_Angle_1: 0.25
-    - _Sharpness_Distance_1: 2.66
-    - _Sharpness_Fade_1: 1
-    - _Sharpness_Intensity_1: 0.19
-    - _Sharpness_original_1: 1
-    - _ShinyFX_Intensity_1: 1
-    - _ShinyFX_Pos_1: 0
-    - _ShinyFX_Size_1: -0.1
-    - _ShinyFX_Smooth_1: 0.25
-    - _ShinyFX_Speed_1: 1
     - _SpriteFade: 1
     - _Stencil: 0
     - _StencilComp: 8

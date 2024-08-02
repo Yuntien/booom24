@@ -36,11 +36,11 @@ Material:
     - OffsetUV_ZoomY_1: 1
     - _ColorMask: 15
     - _LerpUV_Fade_1: 1
-    - _Make3DFX_Dist_1: 0.11678574
-    - _Make3DFX_Light_1: -0.64
-    - _Make3DFX_PosX_1: 0.53
-    - _Make3DFX_PosY_1: -1.81
-    - _Make3DFX_Size_1: 8.58
+    - _Make3DFX_Dist_1: 0.16661634
+    - _Make3DFX_Light_1: 0.26
+    - _Make3DFX_PosX_1: 1.48
+    - _Make3DFX_PosY_1: -1.11
+    - _Make3DFX_Size_1: 15.9
     - _OutlineEmpty_Size_1: 1
     - _Outline_HDR_1: 1
     - _Outline_Size_1: 1.14

@@ -164,7 +164,7 @@ Material:
     - _StencilWriteMask: 255
     - _UVSec: 0
     - _ZWrite: 1
-    - __CompressionFX_Value_1: 10.07345
+    - __CompressionFX_Value_1: 4.623836
     m_Colors:
     - Tint_Color: {r: 0, g: 0.9117646, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

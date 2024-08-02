@@ -17,7 +17,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -94,11 +94,11 @@ Material:
     - _CircleHole_Size_1: 0
     - _ColorMask: 15
     - _Cutoff: 0.5
-    - _Darkness_Fade_1: 0.79196435
+    - _Darkness_Fade_1: 0.9165408
     - _Destroyer_Speed_1: 0.5
     - _Destroyer_Value_1: 0.32481977
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1

@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PixelisationXY
-  m_Shader: {fileID: 4800000, guid: 05b5cd5b52404154dac382cb03b0e28b, type: 3}
-  m_Parent: {fileID: 0}
+  m_Shader: {fileID: 4800000, guid: 36b5905494e89644186abc68a646553b, type: 3}
+  m_Parent: {fileID: 2100000, guid: f6d70d1362798ad4480d22f6b710e89e, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - ETC1_EXTERNAL_ALPHA
@@ -23,43 +23,10 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - Effect_Fade: 1
-    - ExplosionValue: 0.30580708
-    - OffsetUV_X_1: 0
-    - OffsetUV_Y_1: 0.445
-    - OffsetUV_ZoomX_1: 1
-    - OffsetUV_ZoomY_1: 1
-    - PinchUV_Size_1: 0.2540917
-    - PixelUV_Size: 18.74812
-    - PixelUV_Size_1: 0.93249893
-    - PixelXYUV_SizeX_1: 31.467552
-    - PixelXYUV_SizeY_1: 32
-    - Pixel_Fade: 18.82359
-    - Pixel_Size: 42.5
-    - _ColorMask: 15
-    - _LerpUV_Fade_1: 1
-    - _Make3DFX_Dist_1: -0.36862513
-    - _Make3DFX_Light_1: -0.64
-    - _Make3DFX_PosX_1: 0.53
-    - _Make3DFX_PosY_1: -1.81
-    - _Make3DFX_Size_1: 8.58
-    - _OutlineEmpty_Size_1: 1
-    - _Outline_HDR_1: 1
-    - _Outline_Size_1: 1.14
-    - _SpriteFade: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - _OutlineEmpty_Color_1: {r: 1, g: 1, b: 1, a: 1}
-    - _Outline_Color_1: {r: 1, g: 1, b: 1, a: 1}
+    - PixelXYUV_SizeX_1: 58.769825
+    - _PlasmaFX_Speed_1: 0.5
+    m_Colors: []
   m_BuildTextureStacks: []
