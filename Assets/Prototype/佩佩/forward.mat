@@ -469,7 +469,7 @@ Material:
     - _BurnInsideColor: {r: 1, g: 1, b: 1, a: 0}
     - _BurnInsideNoiseColor: {r: 7339.077, g: 7339.077, b: 7339.077, a: 0}
     - _BurnInsideNoiseScale: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _BurnPosition: {r: 0, g: -7.33, b: 0, a: 0}
+    - _BurnPosition: {r: 0, g: 0, b: 0, a: 0}
     - _BurnSwirlNoiseScale: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _CamouflageBaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _CamouflageColorA: {r: 1, g: 0.056886356, b: 0, a: 0}

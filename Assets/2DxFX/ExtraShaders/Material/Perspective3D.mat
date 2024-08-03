@@ -36,7 +36,7 @@ Material:
     - OffsetUV_ZoomY_1: 1
     - _ColorMask: 15
     - _LerpUV_Fade_1: 1
-    - _Make3DFX_Dist_1: 0.16661634
+    - _Make3DFX_Dist_1: 0.16909197
     - _Make3DFX_Light_1: 0.26
     - _Make3DFX_PosX_1: 1.48
     - _Make3DFX_PosY_1: -1.11

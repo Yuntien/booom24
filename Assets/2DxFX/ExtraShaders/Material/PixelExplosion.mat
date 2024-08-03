@@ -31,7 +31,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Effect_Fade: 1
-    - ExplosionValue: 0.7897577
+    - ExplosionValue: 0.7995417
     - OffsetUV_X_1: 0
     - OffsetUV_Y_1: 0.445
     - OffsetUV_ZoomX_1: 1

@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class EyeTarget : MonoBehaviour
 {
+    public Transform targetTransform; // EyeTarget的位置
     [SerializeField]
     private float burnRadiusMin = 0f; // 对应_BurnRadius的最小值
 
@@ -15,34 +16,47 @@ public class EyeTarget : MonoBehaviour
     private void Awake()
     {
         // 获取此对象的材质
-        material = GetComponent<Renderer>().material;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        material = spriteRenderer.material;
+        material.SetFloat("_SourceGlowDissolveFade", burnRadiusMin);
+
     }
     private void Start()
     {
-        material = GetComponent<Renderer>().material;
-        material.SetFloat("_BurnRadius", burnRadiusMax);
+        
     }
     public void SetToMinBurnRadius()
     {
-        material.SetFloat("_BurnRadius", burnRadiusMin);
+        material.SetFloat("_SourceGlowDissolveFade", burnRadiusMin);
     }
 
     public void SetToMaxBurnRadius()
     {
-        material.SetFloat("_BurnRadius", burnRadiusMax);
+        material.SetFloat("_SourceGlowDissolveFade", burnRadiusMax);
+    }
+    public void SetToMaxBlur()
+    {
+        material.SetFloat("_GaussianBlurFade", 1f);
+    }
+     public void SetToMinBlur()
+    {
+        material.SetFloat("_GaussianBlurFade", 0f);
     }
     public void FadeOut(float duration)
     {
         // 使用DoTween库来改变_BurnRadius，使目标褪色
-        material.DOFloat(burnRadiusMax, "_BurnRadius", duration);
-        material.DOFloat(1f, "_GlitchFade", duration/2).SetLoops(2, LoopType.Yoyo);;
+        material.DOFloat(burnRadiusMin, "_SourceGlowDissolveFade", duration);
+        material.DOFloat(1f, "_GaussianBlurFade", duration).SetEase(Ease.InSine);
+        material.DOFloat(1f, "_UVDistortFade", duration/2).SetEase(Ease.InSine).SetLoops(2, LoopType.Yoyo);;
+        
+
 
     }
 
-
     public void ColorIn(float duration)
     {
-        material.DOFloat(burnRadiusMin, "_BurnRadius", duration);
-        material.DOFloat(1f, "_GlitchFade", duration/2).SetLoops(2, LoopType.Yoyo);;
+        material.DOFloat(burnRadiusMax, "_SourceGlowDissolveFade", duration).SetEase(Ease.InOutSine);
+        material.DOFloat(0f, "_GaussianBlurFade", duration).SetEase(Ease.InOutSine);
+        material.DOFloat(1f, "_UVDistortFade", duration/2).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);;
     }
 }

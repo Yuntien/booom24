@@ -31,7 +31,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Effect_Fading: 1
-    - Glass_Displacement: 0.09228144
+    - Glass_Displacement: 0.088628486
     - Glass_Rotation: -0.378
     - Glass_Seed: 1
     - Glass_Size: 35.727

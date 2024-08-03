@@ -7,6 +7,8 @@ public class EyeManager : MonoBehaviour
 {
 
     private List<EyeTarget> targets = new List<EyeTarget>(); // 改为EyeTarget类型
+
+    public ViewCameraManager cameraManager; // 相机管理器
     public List<EyeTarget> Targets => targets; // 公开的Targets属性，也改为EyeTarget类型
 
 
@@ -42,7 +44,9 @@ public class EyeManager : MonoBehaviour
     public void SetInitialTargetState(EyeTarget target)
     {
         // 直接设置目标为无色，无过渡效果
-        target.SetToMinBurnRadius();
+        target.SetToMaxBurnRadius();
+        target.SetToMinBlur();
+        cameraManager.SetCameraPosition(target.targetTransform);
         currentTarget=target;
     }
 
@@ -56,9 +60,12 @@ public class EyeManager : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            currentTarget.FadeOut(colorTransitionDuration);
+
+            currentTarget.FadeOut(colorTransitionDuration/3);
+            yield return new WaitForSeconds(1f);
+            cameraManager.MoveCameraTo(newTarget.targetTransform, colorTransitionDuration/3);
             // 等待FadeOut完成
-            yield return new WaitForSeconds(colorTransitionDuration);
+            yield return new WaitForSeconds(colorTransitionDuration/3);
         }
 
         // 不要忘记更新 currentTarget 变量

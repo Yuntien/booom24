@@ -31,7 +31,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Disolve_Seed: 0.5
-    - Disolve_Value: 0.7922492
+    - Disolve_Value: 0.7868666
     - Pixel_Size: 64.9
     - _ColorMask: 15
     - _SpriteFade: 1
