@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: midColor
+  m_Name: forwardColor
   m_Shader: {fileID: 4800000, guid: 0803c241834332942abfcbd27c498b46, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -161,13 +161,13 @@ Material:
     - _DirectionalAlphaFadeNoiseFactor: 1
     - _DirectionalAlphaFadeRotation: 0
     - _DirectionalAlphaFadeWidth: 1
-    - _DirectionalDistortionFade: -12.9
+    - _DirectionalDistortionFade: -14
     - _DirectionalDistortionInvert: 0
     - _DirectionalDistortionNoiseFactor: 4
     - _DirectionalDistortionRandomDirection: 0.25
     - _DirectionalDistortionRotation: 0
     - _DirectionalDistortionWidth: 8
-    - _DirectionalGlowFadeFade: -10.2
+    - _DirectionalGlowFadeFade: -14.7
     - _DirectionalGlowFadeInvert: 0
     - _DirectionalGlowFadeNoiseFactor: 1
     - _DirectionalGlowFadeRotation: 0
@@ -264,15 +264,15 @@ Material:
     - _FullAlphaDissolveFade: 0.5
     - _FullAlphaDissolveWidth: 57.21
     - _FullDistortionFade: 0.63
-    - _FullGlowDissolveFade: 0.55
-    - _FullGlowDissolveWidth: 0.3
-    - _GaussianBlurFade: 1
+    - _FullGlowDissolveFade: 0
+    - _FullGlowDissolveWidth: 0.2
+    - _GaussianBlurFade: 0.57
     - _GaussianBlurOffset: 0.5
-    - _GlitchBrightness: 1
+    - _GlitchBrightness: 4
     - _GlitchFade: 0
     - _GlitchHueSpeed: 1
-    - _GlitchMaskMin: 0.4
-    - _HalftoneFade: 28.2
+    - _GlitchMaskMin: 0.78
+    - _HalftoneFade: 20.1
     - _HalftoneFadeWidth: 2.11
     - _HalftoneInvert: 0
     - _HalftoneTiling: 4.12
@@ -339,7 +339,7 @@ Material:
     - _RecolorRGBYCPTextureToggle: 0
     - _RectHeight: 100
     - _RectWidth: 100
-    - _Saturation: 1
+    - _Saturation: 0
     - _ScreenTilingPixelsPerUnit: 100
     - _ScreenWidthUnits: 10
     - _ShaderFading: 0
@@ -386,7 +386,7 @@ Material:
     - _SourceAlphaDissolveInvert: 0
     - _SourceAlphaDissolveNoiseFactor: 3.4
     - _SourceAlphaDissolveWidth: 0.73
-    - _SourceGlowDissolveFade: 16.99
+    - _SourceGlowDissolveFade: 1
     - _SourceGlowDissolveInvert: 0
     - _SourceGlowDissolveNoiseFactor: 3
     - _SourceGlowDissolveWidth: 0.3
@@ -464,7 +464,7 @@ Material:
     - _WindMinIntensity: -0.4
     - _WindNoiseScale: 0.1
     - _WindNoiseSpeed: 1
-    - _WindRotation: 1.32
+    - _WindRotation: 0
     - _WindRotationWindFactor: 1
     - _WindSquishFactor: 0.3
     - _WindSquishWindFactor: 0
@@ -520,7 +520,7 @@ Material:
     - _FullDistortionDistortion: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _FullDistortionNoiseScale: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _FullGlowDissolveEdgeColor: {r: 15.066617, g: 15.066617, b: 15.066617, a: 0}
-    - _FullGlowDissolveNoiseScale: {r: 2, g: 2, b: 0, a: 0}
+    - _FullGlowDissolveNoiseScale: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _GlitchDistortion: {r: 0.1, g: 0, b: 0, a: 0}
     - _GlitchDistortionScale: {r: 5, g: 5, b: 0, a: 0}
     - _GlitchDistortionSpeed: {r: 0, g: 1, b: 0, a: 0}
