@@ -1,24 +1,70 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+
 public class EyeManager : MonoBehaviour
 {
-
-    private List<EyeTarget> targets = new List<EyeTarget>(); // 改为EyeTarget类型
-
-    public ViewCameraManager cameraManager; // 相机管理器
-    public List<EyeTarget> Targets => targets; // 公开的Targets属性，也改为EyeTarget类型
-
-
-    private EyeTarget currentTarget; // 改为EyeTarget类型
-    public EyeTarget CurrentTarget => currentTarget; // 新增的公开 getter，也改为EyeTarget类型
-
     [SerializeField]
-    private float colorTransitionDuration = 2f;
+    private List<EyeTarget> targets = new List<EyeTarget>(); // 保存目标列表
+
+    public List<EyeTarget> Targets => targets; // 提供目标列表的公共访问
+
+    private EyeTarget currentTarget; // 当前选中的目标
+
+    public EyeTarget CurrentTarget => currentTarget; // 提供当前目标的公共访问
+    
+    public enum EyeState
+    {
+        CanImagineColor,
+        CannotImagineColor,
+        EyeDisorder
+    }
+    public ViewCameraManager cameraManager;
+
+    private IEyeStateEffect eyeStateEffect;
+
+    private float colorTransitionDuration;
+    
+    [SerializeField]
+    private EyeState currentState=EyeState.CanImagineColor;
+        public EyeState CurrentState
+    {
+        get { return currentState; }
+        set
+        {
+            if (currentState != value)
+            {
+                SetEyeState(value);
+                currentState = value;
+            }
+        }
+    }
+    
+
 
     private void Awake()
+    {
+        InitializeTargets();
+
+    }
+    private void Start() 
+    {
+        if (targets.Count > 0)
+        {
+            SetInitialTargetState(targets[0]);
+        }
+        SetEyeState(currentState);
+        
+    }
+    public void SetInitialTargetState(EyeTarget target)
+    {
+        currentTarget = target;
+    }
+
+    private void InitializeTargets()
     {
         // 查找所有带有EyeTarget标签的物体
         GameObject[] eyeTargets = GameObject.FindGameObjectsWithTag("EyeTarget");
@@ -30,51 +76,61 @@ public class EyeManager : MonoBehaviour
                 targets.Add(eyeTarget);
             }
         }
-
-        // 设置初始目标的状态，无过渡效果
-        
     }
-    private void Start() {
-        if (targets.Count > 0)
-        {
-            SetInitialTargetState(targets[0]);
-        }
-        
-    }
-    public void SetInitialTargetState(EyeTarget target)
-    {
-        // 直接设置目标为无色，无过渡效果
-        target.SetToMaxBurnRadius();
-        target.SetToMinBlur();
-        cameraManager.SetCameraPosition(target.targetTransform);
-        currentTarget=target;
-    }
-
-
     public void SetTarget(EyeTarget newTarget)
     {
-        StartCoroutine(SetTargetCoroutine(newTarget));
+        if (newTarget != currentTarget)
+        {
+            StartCoroutine(SetTargetCoroutine(newTarget));
+        }
     }
-
-    private IEnumerator SetTargetCoroutine(EyeTarget newTarget)
+     private IEnumerator SetTargetCoroutine(EyeTarget newTarget)
     {
+        float duration = eyeStateEffect.TransitionDuration;
+
         if (currentTarget != null)
         {
-
-            currentTarget.FadeOut(colorTransitionDuration/3);
-            yield return new WaitForSeconds(1f);
-            cameraManager.MoveCameraTo(newTarget.targetTransform, colorTransitionDuration/3);
-            // 等待FadeOut完成
-            yield return new WaitForSeconds(colorTransitionDuration/3);
+             eyeStateEffect?.ApplyUnfocusedEffect(currentTarget);
+            yield return new WaitForSeconds(duration);
         }
 
-        // 不要忘记更新 currentTarget 变量
+        cameraManager.MoveCameraTo(newTarget.targetTransform, 1f);
+        yield return new WaitForSeconds(1f);
+
         currentTarget = newTarget;
 
-        // 这里需要检查 newTarget 是否为 null
         if (newTarget != null)
         {
-            newTarget.ColorIn(colorTransitionDuration);
+             eyeStateEffect?.ApplyFocusedEffect(newTarget);
+            yield return new WaitForSeconds(duration);
         }
     }
+
+    public void SetEyeState(EyeState state)
+    {
+        // Cleanup current state effect
+        eyeStateEffect?.CleanupEffect(currentTarget);
+
+        switch (state)
+        {
+            case EyeState.CanImagineColor:
+                eyeStateEffect = new CanImagineColorEffect();
+                break;
+            case EyeState.CannotImagineColor:
+                eyeStateEffect = new CannotImagineColorEffect();
+                break;
+            case EyeState.EyeDisorder:
+                eyeStateEffect = new EyeDisorderEffect();
+                break;
+            default:
+                throw new ArgumentException("Unknown eye state: " + state.ToString(), nameof(state));
+        }
+
+        // Update transition duration
+        colorTransitionDuration = eyeStateEffect.TransitionDuration;
+
+        // Initialize new state effect
+        eyeStateEffect.InitializeEffect(currentTarget, cameraManager);
+    }
 }
+

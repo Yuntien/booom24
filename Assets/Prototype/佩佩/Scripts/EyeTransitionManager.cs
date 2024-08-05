@@ -25,6 +25,8 @@ public class EyeTransitionManager : MonoBehaviour
 
     private ViewState currentViewState = ViewState.NormalView;
     private bool isTransitioning = false;
+    public RectTransform faceRectTransform;
+
 
     private void Start()
     {
@@ -37,60 +39,68 @@ public class EyeTransitionManager : MonoBehaviour
     {
         faceMaterial = faceImage.material;
         blackScreenImage.gameObject.SetActive(false);
+        faceRectTransform.localScale = normalViewScale; // 初始scale为1
+        faceRectTransform.anchoredPosition = Vector2.zero; // 初始位置为(0, 0)
         SetView(currentViewState);
     }
 
     private void SetView(ViewState viewState)
     {
         Vector2 targetScale = viewState == ViewState.NormalView ? normalViewScale : eyeViewScale;
-        Vector2 targetPivot = viewState == ViewState.NormalView ? normalViewPivot : eyeViewPivot;
-        faceMaterial.SetVector("_UVScaleScale", targetScale);
-        faceMaterial.SetVector("_UVScalePivot", targetPivot);
+        Vector2 targetPosition = viewState == ViewState.NormalView ? Vector2.zero : new Vector2(255, 0);
+
+        // 设置RectTransform的属性而不是材质属性
+        faceRectTransform.localScale = targetScale;
+        faceRectTransform.anchoredPosition = targetPosition;
     }
 
-      private void StartTransition(ViewState targetViewState)
-{
-    if (isTransitioning || currentViewState == targetViewState) return;
-    isTransitioning = true;
-
-    if (targetViewState == ViewState.EyeView)
+    private void StartTransition(ViewState targetViewState)
     {
-        // Zoom In 的时候，开始 Zoom
-        Sequence zoomInSequence = DOTween.Sequence();
-        zoomInSequence.Append(DOTween.To(() => faceMaterial.GetVector("_UVScaleScale"), x => faceMaterial.SetVector("_UVScaleScale", x), (Vector4)eyeViewScale, zoomDuration).SetEase(Ease.OutCubic));
-        zoomInSequence.Join(DOTween.To(() => faceMaterial.GetVector("_UVScalePivot"), x => faceMaterial.SetVector("_UVScalePivot", x), (Vector4)eyeViewPivot, zoomDuration).SetEase(Ease.OutCubic));
+        if (isTransitioning || currentViewState == targetViewState) return;
+        isTransitioning = true;
 
-        // 在 Zoom 到一半时开始黑屏过渡
-        zoomInSequence.Insert(zoomDuration / 2, blackScreenImage.DOFade(1f, zoomDuration / 2).OnStart(() => blackScreenImage.gameObject.SetActive(true)));
+        Vector2 targetScale = targetViewState == ViewState.NormalView ? normalViewScale : eyeViewScale;
+        Vector2 targetPosition = targetViewState == ViewState.NormalView ? Vector2.zero : new Vector2(255, 0);
 
-        // 在整个 Zoom 完成后激活 Eye View
-        zoomInSequence.OnComplete(() => ActivateEyeView());
-    }
-    else
-    {
-        // Zoom Out 的时候，先黑屏淡入
-        blackScreenImage.gameObject.SetActive(true);
-        Sequence zoomOutSequence = DOTween.Sequence();
-        zoomOutSequence.Append(blackScreenImage.DOFade(1f, zoomDuration / 2));
-
-        // 在黑屏淡入完成后关闭 Eye Panel
-        zoomOutSequence.AppendCallback(() => eyePanel.SetActive(false));
-
-        // 开始淡出黑屏
-        zoomOutSequence.Append(blackScreenImage.DOFade(0f, zoomDuration).OnComplete(() => blackScreenImage.gameObject.SetActive(false)));
-
-        // 在淡出黑屏到一半时开始 Zoom Out
-        zoomOutSequence.Insert(zoomDuration / 2, DOTween.To(() => faceMaterial.GetVector("_UVScaleScale"), x => faceMaterial.SetVector("_UVScaleScale", x), (Vector4)normalViewScale, zoomDuration).SetEase(Ease.OutCubic));
-        zoomOutSequence.Insert(zoomDuration / 2, DOTween.To(() => faceMaterial.GetVector("_UVScalePivot"), x => faceMaterial.SetVector("_UVScalePivot", x), (Vector4)normalViewPivot, zoomDuration).SetEase(Ease.OutCubic));
-
-        // 在整个动画完成后更新视图状态
-        zoomOutSequence.OnComplete(() =>
+        if (targetViewState == ViewState.EyeView)
         {
-            currentViewState = ViewState.NormalView;
-            isTransitioning = false;
-        });
+            // Zoom In 的时候，开始 Zoom
+            Sequence zoomInSequence = DOTween.Sequence();
+            zoomInSequence.Append(faceRectTransform.DOAnchorPos(targetPosition, zoomDuration).SetEase(Ease.OutCubic));
+            zoomInSequence.Join(faceRectTransform.DOScale(targetScale, zoomDuration).SetEase(Ease.OutCubic));
+
+            // 在 Zoom 到一半时开始黑屏过渡
+            zoomInSequence.Insert(zoomDuration / 2, blackScreenImage.DOFade(1f, zoomDuration / 2).OnStart(() => blackScreenImage.gameObject.SetActive(true)));
+
+            // 在整个 Zoom 完成后激活 Eye View
+            zoomInSequence.OnComplete(() => ActivateEyeView());
+        }
+        else
+        {
+            // Zoom Out 的时候，先黑屏淡入
+            blackScreenImage.gameObject.SetActive(true);
+            Sequence zoomOutSequence = DOTween.Sequence();
+            zoomOutSequence.Append(blackScreenImage.DOFade(1f, zoomDuration / 2));
+
+            // 在黑屏淡入完成后关闭 Eye Panel
+            zoomOutSequence.AppendCallback(() => eyePanel.SetActive(false));
+
+            // 开始淡出黑屏
+            zoomOutSequence.Append(blackScreenImage.DOFade(0f, zoomDuration).OnComplete(() => blackScreenImage.gameObject.SetActive(false)));
+
+            // 在淡出黑屏到一半时开始 Zoom Out
+            zoomOutSequence.Insert(zoomDuration / 2, faceRectTransform.DOAnchorPos(targetPosition, zoomDuration).SetEase(Ease.OutCubic));
+            zoomOutSequence.Insert(zoomDuration / 2, faceRectTransform.DOScale(targetScale, zoomDuration).SetEase(Ease.OutCubic));
+
+            // 在整个动画完成后更新视图状态
+            zoomOutSequence.OnComplete(() =>
+            {
+                currentViewState = ViewState.NormalView;
+                isTransitioning = false;
+            });
+        }
     }
-}
+
 
 
 
