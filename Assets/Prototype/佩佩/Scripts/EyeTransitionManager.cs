@@ -8,6 +8,7 @@ public class EyeTransitionManager : MonoBehaviour
     public float zoomDuration = 1f;
     public Image blackScreenImage;
     public RectTransform faceRectTransform;
+    public UFProcess ufProcess; // 需要引用UFProcess组件
 
     [System.Serializable]
     public class ViewConfig
@@ -92,7 +93,12 @@ public class EyeTransitionManager : MonoBehaviour
 
     private void StartTransition(ViewState targetViewState)
     {
-        if (isTransitioning || currentViewState == targetViewState) return;
+        if (isTransitioning || currentViewState == targetViewState || (ufProcess != null && ufProcess.IsProcessing()))
+        {
+            Debug.LogWarning("Transition is currently not allowed. Please wait until the current process is finished.");
+            return;
+        }
+
         isTransitioning = true;
 
         if (targetViewState == ViewState.MainView)
@@ -102,7 +108,7 @@ public class EyeTransitionManager : MonoBehaviour
             Sequence zoomOutSequence = DOTween.Sequence();
             zoomOutSequence.Append(blackScreenImage.DOFade(1f, zoomDuration / 2));
 
-            // 在黑屏淡入完成后关闭 Eye Panel
+            // 在黑屏淡入完成后关闭 Panel
             zoomOutSequence.AppendCallback(() =>
             {
                 foreach (var viewConfig in viewConfigs)
