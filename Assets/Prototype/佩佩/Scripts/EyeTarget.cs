@@ -16,7 +16,11 @@ public class EyeTarget : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer backSpriteRenderer;
+
+    [SerializeField]
+    private SpriteRenderer wrongColorSpriteRenderer;
     private Material backMaterial;
+    private Material wrongColorMaterial;
 
     private void Awake()
     {
@@ -26,6 +30,7 @@ public class EyeTarget : MonoBehaviour
         forwardMaterial.SetFloat("_SourceGlowDissolveFade", burnRadiusMin);
 
         backMaterial=backSpriteRenderer.material;
+        wrongColorMaterial=wrongColorSpriteRenderer.material;;
 
 
 
@@ -53,6 +58,14 @@ public class EyeTarget : MonoBehaviour
         Material targetMaterial = isForwardMaterial ? forwardMaterial : backMaterial;
         targetMaterial.SetFloat("_GaussianBlurFade", 0f);
     }
+    public void SetToNoWrongColor()
+    {
+        wrongColorMaterial.SetFloat( "_Alpha", 0f);
+    }
+       public void SetToWrongColor()
+    {
+        wrongColorMaterial.SetFloat( "_Alpha", 1f);
+    }
     public void FadeOut(float duration)
     {
         // 使用DoTween库来改变_BurnRadius，使目标褪色
@@ -70,9 +83,19 @@ public class EyeTarget : MonoBehaviour
         forwardMaterial.DOFloat(0f, "_GaussianBlurFade", duration).SetEase(Ease.InOutSine);
         forwardMaterial.DOFloat(1f, "_UVDistortFade", duration/2).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);;
     }
+
+    public void WrongColorIn(float duration)
+    {
+        wrongColorMaterial.DOFloat(1f, "_Alpha", duration).SetEase(Ease.InOutSine);
+    }
+        public void WrongColorOut(float duration)
+    {
+        wrongColorMaterial.DOFloat(0f, "_Alpha", duration).SetEase(Ease.InOutSine);
+    }
+    
      public void BlurIn(float duration)
     {
-        backMaterial.DOFloat(1f, "_GaussianBlurFade", duration).SetEase(Ease.InSine);
+         wrongColorMaterial.DOFloat(0f, "General Alpha", duration).SetEase(Ease.InOutSine);
     }
 
     public void BlurOut(float duration)

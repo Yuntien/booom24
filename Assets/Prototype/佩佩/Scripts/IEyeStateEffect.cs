@@ -70,20 +70,23 @@ public class EyeDisorderEffect : IEyeStateEffect
     public void InitializeEffect(EyeTarget target, ViewCameraManager cameraManager)
     {
         // Add initialization logic here
+        cameraManager.SetCameraPosition(target.targetTransform);
+        target.SetToWrongColor();
     }
 
     public void CleanupEffect(EyeTarget target)
     {
         // Add cleanup logic here
+        target.SetToNoWrongColor();
     }
 
     public void ApplyFocusedEffect(EyeTarget target)
     {
-        target.ColorIn(TransitionDuration);
+        target.WrongColorIn(TransitionDuration);
     }
 
     public void ApplyUnfocusedEffect(EyeTarget target)
     {
-        target.FadeOut(TransitionDuration);
+        target.WrongColorOut(TransitionDuration);
     }
 }

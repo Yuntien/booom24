@@ -161,12 +161,12 @@ Material:
     - _DirectionalAlphaFadeNoiseFactor: 1
     - _DirectionalAlphaFadeRotation: 0
     - _DirectionalAlphaFadeWidth: 1
-    - _DirectionalDistortionFade: -20.09
+    - _DirectionalDistortionFade: -7.12
     - _DirectionalDistortionInvert: 0
-    - _DirectionalDistortionNoiseFactor: 4
-    - _DirectionalDistortionRandomDirection: 0.25
+    - _DirectionalDistortionNoiseFactor: 1.55
+    - _DirectionalDistortionRandomDirection: 0.56
     - _DirectionalDistortionRotation: 0
-    - _DirectionalDistortionWidth: 8
+    - _DirectionalDistortionWidth: 1.46
     - _DirectionalGlowFadeFade: -14.7
     - _DirectionalGlowFadeInvert: 0
     - _DirectionalGlowFadeNoiseFactor: 1
@@ -286,7 +286,7 @@ Material:
     - _HologramLineGap: 3
     - _HologramLineSpeed: 0.01
     - _HologramMinAlpha: 0.2
-    - _Hue: 0
+    - _Hue: 0.37
     - _InkSpreadContrast: 2
     - _InkSpreadDistance: 11.81
     - _InkSpreadFade: 1
@@ -352,7 +352,7 @@ Material:
     - _ShiftingBrightness: 1
     - _ShiftingContrast: 0.5
     - _ShiftingDensity: 1.5
-    - _ShiftingFade: 1
+    - _ShiftingFade: 0.82
     - _ShiftingRainbowToggle: 0
     - _ShiftingSaturation: 0.8
     - _ShiftingSpeed: 0.5
@@ -386,7 +386,7 @@ Material:
     - _SourceAlphaDissolveInvert: 0
     - _SourceAlphaDissolveNoiseFactor: 3.4
     - _SourceAlphaDissolveWidth: 0.73
-    - _SourceGlowDissolveFade: 13.26
+    - _SourceGlowDissolveFade: 13
     - _SourceGlowDissolveInvert: 0
     - _SourceGlowDissolveNoiseFactor: 3
     - _SourceGlowDissolveWidth: 0.3
@@ -494,9 +494,9 @@ Material:
     - _ColorReplaceToColor: {r: 0, g: 0, b: 0.2, a: 0}
     - _CustomFadeNoiseScale: {r: 1, g: 1, b: 0, a: 0}
     - _DirectionalAlphaFadeNoiseScale: {r: 0.2, g: 0.2, b: 0, a: 0}
-    - _DirectionalDistortionDistortion: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _DirectionalDistortionDistortionScale: {r: 1, g: 1, b: 0, a: 0}
-    - _DirectionalDistortionNoiseScale: {r: 0.05, g: 0.1, b: 0, a: 0}
+    - _DirectionalDistortionDistortion: {r: 0.1, g: 0.2, b: 0, a: 0}
+    - _DirectionalDistortionDistortionScale: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _DirectionalDistortionNoiseScale: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _DirectionalGlowFadeEdgeColor: {r: 11.98431, g: 0.6901961, b: 0.6901961, a: 0}
     - _DirectionalGlowFadeNoiseScale: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _EnchantedHighColor: {r: 0, g: 0.7098798, b: 4.237095, a: 0}
