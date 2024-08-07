@@ -9,6 +9,7 @@ public class EyeTransitionManager : MonoBehaviour
     public Image blackScreenImage;
     public RectTransform faceRectTransform;
     public UFProcess ufProcess; // 需要引用UFProcess组件
+    public MemoryProcess memoryProcess; // 需要引用 MemoryProcess 组件
 
     [System.Serializable]
     public class ViewConfig
@@ -25,6 +26,7 @@ public class EyeTransitionManager : MonoBehaviour
     private List<ViewConfig> viewConfigs; // 在 Unity 编辑器中配置视图（不包括MainView）
 
     private Dictionary<ViewState, ViewConfig> viewConfigDictionary;
+    
     private bool isTransitioning = false;
 
     public enum ViewState
@@ -93,7 +95,7 @@ public class EyeTransitionManager : MonoBehaviour
 
     private void StartTransition(ViewState targetViewState)
     {
-        if (isTransitioning || currentViewState == targetViewState || (ufProcess != null && ufProcess.IsProcessing()))
+        if (isTransitioning || currentViewState == targetViewState || (memoryProcess != null && memoryProcess.IsProcessing()))
         {
             Debug.LogWarning("Transition is currently not allowed. Please wait until the current process is finished.");
             return;
