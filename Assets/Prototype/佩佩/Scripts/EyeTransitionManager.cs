@@ -40,6 +40,9 @@ public class EyeTransitionManager : MonoBehaviour
 
     private ViewState currentViewState = ViewState.MainView;
 
+    public delegate void ViewChangeRequestedHandler(ViewState targetViewState);
+    public event ViewChangeRequestedHandler OnViewChangeRequested;
+
     private void Start()
     {
         InitializeView();
@@ -165,5 +168,10 @@ public class EyeTransitionManager : MonoBehaviour
             blackScreenImage.gameObject.SetActive(false);
             onComplete?.Invoke();
         });
+    }
+    public void RequestViewChange(ViewState targetViewState)
+    {
+        //OnViewChangeRequested?.Invoke(targetViewState);
+        StartTransition(targetViewState);
     }
 }
